@@ -1,0 +1,439 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Salesforce Invocable Actions API",
+    "description": "REST API for discovering and invoking standard and custom actions programmatically. Actions include flow invocations, email alerts, quick actions, Apex invocable methods, and external service actions. This API is used to trigger automation from external systems or to build custom user interfaces that invoke Salesforce automation.",
+    "version": "63.0",
+    "contact": {
+      "name": "Salesforce Developer Support",
+      "url": "https://developer.salesforce.com/support",
+      "email": "developer@salesforce.com"
+    },
+    "license": {
+      "name": "Salesforce API Terms of Use",
+      "url": "https://www.salesforce.com/company/legal/agreements/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.salesforce.com/services/data/v63.0",
+      "description": "Salesforce production or developer instance",
+      "variables": {
+        "instance": {
+          "default": "yourInstance",
+          "description": "Your Salesforce instance identifier"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/actions": {
+      "get": {
+        "operationId": "getActionTypes",
+        "summary": "List available action types",
+        "description": "Returns a list of all available action types including standard, custom, and flow actions. Action types include standard (Salesforce-provided), custom (Apex invocable actions), and flow (autolaunched flows).",
+        "tags": ["Actions"],
+        "responses": {
+          "200": {
+            "description": "List of action types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "standard": {
+                      "type": "string",
+                      "description": "URL for standard actions"
+                    },
+                    "custom": {
+                      "type": "string",
+                      "description": "URL for custom actions"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actions/standard": {
+      "get": {
+        "operationId": "getStandardActions",
+        "summary": "List standard invocable actions",
+        "description": "Returns a list of all standard (Salesforce-provided) invocable actions. These include actions like emailSimple (send email), chatterPost (post to Chatter), submit (submit for approval), and many more.",
+        "tags": ["Standard Actions"],
+        "responses": {
+          "200": {
+            "description": "List of standard actions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "actions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ActionSummary"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actions/standard/{actionName}": {
+      "get": {
+        "operationId": "describeStandardAction",
+        "summary": "Describe a standard action",
+        "description": "Returns the input and output parameters for a specific standard invocable action.",
+        "tags": ["Standard Actions"],
+        "parameters": [
+          {
+            "name": "actionName",
+            "in": "path",
+            "required": true,
+            "description": "The API name of the standard action (e.g., emailSimple, chatterPost, submit)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Action description with inputs and outputs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActionDescribe"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "invokeStandardAction",
+        "summary": "Invoke a standard action",
+        "description": "Invokes a standard Salesforce action with the specified inputs. Multiple invocations can be batched in a single request by providing an array of input objects.",
+        "tags": ["Standard Actions"],
+        "parameters": [
+          {
+            "name": "actionName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionInvocationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Action invocation results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ActionInvocationResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actions/custom": {
+      "get": {
+        "operationId": "getCustomActions",
+        "summary": "List custom invocable actions",
+        "description": "Returns a list of all custom invocable actions defined in the org. Custom actions are Apex classes annotated with @InvocableMethod.",
+        "tags": ["Custom Actions"],
+        "responses": {
+          "200": {
+            "description": "List of custom actions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "actions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ActionSummary"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actions/custom/{actionName}": {
+      "get": {
+        "operationId": "describeCustomAction",
+        "summary": "Describe a custom action",
+        "description": "Returns the input and output parameters for a specific custom invocable action.",
+        "tags": ["Custom Actions"],
+        "parameters": [
+          {
+            "name": "actionName",
+            "in": "path",
+            "required": true,
+            "description": "The API name of the custom action",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Action description",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActionDescribe"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "invokeCustomAction",
+        "summary": "Invoke a custom action",
+        "description": "Invokes a custom Apex invocable action. Provide the required inputs as defined by the @InvocableVariable annotations on the action's input class.",
+        "tags": ["Custom Actions"],
+        "parameters": [
+          {
+            "name": "actionName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionInvocationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Action invocation results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ActionInvocationResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+            "tokenUrl": "https://login.salesforce.com/services/oauth2/token",
+            "scopes": {
+              "api": "Access and manage your Salesforce data"
+            }
+          }
+        }
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "ActionSummary": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Display label for the action"
+          },
+          "name": {
+            "type": "string",
+            "description": "The API name of the action"
+          },
+          "type": {
+            "type": "string",
+            "description": "The action type (STANDARD, CUSTOM, FLOW, etc.)"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL to get the full action description"
+          }
+        }
+      },
+      "ActionDescribe": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": ["string", "null"]
+          },
+          "label": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActionParameter"
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActionParameter"
+            }
+          }
+        }
+      },
+      "ActionParameter": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The API name of the parameter"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": ["string", "null"]
+          },
+          "type": {
+            "type": "string",
+            "description": "The data type (STRING, BOOLEAN, NUMBER, DATE, DATETIME, ID, SOBJECT, etc.)"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sobjectType": {
+            "type": ["string", "null"],
+            "description": "For SOBJECT type parameters, the SObject type name"
+          },
+          "byteLength": {
+            "type": "integer"
+          },
+          "maxOccurs": {
+            "type": "integer",
+            "description": "Maximum number of values (1 for single value, -1 for collections)"
+          }
+        }
+      },
+      "ActionInvocationRequest": {
+        "type": "object",
+        "required": ["inputs"],
+        "properties": {
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Input parameter name-value pairs for one invocation"
+            },
+            "description": "Array of input objects. Each item represents one invocation of the action."
+          }
+        }
+      },
+      "ActionInvocationResult": {
+        "type": "object",
+        "properties": {
+          "actionName": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "outputValues": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Output parameter name-value pairs from the action"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Actions",
+      "description": "Action type discovery"
+    },
+    {
+      "name": "Standard Actions",
+      "description": "Salesforce-provided standard invocable actions"
+    },
+    {
+      "name": "Custom Actions",
+      "description": "Custom Apex invocable actions (@InvocableMethod)"
+    }
+  ]
+}

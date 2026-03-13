@@ -1,0 +1,351 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Salesforce Platform Events API",
+    "description": "REST API for publishing and subscribing to Salesforce Platform Events. Platform Events enable event-driven architecture within Salesforce and with external systems. Events are defined as custom SObjects with the __e suffix and can be published via REST API, Apex, or Flows. Subscribers consume events via CometD (Streaming API), Pub/Sub API, or Apex triggers.",
+    "version": "63.0",
+    "contact": {
+      "name": "Salesforce Developer Support",
+      "url": "https://developer.salesforce.com/support",
+      "email": "developer@salesforce.com"
+    },
+    "license": {
+      "name": "Salesforce API Terms of Use",
+      "url": "https://www.salesforce.com/company/legal/agreements/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.salesforce.com/services/data/v63.0",
+      "description": "Salesforce production or developer instance",
+      "variables": {
+        "instance": {
+          "default": "yourInstance",
+          "description": "Your Salesforce instance identifier"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/sobjects/{eventName}": {
+      "get": {
+        "operationId": "describePlatformEvent",
+        "summary": "Describe a Platform Event",
+        "description": "Returns metadata about a Platform Event type including its fields, label, and API name. Platform Event types have an __e suffix (e.g., Order_Event__e).",
+        "tags": ["Events"],
+        "parameters": [
+          {
+            "name": "eventName",
+            "in": "path",
+            "required": true,
+            "description": "The API name of the Platform Event (e.g., Order_Event__e)",
+            "schema": {
+              "type": "string",
+              "pattern": ".*__e$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform Event metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformEventDescribe"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "publishPlatformEvent",
+        "summary": "Publish a Platform Event",
+        "description": "Publishes a single Platform Event message. The event is immediately available to all subscribers. Event publication is not transactional with DML operations when called via REST API. Returns the event ID upon success.",
+        "tags": ["Events"],
+        "parameters": [
+          {
+            "name": "eventName",
+            "in": "path",
+            "required": true,
+            "description": "The API name of the Platform Event (e.g., Order_Event__e)",
+            "schema": {
+              "type": "string",
+              "pattern": ".*__e$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Field name-value pairs for the event. Include all required custom fields defined on the Platform Event.",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Event published successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid event data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApiError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sobjects/{eventName}/describe": {
+      "get": {
+        "operationId": "describePlatformEventFull",
+        "summary": "Get full Platform Event describe",
+        "description": "Returns complete metadata for a Platform Event type including all custom fields with their types, labels, and properties.",
+        "tags": ["Events"],
+        "parameters": [
+          {
+            "name": "eventName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": ".*__e$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full Platform Event describe result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformEventDescribe"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sobjects/{eventName}/eventSchema": {
+      "get": {
+        "operationId": "getEventSchema",
+        "summary": "Get the Apache Avro schema for a Platform Event",
+        "description": "Returns the Apache Avro schema for a Platform Event channel, used by the Pub/Sub API for event serialization and deserialization.",
+        "tags": ["Events"],
+        "parameters": [
+          {
+            "name": "eventName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "payloadFormat",
+            "in": "query",
+            "description": "The format for the schema",
+            "schema": {
+              "type": "string",
+              "enum": ["EXPANDED", "COMPACT"],
+              "default": "EXPANDED"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event Avro schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event/eventSchema/{schemaId}": {
+      "get": {
+        "operationId": "getEventSchemaById",
+        "summary": "Get event schema by schema ID",
+        "description": "Returns the Apache Avro schema for a specific schema ID. Schema IDs are returned in event messages and can be used to retrieve the schema for deserialization.",
+        "tags": ["Events"],
+        "parameters": [
+          {
+            "name": "schemaId",
+            "in": "path",
+            "required": true,
+            "description": "The unique schema identifier",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+            "tokenUrl": "https://login.salesforce.com/services/oauth2/token",
+            "scopes": {
+              "api": "Access and manage your Salesforce data"
+            }
+          }
+        }
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "PlatformEventDescribe": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The API name of the Platform Event (e.g., Order_Event__e)"
+          },
+          "label": {
+            "type": "string"
+          },
+          "labelPlural": {
+            "type": "string"
+          },
+          "custom": {
+            "type": "boolean"
+          },
+          "keyPrefix": {
+            "type": ["string", "null"]
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "length": {
+                  "type": "integer"
+                },
+                "nillable": {
+                  "type": "boolean"
+                },
+                "custom": {
+                  "type": "boolean"
+                },
+                "createable": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "createable": {
+            "type": "boolean",
+            "description": "Whether events of this type can be published via REST API"
+          },
+          "queryable": {
+            "type": "boolean",
+            "description": "Always false for Platform Events; events cannot be queried via SOQL"
+          }
+        }
+      },
+      "PublishResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID assigned to the published event"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiError"
+            }
+          }
+        }
+      },
+      "ApiError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Events",
+      "description": "Platform Event publishing, describe, and schema operations"
+    }
+  ]
+}

@@ -1,0 +1,824 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Salesforce Bulk API 2.0",
+    "description": "Asynchronous REST API optimized for loading, deleting, and querying large data sets in Salesforce. Supports CSV-based data operations on standard and custom objects. Jobs progress through lifecycle states (Open, UploadComplete, InProgress, JobComplete, Failed, Aborted) and can process millions of records efficiently.",
+    "version": "63.0",
+    "contact": {
+      "name": "Salesforce Developer Support",
+      "url": "https://developer.salesforce.com/support",
+      "email": "developer@salesforce.com"
+    },
+    "license": {
+      "name": "Salesforce API Terms of Use",
+      "url": "https://www.salesforce.com/company/legal/agreements/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.salesforce.com/services/data/v63.0",
+      "description": "Salesforce production or developer instance",
+      "variables": {
+        "instance": {
+          "default": "yourInstance",
+          "description": "Your Salesforce instance identifier"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/jobs/ingest": {
+      "get": {
+        "operationId": "getIngestJobs",
+        "summary": "List all ingest jobs",
+        "description": "Returns a list of all Bulk API 2.0 ingest jobs in the org. Supports filtering by job type and pagination through concurrencyMode, jobType, and queryLocator parameters.",
+        "tags": ["Ingest Jobs"],
+        "parameters": [
+          {
+            "name": "isPkChunkingEnabled",
+            "in": "query",
+            "description": "Filter by PK chunking status",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "jobType",
+            "in": "query",
+            "description": "Filter by job type",
+            "schema": {
+              "type": "string",
+              "enum": ["V2Ingest", "Classic"]
+            }
+          },
+          {
+            "name": "queryLocator",
+            "in": "query",
+            "description": "Locator for the next page of results",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of ingest jobs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestJobList"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createIngestJob",
+        "summary": "Create an ingest job",
+        "description": "Creates a new Bulk API 2.0 ingest job. After creation, the job is in the Open state and ready to accept CSV data uploads via the PUT /jobs/ingest/{jobId}/batches endpoint.",
+        "tags": ["Ingest Jobs"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIngestJobRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ingest job created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestJob"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        }
+      }
+    },
+    "/jobs/ingest/{jobId}": {
+      "get": {
+        "operationId": "getIngestJob",
+        "summary": "Get ingest job status",
+        "description": "Returns the current status and details of a specific Bulk API 2.0 ingest job, including the number of records processed and failed.",
+        "tags": ["Ingest Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ingest job details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestJob"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateIngestJob",
+        "summary": "Close or abort an ingest job",
+        "description": "Updates the state of an ingest job. Set state to UploadComplete to indicate all data has been uploaded and processing should begin. Set state to Aborted to cancel the job.",
+        "tags": ["Ingest Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["state"],
+                "properties": {
+                  "state": {
+                    "type": "string",
+                    "enum": ["UploadComplete", "Aborted"],
+                    "description": "The new state for the job"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Job updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestJob"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteIngestJob",
+        "summary": "Delete an ingest job",
+        "description": "Deletes an ingest job. The job must be in a terminal state (JobComplete, Failed, or Aborted) before it can be deleted.",
+        "tags": ["Ingest Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Job deleted"
+          }
+        }
+      }
+    },
+    "/jobs/ingest/{jobId}/batches": {
+      "put": {
+        "operationId": "uploadIngestJobData",
+        "summary": "Upload data for an ingest job",
+        "description": "Uploads CSV data for a Bulk API 2.0 ingest job. The job must be in the Open state. You can upload data in multiple requests, each up to 150 MB. The first row must be the CSV header with field API names.",
+        "tags": ["Ingest Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/csv": {
+              "schema": {
+                "type": "string",
+                "description": "CSV data with header row containing field API names"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Data uploaded successfully"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        }
+      }
+    },
+    "/jobs/ingest/{jobId}/successfulResults": {
+      "get": {
+        "operationId": "getIngestJobSuccessfulResults",
+        "summary": "Get successful results for an ingest job",
+        "description": "Returns CSV data containing successfully processed records for a completed ingest job. Each row includes the sf__Id (the Salesforce record ID) and sf__Created (whether the record was created or updated) columns, followed by the original record data.",
+        "tags": ["Ingest Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV of successfully processed records",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/ingest/{jobId}/failedResults": {
+      "get": {
+        "operationId": "getIngestJobFailedResults",
+        "summary": "Get failed results for an ingest job",
+        "description": "Returns CSV data containing records that failed to process. Each row includes sf__Error (the error message) and sf__Id columns, followed by the original record data.",
+        "tags": ["Ingest Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV of failed records",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/ingest/{jobId}/unprocessedrecords": {
+      "get": {
+        "operationId": "getIngestJobUnprocessedRecords",
+        "summary": "Get unprocessed records for an ingest job",
+        "description": "Returns CSV data containing records that were not processed, typically because the job was aborted before all records were processed.",
+        "tags": ["Ingest Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV of unprocessed records",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/query": {
+      "get": {
+        "operationId": "getQueryJobs",
+        "summary": "List all query jobs",
+        "description": "Returns a list of all Bulk API 2.0 query jobs in the org.",
+        "tags": ["Query Jobs"],
+        "parameters": [
+          {
+            "name": "jobType",
+            "in": "query",
+            "description": "Filter by job type",
+            "schema": {
+              "type": "string",
+              "enum": ["V2Query", "Classic"]
+            }
+          },
+          {
+            "name": "queryLocator",
+            "in": "query",
+            "description": "Locator for the next page of results",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of query jobs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryJobList"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createQueryJob",
+        "summary": "Create a query job",
+        "description": "Creates a new Bulk API 2.0 query job. The SOQL query is provided in the request body and processing begins immediately. Use query for active records only or queryAll to include deleted and archived records.",
+        "tags": ["Query Jobs"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQueryJobRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Query job created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryJob"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/query/{jobId}": {
+      "get": {
+        "operationId": "getQueryJob",
+        "summary": "Get query job status",
+        "description": "Returns the current status and details of a specific Bulk API 2.0 query job.",
+        "tags": ["Query Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Query job details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryJob"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "abortQueryJob",
+        "summary": "Abort a query job",
+        "description": "Aborts a query job that is in progress. Sets the job state to Aborted.",
+        "tags": ["Query Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["state"],
+                "properties": {
+                  "state": {
+                    "type": "string",
+                    "enum": ["Aborted"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Job aborted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryJob"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteQueryJob",
+        "summary": "Delete a query job",
+        "description": "Deletes a query job. The job must be in a terminal state before deletion.",
+        "tags": ["Query Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Job deleted"
+          }
+        }
+      }
+    },
+    "/jobs/query/{jobId}/results": {
+      "get": {
+        "operationId": "getQueryJobResults",
+        "summary": "Get query job results",
+        "description": "Returns the results of a completed Bulk API 2.0 query job as CSV data. Use the locator and maxRecords parameters for pagination when results exceed a single response.",
+        "tags": ["Query Jobs"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          },
+          {
+            "name": "locator",
+            "in": "query",
+            "description": "Locator for retrieving the next set of results from a previous response's Sforce-Locator header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxRecords",
+            "in": "query",
+            "description": "Maximum number of records to return per request",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Query results as CSV",
+            "headers": {
+              "Sforce-Locator": {
+                "description": "The locator for the next set of results. Value is 'null' if no more results.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Sforce-NumberOfRecords": {
+                "description": "The number of records in this response",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+            "tokenUrl": "https://login.salesforce.com/services/oauth2/token",
+            "scopes": {
+              "api": "Access and manage your Salesforce data"
+            }
+          }
+        }
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "parameters": {
+      "jobId": {
+        "name": "jobId",
+        "in": "path",
+        "required": true,
+        "description": "The unique identifier of the Bulk API 2.0 job",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Invalid request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ApiError"
+              }
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "IngestJob": {
+        "type": "object",
+        "description": "A Bulk API 2.0 ingest job for inserting, updating, upserting, or deleting records",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique job identifier"
+          },
+          "operation": {
+            "type": "string",
+            "enum": ["insert", "update", "upsert", "delete", "hardDelete"],
+            "description": "The DML operation for this ingest job"
+          },
+          "object": {
+            "type": "string",
+            "description": "The SObject type being processed"
+          },
+          "createdById": {
+            "type": "string",
+            "description": "The ID of the user who created the job"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "systemModstamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "state": {
+            "type": "string",
+            "enum": ["Open", "UploadComplete", "InProgress", "JobComplete", "Failed", "Aborted"],
+            "description": "The current lifecycle state of the job"
+          },
+          "externalIdFieldName": {
+            "type": "string",
+            "description": "The external ID field used for upsert operations"
+          },
+          "concurrencyMode": {
+            "type": "string",
+            "enum": ["Parallel", "Serial"]
+          },
+          "contentType": {
+            "type": "string",
+            "enum": ["CSV"]
+          },
+          "apiVersion": {
+            "type": "number"
+          },
+          "jobType": {
+            "type": "string",
+            "enum": ["V2Ingest"]
+          },
+          "lineEnding": {
+            "type": "string",
+            "enum": ["LF", "CRLF"]
+          },
+          "columnDelimiter": {
+            "type": "string",
+            "enum": ["COMMA", "TAB", "PIPE", "SEMICOLON", "CARET", "BACKQUOTE"]
+          },
+          "numberRecordsProcessed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "numberRecordsFailed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "retries": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalProcessingTime": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Total processing time in milliseconds"
+          },
+          "errorMessage": {
+            "type": "string"
+          }
+        }
+      },
+      "IngestJobList": {
+        "type": "object",
+        "properties": {
+          "done": {
+            "type": "boolean"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IngestJob"
+            }
+          },
+          "nextRecordsUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateIngestJobRequest": {
+        "type": "object",
+        "required": ["object", "operation"],
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "The SObject type for the job (e.g., Account, Contact)"
+          },
+          "operation": {
+            "type": "string",
+            "enum": ["insert", "update", "upsert", "delete", "hardDelete"],
+            "description": "The DML operation to perform"
+          },
+          "externalIdFieldName": {
+            "type": "string",
+            "description": "Required for upsert operations. The API name of the external ID field."
+          },
+          "columnDelimiter": {
+            "type": "string",
+            "enum": ["COMMA", "TAB", "PIPE", "SEMICOLON", "CARET", "BACKQUOTE"],
+            "default": "COMMA"
+          },
+          "contentType": {
+            "type": "string",
+            "enum": ["CSV"],
+            "default": "CSV"
+          },
+          "lineEnding": {
+            "type": "string",
+            "enum": ["LF", "CRLF"],
+            "default": "LF"
+          }
+        }
+      },
+      "QueryJob": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "operation": {
+            "type": "string",
+            "enum": ["query", "queryAll"]
+          },
+          "object": {
+            "type": "string"
+          },
+          "createdById": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "systemModstamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "state": {
+            "type": "string",
+            "enum": ["UploadComplete", "InProgress", "JobComplete", "Failed", "Aborted"]
+          },
+          "concurrencyMode": {
+            "type": "string",
+            "enum": ["Parallel"]
+          },
+          "contentType": {
+            "type": "string",
+            "enum": ["CSV"]
+          },
+          "apiVersion": {
+            "type": "number"
+          },
+          "jobType": {
+            "type": "string",
+            "enum": ["V2Query"]
+          },
+          "lineEnding": {
+            "type": "string",
+            "enum": ["LF", "CRLF"]
+          },
+          "columnDelimiter": {
+            "type": "string",
+            "enum": ["COMMA", "TAB", "PIPE", "SEMICOLON", "CARET", "BACKQUOTE"]
+          },
+          "numberRecordsProcessed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "retries": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalProcessingTime": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "QueryJobList": {
+        "type": "object",
+        "properties": {
+          "done": {
+            "type": "boolean"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryJob"
+            }
+          },
+          "nextRecordsUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateQueryJobRequest": {
+        "type": "object",
+        "required": ["operation", "query"],
+        "properties": {
+          "operation": {
+            "type": "string",
+            "enum": ["query", "queryAll"],
+            "description": "Use query for active records or queryAll to include deleted/archived records"
+          },
+          "query": {
+            "type": "string",
+            "description": "The SOQL query to execute"
+          },
+          "columnDelimiter": {
+            "type": "string",
+            "enum": ["COMMA", "TAB", "PIPE", "SEMICOLON", "CARET", "BACKQUOTE"],
+            "default": "COMMA"
+          },
+          "contentType": {
+            "type": "string",
+            "enum": ["CSV"],
+            "default": "CSV"
+          },
+          "lineEnding": {
+            "type": "string",
+            "enum": ["LF", "CRLF"],
+            "default": "LF"
+          }
+        }
+      },
+      "ApiError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Ingest Jobs",
+      "description": "Bulk data loading operations (insert, update, upsert, delete, hardDelete)"
+    },
+    {
+      "name": "Query Jobs",
+      "description": "Bulk data extraction via SOQL queries"
+    }
+  ]
+}
