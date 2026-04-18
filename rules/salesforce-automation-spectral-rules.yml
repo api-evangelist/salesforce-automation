@@ -1,0 +1,353 @@
+rules:
+  # ============================================================
+  # INFO / METADATA
+  # ============================================================
+  info-title-required:
+    description: Info object must have a title.
+    given: $.info
+    severity: error
+    then:
+      field: title
+      function: truthy
+
+  info-title-salesforce-prefix:
+    description: Info title should start with "Salesforce".
+    given: $.info.title
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Salesforce"
+
+  info-description-required:
+    description: Info object must have a description.
+    given: $.info
+    severity: error
+    then:
+      field: description
+      function: truthy
+
+  info-description-min-length:
+    description: Info description should be at least 50 characters.
+    given: $.info.description
+    severity: warn
+    then:
+      function: length
+      functionOptions:
+        min: 50
+
+  info-version-required:
+    description: Info object must have a version.
+    given: $.info
+    severity: error
+    then:
+      field: version
+      function: truthy
+
+  info-contact-required:
+    description: Info object should have contact information.
+    given: $.info
+    severity: warn
+    then:
+      field: contact
+      function: truthy
+
+  info-license-required:
+    description: Info object should include license information.
+    given: $.info
+    severity: info
+    then:
+      field: license
+      function: truthy
+
+  # ============================================================
+  # OPENAPI VERSION
+  # ============================================================
+  openapi-version:
+    description: OpenAPI version should be 3.1.0.
+    given: $
+    severity: warn
+    then:
+      field: openapi
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  # ============================================================
+  # SERVERS
+  # ============================================================
+  servers-defined:
+    description: At least one server must be defined.
+    given: $
+    severity: error
+    then:
+      field: servers
+      function: truthy
+
+  servers-https:
+    description: Server URLs should use HTTPS.
+    given: $.servers[*].url
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  servers-description:
+    description: Each server should have a description.
+    given: $.servers[*]
+    severity: warn
+    then:
+      field: description
+      function: truthy
+
+  # ============================================================
+  # PATHS - NAMING CONVENTIONS
+  # ============================================================
+  paths-no-trailing-slash:
+    description: Paths must not have trailing slashes.
+    given: $.paths
+    severity: error
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "\\/$"
+
+  paths-no-query-strings:
+    description: Paths must not include query strings.
+    given: $.paths
+    severity: error
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "\\?"
+
+  paths-kebab-case:
+    description: Path segments should use kebab-case or camelCase (no underscores).
+    given: $.paths
+    severity: info
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "_"
+
+  # ============================================================
+  # OPERATIONS
+  # ============================================================
+  operation-operationid-required:
+    description: Every operation must have an operationId.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+
+  operation-operationid-camel-case:
+    description: operationId should use camelCase.
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  operation-summary-required:
+    description: Every operation must have a summary.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: error
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-salesforce-prefix:
+    description: Operation summaries should start with "Salesforce".
+    given: $.paths[*][get,post,put,patch,delete].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Salesforce"
+
+  operation-description-required:
+    description: Every operation must have a description.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: error
+    then:
+      field: description
+      function: truthy
+
+  operation-tags-required:
+    description: Every operation must have at least one tag.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: error
+    then:
+      field: tags
+      function: truthy
+
+  # ============================================================
+  # TAGS
+  # ============================================================
+  tag-description:
+    description: Tags should have descriptions.
+    given: $.tags[*]
+    severity: info
+    then:
+      field: description
+      function: truthy
+
+  # ============================================================
+  # PARAMETERS
+  # ============================================================
+  parameter-description-required:
+    description: Every parameter must have a description.
+    given: $.paths[*][*].parameters[*]
+    severity: warn
+    then:
+      field: description
+      function: truthy
+
+  parameter-schema-required:
+    description: Every parameter must have a schema.
+    given: $.paths[*][*].parameters[*]
+    severity: error
+    then:
+      field: schema
+      function: truthy
+
+  # ============================================================
+  # REQUEST BODIES
+  # ============================================================
+  request-body-json-content:
+    description: Request bodies should use application/json content type.
+    given: $.paths[*][post,put,patch].requestBody.content
+    severity: warn
+    then:
+      field: application/json
+      function: truthy
+
+  # ============================================================
+  # RESPONSES
+  # ============================================================
+  response-success-required:
+    description: Every operation must have at least one success response (2xx).
+    given: $.paths[*][get,post,put,patch,delete].responses
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["202"]
+            - required: ["204"]
+
+  response-description-required:
+    description: Every response must have a description.
+    given: $.paths[*][*].responses[*]
+    severity: error
+    then:
+      field: description
+      function: truthy
+
+  response-401-required:
+    description: Authenticated endpoints should define a 401 response.
+    given: $.paths[*][get,post,put,patch,delete].responses
+    severity: info
+    then:
+      field: "401"
+      function: truthy
+
+  # ============================================================
+  # SCHEMAS - PROPERTY NAMING
+  # ============================================================
+  schema-type-defined:
+    description: Schemas must define a type.
+    given: $.components.schemas[*]
+    severity: warn
+    then:
+      field: type
+      function: truthy
+
+  schema-description:
+    description: Top-level schemas should have descriptions.
+    given: $.components.schemas[*]
+    severity: info
+    then:
+      field: description
+      function: truthy
+
+  # ============================================================
+  # SECURITY
+  # ============================================================
+  security-defined:
+    description: Global security must be defined.
+    given: $
+    severity: error
+    then:
+      field: security
+      function: truthy
+
+  security-schemes-defined:
+    description: Security schemes must be defined in components.
+    given: $.components
+    severity: error
+    then:
+      field: securitySchemes
+      function: truthy
+
+  # ============================================================
+  # HTTP METHOD CONVENTIONS
+  # ============================================================
+  get-no-request-body:
+    description: GET operations must not have a request body.
+    given: $.paths[*].get
+    severity: error
+    then:
+      field: requestBody
+      function: falsy
+
+  delete-no-request-body:
+    description: DELETE operations should not have a request body.
+    given: $.paths[*].delete
+    severity: warn
+    then:
+      field: requestBody
+      function: falsy
+
+  post-request-body-required:
+    description: POST operations should have a request body.
+    given: $.paths[*].post
+    severity: info
+    then:
+      field: requestBody
+      function: truthy
+
+  # ============================================================
+  # GENERAL QUALITY
+  # ============================================================
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    given: $..description
+    severity: error
+    then:
+      function: truthy
+
+  examples-encouraged:
+    description: Schema properties should include example values.
+    given: $.components.schemas[*].properties[*]
+    severity: info
+    then:
+      field: example
+      function: truthy
+
+  oauth2-security:
+    description: Salesforce APIs should use OAuth 2.0 authentication.
+    given: $.components.securitySchemes
+    severity: warn
+    then:
+      field: oauth2
+      function: truthy

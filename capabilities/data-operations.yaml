@@ -1,0 +1,189 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Salesforce Data Operations"
+  description: "Unified workflow combining the Salesforce REST API and Bulk API for comprehensive data operations including CRUD, queries, search, and bulk data loading. Used by Salesforce admins and integration developers."
+  tags:
+    - Salesforce
+    - Data Operations
+    - CRM
+    - Integration
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      SALESFORCE_ACCESS_TOKEN: SALESFORCE_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: salesforce-rest
+      location: ./shared/salesforce-rest-api.yaml
+    - import: salesforce-bulk
+      location: ./shared/salesforce-bulk-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: salesforce-data-api
+      description: "Unified REST API for Salesforce data operations."
+      resources:
+        - path: /v1/sobjects
+          name: sobjects
+          description: "SObject metadata and describe."
+          operations:
+            - method: GET
+              name: describe-all
+              description: "Describe all available SObjects."
+              call: "salesforce-rest.describe-global"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/records
+          name: records
+          description: "Record CRUD operations."
+          operations:
+            - method: POST
+              name: create-record
+              description: "Create a new record."
+              call: "salesforce-rest.create-record"
+              with:
+                sObjectName: "rest.sObjectName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/query
+          name: query
+          description: "SOQL query execution."
+          operations:
+            - method: GET
+              name: execute-query
+              description: "Execute a SOQL query."
+              call: "salesforce-rest.execute-query"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/search
+          name: search
+          description: "SOSL search."
+          operations:
+            - method: GET
+              name: execute-search
+              description: "Execute a SOSL search."
+              call: "salesforce-rest.execute-search"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/bulk-jobs
+          name: bulk-jobs
+          description: "Bulk data operations."
+          operations:
+            - method: GET
+              name: list-ingest-jobs
+              description: "List all bulk ingest jobs."
+              call: "salesforce-bulk.list-ingest-jobs"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-ingest-job
+              description: "Create a new bulk ingest job."
+              call: "salesforce-bulk.create-ingest-job"
+              with:
+                object: "rest.object"
+                operation: "rest.operation"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: salesforce-data-mcp
+      transport: http
+      description: "MCP server for AI-assisted Salesforce data operations."
+      tools:
+        - name: describe-salesforce-sobjects
+          description: "Describe all available SObjects in the Salesforce org."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "salesforce-rest.describe-global"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-salesforce-record
+          description: "Create a new record in Salesforce."
+          hints:
+            readOnly: false
+          call: "salesforce-rest.create-record"
+          with:
+            sObjectName: "tools.sObjectName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-salesforce-data
+          description: "Execute a SOQL query against Salesforce data."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "salesforce-rest.execute-query"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-salesforce-data
+          description: "Execute a SOSL search across Salesforce."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "salesforce-rest.execute-search"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: submit-salesforce-approval
+          description: "Submit a record for approval in Salesforce."
+          hints:
+            readOnly: false
+          call: "salesforce-rest.submit-approval"
+          with:
+            requests: "tools.requests"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-bulk-ingest-job
+          description: "Create a bulk data ingest job for large datasets."
+          hints:
+            readOnly: false
+          call: "salesforce-bulk.create-ingest-job"
+          with:
+            object: "tools.object"
+            operation: "tools.operation"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-bulk-query-job
+          description: "Create a bulk query job for large result sets."
+          hints:
+            readOnly: false
+          call: "salesforce-bulk.create-query-job"
+          with:
+            query: "tools.query"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-bulk-ingest-jobs
+          description: "List all bulk ingest jobs."
+          hints:
+            readOnly: true
+          call: "salesforce-bulk.list-ingest-jobs"
+          outputParameters:
+            - type: object
+              mapping: "$."

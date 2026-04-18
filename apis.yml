@@ -5,7 +5,7 @@ description: >-
 image: https://www.salesforce.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg
 url: https://developer.salesforce.com
 created: '2024-01-01'
-modified: '2026-03-03'
+modified: '2026-04-18'
 specificationVersion: '0.16'
 tags:
   - Automation
@@ -475,3 +475,65 @@ common:
     url: https://help.salesforce.com/s/articleView?id=release-notes.rn_api_nc.htm&language=en_US&release=248&type=5
   - type: API End-of-Life Policy
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/api_rest_eol.htm
+  - type: SpectralRules
+    url: rules/salesforce-automation-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/salesforce-automation-vocabulary.yaml
+  - type: NaftikoCapability
+    url: capabilities/data-operations.yaml
+    title: Data Operations Workflow
+  - type: JSONStructure
+    url: json-structure/salesforce-automation-flow-structure.json
+  - type: Example
+    url: examples/salesforce-automation-flow-example.json
+    title: Flow Example
+  - type: GitHubOrganization
+    url: https://github.com/salesforce
+  - type: Features
+    data:
+      - name: OAuth 2.0 Authentication
+        description: Supports multiple OAuth flows including authorization code, JWT bearer, and client credentials.
+      - name: SOQL Queries
+        description: Salesforce Object Query Language for structured data queries across objects.
+      - name: SOSL Search
+        description: Full-text search across multiple objects using Salesforce Object Search Language.
+      - name: Bulk Data Operations
+        description: Asynchronous bulk API for loading, deleting, and querying millions of records.
+      - name: Real-Time Events
+        description: Platform events, Change Data Capture, and streaming API for real-time notifications.
+      - name: Flow Automation
+        description: Declarative automation with Flow Builder for record-triggered, scheduled, and screen flows.
+      - name: Composite API
+        description: Execute multiple API requests in a single call with request chaining.
+      - name: GraphQL Support
+        description: Single-endpoint GraphQL API for efficient data queries.
+      - name: Invocable Actions
+        description: Programmatic invocation of standard and custom automation actions.
+      - name: Approval Processes
+        description: Multi-step approval workflows with programmatic submission and management.
+  - type: UseCases
+    data:
+      - name: Sales Pipeline Automation
+        description: Automate lead assignment, opportunity stage progression, and deal closure workflows.
+      - name: Data Migration
+        description: Bulk import and export of large datasets between Salesforce and external systems.
+      - name: Real-Time Data Sync
+        description: Keep external systems in sync with Salesforce using Change Data Capture events.
+      - name: Custom Integrations
+        description: Build custom REST endpoints using Apex REST for bespoke integration scenarios.
+      - name: Analytics and Reporting
+        description: Programmatic access to Einstein Analytics dashboards and datasets.
+      - name: Process Automation
+        description: Trigger flows, approval processes, and invocable actions based on data changes.
+  - type: Integrations
+    data:
+      - name: MuleSoft
+        description: Native integration platform for connecting Salesforce with enterprise systems.
+      - name: Slack
+        description: Salesforce-owned collaboration platform with deep CRM integration.
+      - name: Tableau
+        description: Analytics and visualization platform integrated with Salesforce data.
+      - name: Heroku
+        description: Cloud application platform for extending Salesforce with custom apps.
+      - name: Postman
+        description: Official Postman workspace with pre-built API collections for testing.

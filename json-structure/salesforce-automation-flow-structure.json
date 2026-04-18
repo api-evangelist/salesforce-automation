@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/salesforce-automation/refs/heads/main/json-structure/salesforce-automation-flow-structure.json",
+  "name": "Salesforce Automation Flow",
+  "description": "A Salesforce Flow definition representing an automation built with Flow Builder.",
+  "type": "object",
+  "properties": {
+    "Id": { "type": "string", "description": "The 18-character Salesforce record ID." },
+    "DefinitionId": { "type": "string", "description": "Parent FlowDefinition record ID." },
+    "DeveloperName": { "type": "string", "description": "Unique developer name (API name)." },
+    "MasterLabel": { "type": "string", "description": "Display label." },
+    "Description": { "type": "string", "description": "Optional description." },
+    "ProcessType": { "type": "string", "description": "Flow type (AutoLaunchedFlow, Flow, Workflow, etc.)." },
+    "TriggerType": { "type": "string", "description": "Event trigger type." },
+    "TriggerObject": { "type": "string", "description": "The SObject triggering the flow." },
+    "RecordTriggerType": { "type": "string", "description": "Record trigger type (Create, Update, Delete)." },
+    "Status": { "type": "string", "description": "Flow status (Active, Draft, Obsolete, etc.)." },
+    "VersionNumber": { "type": "int32", "description": "Flow version number." },
+    "ApiVersion": { "type": "string", "description": "Salesforce API version." },
+    "RunInMode": { "type": "string", "description": "System mode or user mode." },
+    "IsTemplate": { "type": "boolean", "description": "Whether this is a flow template." },
+    "IsSwappable": { "type": "boolean" },
+    "IsOverridable": { "type": "boolean" },
+    "CreatedDate": { "type": "datetime", "description": "When the flow was created." },
+    "LastModifiedDate": { "type": "datetime", "description": "When the flow was last modified." },
+    "CreatedById": { "type": "string" },
+    "LastModifiedById": { "type": "string" }
+  }
+}

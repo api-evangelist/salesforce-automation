@@ -1,0 +1,22 @@
+{
+  "Id": "3011t00000CbFbAAKL",
+  "DefinitionId": "3001t00000Def01AAB",
+  "DeveloperName": "Auto_Close_Stale_Cases",
+  "MasterLabel": "Auto Close Stale Cases",
+  "Description": "Automatically closes cases that have been open for more than 30 days without customer response.",
+  "ProcessType": "AutoLaunchedFlow",
+  "TriggerType": "RecordAfterSave",
+  "TriggerObject": "Case",
+  "RecordTriggerType": "Update",
+  "Status": "Active",
+  "VersionNumber": 3,
+  "ApiVersion": "63.0",
+  "RunInMode": "SystemModeWithoutSharing",
+  "IsTemplate": false,
+  "IsSwappable": false,
+  "IsOverridable": false,
+  "CreatedDate": "2025-06-15T10:30:00Z",
+  "LastModifiedDate": "2026-03-01T14:22:00Z",
+  "CreatedById": "0051t00000User01AAA",
+  "LastModifiedById": "0051t00000User01AAA"
+}

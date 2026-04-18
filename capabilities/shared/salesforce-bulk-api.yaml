@@ -1,0 +1,113 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Salesforce Bulk API 2.0"
+  description: "Asynchronous API for bulk data loading, deletion, and querying."
+  tags:
+    - Salesforce
+    - Bulk
+    - ETL
+    - Data
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      SALESFORCE_ACCESS_TOKEN: SALESFORCE_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: salesforce-bulk
+      baseUri: https://yourInstance.salesforce.com/services/data/v63.0
+      description: "Salesforce Bulk API 2.0 for large data operations."
+      authentication:
+        type: bearer
+        token: "{{SALESFORCE_ACCESS_TOKEN}}"
+      resources:
+        - name: ingest-jobs
+          path: /jobs/ingest
+          description: "Bulk ingest job management."
+          operations:
+            - name: list-ingest-jobs
+              method: GET
+              description: "List all ingest jobs."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-ingest-job
+              method: POST
+              description: "Create a new ingest job."
+              body:
+                type: json
+                data:
+                  object: "{{tools.object}}"
+                  operation: "{{tools.operation}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: query-jobs
+          path: /jobs/query
+          description: "Bulk query job management."
+          operations:
+            - name: list-query-jobs
+              method: GET
+              description: "List all query jobs."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-query-job
+              method: POST
+              description: "Create a new query job."
+              body:
+                type: json
+                data:
+                  query: "{{tools.query}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: mcp
+      port: 9101
+      namespace: salesforce-bulk-mcp
+      transport: http
+      tools:
+        - name: list-bulk-ingest-jobs
+          description: "List all bulk ingest jobs."
+          hints:
+            readOnly: true
+          call: "salesforce-bulk.list-ingest-jobs"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-bulk-ingest-job
+          description: "Create a new bulk data ingest job."
+          hints:
+            readOnly: false
+          call: "salesforce-bulk.create-ingest-job"
+          with:
+            object: "tools.object"
+            operation: "tools.operation"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-bulk-query-job
+          description: "Create a new bulk SOQL query job."
+          hints:
+            readOnly: false
+          call: "salesforce-bulk.create-query-job"
+          with:
+            query: "tools.query"
+          outputParameters:
+            - type: object
+              mapping: "$."

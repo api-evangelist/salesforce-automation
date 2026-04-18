@@ -1,0 +1,260 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Salesforce Automation"
+  description: "Vocabulary mapping operational API dimensions and capability workflows for Salesforce Automation APIs."
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+operational:
+  apis:
+    - name: Salesforce REST API
+      namespace: salesforce-rest
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0
+      status: active
+    - name: Salesforce Bulk API 2.0
+      namespace: salesforce-bulk
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/jobs
+      status: active
+    - name: Salesforce SOAP API
+      namespace: salesforce-soap
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/Soap/c
+      status: active
+    - name: Salesforce Streaming API
+      namespace: salesforce-streaming
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/cometd
+      status: active
+    - name: Salesforce Platform Events API
+      namespace: salesforce-platform-events
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/sobjects
+      status: active
+    - name: Salesforce Analytics API
+      namespace: salesforce-analytics
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/wave
+      status: active
+    - name: Salesforce Tooling API
+      namespace: salesforce-tooling
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/tooling
+      status: active
+    - name: Salesforce Connect REST API
+      namespace: salesforce-connect
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/connect
+      status: active
+    - name: Salesforce Composite API
+      namespace: salesforce-composite
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/composite
+      status: active
+    - name: Salesforce Invocable Actions API
+      namespace: salesforce-invocable-actions
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/actions
+      status: active
+    - name: Salesforce Apex REST API
+      namespace: salesforce-apex-rest
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/apexrest
+      status: active
+    - name: Salesforce Pub/Sub API
+      namespace: salesforce-pubsub
+      version: "1.0"
+      baseUrl: https://api.pubsub.salesforce.com:7443
+      status: active
+    - name: Salesforce GraphQL API
+      namespace: salesforce-graphql
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/graphql
+      status: active
+    - name: Salesforce Change Data Capture API
+      namespace: salesforce-cdc
+      version: "63.0"
+      baseUrl: https://yourInstance.salesforce.com/services/data/v63.0/sobjects
+      status: active
+
+  resources:
+    - name: SObjects
+      apis: [salesforce-rest, salesforce-tooling]
+      actions: [describe, create, get, update, delete]
+    - name: Records
+      apis: [salesforce-rest, salesforce-bulk]
+      actions: [create, get, update, delete, upsert, query]
+    - name: Queries
+      apis: [salesforce-rest, salesforce-bulk]
+      actions: [query, search]
+    - name: Flows
+      apis: [salesforce-tooling]
+      actions: [list, get, create, update, delete]
+    - name: Approvals
+      apis: [salesforce-rest]
+      actions: [list, submit]
+    - name: Jobs
+      apis: [salesforce-bulk]
+      actions: [create, list, get, abort]
+    - name: Events
+      apis: [salesforce-platform-events, salesforce-streaming, salesforce-pubsub, salesforce-cdc]
+      actions: [publish, subscribe]
+    - name: Actions
+      apis: [salesforce-invocable-actions]
+      actions: [list, invoke]
+    - name: Analytics
+      apis: [salesforce-analytics]
+      actions: [list, get, create, update, run]
+    - name: Feeds
+      apis: [salesforce-connect]
+      actions: [list, get, post]
+
+  actions:
+    - name: describe
+      method: GET
+      pattern: read
+    - name: create
+      method: POST
+      pattern: write
+    - name: get
+      method: GET
+      pattern: read
+    - name: update
+      method: PATCH
+      pattern: write
+    - name: delete
+      method: DELETE
+      pattern: destructive
+    - name: upsert
+      method: PATCH
+      pattern: write
+    - name: query
+      method: GET
+      pattern: query
+    - name: search
+      method: GET
+      pattern: query
+    - name: submit
+      method: POST
+      pattern: write
+    - name: publish
+      method: POST
+      pattern: write
+    - name: subscribe
+      method: GET
+      pattern: read
+    - name: invoke
+      method: POST
+      pattern: write
+    - name: run
+      method: POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: SObjectRecord
+        api: salesforce-rest
+        keyProperties: [Id, Name, attributes]
+      - name: DescribeGlobalResult
+        api: salesforce-rest
+        keyProperties: [sobjects, maxBatchSize, encoding]
+      - name: QueryResult
+        api: salesforce-rest
+        keyProperties: [totalSize, done, records, nextRecordsUrl]
+    automation:
+      - name: Flow
+        api: salesforce-tooling
+        keyProperties: [Id, DeveloperName, ProcessType, Status, VersionNumber]
+      - name: ApprovalRequest
+        api: salesforce-rest
+        keyProperties: [actionType, contextId, contextActorId]
+    bulk:
+      - name: IngestJob
+        api: salesforce-bulk
+        keyProperties: [id, state, object, operation, numberRecordsProcessed]
+      - name: QueryJob
+        api: salesforce-bulk
+        keyProperties: [id, state, query, numberRecordsProcessed]
+
+  parameters:
+    pagination:
+      - name: queryLocator
+        description: Locator for pagination in Salesforce APIs.
+    identifiers:
+      - name: sObjectName
+        description: SObject type name (e.g., Account, Contact, Lead).
+      - name: recordId
+        description: 18-character Salesforce record ID.
+    filters:
+      - name: q
+        description: SOQL query or SOSL search string.
+      - name: jobType
+        description: Filter by job type (V2Ingest, Classic).
+
+  enums:
+    states:
+      - name: JobState
+        values: [Open, UploadComplete, InProgress, JobComplete, Failed, Aborted]
+      - name: FlowStatus
+        values: [Active, Draft, Obsolete, InvalidDraft]
+    types:
+      - name: ProcessType
+        values: [AutoLaunchedFlow, Flow, Workflow, CustomEvent, InvocableProcess]
+      - name: ApprovalAction
+        values: [Submit, Approve, Reject]
+
+  authentication:
+    schemes:
+      - type: OAuth 2.0
+        flows: [authorization_code, client_credentials, jwt_bearer, refresh_token]
+        apis: [salesforce-rest, salesforce-bulk, salesforce-tooling, salesforce-connect, salesforce-composite, salesforce-analytics, salesforce-invocable-actions, salesforce-apex-rest, salesforce-graphql, salesforce-cdc]
+
+capability:
+  workflows:
+    - name: Data Operations
+      file: capabilities/data-operations.yaml
+      description: "CRUD, queries, search, and bulk data operations."
+      apis: [salesforce-rest, salesforce-bulk]
+      toolCount: 8
+      personas: [Salesforce Admin, Integration Developer]
+      domains: [Data Management, Integration]
+
+  personas:
+    - id: salesforce-admin
+      name: Salesforce Admin
+      description: "Manages Salesforce configuration, data, and automation."
+      workflows: [Data Operations]
+    - id: integration-developer
+      name: Integration Developer
+      description: "Builds integrations between Salesforce and external systems."
+      workflows: [Data Operations]
+    - id: sales-ops
+      name: Sales Operations
+      description: "Manages sales processes, reports, and pipeline."
+      workflows: [Data Operations]
+
+  domains:
+    - name: Data Management
+      description: "CRUD operations and data queries."
+    - name: Integration
+      description: "Bulk data loading and external system integration."
+    - name: Automation
+      description: "Flows, process automation, and approval management."
+    - name: Events
+      description: "Real-time event streaming and change data capture."
+
+crossReference:
+  - resource: SObjects
+    operations: [describeGlobal, describeSObject, createRecord, getRecord, updateRecord, deleteRecord]
+    workflows: [Data Operations]
+    personas: [Salesforce Admin, Integration Developer]
+  - resource: Records
+    operations: [createRecord, getRecord, updateRecord, deleteRecord, executeQuery]
+    workflows: [Data Operations]
+    personas: [Salesforce Admin, Integration Developer, Sales Operations]
+  - resource: Jobs
+    operations: [createIngestJob, listIngestJobs, createQueryJob]
+    workflows: [Data Operations]
+    personas: [Integration Developer]
