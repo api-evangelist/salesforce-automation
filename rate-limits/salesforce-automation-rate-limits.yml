@@ -4,157 +4,55 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Salesforce Automation
 providerId: salesforce-automation
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Automation
-  - Cloud
   - CRM
-  - Enterprise
-  - Sales
+  - Automation
+  - B2B
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Salesforce Automation API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Salesforce enforces API consumption through a per-org 24-hour API request allowance that
+  scales with the org's edition and license count, plus per-transaction Apex governor limits and concurrent-request
+  ceilings. Exact per-edition allowance numbers were not retrievable in this run (Salesforce documentation
+  pages bot-gated). This artifact captures the model and points to Salesforce's published limits cheatsheet.
+sources:
+  - https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm
+notes: Per-edition daily request limits and concurrent-request caps were not retrievable; consult the
+  Salesforce App Limits Cheatsheet from an authenticated browser session for current values.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  apiLimitExceeded: 403
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Salesforce REST API
-      - Salesforce SOAP API
-      - Salesforce Bulk API 2.0
-      - Salesforce Metadata API
-      - Salesforce Streaming API
-      - Salesforce Platform Events API
-      - Salesforce Analytics API
-      - Salesforce Tooling API
-      - Salesforce Connect REST API
-      - Salesforce Pub/Sub API
-      - Salesforce GraphQL API
-      - Salesforce Change Data Capture API
-      - Salesforce Invocable Actions API
-      - Salesforce Composite API
-      - Salesforce Apex REST API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Salesforce REST API
-      - Salesforce SOAP API
-      - Salesforce Bulk API 2.0
-      - Salesforce Metadata API
-      - Salesforce Streaming API
-      - Salesforce Platform Events API
-      - Salesforce Analytics API
-      - Salesforce Tooling API
-      - Salesforce Connect REST API
-      - Salesforce Pub/Sub API
-      - Salesforce GraphQL API
-      - Salesforce Change Data Capture API
-      - Salesforce Invocable Actions API
-      - Salesforce Composite API
-      - Salesforce Apex REST API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Salesforce REST API
-      - Salesforce SOAP API
-      - Salesforce Bulk API 2.0
-      - Salesforce Metadata API
-      - Salesforce Streaming API
-      - Salesforce Platform Events API
-      - Salesforce Analytics API
-      - Salesforce Tooling API
-      - Salesforce Connect REST API
-      - Salesforce Pub/Sub API
-      - Salesforce GraphQL API
-      - Salesforce Change Data Capture API
-      - Salesforce Invocable Actions API
-      - Salesforce Composite API
-      - Salesforce Apex REST API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Salesforce REST API
-      - Salesforce SOAP API
-      - Salesforce Bulk API 2.0
-      - Salesforce Metadata API
-      - Salesforce Streaming API
-      - Salesforce Platform Events API
-      - Salesforce Analytics API
-      - Salesforce Tooling API
-      - Salesforce Connect REST API
-      - Salesforce Pub/Sub API
-      - Salesforce GraphQL API
-      - Salesforce Change Data Capture API
-      - Salesforce Invocable Actions API
-      - Salesforce Composite API
-      - Salesforce Apex REST API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Salesforce REST API
-      - Salesforce SOAP API
-      - Salesforce Bulk API 2.0
-      - Salesforce Metadata API
-      - Salesforce Streaming API
-      - Salesforce Platform Events API
-      - Salesforce Analytics API
-      - Salesforce Tooling API
-      - Salesforce Connect REST API
-      - Salesforce Pub/Sub API
-      - Salesforce GraphQL API
-      - Salesforce Change Data Capture API
-      - Salesforce Invocable Actions API
-      - Salesforce Composite API
-      - Salesforce Apex REST API
+  - name: Per-org 24-hour API request allowance
+    scope: org
+    metric: requests_per_day
+    limit: see Salesforce App Limits Cheatsheet (varies by edition + license count)
+    notes: Salesforce sums REST, Bulk, Streaming, and Tooling API calls into a single 24-hour bucket scaled
+      by edition and the number of licenses in the org.
+  - name: Concurrent long-running synchronous requests
+    scope: org
+    metric: concurrent_requests
+    limit: see Salesforce App Limits Cheatsheet
+    notes: Salesforce caps concurrent long-running (>20 sec) synchronous requests per org.
+  - name: Apex governor limits
+    scope: transaction
+    metric: varies
+    limit: see Apex Developer Guide governor limits
+    notes: Per-transaction limits on SOQL queries, DML rows, callouts, CPU time, and heap size apply to
+      automation flows.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Edition + license scaling
+    description: The 24-hour API allowance is computed as a per-edition base plus a per-license additive,
+      so allowance grows with the org's license count.
+  - name: REQUEST_LIMIT_EXCEEDED
+    description: When the daily allowance is exhausted, Salesforce returns 403 with REQUEST_LIMIT_EXCEEDED.
+      Clients must wait until the rolling 24-hour window allows new traffic.
+  - name: Bulk API for high-volume
+    description: For data loading, Salesforce expects clients to use Bulk API rather than burning REST
+      allowance, since Bulk batches consume fewer of the daily call buckets relative to records processed.
+  - name: Apex transaction discipline
+    description: Per-transaction governor limits are hard. Automations should bulkify SOQL / DML and avoid
+      callout fan-out that would breach per-transaction caps.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com
