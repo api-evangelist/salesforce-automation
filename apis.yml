@@ -35,13 +35,13 @@ apis:
         url: json-ld/salesforce-automation-context.jsonld
       - type: Authentication
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm
-      - type: API Reference
+      - type: APIReference
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_list.htm
-      - type: Rate Limits
+      - type: RateLimits
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_limits.htm
-      - type: Change Log
+      - type: ChangeLog
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/rest_rns.htm
       - type: Postman Collection
         url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers/overview
@@ -89,7 +89,7 @@ apis:
         url: json-ld/salesforce-automation-context.jsonld
       - type: Best Practices
         url: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/asynch_api_best_practices.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/asynch_api_quickstart.htm
       - type: Authentication
         url: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/authentication.htm
@@ -229,11 +229,11 @@ apis:
         url: openapi/salesforce-connect-rest-api-openapi.json
       - type: JSONLD
         url: json-ld/salesforce-automation-context.jsonld
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart.htm
-      - type: API Reference
+      - type: APIReference
         url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_overview.htm
-      - type: Rate Limits
+      - type: RateLimits
         url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/intro_rate_limits.htm
       - type: Examples
         url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickreference.htm
@@ -259,13 +259,13 @@ apis:
         url: https://developer.salesforce.com/docs/platform/pub-sub-api/overview
       - type: JSONLD
         url: json-ld/salesforce-automation-context.jsonld
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/platform/pub-sub-api/guide/intro.html
       - type: Authentication
         url: https://developer.salesforce.com/docs/platform/pub-sub-api/guide/supported-auth.html
-      - type: API Reference
+      - type: APIReference
         url: https://developer.salesforce.com/docs/platform/pub-sub-api/guide/grpc-api.html
-      - type: Rate Limits
+      - type: RateLimits
         url: https://developer.salesforce.com/docs/platform/pub-sub-api/guide/allocations.html
       - type: GitHub
         url: https://github.com/forcedotcom/pub-sub-api
@@ -289,11 +289,11 @@ apis:
         url: https://developer.salesforce.com/docs/platform/graphql/overview
       - type: JSONLD
         url: json-ld/salesforce-automation-context.jsonld
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/platform/graphql/guide/graphql-about.html
       - type: Quick Start
         url: https://developer.salesforce.com/docs/platform/graphql/guide/get-started.html
-      - type: API Reference
+      - type: APIReference
         url: https://developer.salesforce.com/docs/platform/graphql/guide/requests-and-responses.html
     contact:
       - FN: Salesforce Developer Support
@@ -406,9 +406,9 @@ apis:
         url: openapi/salesforce-apex-rest-api-openapi.json
       - type: JSONLD
         url: json-ld/salesforce-automation-context.jsonld
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_intro.htm
-      - type: API Reference
+      - type: APIReference
         url: https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
       - type: Code Samples
         url: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
@@ -441,17 +441,17 @@ common:
     url: https://developer.salesforce.com/blogs
   - type: Pricing
     url: https://www.salesforce.com/editions-pricing/overview/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.salesforce.com/company/legal/agreements/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.salesforce.com/company/privacy/
-  - type: Sign Up
+  - type: SignUp
     url: https://developer.salesforce.com/signup
   - type: Login
     url: https://login.salesforce.com
   - type: GitHub
     url: https://github.com/salesforce
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/developerforce
   - type: Stack Exchange
     url: https://salesforce.stackexchange.com
@@ -461,7 +461,7 @@ common:
     url: https://developer.salesforce.com/support
   - type: Contact
     url: https://www.salesforce.com/company/contact-us/
-  - type: Rate Limits
+  - type: RateLimits
     url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm
   - type: API Versioning
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_versions.htm
@@ -471,7 +471,7 @@ common:
     url: https://github.com/forcedotcom/postman-salesforce-apis
   - type: SDKs
     url: https://jsforce.github.io/
-  - type: Release Notes
+  - type: ReleaseNotes
     url: https://help.salesforce.com/s/articleView?id=release-notes.rn_api_nc.htm&language=en_US&release=248&type=5
   - type: API End-of-Life Policy
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/api_rest_eol.htm
