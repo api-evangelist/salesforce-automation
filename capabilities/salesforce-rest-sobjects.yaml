@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce REST API — SObjects
+  description: 'Salesforce REST API — SObjects. 3 operations. Lead operation: Describe all available SObjects. Self-contained
+    Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - SObjects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-rest-sobjects
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0
+    description: Salesforce REST API — SObjects business capability. Self-contained, no shared references.
+    resources:
+    - name: sobjects
+      path: /sobjects
+      operations:
+      - name: describeglobal
+        method: GET
+        description: Describe all available SObjects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sobjects-sObjectName
+      path: /sobjects/{sObjectName}
+      operations:
+      - name: describesobject
+        method: GET
+        description: Describe an SObject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sobjects-sObjectName-describe
+      path: /sobjects/{sObjectName}/describe
+      operations:
+      - name: describesobjectfull
+        method: GET
+        description: Get full SObject describe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-rest-sobjects-rest
+    port: 8080
+    description: REST adapter for Salesforce REST API — SObjects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/sobjects
+      name: sobjects
+      description: REST surface for sobjects.
+      operations:
+      - method: GET
+        name: describeglobal
+        description: Describe all available SObjects
+        call: salesforce-rest-sobjects.describeglobal
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{sobjectname}
+      name: sobjects-sobjectname
+      description: REST surface for sobjects-sObjectName.
+      operations:
+      - method: GET
+        name: describesobject
+        description: Describe an SObject
+        call: salesforce-rest-sobjects.describesobject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{sobjectname}/describe
+      name: sobjects-sobjectname-describe
+      description: REST surface for sobjects-sObjectName-describe.
+      operations:
+      - method: GET
+        name: describesobjectfull
+        description: Get full SObject describe
+        call: salesforce-rest-sobjects.describesobjectfull
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-rest-sobjects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce REST API — SObjects. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: describe-all-available-sobjects
+      description: Describe all available SObjects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-rest-sobjects.describeglobal
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: describe-sobject
+      description: Describe an SObject
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-rest-sobjects.describesobject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-full-sobject-describe
+      description: Get full SObject describe
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-rest-sobjects.describesobjectfull
+      outputParameters:
+      - type: object
+        mapping: $.

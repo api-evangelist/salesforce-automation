@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce REST API — Approvals
+  description: 'Salesforce REST API — Approvals. 2 operations. Lead operation: List approval processes. Self-contained Naftiko
+    capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Approvals
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-rest-approvals
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0
+    description: Salesforce REST API — Approvals business capability. Self-contained, no shared references.
+    resources:
+    - name: process-approvals
+      path: /process/approvals
+      operations:
+      - name: getapprovalprocesses
+        method: GET
+        description: List approval processes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: submitforapproval
+        method: POST
+        description: Submit a record for approval
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-rest-approvals-rest
+    port: 8080
+    description: REST adapter for Salesforce REST API — Approvals. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/process/approvals
+      name: process-approvals
+      description: REST surface for process-approvals.
+      operations:
+      - method: GET
+        name: getapprovalprocesses
+        description: List approval processes
+        call: salesforce-rest-approvals.getapprovalprocesses
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: submitforapproval
+        description: Submit a record for approval
+        call: salesforce-rest-approvals.submitforapproval
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-rest-approvals-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce REST API — Approvals. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-approval-processes
+      description: List approval processes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-rest-approvals.getapprovalprocesses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: submit-record-approval
+      description: Submit a record for approval
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: salesforce-rest-approvals.submitforapproval
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

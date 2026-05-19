@@ -1,0 +1,252 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Platform Events API — Events
+  description: 'Salesforce Platform Events API — Events. 5 operations. Lead operation: Get event schema by schema ID. Self-contained
+    Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Events
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-platform-events-events
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0
+    description: Salesforce Platform Events API — Events business capability. Self-contained, no shared references.
+    resources:
+    - name: event-eventSchema-schemaId
+      path: /event/eventSchema/{schemaId}
+      operations:
+      - name: geteventschemabyid
+        method: GET
+        description: Get event schema by schema ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: schemaId
+          in: path
+          type: string
+          description: The unique schema identifier
+          required: true
+    - name: sobjects-eventName
+      path: /sobjects/{eventName}
+      operations:
+      - name: describeplatformevent
+        method: GET
+        description: Describe a Platform Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventName
+          in: path
+          type: string
+          description: The API name of the Platform Event (e.g., Order_Event__e)
+          required: true
+      - name: publishplatformevent
+        method: POST
+        description: Publish a Platform Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventName
+          in: path
+          type: string
+          description: The API name of the Platform Event (e.g., Order_Event__e)
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sobjects-eventName-describe
+      path: /sobjects/{eventName}/describe
+      operations:
+      - name: describeplatformeventfull
+        method: GET
+        description: Get full Platform Event describe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventName
+          in: path
+          type: string
+          required: true
+    - name: sobjects-eventName-eventSchema
+      path: /sobjects/{eventName}/eventSchema
+      operations:
+      - name: geteventschema
+        method: GET
+        description: Get the Apache Avro schema for a Platform Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventName
+          in: path
+          type: string
+          required: true
+        - name: payloadFormat
+          in: query
+          type: string
+          description: The format for the schema
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-platform-events-events-rest
+    port: 8080
+    description: REST adapter for Salesforce Platform Events API — Events. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/event/eventschema/{schemaid}
+      name: event-eventschema-schemaid
+      description: REST surface for event-eventSchema-schemaId.
+      operations:
+      - method: GET
+        name: geteventschemabyid
+        description: Get event schema by schema ID
+        call: salesforce-platform-events-events.geteventschemabyid
+        with:
+          schemaId: rest.schemaId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{eventname}
+      name: sobjects-eventname
+      description: REST surface for sobjects-eventName.
+      operations:
+      - method: GET
+        name: describeplatformevent
+        description: Describe a Platform Event
+        call: salesforce-platform-events-events.describeplatformevent
+        with:
+          eventName: rest.eventName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: publishplatformevent
+        description: Publish a Platform Event
+        call: salesforce-platform-events-events.publishplatformevent
+        with:
+          eventName: rest.eventName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{eventname}/describe
+      name: sobjects-eventname-describe
+      description: REST surface for sobjects-eventName-describe.
+      operations:
+      - method: GET
+        name: describeplatformeventfull
+        description: Get full Platform Event describe
+        call: salesforce-platform-events-events.describeplatformeventfull
+        with:
+          eventName: rest.eventName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{eventname}/eventschema
+      name: sobjects-eventname-eventschema
+      description: REST surface for sobjects-eventName-eventSchema.
+      operations:
+      - method: GET
+        name: geteventschema
+        description: Get the Apache Avro schema for a Platform Event
+        call: salesforce-platform-events-events.geteventschema
+        with:
+          eventName: rest.eventName
+          payloadFormat: rest.payloadFormat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-platform-events-events-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Platform Events API — Events. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-event-schema-schema-id
+      description: Get event schema by schema ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-platform-events-events.geteventschemabyid
+      with:
+        schemaId: tools.schemaId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: describe-platform-event
+      description: Describe a Platform Event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-platform-events-events.describeplatformevent
+      with:
+        eventName: tools.eventName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: publish-platform-event
+      description: Publish a Platform Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: salesforce-platform-events-events.publishplatformevent
+      with:
+        eventName: tools.eventName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-full-platform-event-describe
+      description: Get full Platform Event describe
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-platform-events-events.describeplatformeventfull
+      with:
+        eventName: tools.eventName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-apache-avro-schema-platform
+      description: Get the Apache Avro schema for a Platform Event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-platform-events-events.geteventschema
+      with:
+        eventName: tools.eventName
+        payloadFormat: tools.payloadFormat
+      outputParameters:
+      - type: object
+        mapping: $.

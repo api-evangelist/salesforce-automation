@@ -1,0 +1,205 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Composite API — SObject Collections
+  description: 'Salesforce Composite API — SObject Collections. 4 operations. Lead operation: Create multiple records of the
+    same type. Self-contained Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - SObject Collections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-composite-sobject-collections
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0
+    description: Salesforce Composite API — SObject Collections business capability. Self-contained, no shared references.
+    resources:
+    - name: composite-sobjects
+      path: /composite/sobjects
+      operations:
+      - name: createmultiplerecords
+        method: POST
+        description: Create multiple records of the same type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updatemultiplerecords
+        method: PATCH
+        description: Update multiple records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemultiplerecords
+        method: DELETE
+        description: Delete multiple records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: Comma-separated list of record IDs to delete (up to 200)
+          required: true
+    - name: composite-sobjects-sObjectName
+      path: /composite/sobjects/{sObjectName}
+      operations:
+      - name: getmultiplerecords
+        method: GET
+        description: Get multiple records by IDs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sObjectName
+          in: path
+          type: string
+          required: true
+        - name: ids
+          in: query
+          type: string
+          description: Comma-separated list of record IDs
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: Comma-separated list of field API names to return
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-composite-sobject-collections-rest
+    port: 8080
+    description: REST adapter for Salesforce Composite API — SObject Collections. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/composite/sobjects
+      name: composite-sobjects
+      description: REST surface for composite-sobjects.
+      operations:
+      - method: POST
+        name: createmultiplerecords
+        description: Create multiple records of the same type
+        call: salesforce-composite-sobject-collections.createmultiplerecords
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatemultiplerecords
+        description: Update multiple records
+        call: salesforce-composite-sobject-collections.updatemultiplerecords
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemultiplerecords
+        description: Delete multiple records
+        call: salesforce-composite-sobject-collections.deletemultiplerecords
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/composite/sobjects/{sobjectname}
+      name: composite-sobjects-sobjectname
+      description: REST surface for composite-sobjects-sObjectName.
+      operations:
+      - method: GET
+        name: getmultiplerecords
+        description: Get multiple records by IDs
+        call: salesforce-composite-sobject-collections.getmultiplerecords
+        with:
+          sObjectName: rest.sObjectName
+          ids: rest.ids
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-composite-sobject-collections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Composite API — SObject Collections. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: create-multiple-records-same-type
+      description: Create multiple records of the same type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: salesforce-composite-sobject-collections.createmultiplerecords
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-multiple-records
+      description: Update multiple records
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: salesforce-composite-sobject-collections.updatemultiplerecords
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-multiple-records
+      description: Delete multiple records
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: salesforce-composite-sobject-collections.deletemultiplerecords
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-multiple-records-ids
+      description: Get multiple records by IDs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-composite-sobject-collections.getmultiplerecords
+      with:
+        sObjectName: tools.sObjectName
+        ids: tools.ids
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.

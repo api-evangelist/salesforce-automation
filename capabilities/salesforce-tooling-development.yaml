@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Tooling API — Development
+  description: 'Salesforce Tooling API — Development. 1 operations. Lead operation: Get code completions. Self-contained Naftiko
+    capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Development
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-tooling-development
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0/tooling
+    description: Salesforce Tooling API — Development business capability. Self-contained, no shared references.
+    resources:
+    - name: completions
+      path: /completions
+      operations:
+      - name: getcompletions
+        method: GET
+        description: Get code completions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          description: The type of completion (apex)
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-tooling-development-rest
+    port: 8080
+    description: REST adapter for Salesforce Tooling API — Development. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/completions
+      name: completions
+      description: REST surface for completions.
+      operations:
+      - method: GET
+        name: getcompletions
+        description: Get code completions
+        call: salesforce-tooling-development.getcompletions
+        with:
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-tooling-development-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Tooling API — Development. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-code-completions
+      description: Get code completions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-tooling-development.getcompletions
+      with:
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.

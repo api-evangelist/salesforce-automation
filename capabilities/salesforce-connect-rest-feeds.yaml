@@ -1,0 +1,199 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Connect REST API (Chatter) — Feeds
+  description: 'Salesforce Connect REST API (Chatter) — Feeds. 4 operations. Lead operation: Get a feed element. Self-contained
+    Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Feeds
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-connect-rest-feeds
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0/connect
+    description: Salesforce Connect REST API (Chatter) — Feeds business capability. Self-contained, no shared references.
+    resources:
+    - name: chatter-feed-elements-feedElementId
+      path: /chatter/feed-elements/{feedElementId}
+      operations:
+      - name: getfeedelement
+        method: GET
+        description: Get a feed element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedElementId
+          in: path
+          type: string
+          required: true
+      - name: deletefeedelement
+        method: DELETE
+        description: Delete a feed element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedElementId
+          in: path
+          type: string
+          required: true
+    - name: chatter-feeds-news-me-feed-elements
+      path: /chatter/feeds/news/me/feed-elements
+      operations:
+      - name: getnewsfeed
+        method: GET
+        description: Get the current user's news feed
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: string
+          description: Page token for pagination
+        - name: pageSize
+          in: query
+          type: integer
+        - name: sort
+          in: query
+          type: string
+      - name: posttofeed
+        method: POST
+        description: Post to the current user's feed
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-connect-rest-feeds-rest
+    port: 8080
+    description: REST adapter for Salesforce Connect REST API (Chatter) — Feeds. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/chatter/feed-elements/{feedelementid}
+      name: chatter-feed-elements-feedelementid
+      description: REST surface for chatter-feed-elements-feedElementId.
+      operations:
+      - method: GET
+        name: getfeedelement
+        description: Get a feed element
+        call: salesforce-connect-rest-feeds.getfeedelement
+        with:
+          feedElementId: rest.feedElementId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefeedelement
+        description: Delete a feed element
+        call: salesforce-connect-rest-feeds.deletefeedelement
+        with:
+          feedElementId: rest.feedElementId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/chatter/feeds/news/me/feed-elements
+      name: chatter-feeds-news-me-feed-elements
+      description: REST surface for chatter-feeds-news-me-feed-elements.
+      operations:
+      - method: GET
+        name: getnewsfeed
+        description: Get the current user's news feed
+        call: salesforce-connect-rest-feeds.getnewsfeed
+        with:
+          page: rest.page
+          pageSize: rest.pageSize
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: posttofeed
+        description: Post to the current user's feed
+        call: salesforce-connect-rest-feeds.posttofeed
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-connect-rest-feeds-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Connect REST API (Chatter) — Feeds. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-feed-element
+      description: Get a feed element
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-connect-rest-feeds.getfeedelement
+      with:
+        feedElementId: tools.feedElementId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-feed-element
+      description: Delete a feed element
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: salesforce-connect-rest-feeds.deletefeedelement
+      with:
+        feedElementId: tools.feedElementId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-current-user-s-news-feed
+      description: Get the current user's news feed
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-connect-rest-feeds.getnewsfeed
+      with:
+        page: tools.page
+        pageSize: tools.pageSize
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-current-user-s-feed
+      description: Post to the current user's feed
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: salesforce-connect-rest-feeds.posttofeed
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

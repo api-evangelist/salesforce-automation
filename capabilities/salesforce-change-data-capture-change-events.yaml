@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Change Data Capture API — Change Events
+  description: 'Salesforce Change Data Capture API — Change Events. 3 operations. Lead operation: Describe a Change Data Capture
+    event. Self-contained Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Change Events
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-change-data-capture-change-events
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0
+    description: Salesforce Change Data Capture API — Change Events business capability. Self-contained, no shared references.
+    resources:
+    - name: sobjects-changeEventName
+      path: /sobjects/{changeEventName}
+      operations:
+      - name: describechangeevent
+        method: GET
+        description: Describe a Change Data Capture event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: changeEventName
+          in: path
+          type: string
+          description: The API name of the Change Data Capture event (e.g., AccountChangeEvent, ContactChangeEvent, MyObject__ChangeEvent)
+          required: true
+    - name: sobjects-changeEventName-describe
+      path: /sobjects/{changeEventName}/describe
+      operations:
+      - name: describechangeeventfull
+        method: GET
+        description: Get full Change Data Capture event describe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: changeEventName
+          in: path
+          type: string
+          required: true
+    - name: sobjects-changeEventName-eventSchema
+      path: /sobjects/{changeEventName}/eventSchema
+      operations:
+      - name: getchangeeventschema
+        method: GET
+        description: Get the Avro schema for a Change Data Capture event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: changeEventName
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-change-data-capture-change-events-rest
+    port: 8080
+    description: REST adapter for Salesforce Change Data Capture API — Change Events. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/sobjects/{changeeventname}
+      name: sobjects-changeeventname
+      description: REST surface for sobjects-changeEventName.
+      operations:
+      - method: GET
+        name: describechangeevent
+        description: Describe a Change Data Capture event
+        call: salesforce-change-data-capture-change-events.describechangeevent
+        with:
+          changeEventName: rest.changeEventName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{changeeventname}/describe
+      name: sobjects-changeeventname-describe
+      description: REST surface for sobjects-changeEventName-describe.
+      operations:
+      - method: GET
+        name: describechangeeventfull
+        description: Get full Change Data Capture event describe
+        call: salesforce-change-data-capture-change-events.describechangeeventfull
+        with:
+          changeEventName: rest.changeEventName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{changeeventname}/eventschema
+      name: sobjects-changeeventname-eventschema
+      description: REST surface for sobjects-changeEventName-eventSchema.
+      operations:
+      - method: GET
+        name: getchangeeventschema
+        description: Get the Avro schema for a Change Data Capture event
+        call: salesforce-change-data-capture-change-events.getchangeeventschema
+        with:
+          changeEventName: rest.changeEventName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-change-data-capture-change-events-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Change Data Capture API — Change Events. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: describe-change-data-capture-event
+      description: Describe a Change Data Capture event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-change-data-capture-change-events.describechangeevent
+      with:
+        changeEventName: tools.changeEventName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-full-change-data-capture
+      description: Get full Change Data Capture event describe
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-change-data-capture-change-events.describechangeeventfull
+      with:
+        changeEventName: tools.changeEventName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-avro-schema-change-data
+      description: Get the Avro schema for a Change Data Capture event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-change-data-capture-change-events.getchangeeventschema
+      with:
+        changeEventName: tools.changeEventName
+      outputParameters:
+      - type: object
+        mapping: $.

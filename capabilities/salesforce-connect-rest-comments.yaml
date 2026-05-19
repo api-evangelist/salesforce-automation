@@ -1,0 +1,120 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Connect REST API (Chatter) — Comments
+  description: 'Salesforce Connect REST API (Chatter) — Comments. 2 operations. Lead operation: Get comments on a feed element.
+    Self-contained Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Comments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-connect-rest-comments
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0/connect
+    description: Salesforce Connect REST API (Chatter) — Comments business capability. Self-contained, no shared references.
+    resources:
+    - name: chatter-feed-elements-feedElementId-capabilities-comments-items
+      path: /chatter/feed-elements/{feedElementId}/capabilities/comments/items
+      operations:
+      - name: getcomments
+        method: GET
+        description: Get comments on a feed element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedElementId
+          in: path
+          type: string
+          required: true
+      - name: postcomment
+        method: POST
+        description: Post a comment on a feed element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedElementId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-connect-rest-comments-rest
+    port: 8080
+    description: REST adapter for Salesforce Connect REST API (Chatter) — Comments. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/chatter/feed-elements/{feedelementid}/capabilities/comments/items
+      name: chatter-feed-elements-feedelementid-capabilities-comments-items
+      description: REST surface for chatter-feed-elements-feedElementId-capabilities-comments-items.
+      operations:
+      - method: GET
+        name: getcomments
+        description: Get comments on a feed element
+        call: salesforce-connect-rest-comments.getcomments
+        with:
+          feedElementId: rest.feedElementId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: postcomment
+        description: Post a comment on a feed element
+        call: salesforce-connect-rest-comments.postcomment
+        with:
+          feedElementId: rest.feedElementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-connect-rest-comments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Connect REST API (Chatter) — Comments. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-comments-feed-element
+      description: Get comments on a feed element
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-connect-rest-comments.getcomments
+      with:
+        feedElementId: tools.feedElementId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-comment-feed-element
+      description: Post a comment on a feed element
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: salesforce-connect-rest-comments.postcomment
+      with:
+        feedElementId: tools.feedElementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

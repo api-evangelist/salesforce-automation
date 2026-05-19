@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Analytics (CRM Analytics) REST API — Dataflows
+  description: 'Salesforce Analytics (CRM Analytics) REST API — Dataflows. 2 operations. Lead operation: List dataflows. Self-contained
+    Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Dataflows
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-analytics-dataflows
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0/wave
+    description: Salesforce Analytics (CRM Analytics) REST API — Dataflows business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: dataflows
+      path: /dataflows
+      operations:
+      - name: getdataflows
+        method: GET
+        description: List dataflows
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dataflows-dataflowId
+      path: /dataflows/{dataflowId}
+      operations:
+      - name: getdataflow
+        method: GET
+        description: Get a dataflow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: dataflowId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-analytics-dataflows-rest
+    port: 8080
+    description: REST adapter for Salesforce Analytics (CRM Analytics) REST API — Dataflows. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/dataflows
+      name: dataflows
+      description: REST surface for dataflows.
+      operations:
+      - method: GET
+        name: getdataflows
+        description: List dataflows
+        call: salesforce-analytics-dataflows.getdataflows
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dataflows/{dataflowid}
+      name: dataflows-dataflowid
+      description: REST surface for dataflows-dataflowId.
+      operations:
+      - method: GET
+        name: getdataflow
+        description: Get a dataflow
+        call: salesforce-analytics-dataflows.getdataflow
+        with:
+          dataflowId: rest.dataflowId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-analytics-dataflows-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Analytics (CRM Analytics) REST API — Dataflows. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-dataflows
+      description: List dataflows
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-analytics-dataflows.getdataflows
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dataflow
+      description: Get a dataflow
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-analytics-dataflows.getdataflow
+      with:
+        dataflowId: tools.dataflowId
+      outputParameters:
+      - type: object
+        mapping: $.

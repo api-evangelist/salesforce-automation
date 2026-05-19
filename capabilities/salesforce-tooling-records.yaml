@@ -1,0 +1,172 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Tooling API — Records
+  description: 'Salesforce Tooling API — Records. 4 operations. Lead operation: Create a Tooling API record. Self-contained
+    Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Records
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-tooling-records
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0/tooling
+    description: Salesforce Tooling API — Records business capability. Self-contained, no shared references.
+    resources:
+    - name: sobjects-sObjectName
+      path: /sobjects/{sObjectName}
+      operations:
+      - name: createtoolingrecord
+        method: POST
+        description: Create a Tooling API record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sobjects-sObjectName-recordId
+      path: /sobjects/{sObjectName}/{recordId}
+      operations:
+      - name: gettoolingrecord
+        method: GET
+        description: Get a Tooling API record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetoolingrecord
+        method: PATCH
+        description: Update a Tooling API record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetoolingrecord
+        method: DELETE
+        description: Delete a Tooling API record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-tooling-records-rest
+    port: 8080
+    description: REST adapter for Salesforce Tooling API — Records. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/sobjects/{sobjectname}
+      name: sobjects-sobjectname
+      description: REST surface for sobjects-sObjectName.
+      operations:
+      - method: POST
+        name: createtoolingrecord
+        description: Create a Tooling API record
+        call: salesforce-tooling-records.createtoolingrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{sobjectname}/{recordid}
+      name: sobjects-sobjectname-recordid
+      description: REST surface for sobjects-sObjectName-recordId.
+      operations:
+      - method: GET
+        name: gettoolingrecord
+        description: Get a Tooling API record
+        call: salesforce-tooling-records.gettoolingrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetoolingrecord
+        description: Update a Tooling API record
+        call: salesforce-tooling-records.updatetoolingrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetoolingrecord
+        description: Delete a Tooling API record
+        call: salesforce-tooling-records.deletetoolingrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-tooling-records-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Tooling API — Records. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-tooling-api-record
+      description: Create a Tooling API record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: salesforce-tooling-records.createtoolingrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tooling-api-record
+      description: Get a Tooling API record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-tooling-records.gettoolingrecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-tooling-api-record
+      description: Update a Tooling API record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: salesforce-tooling-records.updatetoolingrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-tooling-api-record
+      description: Delete a Tooling API record
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: salesforce-tooling-records.deletetoolingrecord
+      outputParameters:
+      - type: object
+        mapping: $.

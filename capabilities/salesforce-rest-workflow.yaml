@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce REST API — Workflow
+  description: 'Salesforce REST API — Workflow. 2 operations. Lead operation: List workflow rules. Self-contained Naftiko
+    capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Workflow
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-rest-workflow
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0
+    description: Salesforce REST API — Workflow business capability. Self-contained, no shared references.
+    resources:
+    - name: process-rules
+      path: /process/rules
+      operations:
+      - name: getworkflowrules
+        method: GET
+        description: List workflow rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: process-rules-sObjectName
+      path: /process/rules/{sObjectName}
+      operations:
+      - name: getworkflowrulesforobject
+        method: GET
+        description: Get workflow rules for an SObject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-rest-workflow-rest
+    port: 8080
+    description: REST adapter for Salesforce REST API — Workflow. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/process/rules
+      name: process-rules
+      description: REST surface for process-rules.
+      operations:
+      - method: GET
+        name: getworkflowrules
+        description: List workflow rules
+        call: salesforce-rest-workflow.getworkflowrules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/process/rules/{sobjectname}
+      name: process-rules-sobjectname
+      description: REST surface for process-rules-sObjectName.
+      operations:
+      - method: GET
+        name: getworkflowrulesforobject
+        description: Get workflow rules for an SObject
+        call: salesforce-rest-workflow.getworkflowrulesforobject
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-rest-workflow-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce REST API — Workflow. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-workflow-rules
+      description: List workflow rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-rest-workflow.getworkflowrules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-workflow-rules-sobject
+      description: Get workflow rules for an SObject
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-rest-workflow.getworkflowrulesforobject
+      outputParameters:
+      - type: object
+        mapping: $.

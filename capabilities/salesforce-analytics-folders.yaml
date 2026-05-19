@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Analytics (CRM Analytics) REST API — Folders
+  description: 'Salesforce Analytics (CRM Analytics) REST API — Folders. 1 operations. Lead operation: List analytics apps
+    (folders). Self-contained Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Folders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-analytics-folders
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0/wave
+    description: Salesforce Analytics (CRM Analytics) REST API — Folders business capability. Self-contained, no shared references.
+    resources:
+    - name: folders
+      path: /folders
+      operations:
+      - name: getfolders
+        method: GET
+        description: List analytics apps (folders)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-analytics-folders-rest
+    port: 8080
+    description: REST adapter for Salesforce Analytics (CRM Analytics) REST API — Folders. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/folders
+      name: folders
+      description: REST surface for folders.
+      operations:
+      - method: GET
+        name: getfolders
+        description: List analytics apps (folders)
+        call: salesforce-analytics-folders.getfolders
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-analytics-folders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Analytics (CRM Analytics) REST API — Folders. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-analytics-apps-folders
+      description: List analytics apps (folders)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-analytics-folders.getfolders
+      outputParameters:
+      - type: object
+        mapping: $.

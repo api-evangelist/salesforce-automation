@@ -1,0 +1,111 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Connect REST API (Chatter) — Users
+  description: 'Salesforce Connect REST API (Chatter) — Users. 2 operations. Lead operation: Get the current user''s Chatter
+    profile. Self-contained Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-connect-rest-users
+    baseUri: https://{instance}.salesforce.com/services/data/v63.0/connect
+    description: Salesforce Connect REST API (Chatter) — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: chatter-users-me
+      path: /chatter/users/me
+      operations:
+      - name: getcurrentuser
+        method: GET
+        description: Get the current user's Chatter profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: chatter-users-userId
+      path: /chatter/users/{userId}
+      operations:
+      - name: getuser
+        method: GET
+        description: Get a user's Chatter profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-connect-rest-users-rest
+    port: 8080
+    description: REST adapter for Salesforce Connect REST API (Chatter) — Users. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/chatter/users/me
+      name: chatter-users-me
+      description: REST surface for chatter-users-me.
+      operations:
+      - method: GET
+        name: getcurrentuser
+        description: Get the current user's Chatter profile
+        call: salesforce-connect-rest-users.getcurrentuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/chatter/users/{userid}
+      name: chatter-users-userid
+      description: REST surface for chatter-users-userId.
+      operations:
+      - method: GET
+        name: getuser
+        description: Get a user's Chatter profile
+        call: salesforce-connect-rest-users.getuser
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-connect-rest-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Connect REST API (Chatter) — Users. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-current-user-s-chatter-profile
+      description: Get the current user's Chatter profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-connect-rest-users.getcurrentuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-s-chatter-profile
+      description: Get a user's Chatter profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-connect-rest-users.getuser
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.

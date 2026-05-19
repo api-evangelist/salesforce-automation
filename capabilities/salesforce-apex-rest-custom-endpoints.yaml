@@ -1,0 +1,237 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Apex REST API — Custom Endpoints
+  description: 'Salesforce Apex REST API — Custom Endpoints. 5 operations. Lead operation: Call a custom Apex REST GET endpoint.
+    Self-contained Naftiko capability covering one Salesforce Automation business surface.'
+  tags:
+  - Salesforce Automation
+  - Custom Endpoints
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_AUTOMATION_API_KEY: SALESFORCE_AUTOMATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: salesforce-apex-rest-custom-endpoints
+    baseUri: https://{instance}.salesforce.com/services/apexrest
+    description: Salesforce Apex REST API — Custom Endpoints business capability. Self-contained, no shared references.
+    resources:
+    - name: urlMapping
+      path: /{urlMapping}
+      operations:
+      - name: apexrestget
+        method: GET
+        description: Call a custom Apex REST GET endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: urlMapping
+          in: path
+          type: string
+          description: The URL mapping defined in the @RestResource annotation (e.g., '/Accounts/*', '/Cases/*')
+          required: true
+      - name: apexrestpost
+        method: POST
+        description: Call a custom Apex REST POST endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: urlMapping
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: apexrestpatch
+        method: PATCH
+        description: Call a custom Apex REST PATCH endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: urlMapping
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: apexrestput
+        method: PUT
+        description: Call a custom Apex REST PUT endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: urlMapping
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: apexrestdelete
+        method: DELETE
+        description: Call a custom Apex REST DELETE endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: urlMapping
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_AUTOMATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: salesforce-apex-rest-custom-endpoints-rest
+    port: 8080
+    description: REST adapter for Salesforce Apex REST API — Custom Endpoints. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/{urlmapping}
+      name: urlmapping
+      description: REST surface for urlMapping.
+      operations:
+      - method: GET
+        name: apexrestget
+        description: Call a custom Apex REST GET endpoint
+        call: salesforce-apex-rest-custom-endpoints.apexrestget
+        with:
+          urlMapping: rest.urlMapping
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: apexrestpost
+        description: Call a custom Apex REST POST endpoint
+        call: salesforce-apex-rest-custom-endpoints.apexrestpost
+        with:
+          urlMapping: rest.urlMapping
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: apexrestpatch
+        description: Call a custom Apex REST PATCH endpoint
+        call: salesforce-apex-rest-custom-endpoints.apexrestpatch
+        with:
+          urlMapping: rest.urlMapping
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: apexrestput
+        description: Call a custom Apex REST PUT endpoint
+        call: salesforce-apex-rest-custom-endpoints.apexrestput
+        with:
+          urlMapping: rest.urlMapping
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: apexrestdelete
+        description: Call a custom Apex REST DELETE endpoint
+        call: salesforce-apex-rest-custom-endpoints.apexrestdelete
+        with:
+          urlMapping: rest.urlMapping
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: salesforce-apex-rest-custom-endpoints-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Apex REST API — Custom Endpoints. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: call-custom-apex-rest-get
+      description: Call a custom Apex REST GET endpoint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: salesforce-apex-rest-custom-endpoints.apexrestget
+      with:
+        urlMapping: tools.urlMapping
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: call-custom-apex-rest-post
+      description: Call a custom Apex REST POST endpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: salesforce-apex-rest-custom-endpoints.apexrestpost
+      with:
+        urlMapping: tools.urlMapping
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: call-custom-apex-rest-patch
+      description: Call a custom Apex REST PATCH endpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: salesforce-apex-rest-custom-endpoints.apexrestpatch
+      with:
+        urlMapping: tools.urlMapping
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: call-custom-apex-rest-put
+      description: Call a custom Apex REST PUT endpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: salesforce-apex-rest-custom-endpoints.apexrestput
+      with:
+        urlMapping: tools.urlMapping
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: call-custom-apex-rest-delete
+      description: Call a custom Apex REST DELETE endpoint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: salesforce-apex-rest-custom-endpoints.apexrestdelete
+      with:
+        urlMapping: tools.urlMapping
+      outputParameters:
+      - type: object
+        mapping: $.
