@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedElementPage",
+  "title": "FeedElementPage",
+  "type": "object",
+  "properties": {
+    "currentPageUrl": {
+      "type": "string"
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FeedElement"
+      }
+    },
+    "nextPageUrl": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updatesUrl": {
+      "type": "string"
+    }
+  }
+}

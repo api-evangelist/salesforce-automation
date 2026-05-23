@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Dashboard",
+  "title": "Dashboard",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "folder": {
+      "$ref": "#/components/schemas/FolderRef"
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "The dashboard JSON state definition"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

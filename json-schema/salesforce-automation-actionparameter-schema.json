@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActionParameter",
+  "title": "ActionParameter",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The API name of the parameter"
+    },
+    "label": {
+      "type": "string"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "The data type (STRING, BOOLEAN, NUMBER, DATE, DATETIME, ID, SOBJECT, etc.)"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "sobjectType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "For SOBJECT type parameters, the SObject type name"
+    },
+    "byteLength": {
+      "type": "integer"
+    },
+    "maxOccurs": {
+      "type": "integer",
+      "description": "Maximum number of values (1 for single value, -1 for collections)"
+    }
+  }
+}

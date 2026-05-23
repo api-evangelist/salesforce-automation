@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PushTopicInput",
+  "title": "PushTopicInput",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "maxLength": 25
+    },
+    "Query": {
+      "type": "string"
+    },
+    "ApiVersion": {
+      "type": "number"
+    },
+    "IsActive": {
+      "type": "boolean"
+    },
+    "NotifyForFields": {
+      "type": "string",
+      "enum": [
+        "Select",
+        "Where",
+        "Referenced",
+        "All"
+      ]
+    },
+    "NotifyForOperationCreate": {
+      "type": "boolean"
+    },
+    "NotifyForOperationUpdate": {
+      "type": "boolean"
+    },
+    "NotifyForOperationDelete": {
+      "type": "boolean"
+    },
+    "NotifyForOperationUndelete": {
+      "type": "boolean"
+    },
+    "Description": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Comment",
+  "title": "Comment",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "body": {
+      "$ref": "#/components/schemas/MessageBody"
+    },
+    "user": {
+      "$ref": "#/components/schemas/ActorRef"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

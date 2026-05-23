@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CommentPage",
+  "title": "CommentPage",
+  "type": "object",
+  "properties": {
+    "comments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Comment"
+      }
+    },
+    "currentPageUrl": {
+      "type": "string"
+    },
+    "nextPageUrl": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "total": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SObjectDescribeResult",
+  "title": "SObjectDescribeResult",
+  "type": "object",
+  "description": "Full metadata for an SObject type including fields, relationships, and capabilities",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "API name of the SObject type"
+    },
+    "label": {
+      "type": "string"
+    },
+    "labelPlural": {
+      "type": "string"
+    },
+    "keyPrefix": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "custom": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FieldDescribe"
+      }
+    },
+    "childRelationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "childSObject": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "relationshipName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "recordTypeInfos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "defaultRecordTypeMapping": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "recordTypeId": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActionSummary",
+  "title": "ActionSummary",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Display label for the action"
+    },
+    "name": {
+      "type": "string",
+      "description": "The API name of the action"
+    },
+    "type": {
+      "type": "string",
+      "description": "The action type (STANDARD, CUSTOM, FLOW, etc.)"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to get the full action description"
+    }
+  }
+}

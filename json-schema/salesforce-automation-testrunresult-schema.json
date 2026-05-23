@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TestRunResult",
+  "title": "TestRunResult",
+  "type": "object",
+  "properties": {
+    "successes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "methodName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "time": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "methodName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stackTrace": {
+            "type": "string"
+          },
+          "time": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "totalTime": {
+      "type": "number"
+    },
+    "apexLogId": {
+      "type": "string"
+    },
+    "numTestsRun": {
+      "type": "integer"
+    },
+    "numFailures": {
+      "type": "integer"
+    }
+  }
+}

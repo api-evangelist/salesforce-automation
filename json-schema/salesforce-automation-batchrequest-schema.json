@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchRequest",
+  "title": "BatchRequest",
+  "type": "object",
+  "required": [
+    "batchRequests"
+  ],
+  "properties": {
+    "haltOnError": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, stops processing after the first error"
+    },
+    "batchRequests": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "required": [
+          "method",
+          "url"
+        ],
+        "properties": {
+          "method": {
+            "type": "string",
+            "enum": [
+              "GET",
+              "POST",
+              "PATCH",
+              "PUT",
+              "DELETE"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "richInput": {
+            "description": "The request body"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StreamingChannel",
+  "title": "StreamingChannel",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string",
+      "description": "The channel name, which must start with /u/ (e.g., /u/MyChannel)"
+    },
+    "Description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "IsDynamic": {
+      "type": "boolean",
+      "description": "Whether the channel was created dynamically via CometD subscription"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LastModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedElementInput",
+  "title": "FeedElementInput",
+  "type": "object",
+  "required": [
+    "body",
+    "feedElementType",
+    "subjectId"
+  ],
+  "properties": {
+    "body": {
+      "type": "object",
+      "properties": {
+        "messageSegments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Text",
+                  "Mention",
+                  "Hashtag",
+                  "Link",
+                  "MarkupBegin",
+                  "MarkupEnd"
+                ]
+              },
+              "text": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string",
+                "description": "For Mention segments, the user or group ID"
+              },
+              "url": {
+                "type": "string",
+                "description": "For Link segments, the URL"
+              }
+            }
+          }
+        }
+      }
+    },
+    "feedElementType": {
+      "type": "string",
+      "enum": [
+        "FeedItem"
+      ],
+      "description": "The type of feed element to create"
+    },
+    "subjectId": {
+      "type": "string",
+      "description": "The ID of the parent record, user, or group to post to"
+    }
+  }
+}

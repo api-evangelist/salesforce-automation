@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedElement",
+  "title": "FeedElement",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "body": {
+      "$ref": "#/components/schemas/MessageBody"
+    },
+    "actor": {
+      "$ref": "#/components/schemas/ActorRef"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "header": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

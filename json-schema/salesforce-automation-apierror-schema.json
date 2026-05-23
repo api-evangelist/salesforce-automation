@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApiError",
+  "title": "ApiError",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "errorCode": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompositeSubrequest",
+  "title": "CompositeSubrequest",
+  "type": "object",
+  "required": [
+    "method",
+    "url",
+    "referenceId"
+  ],
+  "properties": {
+    "body": {
+      "description": "The request body for POST/PATCH subrequests",
+      "additionalProperties": true
+    },
+    "httpHeaders": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "GET",
+        "POST",
+        "PATCH",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    "referenceId": {
+      "type": "string",
+      "description": "Unique identifier for this subrequest, used to reference its output in subsequent subrequests"
+    },
+    "url": {
+      "type": "string",
+      "description": "The relative URL of the API endpoint for this subrequest"
+    }
+  }
+}

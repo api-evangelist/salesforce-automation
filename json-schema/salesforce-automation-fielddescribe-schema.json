@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FieldDescribe",
+  "title": "FieldDescribe",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The API name of the field"
+    },
+    "label": {
+      "type": "string",
+      "description": "The display label"
+    },
+    "type": {
+      "type": "string",
+      "description": "The Salesforce field type (string, boolean, int, double, date, datetime, id, reference, picklist, textarea, etc.)"
+    },
+    "length": {
+      "type": "integer",
+      "description": "Maximum length for string fields"
+    },
+    "nillable": {
+      "type": "boolean",
+      "description": "Whether the field can be null"
+    },
+    "createable": {
+      "type": "boolean"
+    },
+    "updateable": {
+      "type": "boolean"
+    },
+    "custom": {
+      "type": "boolean"
+    },
+    "picklistValues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "defaultValue": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "referenceTo": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "For reference fields, the SObject types this field can point to"
+    },
+    "relationshipName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The name of the relationship for reference fields"
+    }
+  }
+}

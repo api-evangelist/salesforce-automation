@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphRequest",
+  "title": "GraphRequest",
+  "type": "object",
+  "required": [
+    "graphs"
+  ],
+  "properties": {
+    "graphs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "graphId",
+          "compositeRequest"
+        ],
+        "properties": {
+          "graphId": {
+            "type": "string",
+            "description": "Unique identifier for this graph"
+          },
+          "compositeRequest": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompositeSubrequest"
+            }
+          }
+        }
+      }
+    }
+  }
+}

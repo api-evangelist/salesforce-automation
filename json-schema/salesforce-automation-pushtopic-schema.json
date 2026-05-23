@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PushTopic",
+  "title": "PushTopic",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string",
+      "description": "The name of the PushTopic, used as the CometD channel name (/topic/{Name})"
+    },
+    "Query": {
+      "type": "string",
+      "description": "The SOQL query that defines which records to monitor. Must be a SELECT query on a single SObject."
+    },
+    "ApiVersion": {
+      "type": "number",
+      "description": "The API version for this PushTopic"
+    },
+    "IsActive": {
+      "type": "boolean",
+      "description": "Whether this PushTopic is actively generating events"
+    },
+    "NotifyForFields": {
+      "type": "string",
+      "enum": [
+        "Select",
+        "Where",
+        "Referenced",
+        "All"
+      ],
+      "description": "Which field changes trigger notifications: Select (fields in SELECT), Where (fields in WHERE), Referenced (both), All (any field)"
+    },
+    "NotifyForOperationCreate": {
+      "type": "boolean",
+      "description": "Whether to generate events when matching records are created"
+    },
+    "NotifyForOperationUpdate": {
+      "type": "boolean",
+      "description": "Whether to generate events when matching records are updated"
+    },
+    "NotifyForOperationDelete": {
+      "type": "boolean",
+      "description": "Whether to generate events when matching records are deleted"
+    },
+    "NotifyForOperationUndelete": {
+      "type": "boolean",
+      "description": "Whether to generate events when matching records are undeleted"
+    },
+    "Description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LastModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

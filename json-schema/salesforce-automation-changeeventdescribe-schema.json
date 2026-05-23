@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChangeEventDescribe",
+  "title": "ChangeEventDescribe",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The API name of the change event (e.g., AccountChangeEvent)"
+    },
+    "label": {
+      "type": "string"
+    },
+    "labelPlural": {
+      "type": "string"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "nillable": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "associateEntityType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The associated entity type (ChangeEvent)"
+    },
+    "associateParentEntity": {
+      "type": "string",
+      "description": "The parent SObject type that this change event tracks (e.g., Account, Contact)"
+    }
+  }
+}

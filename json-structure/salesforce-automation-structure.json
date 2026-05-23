@@ -1,0 +1,243 @@
+{
+  "provider": "Salesforce Automation",
+  "providerId": "salesforce-automation",
+  "kind": "json-structure",
+  "description": "Structural overview of the Salesforce Automation API surface; extracted from openapi/.",
+  "schemaCount": 13,
+  "operationCount": 17,
+  "schemas": [
+    {
+      "name": "SObjectRecord",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DescribeGlobalResult",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "SObjectDescribeResult",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "FieldDescribe",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "CreateRecordResult",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "QueryResult",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "SearchResult",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ApprovalProcessList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ApprovalRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ApprovalResult",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "WorkflowRule",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ApiError",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/",
+      "operationId": "getVersions",
+      "summary": "List available REST API versions",
+      "tags": [
+        "Versions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sobjects",
+      "operationId": "describeGlobal",
+      "summary": "Describe all available SObjects",
+      "tags": [
+        "SObjects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sobjects/{sObjectName}",
+      "operationId": "describeSObject",
+      "summary": "Describe an SObject",
+      "tags": [
+        "SObjects"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sobjects/{sObjectName}",
+      "operationId": "createRecord",
+      "summary": "Create a new record",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sobjects/{sObjectName}/{recordId}",
+      "operationId": "getRecord",
+      "summary": "Get a record by ID",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sobjects/{sObjectName}/{recordId}",
+      "operationId": "deleteRecord",
+      "summary": "Delete a record",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sobjects/{sObjectName}/{recordId}",
+      "operationId": "updateRecord",
+      "summary": "Update a record",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sobjects/{sObjectName}/describe",
+      "operationId": "describeSObjectFull",
+      "summary": "Get full SObject describe",
+      "tags": [
+        "SObjects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/query",
+      "operationId": "query",
+      "summary": "Execute a SOQL query",
+      "tags": [
+        "SOQL"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/queryAll",
+      "operationId": "queryAll",
+      "summary": "Execute a SOQL query including deleted and archived records",
+      "tags": [
+        "SOQL"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/query/{queryLocator}",
+      "operationId": "queryMore",
+      "summary": "Retrieve additional query results",
+      "tags": [
+        "SOQL"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/search",
+      "operationId": "search",
+      "summary": "Execute a SOSL search",
+      "tags": [
+        "SOSL"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/limits",
+      "operationId": "getLimits",
+      "summary": "Get org limits",
+      "tags": [
+        "Limits"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/process/approvals",
+      "operationId": "getApprovalProcesses",
+      "summary": "List approval processes",
+      "tags": [
+        "Approvals"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/process/approvals",
+      "operationId": "submitForApproval",
+      "summary": "Submit a record for approval",
+      "tags": [
+        "Approvals"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/process/rules",
+      "operationId": "getWorkflowRules",
+      "summary": "List workflow rules",
+      "tags": [
+        "Workflow"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/process/rules/{sObjectName}",
+      "operationId": "getWorkflowRulesForObject",
+      "summary": "Get workflow rules for an SObject",
+      "tags": [
+        "Workflow"
+      ]
+    }
+  ]
+}

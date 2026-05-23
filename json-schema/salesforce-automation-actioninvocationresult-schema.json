@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActionInvocationResult",
+  "title": "ActionInvocationResult",
+  "type": "object",
+  "properties": {
+    "actionName": {
+      "type": "string"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "isSuccess": {
+      "type": "boolean"
+    },
+    "outputValues": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Output parameter name-value pairs from the action"
+    }
+  }
+}

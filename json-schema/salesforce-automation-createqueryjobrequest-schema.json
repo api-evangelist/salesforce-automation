@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateQueryJobRequest",
+  "title": "CreateQueryJobRequest",
+  "type": "object",
+  "required": [
+    "operation",
+    "query"
+  ],
+  "properties": {
+    "operation": {
+      "type": "string",
+      "enum": [
+        "query",
+        "queryAll"
+      ],
+      "description": "Use query for active records or queryAll to include deleted/archived records"
+    },
+    "query": {
+      "type": "string",
+      "description": "The SOQL query to execute"
+    },
+    "columnDelimiter": {
+      "type": "string",
+      "enum": [
+        "COMMA",
+        "TAB",
+        "PIPE",
+        "SEMICOLON",
+        "CARET",
+        "BACKQUOTE"
+      ],
+      "default": "COMMA"
+    },
+    "contentType": {
+      "type": "string",
+      "enum": [
+        "CSV"
+      ],
+      "default": "CSV"
+    },
+    "lineEnding": {
+      "type": "string",
+      "enum": [
+        "LF",
+        "CRLF"
+      ],
+      "default": "LF"
+    }
+  }
+}

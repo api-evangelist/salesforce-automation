@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApprovalResult",
+  "title": "ApprovalResult",
+  "type": "object",
+  "properties": {
+    "actorIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "entityId": {
+      "type": "string"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ApiError"
+      }
+    },
+    "instanceId": {
+      "type": "string"
+    },
+    "instanceStatus": {
+      "type": "string"
+    },
+    "newWorkitemIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "success": {
+      "type": "boolean"
+    }
+  }
+}

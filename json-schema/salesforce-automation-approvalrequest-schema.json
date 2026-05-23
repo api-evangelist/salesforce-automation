@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApprovalRequest",
+  "title": "ApprovalRequest",
+  "type": "object",
+  "properties": {
+    "requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "actionType"
+        ],
+        "properties": {
+          "actionType": {
+            "type": "string",
+            "enum": [
+              "Submit",
+              "Approve",
+              "Reject"
+            ],
+            "description": "The approval action to perform"
+          },
+          "contextActorId": {
+            "type": "string",
+            "description": "The ID of the user submitting, approving, or rejecting the request"
+          },
+          "contextId": {
+            "type": "string",
+            "description": "The ID of the record to submit for approval"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Comments to attach to the approval action"
+          },
+          "nextApproverIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "IDs of the next approvers if manually specifying"
+          },
+          "processDefinitionNameOrId": {
+            "type": "string",
+            "description": "The name or ID of the approval process to use"
+          },
+          "skipEntryCriteria": {
+            "type": "boolean",
+            "description": "Whether to skip entry criteria evaluation"
+          }
+        }
+      }
+    }
+  }
+}

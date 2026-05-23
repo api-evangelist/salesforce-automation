@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FlowDefinition",
+  "title": "FlowDefinition",
+  "type": "object",
+  "description": "Represents the overall Flow definition independent of version. Contains the active version number and developer name.",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "DeveloperName": {
+      "type": "string",
+      "description": "The unique developer name for this flow"
+    },
+    "MasterLabel": {
+      "type": "string"
+    },
+    "Description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ActiveVersionId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The ID of the currently active Flow version"
+    },
+    "LatestVersionId": {
+      "type": "string",
+      "description": "The ID of the most recent Flow version"
+    },
+    "Metadata": {
+      "type": "object",
+      "properties": {
+        "activeVersionNumber": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "NamespacePrefix": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

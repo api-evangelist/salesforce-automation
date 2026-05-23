@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DescribeGlobalResult",
+  "title": "DescribeGlobalResult",
+  "type": "object",
+  "properties": {
+    "encoding": {
+      "type": "string",
+      "description": "The character encoding of the org"
+    },
+    "maxBatchSize": {
+      "type": "integer",
+      "description": "Maximum number of records in a batch"
+    },
+    "sobjects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "activateable": {
+            "type": "boolean"
+          },
+          "createable": {
+            "type": "boolean",
+            "description": "Whether records of this type can be created"
+          },
+          "custom": {
+            "type": "boolean",
+            "description": "Whether this is a custom object"
+          },
+          "customSetting": {
+            "type": "boolean",
+            "description": "Whether this is a custom setting"
+          },
+          "deletable": {
+            "type": "boolean",
+            "description": "Whether records of this type can be deleted"
+          },
+          "deprecatedAndHidden": {
+            "type": "boolean"
+          },
+          "feedEnabled": {
+            "type": "boolean"
+          },
+          "hasSubtypes": {
+            "type": "boolean"
+          },
+          "isSubtype": {
+            "type": "boolean"
+          },
+          "keyPrefix": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The three-character prefix of the record ID for this object type"
+          },
+          "label": {
+            "type": "string",
+            "description": "The display label for this object type"
+          },
+          "labelPlural": {
+            "type": "string",
+            "description": "The plural display label for this object type"
+          },
+          "layoutable": {
+            "type": "boolean"
+          },
+          "mergeable": {
+            "type": "boolean"
+          },
+          "mruEnabled": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string",
+            "description": "The API name of the SObject type"
+          },
+          "queryable": {
+            "type": "boolean",
+            "description": "Whether this object can be queried with SOQL"
+          },
+          "replicateable": {
+            "type": "boolean"
+          },
+          "retrieveable": {
+            "type": "boolean"
+          },
+          "searchable": {
+            "type": "boolean",
+            "description": "Whether this object can be searched with SOSL"
+          },
+          "triggerable": {
+            "type": "boolean",
+            "description": "Whether Apex triggers can be defined for this object"
+          },
+          "undeletable": {
+            "type": "boolean"
+          },
+          "updateable": {
+            "type": "boolean"
+          },
+          "urls": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChangeEventMessage",
+  "title": "ChangeEventMessage",
+  "type": "object",
+  "description": "The structure of a Change Data Capture event message as received by subscribers. Contains the event header with change metadata and the changed field values.",
+  "properties": {
+    "ChangeEventHeader": {
+      "type": "object",
+      "description": "Header containing metadata about the change",
+      "properties": {
+        "entityName": {
+          "type": "string",
+          "description": "The SObject type that changed (e.g., Account)"
+        },
+        "recordIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of record IDs that changed (may be batched)"
+        },
+        "changeType": {
+          "type": "string",
+          "enum": [
+            "CREATE",
+            "UPDATE",
+            "DELETE",
+            "UNDELETE",
+            "GAP_CREATE",
+            "GAP_UPDATE",
+            "GAP_DELETE",
+            "GAP_UNDELETE",
+            "GAP_OVERFLOW"
+          ],
+          "description": "The type of change. GAP_ prefixed types indicate events replayed after a gap in delivery."
+        },
+        "changeOrigin": {
+          "type": "string",
+          "description": "The origin of the change (e.g., com/salesforce/api/rest/63.0)"
+        },
+        "transactionKey": {
+          "type": "string",
+          "description": "Unique key identifying the transaction that caused the change"
+        },
+        "sequenceNumber": {
+          "type": "integer",
+          "description": "Sequence number for ordering within a transaction"
+        },
+        "commitTimestamp": {
+          "type": "integer",
+          "description": "Unix timestamp in milliseconds when the change was committed"
+        },
+        "commitNumber": {
+          "type": "integer",
+          "description": "System change number for ordering"
+        },
+        "commitUser": {
+          "type": "string",
+          "description": "The 18-character ID of the user who made the change"
+        },
+        "changedFields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of field API names that changed (for UPDATE events)"
+        },
+        "nulledFields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of field API names that were set to null"
+        },
+        "diffFields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of fields included in the change event payload"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

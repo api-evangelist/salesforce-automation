@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LensList",
+  "title": "LensList",
+  "type": "object",
+  "properties": {
+    "lenses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastModifiedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "folder": {
+            "$ref": "#/components/schemas/FolderRef"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "nextPageUrl": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "totalSize": {
+      "type": "integer"
+    }
+  }
+}

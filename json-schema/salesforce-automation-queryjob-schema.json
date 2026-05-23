@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryJob",
+  "title": "QueryJob",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "query",
+        "queryAll"
+      ]
+    },
+    "object": {
+      "type": "string"
+    },
+    "createdById": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "systemModstamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "UploadComplete",
+        "InProgress",
+        "JobComplete",
+        "Failed",
+        "Aborted"
+      ]
+    },
+    "concurrencyMode": {
+      "type": "string",
+      "enum": [
+        "Parallel"
+      ]
+    },
+    "contentType": {
+      "type": "string",
+      "enum": [
+        "CSV"
+      ]
+    },
+    "apiVersion": {
+      "type": "number"
+    },
+    "jobType": {
+      "type": "string",
+      "enum": [
+        "V2Query"
+      ]
+    },
+    "lineEnding": {
+      "type": "string",
+      "enum": [
+        "LF",
+        "CRLF"
+      ]
+    },
+    "columnDelimiter": {
+      "type": "string",
+      "enum": [
+        "COMMA",
+        "TAB",
+        "PIPE",
+        "SEMICOLON",
+        "CARET",
+        "BACKQUOTE"
+      ]
+    },
+    "numberRecordsProcessed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retries": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "totalProcessingTime": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

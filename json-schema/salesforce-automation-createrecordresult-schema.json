@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateRecordResult",
+  "title": "CreateRecordResult",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The 18-character ID of the newly created record"
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether the create operation succeeded"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ApiError"
+      }
+    }
+  }
+}

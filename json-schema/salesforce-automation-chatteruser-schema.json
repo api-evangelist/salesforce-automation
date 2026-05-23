@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChatterUser",
+  "title": "ChatterUser",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "companyName": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "photo": {
+      "type": "object",
+      "properties": {
+        "smallPhotoUrl": {
+          "type": "string"
+        },
+        "largePhotoUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "followersCount": {
+      "type": "integer"
+    },
+    "followingCounts": {
+      "type": "object",
+      "properties": {
+        "people": {
+          "type": "integer"
+        },
+        "records": {
+          "type": "integer"
+        },
+        "total": {
+          "type": "integer"
+        }
+      }
+    },
+    "groupCount": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

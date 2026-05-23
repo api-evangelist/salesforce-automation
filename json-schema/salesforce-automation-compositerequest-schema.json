@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompositeRequest",
+  "title": "CompositeRequest",
+  "type": "object",
+  "required": [
+    "compositeRequest"
+  ],
+  "properties": {
+    "allOrNone": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, all subrequests are rolled back on any failure"
+    },
+    "collateSubrequests": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, independent subrequests are executed in parallel"
+    },
+    "compositeRequest": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "$ref": "#/components/schemas/CompositeSubrequest"
+      }
+    }
+  }
+}

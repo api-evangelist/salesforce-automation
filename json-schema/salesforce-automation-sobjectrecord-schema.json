@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SObjectRecord",
+  "title": "SObjectRecord",
+  "type": "object",
+  "description": "A Salesforce SObject record with attributes metadata and dynamic fields",
+  "properties": {
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The API name of the SObject type"
+        },
+        "url": {
+          "type": "string",
+          "description": "The relative REST API URL for this record"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "Id": {
+      "type": "string",
+      "description": "The 18-character Salesforce record ID"
+    }
+  },
+  "additionalProperties": true
+}

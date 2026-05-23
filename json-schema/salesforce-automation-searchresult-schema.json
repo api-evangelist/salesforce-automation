@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchResult",
+  "title": "SearchResult",
+  "type": "object",
+  "description": "Results from a SOSL search",
+  "properties": {
+    "searchRecords": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SObjectRecord"
+      }
+    }
+  }
+}

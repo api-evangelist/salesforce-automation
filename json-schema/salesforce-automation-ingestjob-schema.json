@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IngestJob",
+  "title": "IngestJob",
+  "type": "object",
+  "description": "A Bulk API 2.0 ingest job for inserting, updating, upserting, or deleting records",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique job identifier"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "insert",
+        "update",
+        "upsert",
+        "delete",
+        "hardDelete"
+      ],
+      "description": "The DML operation for this ingest job"
+    },
+    "object": {
+      "type": "string",
+      "description": "The SObject type being processed"
+    },
+    "createdById": {
+      "type": "string",
+      "description": "The ID of the user who created the job"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "systemModstamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "UploadComplete",
+        "InProgress",
+        "JobComplete",
+        "Failed",
+        "Aborted"
+      ],
+      "description": "The current lifecycle state of the job"
+    },
+    "externalIdFieldName": {
+      "type": "string",
+      "description": "The external ID field used for upsert operations"
+    },
+    "concurrencyMode": {
+      "type": "string",
+      "enum": [
+        "Parallel",
+        "Serial"
+      ]
+    },
+    "contentType": {
+      "type": "string",
+      "enum": [
+        "CSV"
+      ]
+    },
+    "apiVersion": {
+      "type": "number"
+    },
+    "jobType": {
+      "type": "string",
+      "enum": [
+        "V2Ingest"
+      ]
+    },
+    "lineEnding": {
+      "type": "string",
+      "enum": [
+        "LF",
+        "CRLF"
+      ]
+    },
+    "columnDelimiter": {
+      "type": "string",
+      "enum": [
+        "COMMA",
+        "TAB",
+        "PIPE",
+        "SEMICOLON",
+        "CARET",
+        "BACKQUOTE"
+      ]
+    },
+    "numberRecordsProcessed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "numberRecordsFailed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retries": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "totalProcessingTime": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total processing time in milliseconds"
+    },
+    "errorMessage": {
+      "type": "string"
+    }
+  }
+}

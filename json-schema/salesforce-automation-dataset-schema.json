@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Dataset",
+  "title": "Dataset",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "description": "The developer name"
+    },
+    "label": {
+      "type": "string",
+      "description": "The display label"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "datasetType": {
+      "type": "string",
+      "description": "The type of dataset (default, live, trended)"
+    },
+    "currentVersionId": {
+      "type": "string"
+    },
+    "folder": {
+      "$ref": "#/components/schemas/FolderRef"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

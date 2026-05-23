@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphResponse",
+  "title": "GraphResponse",
+  "type": "object",
+  "properties": {
+    "graphs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "graphId": {
+            "type": "string"
+          },
+          "graphResponse": {
+            "$ref": "#/components/schemas/CompositeResponse"
+          },
+          "isSuccessful": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

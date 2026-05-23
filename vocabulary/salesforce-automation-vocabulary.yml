@@ -1,0 +1,21 @@
+name: Salesforce Automation Domain Vocabulary
+provider: Salesforce Automation
+providerId: salesforce-automation
+description: Tag-derived vocabulary for the Salesforce Automation API surface; sourced from openapi/ tags.
+terms:
+- term: Versions
+  description: API version information
+- term: SObjects
+  description: SObject metadata and describe operations
+- term: Records
+  description: CRUD operations on individual SObject records
+- term: SOQL
+  description: Salesforce Object Query Language queries
+- term: SOSL
+  description: Salesforce Object Search Language searches
+- term: Limits
+  description: Org API and resource limits
+- term: Approvals
+  description: Approval process management and submissions
+- term: Workflow
+  description: Workflow rules and process automation

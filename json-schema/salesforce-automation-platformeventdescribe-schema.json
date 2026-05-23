@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PlatformEventDescribe",
+  "title": "PlatformEventDescribe",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The API name of the Platform Event (e.g., Order_Event__e)"
+    },
+    "label": {
+      "type": "string"
+    },
+    "labelPlural": {
+      "type": "string"
+    },
+    "custom": {
+      "type": "boolean"
+    },
+    "keyPrefix": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "length": {
+            "type": "integer"
+          },
+          "nillable": {
+            "type": "boolean"
+          },
+          "custom": {
+            "type": "boolean"
+          },
+          "createable": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "createable": {
+      "type": "boolean",
+      "description": "Whether events of this type can be published via REST API"
+    },
+    "queryable": {
+      "type": "boolean",
+      "description": "Always false for Platform Events; events cannot be queried via SOQL"
+    }
+  }
+}

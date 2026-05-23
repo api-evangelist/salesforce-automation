@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActionInvocationRequest",
+  "title": "ActionInvocationRequest",
+  "type": "object",
+  "required": [
+    "inputs"
+  ],
+  "properties": {
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Input parameter name-value pairs for one invocation"
+      },
+      "description": "Array of input objects. Each item represents one invocation of the action."
+    }
+  }
+}

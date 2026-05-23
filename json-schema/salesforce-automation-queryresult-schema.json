@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryResult",
+  "title": "QueryResult",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "responseId": {
+      "type": "string"
+    },
+    "results": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "query": {
+      "type": "string"
+    },
+    "responseTime": {
+      "type": "number"
+    }
+  }
+}
