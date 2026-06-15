@@ -1,0 +1,397 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce REST API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Versions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available REST API versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/"
+          },
+          "docs": "Lists summary information about each Salesforce version currently available, including the version number, label, and a link to the version root."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SObjects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Describe all available SObjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects"
+          },
+          "docs": "Lists all available objects and their metadata for your org, including the object name, label, key prefix, custom status, and URLs for describe and row template. Equivalent to the DescribeGlobal SOAP API call."
+        },
+        {
+          "info": {
+            "name": "Describe an SObject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:sObjectName",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              }
+            ]
+          },
+          "docs": "Retrieves metadata about a specific SObject including its fields, child relationships, record type details, and URLs for various operations."
+        },
+        {
+          "info": {
+            "name": "Get full SObject describe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:sObjectName/describe",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete metadata for an SObject type including all fields, field-level properties (type, length, picklist values), relationships, record types, child relationships, and available layouts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:sObjectName",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new record of the specified SObject type. Returns the ID of the newly created record. Required fields must be included in the request body."
+        },
+        {
+          "info": {
+            "name": "Get a record by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:sObjectName/:recordId",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 15-character or 18-character Salesforce record ID"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field API names to return. Reduces payload size when you only need specific fields."
+              }
+            ]
+          },
+          "docs": "Retrieves a record by its 15-character or 18-character Salesforce ID. Use the optional fields parameter to specify which fields to return; otherwise all accessible fields are returned."
+        },
+        {
+          "info": {
+            "name": "Update a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:sObjectName/:recordId",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 15-character or 18-character Salesforce record ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified fields of an existing record. Only include fields you want to change. Fields not included in the request body are not modified."
+        },
+        {
+          "info": {
+            "name": "Delete a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:sObjectName/:recordId",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 15-character or 18-character Salesforce record ID"
+              }
+            ]
+          },
+          "docs": "Soft-deletes the record with the specified ID, moving it to the Recycle Bin. The record can be restored from the Recycle Bin within 15 days."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SOQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a SOQL query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/query",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The SOQL query string (e.g., SELECT Id, Name FROM Account WHERE Industry = 'Technology')"
+              }
+            ]
+          },
+          "docs": "Executes a SOQL query that returns records matching the query criteria. Results are returned in batches; use the nextRecordsUrl to retrieve additional batches if totalSize exceeds the batch size (default 2000 records)."
+        },
+        {
+          "info": {
+            "name": "Execute a SOQL query including deleted and archived records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/queryAll",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The SOQL query string"
+              }
+            ]
+          },
+          "docs": "Executes a SOQL query that includes soft-deleted records (IsDeleted = true) and archived records in the results. Otherwise identical to the /query endpoint."
+        },
+        {
+          "info": {
+            "name": "Retrieve additional query results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/query/:queryLocator",
+            "params": [
+              {
+                "name": "queryLocator",
+                "value": "",
+                "type": "path",
+                "description": "The query locator from the nextRecordsUrl of a previous query response"
+              }
+            ]
+          },
+          "docs": "Retrieves the next batch of records for a query that has more results than the batch size. Use the nextRecordsUrl value from the previous response."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SOSL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a SOSL search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The SOSL search string (e.g., FIND {Acme} IN ALL FIELDS RETURNING Account(Id, Name), Contact(Id, Name, Email))"
+              }
+            ]
+          },
+          "docs": "Executes a SOSL (Salesforce Object Search Language) search across multiple objects. SOSL uses the Salesforce search index to find records by text, unlike SOQL which uses the database directly."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Limits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get org limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/limits"
+          },
+          "docs": "Returns the remaining and maximum values for various API and resource limits for your Salesforce org, including daily API request limits, data storage, file storage, and more."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Approvals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List approval processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/process/approvals"
+          },
+          "docs": "Returns a list of all approval processes defined in your org, along with their associated metadata."
+        },
+        {
+          "info": {
+            "name": "Submit a record for approval",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/process/approvals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a record for approval, approves, or rejects an approval request. Supports specifying next approvers, comments, and skipping entry criteria."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Workflow",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List workflow rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/process/rules"
+          },
+          "docs": "Returns a list of all active workflow rules in the org. Workflow rules evaluate records when they are created or edited and trigger automated actions."
+        },
+        {
+          "info": {
+            "name": "Get workflow rules for an SObject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/process/rules/:sObjectName",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              }
+            ]
+          },
+          "docs": "Returns workflow rules defined for the specified SObject type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1290 @@
+{
+  "item": [
+    {
+      "id": "c62021bc-d6f3-4dea-b70b-77e73de09ded",
+      "name": "PushTopics",
+      "description": {
+        "content": "SOQL-based streaming event topics (deprecated; use Platform Events or CDC)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "733d4222-ac31-4d61-9c1b-614722c065b2",
+          "name": "List PushTopics",
+          "request": {
+            "name": "List PushTopics",
+            "description": {
+              "content": "Returns all PushTopic records in the org. PushTopics define SOQL queries that determine which record changes generate streaming events. Note: PushTopics are deprecated in favor of Platform Events and Change Data Capture.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c7934a1-fe3a-4123-97eb-d30249877961",
+              "name": "List of PushTopics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSize\": 5029,\n  \"done\": false,\n  \"records\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Query\": \"string\",\n      \"ApiVersion\": 8078.536917412132,\n      \"IsActive\": false,\n      \"NotifyForFields\": \"Referenced\",\n      \"NotifyForOperationCreate\": true,\n      \"NotifyForOperationUpdate\": false,\n      \"NotifyForOperationDelete\": false,\n      \"NotifyForOperationUndelete\": true,\n      \"Description\": \"string\",\n      \"CreatedDate\": \"1986-07-11T03:12:07.847Z\",\n      \"LastModifiedDate\": \"1948-01-09T13:06:44.020Z\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Query\": \"string\",\n      \"ApiVersion\": 2064.984299937417,\n      \"IsActive\": false,\n      \"NotifyForFields\": \"Select\",\n      \"NotifyForOperationCreate\": false,\n      \"NotifyForOperationUpdate\": true,\n      \"NotifyForOperationDelete\": true,\n      \"NotifyForOperationUndelete\": true,\n      \"Description\": \"string\",\n      \"CreatedDate\": \"1998-09-28T02:41:14.932Z\",\n      \"LastModifiedDate\": \"2015-06-07T02:48:14.842Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3135401-cdca-4148-9b51-048a3b734717",
+          "name": "Create a PushTopic",
+          "request": {
+            "name": "Create a PushTopic",
+            "description": {
+              "content": "Creates a new PushTopic that defines a SOQL query to monitor for record changes. When records matching the query change, events are delivered to subscribers on the /topic/{pushTopicName} CometD channel.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"<string>\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25f782ab-333a-4b38-b516-94badb934fac",
+              "name": "PushTopic created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"<string>\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "139edb11-c685-4eab-beb3-35d87e24da93",
+          "name": "Get a PushTopic",
+          "request": {
+            "name": "Get a PushTopic",
+            "description": {
+              "content": "Retrieves a specific PushTopic record by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic",
+                ":pushTopicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pushTopicId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f685b7f1-19e7-41e3-b715-46a5ac89abd4",
+              "name": "PushTopic record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic",
+                    ":pushTopicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pushTopicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Query\": \"string\",\n  \"ApiVersion\": 5035.248701443531,\n  \"IsActive\": false,\n  \"NotifyForFields\": \"Where\",\n  \"NotifyForOperationCreate\": true,\n  \"NotifyForOperationUpdate\": false,\n  \"NotifyForOperationDelete\": false,\n  \"NotifyForOperationUndelete\": false,\n  \"Description\": \"string\",\n  \"CreatedDate\": \"1983-06-13T09:57:48.761Z\",\n  \"LastModifiedDate\": \"2017-11-20T05:19:45.304Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9d05165-5a54-410c-a88a-920dab772e46",
+          "name": "Update a PushTopic",
+          "request": {
+            "name": "Update a PushTopic",
+            "description": {
+              "content": "Updates the SOQL query, notification settings, or other properties of an existing PushTopic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic",
+                ":pushTopicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pushTopicId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"<string>\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f36264e7-cb0e-4ad8-84b0-ec7103ab60c7",
+              "name": "PushTopic updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic",
+                    ":pushTopicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pushTopicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"<string>\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "941bbaee-0885-413a-8ea8-e20afbf932c0",
+          "name": "Delete a PushTopic",
+          "request": {
+            "name": "Delete a PushTopic",
+            "description": {
+              "content": "Deletes a PushTopic. Active subscribers will be disconnected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic",
+                ":pushTopicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pushTopicId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1ad6047-8087-4e40-8e95-5ec8b0e4ea12",
+              "name": "PushTopic deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic",
+                    ":pushTopicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pushTopicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "aa652093-398c-49d5-8ac6-51a0bd60688b",
+      "name": "Streaming Channels",
+      "description": {
+        "content": "Generic streaming channels for custom event delivery",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21818b5c-895f-49a3-bb3d-7a9afb282af9",
+          "name": "List Streaming Channels",
+          "request": {
+            "name": "List Streaming Channels",
+            "description": {
+              "content": "Returns all generic Streaming Channel records in the org. Streaming Channels allow publishing custom JSON events to subscribers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "StreamingChannel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee899214-4c64-4571-adf7-dcc3fda95d27",
+              "name": "List of Streaming Channels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "StreamingChannel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSize\": 2789,\n  \"done\": true,\n  \"records\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"IsDynamic\": false,\n      \"CreatedDate\": \"1970-07-17T13:31:54.754Z\",\n      \"LastModifiedDate\": \"1965-07-08T08:03:41.296Z\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"IsDynamic\": true,\n      \"CreatedDate\": \"2011-03-05T21:42:43.467Z\",\n      \"LastModifiedDate\": \"1976-07-30T18:36:58.957Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca84bc9b-fb09-42ff-a175-20c623a78272",
+          "name": "Create a Streaming Channel",
+          "request": {
+            "name": "Create a Streaming Channel",
+            "description": {
+              "content": "Creates a new generic Streaming Channel for publishing custom events. Events are delivered to subscribers on the /u/{channelName} CometD channel.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "StreamingChannel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6fdb4c3e-e150-40e9-9e57-1cf3db4dd2a8",
+              "name": "Streaming Channel created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "StreamingChannel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02f9e3b4-1589-4072-9002-7279f475b3c3",
+          "name": "Get a Streaming Channel",
+          "request": {
+            "name": "Get a Streaming Channel",
+            "description": {
+              "content": "Retrieves a specific Streaming Channel record by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "StreamingChannel",
+                ":channelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channelId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76d48661-b64d-4939-858b-5280e069935a",
+              "name": "Streaming Channel record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "StreamingChannel",
+                    ":channelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Description\": \"string\",\n  \"IsDynamic\": false,\n  \"CreatedDate\": \"1997-05-25T21:30:07.067Z\",\n  \"LastModifiedDate\": \"1946-10-17T20:37:03.496Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0e72730-4e69-409d-ae8c-1b2277206b02",
+          "name": "Update a Streaming Channel",
+          "request": {
+            "name": "Update a Streaming Channel",
+            "description": {
+              "content": "Updates the properties of an existing Streaming Channel.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "StreamingChannel",
+                ":channelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channelId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "087e33a3-4682-4f87-9e46-3bae994bc47b",
+              "name": "Streaming Channel updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "StreamingChannel",
+                    ":channelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "292a7e86-0e2d-4f18-b804-f7f84617e534",
+          "name": "Delete a Streaming Channel",
+          "request": {
+            "name": "Delete a Streaming Channel",
+            "description": {
+              "content": "Deletes a Streaming Channel. Active subscribers will be disconnected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "StreamingChannel",
+                ":channelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channelId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8327575-5a9d-43d9-be96-aa7dba802d19",
+              "name": "Streaming Channel deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "StreamingChannel",
+                    ":channelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51b98dd7-b031-4cb8-b45f-25e790e5976b",
+          "name": "Push an event to a Streaming Channel",
+          "request": {
+            "name": "Push an event to a Streaming Channel",
+            "description": {
+              "content": "Publishes a custom event to all subscribers of the specified Streaming Channel. The event payload is a JSON string up to 8 KB.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "StreamingChannel",
+                ":channelId",
+                "push"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channelId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pushEvents\": [\n    {\n      \"payload\": \"<string>\",\n      \"userIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"payload\": \"<string>\",\n      \"userIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1a4b798-edc8-4085-b38a-732dab963b43",
+              "name": "Push result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "StreamingChannel",
+                    ":channelId",
+                    "push"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pushEvents\": [\n    {\n      \"payload\": \"<string>\",\n      \"userIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"payload\": \"<string>\",\n      \"userIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fanoutCount\": 4705\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "33a19521-58bf-4b06-bd47-bc6e4e73a9e4",
+    "name": "Salesforce Streaming API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST endpoints for managing PushTopic and Streaming Channel resources used with the Salesforce Streaming API. The Streaming API uses the Bayeux protocol (CometD) over long polling or WebSocket connections to deliver real-time notifications. PushTopics define SOQL queries that trigger events when matching records change. Streaming Channels provide generic event delivery. Subscriptions are established via CometD handshake at /cometd/{apiVersion}.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

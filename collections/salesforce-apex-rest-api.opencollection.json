@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Apex REST API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Call a custom Apex REST GET endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/apexrest/:urlMapping",
+            "params": [
+              {
+                "name": "urlMapping",
+                "value": "",
+                "type": "path",
+                "description": "The URL mapping defined in the @RestResource annotation (e.g., '/Accounts/*', '/Cases/*')"
+              }
+            ]
+          },
+          "docs": "Invokes the @HttpGet annotated method on the Apex class mapped to this URL. The response format depends on the Apex implementation. URL path parameters beyond the base mapping are available to the Apex code via RestContext.request.requestURI."
+        },
+        {
+          "info": {
+            "name": "Call a custom Apex REST POST endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/apexrest/:urlMapping",
+            "params": [
+              {
+                "name": "urlMapping",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invokes the @HttpPost annotated method on the Apex class mapped to this URL. The request body is deserialized and passed to the method. Supports JSON and XML request bodies."
+        },
+        {
+          "info": {
+            "name": "Call a custom Apex REST PUT endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.salesforce.com/services/apexrest/:urlMapping",
+            "params": [
+              {
+                "name": "urlMapping",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invokes the @HttpPut annotated method on the Apex class mapped to this URL."
+        },
+        {
+          "info": {
+            "name": "Call a custom Apex REST PATCH endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/apexrest/:urlMapping",
+            "params": [
+              {
+                "name": "urlMapping",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invokes the @HttpPatch annotated method on the Apex class mapped to this URL."
+        },
+        {
+          "info": {
+            "name": "Call a custom Apex REST DELETE endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/apexrest/:urlMapping",
+            "params": [
+              {
+                "name": "urlMapping",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Invokes the @HttpDelete annotated method on the Apex class mapped to this URL."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

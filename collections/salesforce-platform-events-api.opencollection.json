@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Platform Events API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Describe a Platform Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:eventName",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Platform Event (e.g., Order_Event__e)"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a Platform Event type including its fields, label, and API name. Platform Event types have an __e suffix (e.g., Order_Event__e)."
+        },
+        {
+          "info": {
+            "name": "Publish a Platform Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:eventName",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Platform Event (e.g., Order_Event__e)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publishes a single Platform Event message. The event is immediately available to all subscribers. Event publication is not transactional with DML operations when called via REST API. Returns the event ID upon success."
+        },
+        {
+          "info": {
+            "name": "Get full Platform Event describe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:eventName/describe",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns complete metadata for a Platform Event type including all custom fields with their types, labels, and properties."
+        },
+        {
+          "info": {
+            "name": "Get the Apache Avro schema for a Platform Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/sobjects/:eventName/eventSchema",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payloadFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format for the schema"
+              }
+            ]
+          },
+          "docs": "Returns the Apache Avro schema for a Platform Event channel, used by the Pub/Sub API for event serialization and deserialization."
+        },
+        {
+          "info": {
+            "name": "Get event schema by schema ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/event/eventSchema/:schemaId",
+            "params": [
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "path",
+                "description": "The unique schema identifier"
+              }
+            ]
+          },
+          "docs": "Returns the Apache Avro schema for a specific schema ID. Schema IDs are returned in event messages and can be used to retrieve the schema for deserialization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1254 @@
+{
+  "item": [
+    {
+      "id": "cf335eb1-92cc-489e-89ca-2d261a541a60",
+      "name": "Feeds",
+      "description": {
+        "content": "Chatter feed elements (posts)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6322f887-2d52-41f2-8890-aeb503bda3f2",
+          "name": "Get the current user's news feed",
+          "request": {
+            "name": "Get the current user's news feed",
+            "description": {
+              "content": "Returns the current user's Chatter news feed, including posts from people and groups they follow, and records they own or follow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "feeds",
+                "news",
+                "me",
+                "feed-elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Page token for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a73481ec-d327-4c80-89c6-f0d82c2fcbad",
+              "name": "News feed elements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "feeds",
+                    "news",
+                    "me",
+                    "feed-elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentPageUrl\": \"string\",\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"messageSegments\": [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"actor\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"photo\": {\n          \"smallPhotoUrl\": \"string\",\n          \"largePhotoUrl\": \"string\"\n        }\n      },\n      \"createdDate\": \"1966-04-25T15:54:19.811Z\",\n      \"modifiedDate\": \"1952-07-18T20:35:03.427Z\",\n      \"capabilities\": {\n        \"key_0\": true,\n        \"key_1\": \"string\"\n      },\n      \"header\": {\n        \"text\": \"string\"\n      },\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"messageSegments\": [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"actor\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"photo\": {\n          \"smallPhotoUrl\": \"string\",\n          \"largePhotoUrl\": \"string\"\n        }\n      },\n      \"createdDate\": \"1948-08-11T11:14:24.489Z\",\n      \"modifiedDate\": \"1950-06-01T04:09:10.762Z\",\n      \"capabilities\": {\n        \"key_0\": 9007,\n        \"key_1\": 3269,\n        \"key_2\": \"string\"\n      },\n      \"header\": {\n        \"text\": \"string\"\n      },\n      \"url\": \"string\"\n    }\n  ],\n  \"nextPageUrl\": \"string\",\n  \"updatesUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad22f433-b785-4f03-8a74-a62e97111df0",
+          "name": "Post to the current user's feed",
+          "request": {
+            "name": "Post to the current user's feed",
+            "description": {
+              "content": "Creates a new Chatter feed post. Supports text posts, link posts, and posts with mentions. Rich text with inline images is supported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "feeds",
+                "news",
+                "me",
+                "feed-elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\",\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\",\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    ]\n  },\n  \"feedElementType\": \"<string>\",\n  \"subjectId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d72f3a7-3059-4a2e-8e34-510b98f45d4e",
+              "name": "Feed element created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "feeds",
+                    "news",
+                    "me",
+                    "feed-elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\",\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\",\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    ]\n  },\n  \"feedElementType\": \"<string>\",\n  \"subjectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"string\",\n        \"text\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"text\": \"string\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"actor\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\",\n    \"photo\": {\n      \"smallPhotoUrl\": \"string\",\n      \"largePhotoUrl\": \"string\"\n    }\n  },\n  \"createdDate\": \"1980-03-14T13:46:08.728Z\",\n  \"modifiedDate\": \"2014-09-09T08:39:46.091Z\",\n  \"capabilities\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"header\": {\n    \"text\": \"string\"\n  },\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24587854-c946-495d-8bc6-e87cf84dd2e2",
+          "name": "Get a feed element",
+          "request": {
+            "name": "Get a feed element",
+            "description": {
+              "content": "Returns a specific Chatter feed element (post) by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "feed-elements",
+                ":feedElementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11eeeef2-af6a-4fdb-ad7b-9e7ddcd32fd0",
+              "name": "Feed element",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"string\",\n        \"text\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"text\": \"string\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"actor\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\",\n    \"photo\": {\n      \"smallPhotoUrl\": \"string\",\n      \"largePhotoUrl\": \"string\"\n    }\n  },\n  \"createdDate\": \"1980-03-14T13:46:08.728Z\",\n  \"modifiedDate\": \"2014-09-09T08:39:46.091Z\",\n  \"capabilities\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"header\": {\n    \"text\": \"string\"\n  },\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b21044b-6d79-44b7-b137-43828ce14d20",
+          "name": "Delete a feed element",
+          "request": {
+            "name": "Delete a feed element",
+            "description": {
+              "content": "Deletes a Chatter feed element. Only the author or an admin can delete a post.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "feed-elements",
+                ":feedElementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a804fd0-4b3f-4c8e-a8d3-19dd86480e20",
+              "name": "Feed element deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6ba67e8f-67d4-4e98-81bb-1277c8dfebb4",
+      "name": "Comments",
+      "description": {
+        "content": "Comments on feed elements",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed0a9702-c085-476b-8f10-a8e5fd729152",
+          "name": "Get comments on a feed element",
+          "request": {
+            "name": "Get comments on a feed element",
+            "description": {
+              "content": "Returns comments on a Chatter feed element.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "feed-elements",
+                ":feedElementId",
+                "capabilities",
+                "comments",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1e5c023-b927-4653-925f-6fdfc6443baa",
+              "name": "Comments on the feed element",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comments\": [\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"messageSegments\": [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"photo\": {\n          \"smallPhotoUrl\": \"string\",\n          \"largePhotoUrl\": \"string\"\n        }\n      },\n      \"createdDate\": \"2024-03-28T12:52:11.803Z\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"messageSegments\": [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"photo\": {\n          \"smallPhotoUrl\": \"string\",\n          \"largePhotoUrl\": \"string\"\n        }\n      },\n      \"createdDate\": \"2024-06-15T13:12:03.174Z\",\n      \"url\": \"string\"\n    }\n  ],\n  \"currentPageUrl\": \"string\",\n  \"nextPageUrl\": \"string\",\n  \"total\": 3702\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebb58d13-7c82-4046-ae9f-40da287fb94b",
+          "name": "Post a comment on a feed element",
+          "request": {
+            "name": "Post a comment on a feed element",
+            "description": {
+              "content": "Adds a comment to a Chatter feed element.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "feed-elements",
+                ":feedElementId",
+                "capabilities",
+                "comments",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "88513be7-aa44-4e6c-bf7b-9e98573b3df0",
+              "name": "Comment created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"string\",\n        \"text\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"text\": \"string\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\",\n    \"photo\": {\n      \"smallPhotoUrl\": \"string\",\n      \"largePhotoUrl\": \"string\"\n    }\n  },\n  \"createdDate\": \"2008-03-26T03:47:18.889Z\",\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d3703a7f-217e-447c-b131-3a566997c55c",
+      "name": "Groups",
+      "description": {
+        "content": "Chatter groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2678e136-76cc-4dfa-a659-e46878048e9d",
+          "name": "List Chatter groups",
+          "request": {
+            "name": "List Chatter groups",
+            "description": {
+              "content": "Returns a list of Chatter groups the current user has access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search term to filter groups"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4aa14951-1524-43db-b908-d9324c1be5f5",
+              "name": "List of groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentPageUrl\": \"string\",\n  \"groups\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"memberCount\": 9840,\n      \"visibility\": \"PublicAccess\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"memberCount\": 910,\n      \"visibility\": \"PrivateAccess\",\n      \"url\": \"string\"\n    }\n  ],\n  \"nextPageUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a16924dd-5364-4f3e-887b-083fc13c9a54",
+      "name": "Users",
+      "description": {
+        "content": "Chatter user profiles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "025e5829-7689-4a7a-8c65-63847e2dbf42",
+          "name": "Get the current user's Chatter profile",
+          "request": {
+            "name": "Get the current user's Chatter profile",
+            "description": {
+              "content": "Returns the Chatter profile of the currently authenticated user, including their name, photo, title, and follower/following counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "users",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "edf70d2c-5648-468b-82b7-1adfaf2c9a3d",
+              "name": "Current user profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "users",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"string\",\n  \"title\": \"string\",\n  \"companyName\": \"string\",\n  \"photo\": {\n    \"smallPhotoUrl\": \"string\",\n    \"largePhotoUrl\": \"string\"\n  },\n  \"followersCount\": 6540,\n  \"followingCounts\": {\n    \"people\": 3185,\n    \"records\": 996,\n    \"total\": 3459\n  },\n  \"groupCount\": 673,\n  \"isActive\": true,\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1287f60f-a2ed-4be4-80ff-f243cd30a5c0",
+          "name": "Get a user's Chatter profile",
+          "request": {
+            "name": "Get a user's Chatter profile",
+            "description": {
+              "content": "Returns the Chatter profile of the specified user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "094e4871-80ad-4535-87d6-b562bc7d578c",
+              "name": "User profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"string\",\n  \"title\": \"string\",\n  \"companyName\": \"string\",\n  \"photo\": {\n    \"smallPhotoUrl\": \"string\",\n    \"largePhotoUrl\": \"string\"\n  },\n  \"followersCount\": 6540,\n  \"followingCounts\": {\n    \"people\": 3185,\n    \"records\": 996,\n    \"total\": 3459\n  },\n  \"groupCount\": 673,\n  \"isActive\": true,\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a959e75d-04f9-4cba-95b8-10af1c504e65",
+      "name": "Topics",
+      "description": {
+        "content": "Chatter topics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d43ed0d6-4a71-4e5c-9de9-a9b5b58997bb",
+          "name": "List topics",
+          "request": {
+            "name": "List topics",
+            "description": {
+              "content": "Returns a list of Chatter topics used to categorize and discover feed posts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "topics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search term to filter topics"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1aa65695-062c-41b3-b30f-ecaf4ff4c98e",
+              "name": "List of topics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"topics\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"talkingAbout\": 8541,\n      \"createdDate\": \"1966-03-10T07:49:19.173Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"talkingAbout\": 1798,\n      \"createdDate\": \"1964-03-23T01:41:18.905Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/connect",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api chatter_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fd5d60d3-b59b-4e7c-ad3b-3672ed35570d",
+    "name": "Salesforce Connect REST API (Chatter)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for integrating mobile apps, intranet sites, and third-party web applications with Salesforce social features. Provides access to Chatter feeds, groups, users, topics, and recommendations. Also provides access to Communities (Experience Cloud), CMS content, and collaboration features.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

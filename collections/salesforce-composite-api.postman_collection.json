@@ -1,0 +1,1082 @@
+{
+  "item": [
+    {
+      "id": "c6d538a2-b00e-4010-8daf-f911506de184",
+      "name": "Composite",
+      "description": {
+        "content": "Sequential subrequests with reference ID support",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b6bf458f-3e74-4dd3-bdb1-28e975521442",
+          "name": "Execute composite request",
+          "request": {
+            "name": "Execute composite request",
+            "description": {
+              "content": "Executes up to 25 subrequests in a single call. Subrequests are executed sequentially and can reference the results of prior subrequests using reference IDs (e.g., @{referenceId.id}). If allOrNone is true, all subrequests are rolled back if any fails. Each subrequest counts against API limits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compositeRequest\": [\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"body\": {\n        \"key_0\": 5757,\n        \"key_1\": \"string\"\n      },\n      \"httpHeaders\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    },\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"body\": {\n        \"key_0\": 7116\n      },\n      \"httpHeaders\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false,\n  \"collateSubrequests\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fa395438-fd5d-4f2e-86a1-94a9e0baf87e",
+              "name": "Composite response with results for each subrequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"compositeRequest\": [\n    {\n      \"method\": \"GET\",\n      \"url\": \"string\",\n      \"referenceId\": \"string\",\n      \"body\": {\n        \"key_0\": 6240,\n        \"key_1\": true,\n        \"key_2\": 3024\n      },\n      \"httpHeaders\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"method\": \"DELETE\",\n      \"url\": \"string\",\n      \"referenceId\": \"string\",\n      \"body\": {\n        \"key_0\": 7761.787889512798,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"httpHeaders\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      }\n    }\n  ],\n  \"allOrNone\": false,\n  \"collateSubrequests\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"compositeResponse\": [\n    {\n      \"body\": {},\n      \"httpHeaders\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"httpStatusCode\": 6533,\n      \"referenceId\": \"string\"\n    },\n    {\n      \"body\": {},\n      \"httpHeaders\": {\n        \"key_0\": \"string\"\n      },\n      \"httpStatusCode\": 6452,\n      \"referenceId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9cf6f6f6-7acf-4c70-bb68-c6c5b7ab0e99",
+      "name": "Batch",
+      "description": {
+        "content": "Independent subrequests in a single call",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c91ed02f-1737-464a-853b-42ecabe6941c",
+          "name": "Execute composite batch request",
+          "request": {
+            "name": "Execute composite batch request",
+            "description": {
+              "content": "Executes up to 25 independent subrequests in a single call. Unlike the composite resource, batch subrequests are independent and cannot reference each other. If haltOnError is true, processing stops after the first error. Each subrequest counts as one API call, but the batch itself counts as one call toward the limit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batchRequests\": [\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"richInput\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"richInput\": {}\n    }\n  ],\n  \"haltOnError\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2bbf86f-6f83-4133-8ff8-70b498ebe223",
+              "name": "Batch response with results for each subrequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batchRequests\": [\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"richInput\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"richInput\": {}\n    }\n  ],\n  \"haltOnError\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasErrors\": false,\n  \"results\": [\n    {\n      \"statusCode\": 250,\n      \"result\": {}\n    },\n    {\n      \"statusCode\": 3683,\n      \"result\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "766e78dc-e623-4426-9121-82d911640370",
+      "name": "Graph",
+      "description": {
+        "content": "Subrequests with dependency graphs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eaf47972-7043-49cf-a20d-5c39da39f623",
+          "name": "Execute composite graph request",
+          "request": {
+            "name": "Execute composite graph request",
+            "description": {
+              "content": "Executes a set of composite graphs, each containing subrequests that can reference each other through a dependency graph. Supports up to 500 subrequests across all graphs. Graphs are independent; subrequests within a graph execute in dependency order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "graph"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"key_0\": \"string\",\n            \"key_1\": 5965.823200788363\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"key_0\": 2871\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"key_0\": 7382\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e409a07-45c1-4d59-8123-b6437d216adc",
+              "name": "Graph response with results for each graph and subrequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"GET\",\n          \"url\": \"string\",\n          \"referenceId\": \"string\",\n          \"body\": {\n            \"key_0\": false,\n            \"key_1\": 2290.737605782881\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          }\n        },\n        {\n          \"method\": \"POST\",\n          \"url\": \"string\",\n          \"referenceId\": \"string\",\n          \"body\": {\n            \"key_0\": 9658.713450993493\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"PUT\",\n          \"url\": \"string\",\n          \"referenceId\": \"string\",\n          \"body\": {\n            \"key_0\": 4882\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"string\"\n          }\n        },\n        {\n          \"method\": \"GET\",\n          \"url\": \"string\",\n          \"referenceId\": \"string\",\n          \"body\": {\n            \"key_0\": 3745\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"string\",\n      \"graphResponse\": {\n        \"compositeResponse\": [\n          {\n            \"body\": {},\n            \"httpHeaders\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            },\n            \"httpStatusCode\": 4519,\n            \"referenceId\": \"string\"\n          },\n          {\n            \"body\": {},\n            \"httpHeaders\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\",\n              \"key_3\": \"string\"\n            },\n            \"httpStatusCode\": 1316,\n            \"referenceId\": \"string\"\n          }\n        ]\n      },\n      \"isSuccessful\": false\n    },\n    {\n      \"graphId\": \"string\",\n      \"graphResponse\": {\n        \"compositeResponse\": [\n          {\n            \"body\": {},\n            \"httpHeaders\": {\n              \"key_0\": \"string\"\n            },\n            \"httpStatusCode\": 6636,\n            \"referenceId\": \"string\"\n          },\n          {\n            \"body\": {},\n            \"httpHeaders\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            },\n            \"httpStatusCode\": 7640,\n            \"referenceId\": \"string\"\n          }\n        ]\n      },\n      \"isSuccessful\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7678ea26-b7d8-45c6-96c8-9bc90a31661d",
+      "name": "SObject Collections",
+      "description": {
+        "content": "Bulk CRUD operations on up to 200 records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3f8f82f-a659-45c3-af10-bfacbc125b20",
+          "name": "Create multiple records of the same type",
+          "request": {
+            "name": "Create multiple records of the same type",
+            "description": {
+              "content": "Creates up to 200 records of the same SObject type in a single request. More efficient than individual create calls for bulk record creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "sobjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "allOrNone",
+                  "value": "false",
+                  "description": "If true, all records in the request must succeed or all are rolled back"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd26130e-f653-4692-b285-1c89c0d55f64",
+              "name": "Array of save results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"success\": false,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"success\": true,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "183d2503-18f0-4202-b064-fdd88de80382",
+          "name": "Update multiple records",
+          "request": {
+            "name": "Update multiple records",
+            "description": {
+              "content": "Updates up to 200 records in a single request. Records can be of different SObject types. Each record must include the Id field and the attributes.type field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "sobjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "allOrNone",
+                  "value": "false",
+                  "description": "If true, all records in the request must succeed or all are rolled back"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    }\n  ],\n  \"allOrNone\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77d6b77c-7544-4a3f-b296-082da40a4394",
+              "name": "Array of save results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    }\n  ],\n  \"allOrNone\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"success\": false,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"success\": true,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a1f9628-5bfe-4408-97d5-376e2e6b11fd",
+          "name": "Delete multiple records",
+          "request": {
+            "name": "Delete multiple records",
+            "description": {
+              "content": "Deletes up to 200 records in a single request. Provide record IDs as a comma-separated query parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "sobjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of record IDs to delete (up to 200)"
+                },
+                {
+                  "disabled": false,
+                  "key": "allOrNone",
+                  "value": "false",
+                  "description": "If true, all records in the request must succeed or all are rolled back"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "092f49d3-4cd0-4e6a-96a9-1a3dca351785",
+              "name": "Array of delete results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"success\": false,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"success\": true,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "924f11be-2075-487c-b20c-0faa575961b1",
+          "name": "Get multiple records by IDs",
+          "request": {
+            "name": "Get multiple records by IDs",
+            "description": {
+              "content": "Retrieves multiple records of the same SObject type by their IDs in a single request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "sobjects",
+                ":sObjectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of field API names to return"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55146fe5-209b-4f99-88e1-c24566359e13",
+              "name": "Array of records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "sobjects",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key_0\": false,\n    \"key_1\": false\n  },\n  {\n    \"key_0\": 1950.4067117601965\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b3bec106-959c-41ae-a312-21ef4f4fbad4",
+      "name": "SObject Tree",
+      "description": {
+        "content": "Create nested parent-child records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5623382e-7125-4a41-9ee3-4eeadabf1861",
+          "name": "Create nested records in a single request",
+          "request": {
+            "name": "Create nested records in a single request",
+            "description": {
+              "content": "Creates a parent record and its related child records in a single request. Supports up to 200 records total with up to 5 levels of nesting. Useful for creating an Account with its Contacts and Opportunities in one call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "tree",
+                ":sObjectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The parent SObject type"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "752d87d0-1cb0-4611-bc67-99ed260c5f3b",
+              "name": "Records created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "tree",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The parent SObject type"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasErrors\": false,\n  \"results\": [\n    {\n      \"referenceId\": \"string\",\n      \"id\": \"string\"\n    },\n    {\n      \"referenceId\": \"string\",\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "810edcb9-d703-4996-809f-f86cde28ff45",
+    "name": "Salesforce Composite API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for executing multiple API requests in a single call, reducing the number of round trips to the server. Supports three composite resources: Composite (sequential subrequests with reference IDs), Composite Batch (independent subrequests), and Composite Graph (subrequests with dependency graphs). Subrequests can reference the output of prior subrequests using reference IDs.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

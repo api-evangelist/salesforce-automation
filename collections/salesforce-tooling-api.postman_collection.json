@@ -1,0 +1,1598 @@
+{
+  "item": [
+    {
+      "id": "bae7dc19-422e-4e97-8372-538cc95acb7d",
+      "name": "SObjects",
+      "description": {
+        "content": "Tooling API object metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a20030b-b8fd-4af3-b2e0-eed42a08eed7",
+          "name": "List all Tooling API objects",
+          "request": {
+            "name": "List all Tooling API objects",
+            "description": {
+              "content": "Returns a list of all objects available through the Tooling API, including metadata types like ApexClass, ApexTrigger, Flow, FlowDefinition, CustomField, and more.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e16877b-ea8e-4d0c-a05b-a1e086cfe86e",
+              "name": "List of Tooling API objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sobjects\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"queryable\": true,\n      \"createable\": false,\n      \"updateable\": true,\n      \"deletable\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"queryable\": false,\n      \"createable\": false,\n      \"updateable\": false,\n      \"deletable\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d09245b5-fa04-4ca3-941c-dc7cc2ac9186",
+          "name": "Describe a Tooling API object",
+          "request": {
+            "name": "Describe a Tooling API object",
+            "description": {
+              "content": "Returns metadata for a specific Tooling API object type including fields, relationships, and capabilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":sObjectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cde1ad3-4f28-48e3-87a6-b20c1a6c8b48",
+              "name": "Tooling object metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8798\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d375db5b-c5f5-40f6-9f95-e352fad1d39a",
+      "name": "Records",
+      "description": {
+        "content": "CRUD operations on Tooling API records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a487aa03-2bfd-4c8d-b9a3-6ba69fc38cd8",
+          "name": "Create a Tooling API record",
+          "request": {
+            "name": "Create a Tooling API record",
+            "description": {
+              "content": "Creates a new record of the specified Tooling API object type (e.g., ApexClass, ApexTrigger, TraceFlag).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":sObjectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 7416,\n  \"key_1\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35e95e07-2b2e-4e45-88d2-101b7294d86e",
+              "name": "Record created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 8798\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"success\": false,\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"errorCode\": \"string\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"message\": \"string\",\n      \"errorCode\": \"string\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4670ca61-3ab3-4edd-9eb8-a3f77937023d",
+          "name": "Get a Tooling API record",
+          "request": {
+            "name": "Get a Tooling API record",
+            "description": {
+              "content": "Retrieves a specific Tooling API record by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":sObjectName",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) The 18-character record ID"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d81ac00-e4d0-4318-bbb2-1e23713f844f",
+              "name": "Record data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":sObjectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) The 18-character record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8798\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c21ec4f-34f5-43b3-b2a4-0fe95228e0b7",
+          "name": "Update a Tooling API record",
+          "request": {
+            "name": "Update a Tooling API record",
+            "description": {
+              "content": "Updates fields on a specific Tooling API record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":sObjectName",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) The 18-character record ID"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 7416,\n  \"key_1\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19581927-f485-49ba-83e2-51eb8fafc5e7",
+              "name": "Record updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":sObjectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) The 18-character record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 8798\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02e48d1d-bf7d-4c0e-92c5-a17f1234410c",
+          "name": "Delete a Tooling API record",
+          "request": {
+            "name": "Delete a Tooling API record",
+            "description": {
+              "content": "Deletes a specific Tooling API record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":sObjectName",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) The 18-character record ID"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e24d3f54-ee4a-4e40-95fd-1347d17d78f2",
+              "name": "Record deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":sObjectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) The 18-character record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "82dd4127-99e8-438a-b9a4-d9c40bc05576",
+      "name": "Flows",
+      "description": {
+        "content": "Flow and FlowDefinition management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "512e969f-8ffa-49a2-a484-b0fb19e66c65",
+          "name": "Get a Flow definition",
+          "request": {
+            "name": "Get a Flow definition",
+            "description": {
+              "content": "Retrieves metadata for a specific Salesforce Flow, including its version, status, process type, and associated metadata. Flows are the primary automation mechanism in Salesforce.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "Flow",
+                ":flowId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowId",
+                  "description": "(Required) The 18-character ID of the Flow version record"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ac400ea-cb27-421b-ae53-fcdb53146b8b",
+              "name": "Flow record data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "Flow",
+                    ":flowId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowId",
+                      "description": "(Required) The 18-character ID of the Flow version record"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"DefinitionId\": \"string\",\n  \"MasterLabel\": \"string\",\n  \"Description\": \"string\",\n  \"ProcessType\": \"Survey\",\n  \"Status\": \"Active\",\n  \"VersionNumber\": 8631,\n  \"ApiVersion\": \"string\",\n  \"FullName\": \"string\",\n  \"Metadata\": {\n    \"key_0\": 2086.970285597527\n  },\n  \"CreatedDate\": \"1966-08-10T17:44:11.546Z\",\n  \"LastModifiedDate\": \"2009-11-25T03:41:09.130Z\",\n  \"CreatedById\": \"string\",\n  \"LastModifiedById\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79b37c15-b1c3-4601-a73d-1996cbcb43a7",
+          "name": "Get a Flow definition metadata",
+          "request": {
+            "name": "Get a Flow definition metadata",
+            "description": {
+              "content": "Retrieves the FlowDefinition record, which represents the overall Flow independent of version. Contains the active version number and the developer name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "FlowDefinition",
+                ":flowDefinitionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowDefinitionId",
+                  "description": "(Required) The 18-character ID of the FlowDefinition record"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28eb25c7-14c4-4093-852d-53acae51b668",
+              "name": "FlowDefinition record data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "FlowDefinition",
+                    ":flowDefinitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowDefinitionId",
+                      "description": "(Required) The 18-character ID of the FlowDefinition record"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"DeveloperName\": \"string\",\n  \"MasterLabel\": \"string\",\n  \"Description\": \"string\",\n  \"ActiveVersionId\": \"string\",\n  \"LatestVersionId\": \"string\",\n  \"Metadata\": {\n    \"activeVersionNumber\": 9324\n  },\n  \"NamespacePrefix\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "246a5fa1-237f-4f9b-8d95-6140e32808b9",
+          "name": "Activate or deactivate a Flow version",
+          "request": {
+            "name": "Activate or deactivate a Flow version",
+            "description": {
+              "content": "Updates the FlowDefinition to activate a specific flow version by setting the ActiveVersionNumber, or deactivates by setting it to null.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "FlowDefinition",
+                ":flowDefinitionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowDefinitionId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Metadata\": {\n    \"activeVersionNumber\": \"<integer,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c71a2323-4199-42e4-bc5b-7d361e601b20",
+              "name": "FlowDefinition updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "FlowDefinition",
+                    ":flowDefinitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowDefinitionId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Metadata\": {\n    \"activeVersionNumber\": \"<integer,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0059a88d-c87e-441e-9fc9-b489147cf643",
+      "name": "Query",
+      "description": {
+        "content": "SOQL queries against Tooling API objects",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "681a7d5b-8bf7-417c-97ed-d590c2ae685a",
+          "name": "Execute a Tooling API SOQL query",
+          "request": {
+            "name": "Execute a Tooling API SOQL query",
+            "description": {
+              "content": "Executes a SOQL query against Tooling API objects. Supports querying ApexClass, ApexTrigger, Flow, FlowDefinition, CustomField, ValidationRule, WorkflowRule, and other metadata types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The SOQL query string targeting Tooling API objects (e.g., SELECT Id, FullName, Metadata FROM Flow WHERE Status = 'Active')"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "656de405-9e89-4abf-806f-3a2463bf03a9",
+              "name": "Query results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSize\": 2993,\n  \"done\": false,\n  \"records\": [\n    {\n      \"key_0\": true\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3243\n    }\n  ],\n  \"nextRecordsUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "40cb30ee-2fd3-427c-9b3f-065122bb82f2",
+      "name": "Testing",
+      "description": {
+        "content": "Apex test execution",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3401b0ba-656e-4396-872a-51160a545723",
+          "name": "Run Apex tests asynchronously",
+          "request": {
+            "name": "Run Apex tests asynchronously",
+            "description": {
+              "content": "Submits a set of Apex test classes or methods for asynchronous execution. Returns a test run ID that can be used to check status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runTestsAsynchronous"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"suiteids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tests\": [\n    {\n      \"classId\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"classId\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"testLevel\": \"<string>\",\n  \"maxFailedTests\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3231ce8-9d10-416f-81c8-aee5cea7688f",
+              "name": "Test run submitted, returns the async test run ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runTestsAsynchronous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"classids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"suiteids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tests\": [\n    {\n      \"classId\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"classId\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"testLevel\": \"<string>\",\n  \"maxFailedTests\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e196ef1f-6af0-4086-89f1-a2abced224e8",
+          "name": "Run Apex tests synchronously",
+          "request": {
+            "name": "Run Apex tests synchronously",
+            "description": {
+              "content": "Runs a set of Apex test classes synchronously and returns the results immediately. Best for small test runs; use the asynchronous endpoint for larger test suites.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runTestsSynchronous"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tests\": [\n    {\n      \"className\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"className\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8fef16c-3a99-4e9e-8e33-668ee3d597a3",
+              "name": "Test results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runTestsSynchronous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tests\": [\n    {\n      \"className\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"className\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"successes\": [\n    {\n      \"id\": \"string\",\n      \"methodName\": \"string\",\n      \"name\": \"string\",\n      \"time\": 4120.327495948944\n    },\n    {\n      \"id\": \"string\",\n      \"methodName\": \"string\",\n      \"name\": \"string\",\n      \"time\": 1358.1092406982355\n    }\n  ],\n  \"failures\": [\n    {\n      \"id\": \"string\",\n      \"message\": \"string\",\n      \"methodName\": \"string\",\n      \"name\": \"string\",\n      \"stackTrace\": \"string\",\n      \"time\": 8357.77462067323,\n      \"type\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"message\": \"string\",\n      \"methodName\": \"string\",\n      \"name\": \"string\",\n      \"stackTrace\": \"string\",\n      \"time\": 5903.57189857441,\n      \"type\": \"string\"\n    }\n  ],\n  \"totalTime\": 5755.101116210659,\n  \"apexLogId\": \"string\",\n  \"numTestsRun\": 2533,\n  \"numFailures\": 8272\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "80ed4aae-907f-4a89-99da-1caab9c3ba95",
+      "name": "Development",
+      "description": {
+        "content": "Code completion and development tools",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "086e7076-f39b-4401-8a32-5e1e2912517b",
+          "name": "Get code completions",
+          "request": {
+            "name": "Get code completions",
+            "description": {
+              "content": "Returns code completion suggestions for Apex code in a specific class or trigger at a given position.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) The type of completion (apex)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca8eb01c-f729-462c-bbe0-16736fe610ff",
+              "name": "Code completion suggestions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"publicDeclarations\": {\n    \"key_0\": 2275.243691782267,\n    \"key_1\": 5663.405983545978,\n    \"key_2\": \"string\",\n    \"key_3\": 2954,\n    \"key_4\": 4775.064137116761\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/tooling",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c76cc73f-aa3d-4e57-8cda-591e46efe284",
+    "name": "Salesforce Tooling API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for building custom development tools for Salesforce applications. Provides access to metadata about Apex classes, triggers, Visualforce pages, flows, and other platform components. Supports CRUD operations and SOQL queries against Tooling API objects like ApexClass, ApexTrigger, Flow, FlowDefinition, and CustomField.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}
