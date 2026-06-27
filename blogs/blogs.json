@@ -2,14 +2,13 @@
   "repo": "salesforce-automation",
   "feeds": [
     {
-      "source": "https://developer.salesforce.com/blogs/feed",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://developer.salesforce.com/forums",
-      "error": "HTTPError"
+      "source": "https://developer.salesforce.com/blogs",
+      "feed_url": "",
+      "saved": 2,
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 12,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 16,
+  "fetched": "2026-06-27T13:07:50Z",
+  "agent_pulled": "2026-06-27"
 }

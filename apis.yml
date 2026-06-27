@@ -42,7 +42,7 @@ apis:
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_limits.htm
   - type: ChangeLog
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/rest_rns.htm
-  - type: Postman Collection
+  - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers/overview
   contact:
   - FN: Salesforce Developer Support
@@ -129,7 +129,7 @@ apis:
     url: openapi/salesforce-streaming-api-openapi.json
   - type: JSONLD
     url: json-ld/salesforce-automation-context.jsonld
-  - type: Quick Start
+  - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/quick_start.htm
   contact:
   - FN: Salesforce Developer Support
@@ -283,7 +283,7 @@ apis:
     url: json-ld/salesforce-automation-context.jsonld
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/graphql/guide/graphql-about.html
-  - type: Quick Start
+  - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/graphql/guide/get-started.html
   - type: APIReference
     url: https://developer.salesforce.com/docs/platform/graphql/guide/requests-and-responses.html
@@ -421,7 +421,7 @@ common:
   url: https://developer.salesforce.com
 - type: Website
   url: https://www.salesforce.com
-- type: Developer Portal
+- type: DeveloperPortal
   url: https://developer.salesforce.com
 - type: Documentation
   url: https://developer.salesforce.com/docs
@@ -441,7 +441,7 @@ common:
   url: https://www.salesforce.com/company/legal/agreements/
 - type: PrivacyPolicy
   url: https://www.salesforce.com/company/privacy/
-- type: SignUp
+- type: Signup
   url: https://developer.salesforce.com/signup
 - type: Login
   url: https://login.salesforce.com
@@ -460,9 +460,9 @@ common:
 - type: RateLimits
   url: >-
     https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm
-- type: API Versioning
+- type: Versioning
   url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_versions.htm
-- type: Postman Collection
+- type: PostmanCollection
   url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers/overview
 - type: Postman GitHub
   url: https://github.com/forcedotcom/postman-salesforce-apis
@@ -478,7 +478,7 @@ common:
   url: vocabulary/salesforce-automation-vocabulary.yaml
 - type: JSONStructure
   url: json-structure/salesforce-automation-flow-structure.json
-- type: Example
+- type: Examples
   url: examples/salesforce-automation-flow-example.json
   title: Flow Example
 - type: GitHubOrganization
