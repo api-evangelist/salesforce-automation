@@ -417,6 +417,10 @@ maintainers:
   email: kin@apievangelist.com
   url: https://apievangelist.com
 common:
+- type: Authentication
+  url: authentication/salesforce-automation-authentication.yml
+- type: OAuthScopes
+  url: scopes/salesforce-automation-scopes.yml
 - type: Portal
   url: https://developer.salesforce.com
 - type: Website
