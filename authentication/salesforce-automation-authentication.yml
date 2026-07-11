@@ -1,0 +1,48 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/salesforce-analytics-api-openapi.json, openapi/salesforce-apex-rest-api-openapi.json,
+  openapi/salesforce-bulk-api-openapi.json, openapi/salesforce-change-data-capture-api-openapi.json,
+  openapi/salesforce-composite-api-openapi.json, openapi/salesforce-connect-rest-api-openapi.json,
+  openapi/salesforce-invocable-actions-api-openapi.json, openapi/salesforce-platform-events-api-openapi.json,
+  openapi/salesforce-rest-api-openapi.json, openapi/salesforce-streaming-api-openapi.json, openapi/salesforce-tooling-api-openapi.json
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+    tokenUrl: https://login.salesforce.com/services/oauth2/token
+    scopes: 2
+  sources:
+  - openapi/salesforce-analytics-api-openapi.json
+  - openapi/salesforce-apex-rest-api-openapi.json
+  - openapi/salesforce-bulk-api-openapi.json
+  - openapi/salesforce-change-data-capture-api-openapi.json
+  - openapi/salesforce-composite-api-openapi.json
+  - openapi/salesforce-connect-rest-api-openapi.json
+  - openapi/salesforce-invocable-actions-api-openapi.json
+  - openapi/salesforce-platform-events-api-openapi.json
+  - openapi/salesforce-rest-api-openapi.json
+  - openapi/salesforce-streaming-api-openapi.json
+  - openapi/salesforce-tooling-api-openapi.json
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/salesforce-analytics-api-openapi.json
+  - openapi/salesforce-apex-rest-api-openapi.json
+  - openapi/salesforce-bulk-api-openapi.json
+  - openapi/salesforce-change-data-capture-api-openapi.json
+  - openapi/salesforce-composite-api-openapi.json
+  - openapi/salesforce-connect-rest-api-openapi.json
+  - openapi/salesforce-invocable-actions-api-openapi.json
+  - openapi/salesforce-platform-events-api-openapi.json
+  - openapi/salesforce-rest-api-openapi.json
+  - openapi/salesforce-streaming-api-openapi.json
+  - openapi/salesforce-tooling-api-openapi.json
