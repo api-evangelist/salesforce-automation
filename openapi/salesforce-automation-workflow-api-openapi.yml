@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Analytics (CRM Analytics) REST Actions Workflow API
+  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  version: '63.0'
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/support
+    email: developer@salesforce.com
+  license:
+    name: Salesforce API Terms of Use
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+  description: Salesforce production or developer instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Workflow
+  description: Workflow rules and process automation
+paths:
+  /process/rules:
+    get:
+      operationId: getWorkflowRules
+      summary: List workflow rules
+      description: Returns a list of all active workflow rules in the org. Workflow rules evaluate records when they are created or edited and trigger automated actions.
+      tags:
+      - Workflow
+      responses:
+        '200':
+          description: List of workflow rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rules:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/WorkflowRule'
+  /process/rules/{sObjectName}:
+    get:
+      operationId: getWorkflowRulesForObject
+      summary: Get workflow rules for an SObject
+      description: Returns workflow rules defined for the specified SObject type.
+      tags:
+      - Workflow
+      parameters:
+      - $ref: '#/components/parameters/sObjectName'
+      responses:
+        '200':
+          description: Workflow rules for the object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rules:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkflowRule'
+components:
+  parameters:
+    sObjectName:
+      name: sObjectName
+      in: path
+      required: true
+      description: The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)
+      schema:
+        type: string
+  schemas:
+    WorkflowRule:
+      type: object
+      properties:
+        actions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+        description:
+          type:
+          - string
+          - 'null'
+        id:
+          type: string
+        name:
+          type: string
+        namespacePrefix:
+          type:
+          - string
+          - 'null'
+        object:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your Salesforce data
+            wave_api: Access CRM Analytics REST API resources
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,298 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Analytics (CRM Analytics) REST Actions Query Jobs API
+  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  version: '63.0'
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/support
+    email: developer@salesforce.com
+  license:
+    name: Salesforce API Terms of Use
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+  description: Salesforce production or developer instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Query Jobs
+  description: Bulk data extraction via SOQL queries
+paths:
+  /jobs/query:
+    get:
+      operationId: getQueryJobs
+      summary: List all query jobs
+      description: Returns a list of all Bulk API 2.0 query jobs in the org.
+      tags:
+      - Query Jobs
+      parameters:
+      - name: jobType
+        in: query
+        description: Filter by job type
+        schema:
+          type: string
+          enum:
+          - V2Query
+          - Classic
+      - name: queryLocator
+        in: query
+        description: Locator for the next page of results
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of query jobs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryJobList'
+    post:
+      operationId: createQueryJob
+      summary: Create a query job
+      description: Creates a new Bulk API 2.0 query job. The SOQL query is provided in the request body and processing begins immediately. Use query for active records only or queryAll to include deleted and archived records.
+      tags:
+      - Query Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateQueryJobRequest'
+      responses:
+        '200':
+          description: Query job created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryJob'
+  /jobs/query/{jobId}:
+    get:
+      operationId: getQueryJob
+      summary: Get query job status
+      description: Returns the current status and details of a specific Bulk API 2.0 query job.
+      tags:
+      - Query Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Query job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryJob'
+    patch:
+      operationId: abortQueryJob
+      summary: Abort a query job
+      description: Aborts a query job that is in progress. Sets the job state to Aborted.
+      tags:
+      - Query Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - state
+              properties:
+                state:
+                  type: string
+                  enum:
+                  - Aborted
+      responses:
+        '200':
+          description: Job aborted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryJob'
+    delete:
+      operationId: deleteQueryJob
+      summary: Delete a query job
+      description: Deletes a query job. The job must be in a terminal state before deletion.
+      tags:
+      - Query Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      responses:
+        '204':
+          description: Job deleted
+  /jobs/query/{jobId}/results:
+    get:
+      operationId: getQueryJobResults
+      summary: Get query job results
+      description: Returns the results of a completed Bulk API 2.0 query job as CSV data. Use the locator and maxRecords parameters for pagination when results exceed a single response.
+      tags:
+      - Query Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      - name: locator
+        in: query
+        description: Locator for retrieving the next set of results from a previous response's Sforce-Locator header
+        schema:
+          type: string
+      - name: maxRecords
+        in: query
+        description: Maximum number of records to return per request
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Query results as CSV
+          headers:
+            Sforce-Locator:
+              description: The locator for the next set of results. Value is 'null' if no more results.
+              schema:
+                type: string
+            Sforce-NumberOfRecords:
+              description: The number of records in this response
+              schema:
+                type: integer
+          content:
+            text/csv:
+              schema:
+                type: string
+components:
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: The unique identifier of the Bulk API 2.0 job
+      schema:
+        type: string
+  schemas:
+    QueryJob:
+      type: object
+      properties:
+        id:
+          type: string
+        operation:
+          type: string
+          enum:
+          - query
+          - queryAll
+        object:
+          type: string
+        createdById:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        systemModstamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+          enum:
+          - UploadComplete
+          - InProgress
+          - JobComplete
+          - Failed
+          - Aborted
+        concurrencyMode:
+          type: string
+          enum:
+          - Parallel
+        contentType:
+          type: string
+          enum:
+          - CSV
+        apiVersion:
+          type: number
+        jobType:
+          type: string
+          enum:
+          - V2Query
+        lineEnding:
+          type: string
+          enum:
+          - LF
+          - CRLF
+        columnDelimiter:
+          type: string
+          enum:
+          - COMMA
+          - TAB
+          - PIPE
+          - SEMICOLON
+          - CARET
+          - BACKQUOTE
+        numberRecordsProcessed:
+          type: integer
+          minimum: 0
+        retries:
+          type: integer
+          minimum: 0
+        totalProcessingTime:
+          type: integer
+          minimum: 0
+    QueryJobList:
+      type: object
+      properties:
+        done:
+          type: boolean
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryJob'
+        nextRecordsUrl:
+          type: string
+    CreateQueryJobRequest:
+      type: object
+      required:
+      - operation
+      - query
+      properties:
+        operation:
+          type: string
+          enum:
+          - query
+          - queryAll
+          description: Use query for active records or queryAll to include deleted/archived records
+        query:
+          type: string
+          description: The SOQL query to execute
+        columnDelimiter:
+          type: string
+          enum:
+          - COMMA
+          - TAB
+          - PIPE
+          - SEMICOLON
+          - CARET
+          - BACKQUOTE
+          default: COMMA
+        contentType:
+          type: string
+          enum:
+          - CSV
+          default: CSV
+        lineEnding:
+          type: string
+          enum:
+          - LF
+          - CRLF
+          default: LF
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your Salesforce data
+            wave_api: Access CRM Analytics REST API resources
+    bearerAuth:
+      type: http
+      scheme: bearer

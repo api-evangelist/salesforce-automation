@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Analytics (CRM Analytics) REST Actions Testing API
+  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  version: '63.0'
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/support
+    email: developer@salesforce.com
+  license:
+    name: Salesforce API Terms of Use
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+  description: Salesforce production or developer instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Testing
+  description: Apex test execution
+paths:
+  /runTestsAsynchronous:
+    post:
+      operationId: runTestsAsync
+      summary: Run Apex tests asynchronously
+      description: Submits a set of Apex test classes or methods for asynchronous execution. Returns a test run ID that can be used to check status.
+      tags:
+      - Testing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                classids:
+                  type: array
+                  items:
+                    type: string
+                  description: IDs of the Apex test classes to run
+                suiteids:
+                  type: array
+                  items:
+                    type: string
+                  description: IDs of test suites to run
+                tests:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      classId:
+                        type: string
+                      testMethods:
+                        type: array
+                        items:
+                          type: string
+                testLevel:
+                  type: string
+                  enum:
+                  - RunSpecifiedTests
+                  - RunLocalTests
+                  - RunAllTestsInOrg
+                  description: The scope of tests to run
+                maxFailedTests:
+                  type: integer
+                  description: Maximum number of test failures before aborting the test run
+      responses:
+        '200':
+          description: Test run submitted, returns the async test run ID
+          content:
+            application/json:
+              schema:
+                type: string
+                description: The ID of the async test run
+  /runTestsSynchronous:
+    post:
+      operationId: runTestsSync
+      summary: Run Apex tests synchronously
+      description: Runs a set of Apex test classes synchronously and returns the results immediately. Best for small test runs; use the asynchronous endpoint for larger test suites.
+      tags:
+      - Testing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tests:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      className:
+                        type: string
+                      testMethods:
+                        type: array
+                        items:
+                          type: string
+      responses:
+        '200':
+          description: Test results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestRunResult'
+components:
+  schemas:
+    TestRunResult:
+      type: object
+      properties:
+        successes:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              methodName:
+                type: string
+              name:
+                type: string
+              time:
+                type: number
+        failures:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              message:
+                type: string
+              methodName:
+                type: string
+              name:
+                type: string
+              stackTrace:
+                type: string
+              time:
+                type: number
+              type:
+                type: string
+        totalTime:
+          type: number
+        apexLogId:
+          type: string
+        numTestsRun:
+          type: integer
+        numFailures:
+          type: integer
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your Salesforce data
+            wave_api: Access CRM Analytics REST API resources
+    bearerAuth:
+      type: http
+      scheme: bearer

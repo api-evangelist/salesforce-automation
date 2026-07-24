@@ -1,0 +1,125 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Analytics (CRM Analytics) REST Actions Composite API
+  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  version: '63.0'
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/support
+    email: developer@salesforce.com
+  license:
+    name: Salesforce API Terms of Use
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+  description: Salesforce production or developer instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Composite
+  description: Sequential subrequests with reference ID support
+paths:
+  /composite:
+    post:
+      operationId: executeComposite
+      summary: Execute composite request
+      description: Executes up to 25 subrequests in a single call. Subrequests are executed sequentially and can reference the results of prior subrequests using reference IDs (e.g., @{referenceId.id}). If allOrNone is true, all subrequests are rolled back if any fails. Each subrequest counts against API limits.
+      tags:
+      - Composite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompositeRequest'
+      responses:
+        '200':
+          description: Composite response with results for each subrequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositeResponse'
+components:
+  schemas:
+    CompositeResponse:
+      type: object
+      properties:
+        compositeResponse:
+          type: array
+          items:
+            type: object
+            properties:
+              body:
+                description: The response body
+              httpHeaders:
+                type: object
+                additionalProperties:
+                  type: string
+              httpStatusCode:
+                type: integer
+              referenceId:
+                type: string
+    CompositeSubrequest:
+      type: object
+      required:
+      - method
+      - url
+      - referenceId
+      properties:
+        body:
+          description: The request body for POST/PATCH subrequests
+          additionalProperties: true
+        httpHeaders:
+          type: object
+          additionalProperties:
+            type: string
+        method:
+          type: string
+          enum:
+          - GET
+          - POST
+          - PATCH
+          - PUT
+          - DELETE
+        referenceId:
+          type: string
+          description: Unique identifier for this subrequest, used to reference its output in subsequent subrequests
+        url:
+          type: string
+          description: The relative URL of the API endpoint for this subrequest
+    CompositeRequest:
+      type: object
+      required:
+      - compositeRequest
+      properties:
+        allOrNone:
+          type: boolean
+          default: false
+          description: If true, all subrequests are rolled back on any failure
+        collateSubrequests:
+          type: boolean
+          default: false
+          description: If true, independent subrequests are executed in parallel
+        compositeRequest:
+          type: array
+          maxItems: 25
+          items:
+            $ref: '#/components/schemas/CompositeSubrequest'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your Salesforce data
+            wave_api: Access CRM Analytics REST API resources
+    bearerAuth:
+      type: http
+      scheme: bearer

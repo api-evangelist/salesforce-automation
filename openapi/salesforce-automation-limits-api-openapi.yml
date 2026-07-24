@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Analytics (CRM Analytics) REST Actions Limits API
+  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  version: '63.0'
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/support
+    email: developer@salesforce.com
+  license:
+    name: Salesforce API Terms of Use
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+  description: Salesforce production or developer instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Limits
+  description: Org API and resource limits
+paths:
+  /limits:
+    get:
+      operationId: getLimits
+      summary: Get org limits
+      description: Returns the remaining and maximum values for various API and resource limits for your Salesforce org, including daily API request limits, data storage, file storage, and more.
+      tags:
+      - Limits
+      responses:
+        '200':
+          description: Org limits
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    Max:
+                      type: integer
+                      description: The maximum allowed value
+                    Remaining:
+                      type: integer
+                      description: The remaining available value
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your Salesforce data
+            wave_api: Access CRM Analytics REST API resources
+    bearerAuth:
+      type: http
+      scheme: bearer

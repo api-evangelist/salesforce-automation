@@ -1,0 +1,301 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Analytics (CRM Analytics) REST Actions SObjects API
+  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  version: '63.0'
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/support
+    email: developer@salesforce.com
+  license:
+    name: Salesforce API Terms of Use
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+  description: Salesforce production or developer instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: SObjects
+  description: SObject metadata and describe operations
+paths:
+  /sobjects:
+    get:
+      operationId: describeGlobal
+      summary: Describe all available SObjects
+      description: Lists all available objects and their metadata for your org, including the object name, label, key prefix, custom status, and URLs for describe and row template. Equivalent to the DescribeGlobal SOAP API call.
+      tags:
+      - SObjects
+      responses:
+        '200':
+          description: Global describe result with list of all SObjects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeGlobalResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sobjects/{sObjectName}:
+    get:
+      operationId: describeSObject
+      summary: Describe an SObject
+      description: Retrieves metadata about a specific SObject including its fields, child relationships, record type details, and URLs for various operations.
+      tags:
+      - SObjects
+      parameters:
+      - $ref: '#/components/parameters/sObjectName'
+      responses:
+        '200':
+          description: SObject describe result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SObjectDescribeResult'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /sobjects/{sObjectName}/describe:
+    get:
+      operationId: describeSObjectFull
+      summary: Get full SObject describe
+      description: Retrieves the complete metadata for an SObject type including all fields, field-level properties (type, length, picklist values), relationships, record types, child relationships, and available layouts.
+      tags:
+      - SObjects
+      parameters:
+      - $ref: '#/components/parameters/sObjectName'
+      responses:
+        '200':
+          description: Full SObject describe result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SObjectDescribeResult'
+components:
+  schemas:
+    SObjectDescribeResult:
+      type: object
+      description: Full metadata for an SObject type including fields, relationships, and capabilities
+      properties:
+        name:
+          type: string
+          description: API name of the SObject type
+        label:
+          type: string
+        labelPlural:
+          type: string
+        keyPrefix:
+          type:
+          - string
+          - 'null'
+        custom:
+          type: boolean
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldDescribe'
+        childRelationships:
+          type: array
+          items:
+            type: object
+            properties:
+              childSObject:
+                type: string
+              field:
+                type: string
+              relationshipName:
+                type:
+                - string
+                - 'null'
+        recordTypeInfos:
+          type: array
+          items:
+            type: object
+            properties:
+              active:
+                type: boolean
+              defaultRecordTypeMapping:
+                type: boolean
+              name:
+                type: string
+              recordTypeId:
+                type: string
+    DescribeGlobalResult:
+      type: object
+      properties:
+        encoding:
+          type: string
+          description: The character encoding of the org
+        maxBatchSize:
+          type: integer
+          description: Maximum number of records in a batch
+        sobjects:
+          type: array
+          items:
+            type: object
+            properties:
+              activateable:
+                type: boolean
+              createable:
+                type: boolean
+                description: Whether records of this type can be created
+              custom:
+                type: boolean
+                description: Whether this is a custom object
+              customSetting:
+                type: boolean
+                description: Whether this is a custom setting
+              deletable:
+                type: boolean
+                description: Whether records of this type can be deleted
+              deprecatedAndHidden:
+                type: boolean
+              feedEnabled:
+                type: boolean
+              hasSubtypes:
+                type: boolean
+              isSubtype:
+                type: boolean
+              keyPrefix:
+                type:
+                - string
+                - 'null'
+                description: The three-character prefix of the record ID for this object type
+              label:
+                type: string
+                description: The display label for this object type
+              labelPlural:
+                type: string
+                description: The plural display label for this object type
+              layoutable:
+                type: boolean
+              mergeable:
+                type: boolean
+              mruEnabled:
+                type: boolean
+              name:
+                type: string
+                description: The API name of the SObject type
+              queryable:
+                type: boolean
+                description: Whether this object can be queried with SOQL
+              replicateable:
+                type: boolean
+              retrieveable:
+                type: boolean
+              searchable:
+                type: boolean
+                description: Whether this object can be searched with SOSL
+              triggerable:
+                type: boolean
+                description: Whether Apex triggers can be defined for this object
+              undeletable:
+                type: boolean
+              updateable:
+                type: boolean
+              urls:
+                type: object
+                additionalProperties:
+                  type: string
+    FieldDescribe:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The API name of the field
+        label:
+          type: string
+          description: The display label
+        type:
+          type: string
+          description: The Salesforce field type (string, boolean, int, double, date, datetime, id, reference, picklist, textarea, etc.)
+        length:
+          type: integer
+          description: Maximum length for string fields
+        nillable:
+          type: boolean
+          description: Whether the field can be null
+        createable:
+          type: boolean
+        updateable:
+          type: boolean
+        custom:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              label:
+                type: string
+              active:
+                type: boolean
+              defaultValue:
+                type: boolean
+        referenceTo:
+          type: array
+          items:
+            type: string
+          description: For reference fields, the SObject types this field can point to
+        relationshipName:
+          type:
+          - string
+          - 'null'
+          description: The name of the relationship for reference fields
+    ErrorResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/ApiError'
+    ApiError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error
+        errorCode:
+          type: string
+          description: The Salesforce error code (e.g., INVALID_FIELD, MALFORMED_QUERY, NOT_FOUND)
+        fields:
+          type: array
+          items:
+            type: string
+          description: Fields that caused the error, if applicable
+  responses:
+    Unauthorized:
+      description: Authentication failed. The session has expired, the token is invalid, or required scopes are missing.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found. The record may have been deleted or the ID may be invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    sObjectName:
+      name: sObjectName
+      in: path
+      required: true
+      description: The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your Salesforce data
+            wave_api: Access CRM Analytics REST API resources
+    bearerAuth:
+      type: http
+      scheme: bearer
