@@ -1,0 +1,1098 @@
+{
+  "info": {
+    "_postman_id": "8de8f14b-ebf6-44e7-8998-0dcfc6b2cd37",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Ingest Jobs API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:27.000Z",
+    "updatedAt": "2026-07-28T02:50:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8de8f14b-ebf6-44e7-8998-0dcfc6b2cd37"
+  },
+  "item": [
+    {
+      "name": "jobs",
+      "item": [
+        {
+          "name": "ingest",
+          "item": [
+            {
+              "name": "{jobId}",
+              "item": [
+                {
+                  "name": "batches",
+                  "item": [
+                    {
+                      "name": "Upload data for an ingest job",
+                      "id": "0b80540e-fb4e-41a8-bbf6-3bb7e958dca5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/csv"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/ingest/:jobId/batches",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "ingest",
+                            ":jobId",
+                            "batches"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3e487353-de19-4c68-a11b-d53157d50de6",
+                              "key": "jobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                            }
+                          ]
+                        },
+                        "description": "Uploads CSV data for a Bulk API 2.0 ingest job. The job must be in the Open state. You can upload data in multiple requests, each up to 150 MB. The first row must be the CSV header with field API names."
+                      },
+                      "response": [
+                        {
+                          "id": "6bbd1c74-8336-4b58-bd2e-79ded823078d",
+                          "name": "Data uploaded successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "text/csv"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "<string>"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/jobs/ingest/:jobId/batches",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "jobs",
+                                "ingest",
+                                ":jobId",
+                                "batches"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:50:28.000Z",
+                          "updatedAt": "2026-07-28T02:50:28.000Z",
+                          "uid": "35240-6bbd1c74-8336-4b58-bd2e-79ded823078d"
+                        },
+                        {
+                          "id": "0d7b79b3-674f-4024-90e1-20abe68493f7",
+                          "name": "Invalid request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "text/csv"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "<string>"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/jobs/ingest/:jobId/batches",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "jobs",
+                                "ingest",
+                                ":jobId",
+                                "batches"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\"\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T02:50:28.000Z",
+                          "updatedAt": "2026-07-28T02:50:28.000Z",
+                          "uid": "35240-0d7b79b3-674f-4024-90e1-20abe68493f7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:50:28.000Z",
+                      "updatedAt": "2026-07-28T02:50:28.000Z",
+                      "uid": "35240-0b80540e-fb4e-41a8-bbf6-3bb7e958dca5"
+                    }
+                  ],
+                  "id": "72309165-ecbd-47b4-a55d-73d46f543ee2",
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-72309165-ecbd-47b4-a55d-73d46f543ee2"
+                },
+                {
+                  "name": "successfulResults",
+                  "item": [
+                    {
+                      "name": "Get successful results for an ingest job",
+                      "id": "ba298ec2-7ef8-4815-842d-93eee2922ed2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/csv"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/ingest/:jobId/successfulResults",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "ingest",
+                            ":jobId",
+                            "successfulResults"
+                          ],
+                          "variable": [
+                            {
+                              "id": "02740f47-934c-40f4-ba2f-c976b0326054",
+                              "key": "jobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                            }
+                          ]
+                        },
+                        "description": "Returns CSV data containing successfully processed records for a completed ingest job. Each row includes the sf__Id (the Salesforce record ID) and sf__Created (whether the record was created or updated) columns, followed by the original record data."
+                      },
+                      "response": [
+                        {
+                          "id": "51a6ebbc-231b-4d13-be5e-651d88dee215",
+                          "name": "CSV of successfully processed records",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/csv"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/jobs/ingest/:jobId/successfulResults",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "jobs",
+                                "ingest",
+                                ":jobId",
+                                "successfulResults"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/csv"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T02:50:28.000Z",
+                          "updatedAt": "2026-07-28T02:50:28.000Z",
+                          "uid": "35240-51a6ebbc-231b-4d13-be5e-651d88dee215"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:50:28.000Z",
+                      "updatedAt": "2026-07-28T02:50:28.000Z",
+                      "uid": "35240-ba298ec2-7ef8-4815-842d-93eee2922ed2"
+                    }
+                  ],
+                  "id": "23c80b22-1070-4196-bd8e-5dd86751ea52",
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-23c80b22-1070-4196-bd8e-5dd86751ea52"
+                },
+                {
+                  "name": "failedResults",
+                  "item": [
+                    {
+                      "name": "Get failed results for an ingest job",
+                      "id": "4418b3e4-897c-43c9-b3c9-218e93e3059d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/csv"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/ingest/:jobId/failedResults",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "ingest",
+                            ":jobId",
+                            "failedResults"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7d15f5a0-c59e-4276-a54f-ce063504b163",
+                              "key": "jobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                            }
+                          ]
+                        },
+                        "description": "Returns CSV data containing records that failed to process. Each row includes sf__Error (the error message) and sf__Id columns, followed by the original record data."
+                      },
+                      "response": [
+                        {
+                          "id": "8cbb193c-4286-482d-ba7e-d7fb558f9ae6",
+                          "name": "CSV of failed records",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/csv"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/jobs/ingest/:jobId/failedResults",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "jobs",
+                                "ingest",
+                                ":jobId",
+                                "failedResults"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/csv"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T02:50:28.000Z",
+                          "updatedAt": "2026-07-28T02:50:28.000Z",
+                          "uid": "35240-8cbb193c-4286-482d-ba7e-d7fb558f9ae6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:50:28.000Z",
+                      "updatedAt": "2026-07-28T02:50:28.000Z",
+                      "uid": "35240-4418b3e4-897c-43c9-b3c9-218e93e3059d"
+                    }
+                  ],
+                  "id": "d32215cc-a98d-4a13-a477-f87bec7335b3",
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-d32215cc-a98d-4a13-a477-f87bec7335b3"
+                },
+                {
+                  "name": "unprocessedrecords",
+                  "item": [
+                    {
+                      "name": "Get unprocessed records for an ingest job",
+                      "id": "6292bc9e-8060-4a85-859d-499492777bb4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/csv"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/ingest/:jobId/unprocessedrecords",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "ingest",
+                            ":jobId",
+                            "unprocessedrecords"
+                          ],
+                          "variable": [
+                            {
+                              "id": "553931bc-91d8-4a61-ba13-11db20557281",
+                              "key": "jobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                            }
+                          ]
+                        },
+                        "description": "Returns CSV data containing records that were not processed, typically because the job was aborted before all records were processed."
+                      },
+                      "response": [
+                        {
+                          "id": "5b5f9ed5-ee5d-4422-8e6d-dfa924bd1a46",
+                          "name": "CSV of unprocessed records",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/csv"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/jobs/ingest/:jobId/unprocessedrecords",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "jobs",
+                                "ingest",
+                                ":jobId",
+                                "unprocessedrecords"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/csv"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T02:50:28.000Z",
+                          "updatedAt": "2026-07-28T02:50:28.000Z",
+                          "uid": "35240-5b5f9ed5-ee5d-4422-8e6d-dfa924bd1a46"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:50:28.000Z",
+                      "updatedAt": "2026-07-28T02:50:28.000Z",
+                      "uid": "35240-6292bc9e-8060-4a85-859d-499492777bb4"
+                    }
+                  ],
+                  "id": "108c4362-b53a-4950-84bd-089d95749635",
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-108c4362-b53a-4950-84bd-089d95749635"
+                },
+                {
+                  "name": "Get ingest job status",
+                  "id": "7f56a93e-5939-49d2-9c43-2b4f6cd02171",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/ingest/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "ingest",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "255f0c9e-fa7d-4920-a0b7-ac17be2d8bea",
+                          "key": "jobId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                        }
+                      ]
+                    },
+                    "description": "Returns the current status and details of a specific Bulk API 2.0 ingest job, including the number of records processed and failed."
+                  },
+                  "response": [
+                    {
+                      "id": "4caec05b-bfca-4125-bc65-1ec7f0b0490f",
+                      "name": "Ingest job details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/ingest/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "ingest",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"operation\": \"delete\",\n  \"object\": \"<string>\",\n  \"createdById\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"systemModstamp\": \"<dateTime>\",\n  \"state\": \"InProgress\",\n  \"externalIdFieldName\": \"<string>\",\n  \"concurrencyMode\": \"Serial\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": \"<number>\",\n  \"jobType\": \"V2Ingest\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"PIPE\",\n  \"numberRecordsProcessed\": \"<integer>\",\n  \"numberRecordsFailed\": \"<integer>\",\n  \"retries\": \"<integer>\",\n  \"totalProcessingTime\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:50:28.000Z",
+                      "updatedAt": "2026-07-28T02:50:28.000Z",
+                      "uid": "35240-4caec05b-bfca-4125-bc65-1ec7f0b0490f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-7f56a93e-5939-49d2-9c43-2b4f6cd02171"
+                },
+                {
+                  "name": "Close or abort an ingest job",
+                  "id": "06e773ae-4363-4a33-83e7-135e9c050da0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"state\": \"Aborted\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/ingest/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "ingest",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5ad3cbca-06f3-4dd6-af4b-9339c7adfe30",
+                          "key": "jobId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                        }
+                      ]
+                    },
+                    "description": "Updates the state of an ingest job. Set state to UploadComplete to indicate all data has been uploaded and processing should begin. Set state to Aborted to cancel the job."
+                  },
+                  "response": [
+                    {
+                      "id": "627de3e6-6612-4049-9b51-43d4bff0acc3",
+                      "name": "Job updated",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"state\": \"Aborted\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/ingest/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "ingest",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"operation\": \"delete\",\n  \"object\": \"<string>\",\n  \"createdById\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"systemModstamp\": \"<dateTime>\",\n  \"state\": \"InProgress\",\n  \"externalIdFieldName\": \"<string>\",\n  \"concurrencyMode\": \"Serial\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": \"<number>\",\n  \"jobType\": \"V2Ingest\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"PIPE\",\n  \"numberRecordsProcessed\": \"<integer>\",\n  \"numberRecordsFailed\": \"<integer>\",\n  \"retries\": \"<integer>\",\n  \"totalProcessingTime\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:50:28.000Z",
+                      "updatedAt": "2026-07-28T02:50:28.000Z",
+                      "uid": "35240-627de3e6-6612-4049-9b51-43d4bff0acc3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-06e773ae-4363-4a33-83e7-135e9c050da0"
+                },
+                {
+                  "name": "Delete an ingest job",
+                  "id": "754828a4-b844-4996-aec2-de7446cf916e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/ingest/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "ingest",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3c94e993-7af6-49de-829c-46832ad54875",
+                          "key": "jobId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                        }
+                      ]
+                    },
+                    "description": "Deletes an ingest job. The job must be in a terminal state (JobComplete, Failed, or Aborted) before it can be deleted."
+                  },
+                  "response": [
+                    {
+                      "id": "5993e247-7a97-4b2d-980d-0d052c5a2015",
+                      "name": "Job deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/ingest/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "ingest",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:28.000Z",
+                      "updatedAt": "2026-07-28T02:50:28.000Z",
+                      "uid": "35240-5993e247-7a97-4b2d-980d-0d052c5a2015"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-754828a4-b844-4996-aec2-de7446cf916e"
+                }
+              ],
+              "id": "e0d8b20c-6ca7-404a-b3fc-be93c0d6cf8d",
+              "createdAt": "2026-07-28T02:50:28.000Z",
+              "updatedAt": "2026-07-28T02:50:28.000Z",
+              "uid": "35240-e0d8b20c-6ca7-404a-b3fc-be93c0d6cf8d"
+            },
+            {
+              "name": "List all ingest jobs",
+              "id": "7e2e65d2-fce4-4775-90c5-c8ee5c97c97b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs/ingest?isPkChunkingEnabled=<boolean>&jobType=Classic&queryLocator=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs",
+                    "ingest"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by PK chunking status",
+                      "key": "isPkChunkingEnabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by job type",
+                      "key": "jobType",
+                      "value": "Classic"
+                    },
+                    {
+                      "description": "Locator for the next page of results",
+                      "key": "queryLocator",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of all Bulk API 2.0 ingest jobs in the org. Supports filtering by job type and pagination through concurrencyMode, jobType, and queryLocator parameters."
+              },
+              "response": [
+                {
+                  "id": "6f631aa6-33a5-4306-a209-f03f3fc16a4d",
+                  "name": "List of ingest jobs",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/ingest?isPkChunkingEnabled=<boolean>&jobType=Classic&queryLocator=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "ingest"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by PK chunking status",
+                          "key": "isPkChunkingEnabled",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by job type",
+                          "key": "jobType",
+                          "value": "Classic"
+                        },
+                        {
+                          "description": "Locator for the next page of results",
+                          "key": "queryLocator",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"done\": \"<boolean>\",\n  \"records\": [\n    {\n      \"id\": \"<string>\",\n      \"operation\": \"update\",\n      \"object\": \"<string>\",\n      \"createdById\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"systemModstamp\": \"<dateTime>\",\n      \"state\": \"Open\",\n      \"externalIdFieldName\": \"<string>\",\n      \"concurrencyMode\": \"Serial\",\n      \"contentType\": \"CSV\",\n      \"apiVersion\": \"<number>\",\n      \"jobType\": \"V2Ingest\",\n      \"lineEnding\": \"LF\",\n      \"columnDelimiter\": \"CARET\",\n      \"numberRecordsProcessed\": \"<integer>\",\n      \"numberRecordsFailed\": \"<integer>\",\n      \"retries\": \"<integer>\",\n      \"totalProcessingTime\": \"<integer>\",\n      \"errorMessage\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"operation\": \"update\",\n      \"object\": \"<string>\",\n      \"createdById\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"systemModstamp\": \"<dateTime>\",\n      \"state\": \"InProgress\",\n      \"externalIdFieldName\": \"<string>\",\n      \"concurrencyMode\": \"Parallel\",\n      \"contentType\": \"CSV\",\n      \"apiVersion\": \"<number>\",\n      \"jobType\": \"V2Ingest\",\n      \"lineEnding\": \"LF\",\n      \"columnDelimiter\": \"TAB\",\n      \"numberRecordsProcessed\": \"<integer>\",\n      \"numberRecordsFailed\": \"<integer>\",\n      \"retries\": \"<integer>\",\n      \"totalProcessingTime\": \"<integer>\",\n      \"errorMessage\": \"<string>\"\n    }\n  ],\n  \"nextRecordsUrl\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-6f631aa6-33a5-4306-a209-f03f3fc16a4d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:28.000Z",
+              "updatedAt": "2026-07-28T02:50:28.000Z",
+              "uid": "35240-7e2e65d2-fce4-4775-90c5-c8ee5c97c97b"
+            },
+            {
+              "name": "Create an ingest job",
+              "id": "3f720c4a-197a-4781-ade4-7b7f018c49a1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object\": \"<string>\",\n  \"operation\": \"update\",\n  \"externalIdFieldName\": \"<string>\",\n  \"columnDelimiter\": \"COMMA\",\n  \"contentType\": \"CSV\",\n  \"lineEnding\": \"LF\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/jobs/ingest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs",
+                    "ingest"
+                  ]
+                },
+                "description": "Creates a new Bulk API 2.0 ingest job. After creation, the job is in the Open state and ready to accept CSV data uploads via the PUT /jobs/ingest/{jobId}/batches endpoint."
+              },
+              "response": [
+                {
+                  "id": "e033fa0c-8ada-43e3-abee-ae3418d1d396",
+                  "name": "Ingest job created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"object\": \"<string>\",\n  \"operation\": \"update\",\n  \"externalIdFieldName\": \"<string>\",\n  \"columnDelimiter\": \"COMMA\",\n  \"contentType\": \"CSV\",\n  \"lineEnding\": \"LF\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/ingest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "ingest"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"operation\": \"delete\",\n  \"object\": \"<string>\",\n  \"createdById\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"systemModstamp\": \"<dateTime>\",\n  \"state\": \"InProgress\",\n  \"externalIdFieldName\": \"<string>\",\n  \"concurrencyMode\": \"Serial\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": \"<number>\",\n  \"jobType\": \"V2Ingest\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"PIPE\",\n  \"numberRecordsProcessed\": \"<integer>\",\n  \"numberRecordsFailed\": \"<integer>\",\n  \"retries\": \"<integer>\",\n  \"totalProcessingTime\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-e033fa0c-8ada-43e3-abee-ae3418d1d396"
+                },
+                {
+                  "id": "f50a60d1-7554-4036-b68f-b89ebdaef59b",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"object\": \"<string>\",\n  \"operation\": \"update\",\n  \"externalIdFieldName\": \"<string>\",\n  \"columnDelimiter\": \"COMMA\",\n  \"contentType\": \"CSV\",\n  \"lineEnding\": \"LF\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/ingest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "ingest"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\"\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-07-28T02:50:28.000Z",
+                  "updatedAt": "2026-07-28T02:50:28.000Z",
+                  "uid": "35240-f50a60d1-7554-4036-b68f-b89ebdaef59b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:28.000Z",
+              "updatedAt": "2026-07-28T02:50:28.000Z",
+              "uid": "35240-3f720c4a-197a-4781-ade4-7b7f018c49a1"
+            }
+          ],
+          "id": "747d8f83-7b85-4841-b5b7-401612c878cb",
+          "createdAt": "2026-07-28T02:50:28.000Z",
+          "updatedAt": "2026-07-28T02:50:28.000Z",
+          "uid": "35240-747d8f83-7b85-4841-b5b7-401612c878cb"
+        }
+      ],
+      "id": "ce453005-2adb-4cce-91d9-9a22fd1e193a",
+      "createdAt": "2026-07-28T02:50:28.000Z",
+      "updatedAt": "2026-07-28T02:50:28.000Z",
+      "uid": "35240-ce453005-2adb-4cce-91d9-9a22fd1e193a"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

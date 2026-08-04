@@ -1,0 +1,359 @@
+{
+  "info": {
+    "_postman_id": "804994dc-7a58-4beb-aa12-c7675b092ad2",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Standard Actions API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:47.000Z",
+    "updatedAt": "2026-07-28T02:50:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-804994dc-7a58-4beb-aa12-c7675b092ad2"
+  },
+  "item": [
+    {
+      "name": "actions",
+      "item": [
+        {
+          "name": "standard",
+          "item": [
+            {
+              "name": "{actionName}",
+              "item": [
+                {
+                  "name": "Describe a standard action",
+                  "id": "b97000ce-2201-4476-985e-e1be96334aa6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/standard/:actionName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "standard",
+                        ":actionName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f6e8225f-441c-4ef2-9609-f84070fa7b07",
+                          "key": "actionName",
+                          "value": "<string>",
+                          "description": "(Required) The API name of the standard action (e.g., emailSimple, chatterPost, submit)"
+                        }
+                      ]
+                    },
+                    "description": "Returns the input and output parameters for a specific standard invocable action."
+                  },
+                  "response": [
+                    {
+                      "id": "52cdfd75-84ca-4c52-a50b-9476e0f867fa",
+                      "name": "Action description with inputs and outputs",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/standard/:actionName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "standard",
+                            ":actionName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "actionName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"description\": \"<string,null>\",\n  \"label\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sobjectType\": \"<string,null>\",\n      \"byteLength\": \"<integer>\",\n      \"maxOccurs\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sobjectType\": \"<string,null>\",\n      \"byteLength\": \"<integer>\",\n      \"maxOccurs\": \"<integer>\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sobjectType\": \"<string,null>\",\n      \"byteLength\": \"<integer>\",\n      \"maxOccurs\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sobjectType\": \"<string,null>\",\n      \"byteLength\": \"<integer>\",\n      \"maxOccurs\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:50:48.000Z",
+                      "updatedAt": "2026-07-28T02:50:48.000Z",
+                      "uid": "35240-52cdfd75-84ca-4c52-a50b-9476e0f867fa"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:48.000Z",
+                  "updatedAt": "2026-07-28T02:50:48.000Z",
+                  "uid": "35240-b97000ce-2201-4476-985e-e1be96334aa6"
+                },
+                {
+                  "name": "Invoke a standard action",
+                  "id": "a38c44ce-b392-4dd5-9d03-9af7cc00e2ed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"inputs\": [\n    {\n      \"laborum450\": -99004900\n    },\n    {\n      \"laboruma21\": 37082314,\n      \"consequatac\": true\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/standard/:actionName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "standard",
+                        ":actionName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "25f8a9d6-af5b-4210-ba74-1a850b734917",
+                          "key": "actionName",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Invokes a standard Salesforce action with the specified inputs. Multiple invocations can be batched in a single request by providing an array of input objects."
+                  },
+                  "response": [
+                    {
+                      "id": "43bde53a-9ddb-4eca-b8a9-7bc39a036ede",
+                      "name": "Action invocation results",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"laborum450\": -99004900\n    },\n    {\n      \"laboruma21\": 37082314,\n      \"consequatac\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/standard/:actionName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "standard",
+                            ":actionName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "actionName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"actionName\": \"<string>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"isSuccess\": \"<boolean>\",\n    \"outputValues\": {\n      \"dolor_ef\": -99719935.46150033,\n      \"eiusmod6\": false,\n      \"labore14\": -42126947\n    }\n  },\n  {\n    \"actionName\": \"<string>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"isSuccess\": \"<boolean>\",\n    \"outputValues\": {\n      \"aliqua_d93\": -81496937.36494456,\n      \"deserunt_5b4\": \"Duis adipisici\",\n      \"ipsum_279\": true,\n      \"cillum_c\": \"fugiat amet\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T02:50:48.000Z",
+                      "updatedAt": "2026-07-28T02:50:48.000Z",
+                      "uid": "35240-43bde53a-9ddb-4eca-b8a9-7bc39a036ede"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:48.000Z",
+                  "updatedAt": "2026-07-28T02:50:48.000Z",
+                  "uid": "35240-a38c44ce-b392-4dd5-9d03-9af7cc00e2ed"
+                }
+              ],
+              "id": "2e8770ad-6162-48d8-aefd-ea2de67a7521",
+              "createdAt": "2026-07-28T02:50:48.000Z",
+              "updatedAt": "2026-07-28T02:50:48.000Z",
+              "uid": "35240-2e8770ad-6162-48d8-aefd-ea2de67a7521"
+            },
+            {
+              "name": "List standard invocable actions",
+              "id": "faf5578b-b64c-42ac-99e0-48c790e924db",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/actions/standard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "actions",
+                    "standard"
+                  ]
+                },
+                "description": "Returns a list of all standard (Salesforce-provided) invocable actions. These include actions like emailSimple (send email), chatterPost (post to Chatter), submit (submit for approval), and many more."
+              },
+              "response": [
+                {
+                  "id": "59bd9aef-0e6a-47eb-bab2-15ca12ab5c1b",
+                  "name": "List of standard actions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/standard",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "standard"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"actions\": [\n    {\n      \"label\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:50:48.000Z",
+                  "updatedAt": "2026-07-28T02:50:48.000Z",
+                  "uid": "35240-59bd9aef-0e6a-47eb-bab2-15ca12ab5c1b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:48.000Z",
+              "updatedAt": "2026-07-28T02:50:48.000Z",
+              "uid": "35240-faf5578b-b64c-42ac-99e0-48c790e924db"
+            }
+          ],
+          "id": "fb72db3c-6b4b-425b-a0e2-91738b7c8f36",
+          "createdAt": "2026-07-28T02:50:48.000Z",
+          "updatedAt": "2026-07-28T02:50:48.000Z",
+          "uid": "35240-fb72db3c-6b4b-425b-a0e2-91738b7c8f36"
+        }
+      ],
+      "id": "5462aa51-c582-488b-8083-3892e13d6792",
+      "createdAt": "2026-07-28T02:50:48.000Z",
+      "updatedAt": "2026-07-28T02:50:48.000Z",
+      "uid": "35240-5462aa51-c582-488b-8083-3892e13d6792"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

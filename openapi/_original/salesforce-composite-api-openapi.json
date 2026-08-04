@@ -1,0 +1,709 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Salesforce Composite API",
+    "description": "REST API for executing multiple API requests in a single call, reducing the number of round trips to the server. Supports three composite resources: Composite (sequential subrequests with reference IDs), Composite Batch (independent subrequests), and Composite Graph (subrequests with dependency graphs). Subrequests can reference the output of prior subrequests using reference IDs.",
+    "version": "63.0",
+    "contact": {
+      "name": "Salesforce Developer Support",
+      "url": "https://developer.salesforce.com/support",
+      "email": "developer@salesforce.com"
+    },
+    "license": {
+      "name": "Salesforce API Terms of Use",
+      "url": "https://www.salesforce.com/company/legal/agreements/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.salesforce.com/services/data/v63.0",
+      "description": "Salesforce production or developer instance",
+      "variables": {
+        "instance": {
+          "default": "yourInstance",
+          "description": "Your Salesforce instance identifier"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/composite": {
+      "post": {
+        "operationId": "executeComposite",
+        "summary": "Execute composite request",
+        "description": "Executes up to 25 subrequests in a single call. Subrequests are executed sequentially and can reference the results of prior subrequests using reference IDs (e.g., @{referenceId.id}). If allOrNone is true, all subrequests are rolled back if any fails. Each subrequest counts against API limits.",
+        "tags": ["Composite"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompositeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Composite response with results for each subrequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompositeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/composite/batch": {
+      "post": {
+        "operationId": "executeCompositeBatch",
+        "summary": "Execute composite batch request",
+        "description": "Executes up to 25 independent subrequests in a single call. Unlike the composite resource, batch subrequests are independent and cannot reference each other. If haltOnError is true, processing stops after the first error. Each subrequest counts as one API call, but the batch itself counts as one call toward the limit.",
+        "tags": ["Batch"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response with results for each subrequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/composite/graph": {
+      "post": {
+        "operationId": "executeCompositeGraph",
+        "summary": "Execute composite graph request",
+        "description": "Executes a set of composite graphs, each containing subrequests that can reference each other through a dependency graph. Supports up to 500 subrequests across all graphs. Graphs are independent; subrequests within a graph execute in dependency order.",
+        "tags": ["Graph"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GraphRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Graph response with results for each graph and subrequest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/composite/sobjects": {
+      "post": {
+        "operationId": "createMultipleRecords",
+        "summary": "Create multiple records of the same type",
+        "description": "Creates up to 200 records of the same SObject type in a single request. More efficient than individual create calls for bulk record creation.",
+        "tags": ["SObject Collections"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/allOrNone"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SObjectCollectionCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Array of save results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SaveResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateMultipleRecords",
+        "summary": "Update multiple records",
+        "description": "Updates up to 200 records in a single request. Records can be of different SObject types. Each record must include the Id field and the attributes.type field.",
+        "tags": ["SObject Collections"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/allOrNone"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SObjectCollectionUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Array of save results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SaveResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteMultipleRecords",
+        "summary": "Delete multiple records",
+        "description": "Deletes up to 200 records in a single request. Provide record IDs as a comma-separated query parameter.",
+        "tags": ["SObject Collections"],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of record IDs to delete (up to 200)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/allOrNone"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of delete results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SaveResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/composite/sobjects/{sObjectName}": {
+      "get": {
+        "operationId": "getMultipleRecords",
+        "summary": "Get multiple records by IDs",
+        "description": "Retrieves multiple records of the same SObject type by their IDs in a single request.",
+        "tags": ["SObject Collections"],
+        "parameters": [
+          {
+            "name": "sObjectName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of record IDs",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of field API names to return",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/composite/tree/{sObjectName}": {
+      "post": {
+        "operationId": "createRecordTree",
+        "summary": "Create nested records in a single request",
+        "description": "Creates a parent record and its related child records in a single request. Supports up to 200 records total with up to 5 levels of nesting. Useful for creating an Account with its Contacts and Opportunities in one call.",
+        "tags": ["SObject Tree"],
+        "parameters": [
+          {
+            "name": "sObjectName",
+            "in": "path",
+            "required": true,
+            "description": "The parent SObject type",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SObjectTreeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Records created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SObjectTreeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+            "tokenUrl": "https://login.salesforce.com/services/oauth2/token",
+            "scopes": {
+              "api": "Access and manage your Salesforce data"
+            }
+          }
+        }
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "parameters": {
+      "allOrNone": {
+        "name": "allOrNone",
+        "in": "query",
+        "description": "If true, all records in the request must succeed or all are rolled back",
+        "schema": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "schemas": {
+      "CompositeRequest": {
+        "type": "object",
+        "required": ["compositeRequest"],
+        "properties": {
+          "allOrNone": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, all subrequests are rolled back on any failure"
+          },
+          "collateSubrequests": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, independent subrequests are executed in parallel"
+          },
+          "compositeRequest": {
+            "type": "array",
+            "maxItems": 25,
+            "items": {
+              "$ref": "#/components/schemas/CompositeSubrequest"
+            }
+          }
+        }
+      },
+      "CompositeSubrequest": {
+        "type": "object",
+        "required": ["method", "url", "referenceId"],
+        "properties": {
+          "body": {
+            "description": "The request body for POST/PATCH subrequests",
+            "additionalProperties": true
+          },
+          "httpHeaders": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "method": {
+            "type": "string",
+            "enum": ["GET", "POST", "PATCH", "PUT", "DELETE"]
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Unique identifier for this subrequest, used to reference its output in subsequent subrequests"
+          },
+          "url": {
+            "type": "string",
+            "description": "The relative URL of the API endpoint for this subrequest"
+          }
+        }
+      },
+      "CompositeResponse": {
+        "type": "object",
+        "properties": {
+          "compositeResponse": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "description": "The response body"
+                },
+                "httpHeaders": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "httpStatusCode": {
+                  "type": "integer"
+                },
+                "referenceId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "BatchRequest": {
+        "type": "object",
+        "required": ["batchRequests"],
+        "properties": {
+          "haltOnError": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, stops processing after the first error"
+          },
+          "batchRequests": {
+            "type": "array",
+            "maxItems": 25,
+            "items": {
+              "type": "object",
+              "required": ["method", "url"],
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "enum": ["GET", "POST", "PATCH", "PUT", "DELETE"]
+                },
+                "url": {
+                  "type": "string"
+                },
+                "richInput": {
+                  "description": "The request body"
+                }
+              }
+            }
+          }
+        }
+      },
+      "BatchResponse": {
+        "type": "object",
+        "properties": {
+          "hasErrors": {
+            "type": "boolean"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "integer"
+                },
+                "result": {
+                  "description": "The response body"
+                }
+              }
+            }
+          }
+        }
+      },
+      "GraphRequest": {
+        "type": "object",
+        "required": ["graphs"],
+        "properties": {
+          "graphs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["graphId", "compositeRequest"],
+              "properties": {
+                "graphId": {
+                  "type": "string",
+                  "description": "Unique identifier for this graph"
+                },
+                "compositeRequest": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompositeSubrequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "GraphResponse": {
+        "type": "object",
+        "properties": {
+          "graphs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "graphId": {
+                  "type": "string"
+                },
+                "graphResponse": {
+                  "$ref": "#/components/schemas/CompositeResponse"
+                },
+                "isSuccessful": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "SObjectCollectionCreateRequest": {
+        "type": "object",
+        "required": ["records"],
+        "properties": {
+          "allOrNone": {
+            "type": "boolean",
+            "default": false
+          },
+          "records": {
+            "type": "array",
+            "maxItems": 200,
+            "items": {
+              "type": "object",
+              "required": ["attributes"],
+              "properties": {
+                "attributes": {
+                  "type": "object",
+                  "required": ["type"],
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        }
+      },
+      "SObjectCollectionUpdateRequest": {
+        "type": "object",
+        "required": ["records"],
+        "properties": {
+          "allOrNone": {
+            "type": "boolean",
+            "default": false
+          },
+          "records": {
+            "type": "array",
+            "maxItems": 200,
+            "items": {
+              "type": "object",
+              "required": ["attributes", "Id"],
+              "properties": {
+                "attributes": {
+                  "type": "object",
+                  "required": ["type"],
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "Id": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        }
+      },
+      "SaveResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "SObjectTreeRequest": {
+        "type": "object",
+        "required": ["records"],
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["attributes"],
+              "properties": {
+                "attributes": {
+                  "type": "object",
+                  "required": ["type", "referenceId"],
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "referenceId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        }
+      },
+      "SObjectTreeResponse": {
+        "type": "object",
+        "properties": {
+          "hasErrors": {
+            "type": "boolean"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "referenceId": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Composite",
+      "description": "Sequential subrequests with reference ID support"
+    },
+    {
+      "name": "Batch",
+      "description": "Independent subrequests in a single call"
+    },
+    {
+      "name": "Graph",
+      "description": "Subrequests with dependency graphs"
+    },
+    {
+      "name": "SObject Collections",
+      "description": "Bulk CRUD operations on up to 200 records"
+    },
+    {
+      "name": "SObject Tree",
+      "description": "Create nested parent-child records"
+    }
+  ]
+}

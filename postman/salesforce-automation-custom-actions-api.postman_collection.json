@@ -1,0 +1,359 @@
+{
+  "info": {
+    "_postman_id": "c67fc165-956d-4d69-b1e0-3780173d9f22",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Custom Actions API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:56.000Z",
+    "updatedAt": "2026-07-28T02:49:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c67fc165-956d-4d69-b1e0-3780173d9f22"
+  },
+  "item": [
+    {
+      "name": "actions",
+      "item": [
+        {
+          "name": "custom",
+          "item": [
+            {
+              "name": "{actionName}",
+              "item": [
+                {
+                  "name": "Describe a custom action",
+                  "id": "230decab-58fd-45c4-8465-1cc8d06f6904",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/custom/:actionName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "custom",
+                        ":actionName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4fb4e072-8b09-4444-aa67-d9728383c808",
+                          "key": "actionName",
+                          "value": "<string>",
+                          "description": "(Required) The API name of the custom action"
+                        }
+                      ]
+                    },
+                    "description": "Returns the input and output parameters for a specific custom invocable action."
+                  },
+                  "response": [
+                    {
+                      "id": "5c1a9ffd-441e-437e-9847-f504a95774d4",
+                      "name": "Action description",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/custom/:actionName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "custom",
+                            ":actionName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "actionName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"description\": \"<string,null>\",\n  \"label\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sobjectType\": \"<string,null>\",\n      \"byteLength\": \"<integer>\",\n      \"maxOccurs\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sobjectType\": \"<string,null>\",\n      \"byteLength\": \"<integer>\",\n      \"maxOccurs\": \"<integer>\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sobjectType\": \"<string,null>\",\n      \"byteLength\": \"<integer>\",\n      \"maxOccurs\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sobjectType\": \"<string,null>\",\n      \"byteLength\": \"<integer>\",\n      \"maxOccurs\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-5c1a9ffd-441e-437e-9847-f504a95774d4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-230decab-58fd-45c4-8465-1cc8d06f6904"
+                },
+                {
+                  "name": "Invoke a custom action",
+                  "id": "7aa15358-0b25-41da-9b71-38ca892b11ac",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"inputs\": [\n    {\n      \"eiusmodfe\": -89611487,\n      \"irure_dda\": true\n    },\n    {\n      \"cillum77\": 6430498,\n      \"aliquip7_\": -18653232\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/custom/:actionName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "custom",
+                        ":actionName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "12e34a80-b366-494f-be45-e9b47703152e",
+                          "key": "actionName",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Invokes a custom Apex invocable action. Provide the required inputs as defined by the @InvocableVariable annotations on the action's input class."
+                  },
+                  "response": [
+                    {
+                      "id": "e26ea419-7724-4d4f-8fb2-a2b4055e1dda",
+                      "name": "Action invocation results",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"eiusmodfe\": -89611487,\n      \"irure_dda\": true\n    },\n    {\n      \"cillum77\": 6430498,\n      \"aliquip7_\": -18653232\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/custom/:actionName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "custom",
+                            ":actionName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "actionName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"actionName\": \"<string>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"isSuccess\": \"<boolean>\",\n    \"outputValues\": {\n      \"laboris9f\": \"Excepteur in volupta\",\n      \"ut7\": true\n    }\n  },\n  {\n    \"actionName\": \"<string>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"isSuccess\": \"<boolean>\",\n    \"outputValues\": {\n      \"cupidatatbd\": -93427664,\n      \"dolore_\": true,\n      \"adipisicingc_\": -3402036,\n      \"adipisicing_e6f\": true\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-e26ea419-7724-4d4f-8fb2-a2b4055e1dda"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-7aa15358-0b25-41da-9b71-38ca892b11ac"
+                }
+              ],
+              "id": "2f2fa89b-8bc6-4349-95bf-6958660f71be",
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-2f2fa89b-8bc6-4349-95bf-6958660f71be"
+            },
+            {
+              "name": "List custom invocable actions",
+              "id": "18d53663-fdce-4c3f-b2e7-0a7f7e005b3a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/actions/custom",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "actions",
+                    "custom"
+                  ]
+                },
+                "description": "Returns a list of all custom invocable actions defined in the org. Custom actions are Apex classes annotated with @InvocableMethod."
+              },
+              "response": [
+                {
+                  "id": "8abf1b61-d122-4adf-9b42-2aca06f728c3",
+                  "name": "List of custom actions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/custom",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "custom"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"actions\": [\n    {\n      \"label\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-8abf1b61-d122-4adf-9b42-2aca06f728c3"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-18d53663-fdce-4c3f-b2e7-0a7f7e005b3a"
+            }
+          ],
+          "id": "82ab31ee-6e2f-4598-9881-b781dfc2860e",
+          "createdAt": "2026-07-28T02:49:56.000Z",
+          "updatedAt": "2026-07-28T02:49:56.000Z",
+          "uid": "35240-82ab31ee-6e2f-4598-9881-b781dfc2860e"
+        }
+      ],
+      "id": "838ca86c-999b-462d-9fa8-140436b015d4",
+      "createdAt": "2026-07-28T02:49:56.000Z",
+      "updatedAt": "2026-07-28T02:49:56.000Z",
+      "uid": "35240-838ca86c-999b-462d-9fa8-140436b015d4"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

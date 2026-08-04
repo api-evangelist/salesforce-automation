@@ -1,0 +1,705 @@
+{
+  "info": {
+    "_postman_id": "4196622a-304c-42a9-aca8-6a426164f569",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Query Jobs API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:34.000Z",
+    "updatedAt": "2026-07-28T02:50:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4196622a-304c-42a9-aca8-6a426164f569"
+  },
+  "item": [
+    {
+      "name": "jobs",
+      "item": [
+        {
+          "name": "query",
+          "item": [
+            {
+              "name": "{jobId}",
+              "item": [
+                {
+                  "name": "results",
+                  "item": [
+                    {
+                      "name": "Get query job results",
+                      "id": "63a0355d-5300-4910-b57d-e8599d239df5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/csv"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/query/:jobId/results?locator=<string>&maxRecords=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "query",
+                            ":jobId",
+                            "results"
+                          ],
+                          "query": [
+                            {
+                              "description": "Locator for retrieving the next set of results from a previous response's Sforce-Locator header",
+                              "key": "locator",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to return per request",
+                              "key": "maxRecords",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "35ddd103-2fc1-41b6-9cc3-a8c49bb15ea0",
+                              "key": "jobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                            }
+                          ]
+                        },
+                        "description": "Returns the results of a completed Bulk API 2.0 query job as CSV data. Use the locator and maxRecords parameters for pagination when results exceed a single response."
+                      },
+                      "response": [
+                        {
+                          "id": "5f454ab2-fff4-42ae-9a17-3c1fd3861e41",
+                          "name": "Query results as CSV",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/csv"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/jobs/query/:jobId/results?locator=<string>&maxRecords=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "jobs",
+                                "query",
+                                ":jobId",
+                                "results"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Locator for retrieving the next set of results from a previous response's Sforce-Locator header",
+                                  "key": "locator",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of records to return per request",
+                                  "key": "maxRecords",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/csv"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "The locator for the next set of results. Value is 'null' if no more results.",
+                                "type": "text/plain"
+                              },
+                              "key": "Sforce-Locator",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "The number of records in this response",
+                                "type": "text/plain"
+                              },
+                              "key": "Sforce-NumberOfRecords",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T02:50:35.000Z",
+                          "updatedAt": "2026-07-28T02:50:35.000Z",
+                          "uid": "35240-5f454ab2-fff4-42ae-9a17-3c1fd3861e41"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:50:35.000Z",
+                      "updatedAt": "2026-07-28T02:50:35.000Z",
+                      "uid": "35240-63a0355d-5300-4910-b57d-e8599d239df5"
+                    }
+                  ],
+                  "id": "e750c53f-12ee-4cdd-9f8a-c9b351812189",
+                  "createdAt": "2026-07-28T02:50:35.000Z",
+                  "updatedAt": "2026-07-28T02:50:35.000Z",
+                  "uid": "35240-e750c53f-12ee-4cdd-9f8a-c9b351812189"
+                },
+                {
+                  "name": "Get query job status",
+                  "id": "136634ec-bef7-4e8b-935f-dee97d33bfb9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/query/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "query",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "32b11ba1-ad6f-42ca-a415-963e952d3ae9",
+                          "key": "jobId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                        }
+                      ]
+                    },
+                    "description": "Returns the current status and details of a specific Bulk API 2.0 query job."
+                  },
+                  "response": [
+                    {
+                      "id": "810d5814-83fd-4f6f-8f9c-4da34b521f91",
+                      "name": "Query job details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/query/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "query",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"operation\": \"query\",\n  \"object\": \"<string>\",\n  \"createdById\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"systemModstamp\": \"<dateTime>\",\n  \"state\": \"Aborted\",\n  \"concurrencyMode\": \"Parallel\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": \"<number>\",\n  \"jobType\": \"V2Query\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"SEMICOLON\",\n  \"numberRecordsProcessed\": \"<integer>\",\n  \"retries\": \"<integer>\",\n  \"totalProcessingTime\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:50:35.000Z",
+                      "updatedAt": "2026-07-28T02:50:35.000Z",
+                      "uid": "35240-810d5814-83fd-4f6f-8f9c-4da34b521f91"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:35.000Z",
+                  "updatedAt": "2026-07-28T02:50:35.000Z",
+                  "uid": "35240-136634ec-bef7-4e8b-935f-dee97d33bfb9"
+                },
+                {
+                  "name": "Abort a query job",
+                  "id": "3b250277-fa1b-4435-9600-bcb44d4ff69e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"state\": \"Aborted\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/query/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "query",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2fc95fd5-8c56-4c3d-86c4-24afcec7b627",
+                          "key": "jobId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                        }
+                      ]
+                    },
+                    "description": "Aborts a query job that is in progress. Sets the job state to Aborted."
+                  },
+                  "response": [
+                    {
+                      "id": "7c0f50ac-26b8-43e1-b2a3-52f3cfa444e4",
+                      "name": "Job aborted",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"state\": \"Aborted\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/query/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "query",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"operation\": \"query\",\n  \"object\": \"<string>\",\n  \"createdById\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"systemModstamp\": \"<dateTime>\",\n  \"state\": \"Aborted\",\n  \"concurrencyMode\": \"Parallel\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": \"<number>\",\n  \"jobType\": \"V2Query\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"SEMICOLON\",\n  \"numberRecordsProcessed\": \"<integer>\",\n  \"retries\": \"<integer>\",\n  \"totalProcessingTime\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:50:35.000Z",
+                      "updatedAt": "2026-07-28T02:50:35.000Z",
+                      "uid": "35240-7c0f50ac-26b8-43e1-b2a3-52f3cfa444e4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:35.000Z",
+                  "updatedAt": "2026-07-28T02:50:35.000Z",
+                  "uid": "35240-3b250277-fa1b-4435-9600-bcb44d4ff69e"
+                },
+                {
+                  "name": "Delete a query job",
+                  "id": "2a6c8001-ad18-4a85-b524-fb14ea2401ba",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/query/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "query",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "dae2a3df-fcfd-43a7-ab0a-5e1f49857ac6",
+                          "key": "jobId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                        }
+                      ]
+                    },
+                    "description": "Deletes a query job. The job must be in a terminal state before deletion."
+                  },
+                  "response": [
+                    {
+                      "id": "3b218a50-14d0-49dc-be32-900f3c4b858c",
+                      "name": "Job deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/query/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            "query",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:35.000Z",
+                      "updatedAt": "2026-07-28T02:50:35.000Z",
+                      "uid": "35240-3b218a50-14d0-49dc-be32-900f3c4b858c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:35.000Z",
+                  "updatedAt": "2026-07-28T02:50:35.000Z",
+                  "uid": "35240-2a6c8001-ad18-4a85-b524-fb14ea2401ba"
+                }
+              ],
+              "id": "db77dd1b-66d1-44df-8246-1d771795b0ab",
+              "createdAt": "2026-07-28T02:50:35.000Z",
+              "updatedAt": "2026-07-28T02:50:35.000Z",
+              "uid": "35240-db77dd1b-66d1-44df-8246-1d771795b0ab"
+            },
+            {
+              "name": "List all query jobs",
+              "id": "9710595a-a6f4-4d8b-99bd-494888a85484",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs/query?jobType=Classic&queryLocator=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by job type",
+                      "key": "jobType",
+                      "value": "Classic"
+                    },
+                    {
+                      "description": "Locator for the next page of results",
+                      "key": "queryLocator",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of all Bulk API 2.0 query jobs in the org."
+              },
+              "response": [
+                {
+                  "id": "a8157004-2bc6-49fa-a44e-a31c8e8662bc",
+                  "name": "List of query jobs",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/query?jobType=Classic&queryLocator=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by job type",
+                          "key": "jobType",
+                          "value": "Classic"
+                        },
+                        {
+                          "description": "Locator for the next page of results",
+                          "key": "queryLocator",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"done\": \"<boolean>\",\n  \"records\": [\n    {\n      \"id\": \"<string>\",\n      \"operation\": \"query\",\n      \"object\": \"<string>\",\n      \"createdById\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"systemModstamp\": \"<dateTime>\",\n      \"state\": \"JobComplete\",\n      \"concurrencyMode\": \"Parallel\",\n      \"contentType\": \"CSV\",\n      \"apiVersion\": \"<number>\",\n      \"jobType\": \"V2Query\",\n      \"lineEnding\": \"CRLF\",\n      \"columnDelimiter\": \"SEMICOLON\",\n      \"numberRecordsProcessed\": \"<integer>\",\n      \"retries\": \"<integer>\",\n      \"totalProcessingTime\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"operation\": \"queryAll\",\n      \"object\": \"<string>\",\n      \"createdById\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"systemModstamp\": \"<dateTime>\",\n      \"state\": \"Failed\",\n      \"concurrencyMode\": \"Parallel\",\n      \"contentType\": \"CSV\",\n      \"apiVersion\": \"<number>\",\n      \"jobType\": \"V2Query\",\n      \"lineEnding\": \"CRLF\",\n      \"columnDelimiter\": \"TAB\",\n      \"numberRecordsProcessed\": \"<integer>\",\n      \"retries\": \"<integer>\",\n      \"totalProcessingTime\": \"<integer>\"\n    }\n  ],\n  \"nextRecordsUrl\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:50:35.000Z",
+                  "updatedAt": "2026-07-28T02:50:35.000Z",
+                  "uid": "35240-a8157004-2bc6-49fa-a44e-a31c8e8662bc"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:35.000Z",
+              "updatedAt": "2026-07-28T02:50:35.000Z",
+              "uid": "35240-9710595a-a6f4-4d8b-99bd-494888a85484"
+            },
+            {
+              "name": "Create a query job",
+              "id": "3ced9b55-e279-4d9e-9376-d6c5e4804560",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operation\": \"queryAll\",\n  \"query\": \"<string>\",\n  \"columnDelimiter\": \"COMMA\",\n  \"contentType\": \"CSV\",\n  \"lineEnding\": \"LF\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/jobs/query",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs",
+                    "query"
+                  ]
+                },
+                "description": "Creates a new Bulk API 2.0 query job. The SOQL query is provided in the request body and processing begins immediately. Use query for active records only or queryAll to include deleted and archived records."
+              },
+              "response": [
+                {
+                  "id": "c118c2a6-fa68-48fb-bbc0-f475dab3dc46",
+                  "name": "Query job created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"operation\": \"queryAll\",\n  \"query\": \"<string>\",\n  \"columnDelimiter\": \"COMMA\",\n  \"contentType\": \"CSV\",\n  \"lineEnding\": \"LF\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/query",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"operation\": \"query\",\n  \"object\": \"<string>\",\n  \"createdById\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"systemModstamp\": \"<dateTime>\",\n  \"state\": \"Aborted\",\n  \"concurrencyMode\": \"Parallel\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": \"<number>\",\n  \"jobType\": \"V2Query\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"SEMICOLON\",\n  \"numberRecordsProcessed\": \"<integer>\",\n  \"retries\": \"<integer>\",\n  \"totalProcessingTime\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:50:35.000Z",
+                  "updatedAt": "2026-07-28T02:50:35.000Z",
+                  "uid": "35240-c118c2a6-fa68-48fb-bbc0-f475dab3dc46"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:35.000Z",
+              "updatedAt": "2026-07-28T02:50:35.000Z",
+              "uid": "35240-3ced9b55-e279-4d9e-9376-d6c5e4804560"
+            }
+          ],
+          "id": "38d84bb6-ff79-49e1-8282-fed3d164317f",
+          "createdAt": "2026-07-28T02:50:35.000Z",
+          "updatedAt": "2026-07-28T02:50:35.000Z",
+          "uid": "35240-38d84bb6-ff79-49e1-8282-fed3d164317f"
+        }
+      ],
+      "id": "38a8d2ad-a6db-4fa5-ac76-59e3f4862743",
+      "createdAt": "2026-07-28T02:50:35.000Z",
+      "updatedAt": "2026-07-28T02:50:35.000Z",
+      "uid": "35240-38a8d2ad-a6db-4fa5-ac76-59e3f4862743"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

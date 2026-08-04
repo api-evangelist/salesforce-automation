@@ -1,0 +1,523 @@
+{
+  "info": {
+    "_postman_id": "e0d306f0-655e-4f23-a09a-332270cea62e",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SObject Collections API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:43.000Z",
+    "updatedAt": "2026-07-28T02:50:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e0d306f0-655e-4f23-a09a-332270cea62e"
+  },
+  "item": [
+    {
+      "name": "composite",
+      "item": [
+        {
+          "name": "sobjects",
+          "item": [
+            {
+              "name": "{sObjectName}",
+              "item": [
+                {
+                  "name": "Get multiple records by IDs",
+                  "id": "88929ccc-018f-4623-880b-f346852cccf1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/composite/sobjects/:sObjectName?ids=<string>&fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "composite",
+                        "sobjects",
+                        ":sObjectName"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Comma-separated list of record IDs",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of field API names to return",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "5009511e-299f-4015-9e1d-5e7d8423b5c3",
+                          "key": "sObjectName",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieves multiple records of the same SObject type by their IDs in a single request."
+                  },
+                  "response": [
+                    {
+                      "id": "12c195ad-7eaa-4d1b-ae52-f0fc39e46a0c",
+                      "name": "Array of records",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/composite/sobjects/:sObjectName?ids=<string>&fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "composite",
+                            "sobjects",
+                            ":sObjectName"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Comma-separated list of record IDs",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Comma-separated list of field API names to return",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"elit7ae\": true\n  },\n  {\n    \"dolore_e\": true,\n    \"Lorem_1a3\": 56418826.39211896\n  }\n]",
+                      "createdAt": "2026-07-28T02:50:43.000Z",
+                      "updatedAt": "2026-07-28T02:50:43.000Z",
+                      "uid": "35240-12c195ad-7eaa-4d1b-ae52-f0fc39e46a0c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:43.000Z",
+                  "updatedAt": "2026-07-28T02:50:43.000Z",
+                  "uid": "35240-88929ccc-018f-4623-880b-f346852cccf1"
+                }
+              ],
+              "id": "2ae7f6f8-87d8-40d2-a76d-dc985a9ae602",
+              "createdAt": "2026-07-28T02:50:43.000Z",
+              "updatedAt": "2026-07-28T02:50:43.000Z",
+              "uid": "35240-2ae7f6f8-87d8-40d2-a76d-dc985a9ae602"
+            },
+            {
+              "name": "Create multiple records of the same type",
+              "id": "9679cf0b-5cff-4b21-aa80-8be54684e459",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/composite/sobjects?allOrNone=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "query": [
+                    {
+                      "description": "If true, all records in the request must succeed or all are rolled back",
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Creates up to 200 records of the same SObject type in a single request. More efficient than individual create calls for bulk record creation."
+              },
+              "response": [
+                {
+                  "id": "5bc92075-71d3-47c7-adcd-4095b93b638a",
+                  "name": "Array of save results",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/composite/sobjects?allOrNone=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "composite",
+                        "sobjects"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, all records in the request must succeed or all are rolled back",
+                          "key": "allOrNone",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"success\": \"<boolean>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"success\": \"<boolean>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T02:50:43.000Z",
+                  "updatedAt": "2026-07-28T02:50:43.000Z",
+                  "uid": "35240-5bc92075-71d3-47c7-adcd-4095b93b638a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:43.000Z",
+              "updatedAt": "2026-07-28T02:50:43.000Z",
+              "uid": "35240-9679cf0b-5cff-4b21-aa80-8be54684e459"
+            },
+            {
+              "name": "Update multiple records",
+              "id": "1a2764ad-2c73-40ec-a89a-9d33ddbce2c7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    }\n  ],\n  \"allOrNone\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/composite/sobjects?allOrNone=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "query": [
+                    {
+                      "description": "If true, all records in the request must succeed or all are rolled back",
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Updates up to 200 records in a single request. Records can be of different SObject types. Each record must include the Id field and the attributes.type field."
+              },
+              "response": [
+                {
+                  "id": "815c145c-75e9-4069-b248-a9d443927460",
+                  "name": "Array of save results",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    }\n  ],\n  \"allOrNone\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/composite/sobjects?allOrNone=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "composite",
+                        "sobjects"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, all records in the request must succeed or all are rolled back",
+                          "key": "allOrNone",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"success\": \"<boolean>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"success\": \"<boolean>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T02:50:43.000Z",
+                  "updatedAt": "2026-07-28T02:50:43.000Z",
+                  "uid": "35240-815c145c-75e9-4069-b248-a9d443927460"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:43.000Z",
+              "updatedAt": "2026-07-28T02:50:43.000Z",
+              "uid": "35240-1a2764ad-2c73-40ec-a89a-9d33ddbce2c7"
+            },
+            {
+              "name": "Delete multiple records",
+              "id": "68a16ed1-3b4f-4069-baaf-96e1ed8bc761",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/composite/sobjects?ids=<string>&allOrNone=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Comma-separated list of record IDs to delete (up to 200)",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If true, all records in the request must succeed or all are rolled back",
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Deletes up to 200 records in a single request. Provide record IDs as a comma-separated query parameter."
+              },
+              "response": [
+                {
+                  "id": "d973416d-cd19-455b-87e7-8c47b44f5d50",
+                  "name": "Array of delete results",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/composite/sobjects?ids=<string>&allOrNone=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "composite",
+                        "sobjects"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Comma-separated list of record IDs to delete (up to 200)",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "If true, all records in the request must succeed or all are rolled back",
+                          "key": "allOrNone",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"success\": \"<boolean>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"success\": \"<boolean>\",\n    \"errors\": [\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"statusCode\": \"<string>\",\n        \"message\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T02:50:43.000Z",
+                  "updatedAt": "2026-07-28T02:50:43.000Z",
+                  "uid": "35240-d973416d-cd19-455b-87e7-8c47b44f5d50"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:43.000Z",
+              "updatedAt": "2026-07-28T02:50:43.000Z",
+              "uid": "35240-68a16ed1-3b4f-4069-baaf-96e1ed8bc761"
+            }
+          ],
+          "id": "43d47d70-e535-4611-a398-07288edbb1b9",
+          "createdAt": "2026-07-28T02:50:43.000Z",
+          "updatedAt": "2026-07-28T02:50:43.000Z",
+          "uid": "35240-43d47d70-e535-4611-a398-07288edbb1b9"
+        }
+      ],
+      "id": "2b08463d-119f-404d-a3b0-07000c32e25b",
+      "createdAt": "2026-07-28T02:50:43.000Z",
+      "updatedAt": "2026-07-28T02:50:43.000Z",
+      "uid": "35240-2b08463d-119f-404d-a3b0-07000c32e25b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

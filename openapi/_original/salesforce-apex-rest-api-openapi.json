@@ -1,0 +1,249 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Salesforce Apex REST API",
+    "description": "Framework for exposing custom Apex classes as RESTful web service endpoints on the Salesforce platform. Apex REST services are defined using the @RestResource, @HttpGet, @HttpPost, @HttpPatch, @HttpPut, and @HttpDelete annotations. Custom endpoints are accessible at /services/apexrest/{urlMapping}. This spec describes the framework's structure and the built-in endpoint for executing anonymous Apex.",
+    "version": "63.0",
+    "contact": {
+      "name": "Salesforce Developer Support",
+      "url": "https://developer.salesforce.com/support",
+      "email": "developer@salesforce.com"
+    },
+    "license": {
+      "name": "Salesforce API Terms of Use",
+      "url": "https://www.salesforce.com/company/legal/agreements/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.salesforce.com/services/apexrest",
+      "description": "Salesforce Apex REST endpoint base",
+      "variables": {
+        "instance": {
+          "default": "yourInstance",
+          "description": "Your Salesforce instance identifier"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/{urlMapping}": {
+      "get": {
+        "operationId": "apexRestGet",
+        "summary": "Call a custom Apex REST GET endpoint",
+        "description": "Invokes the @HttpGet annotated method on the Apex class mapped to this URL. The response format depends on the Apex implementation. URL path parameters beyond the base mapping are available to the Apex code via RestContext.request.requestURI.",
+        "tags": ["Custom Endpoints"],
+        "parameters": [
+          {
+            "name": "urlMapping",
+            "in": "path",
+            "required": true,
+            "description": "The URL mapping defined in the @RestResource annotation (e.g., '/Accounts/*', '/Cases/*')",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response from the Apex REST service. Format depends on the implementation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Response varies based on the Apex REST service implementation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No Apex REST service found for the specified URL mapping"
+          }
+        }
+      },
+      "post": {
+        "operationId": "apexRestPost",
+        "summary": "Call a custom Apex REST POST endpoint",
+        "description": "Invokes the @HttpPost annotated method on the Apex class mapped to this URL. The request body is deserialized and passed to the method. Supports JSON and XML request bodies.",
+        "tags": ["Custom Endpoints"],
+        "parameters": [
+          {
+            "name": "urlMapping",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body consumed by the Apex REST service. Structure depends on the implementation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Response from the Apex REST service",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Response varies based on the Apex REST service implementation"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Resource created by the Apex REST service",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Response varies based on the Apex REST service implementation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "apexRestPatch",
+        "summary": "Call a custom Apex REST PATCH endpoint",
+        "description": "Invokes the @HttpPatch annotated method on the Apex class mapped to this URL.",
+        "tags": ["Custom Endpoints"],
+        "parameters": [
+          {
+            "name": "urlMapping",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Response from the Apex REST service",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Response varies based on the Apex REST service implementation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "apexRestPut",
+        "summary": "Call a custom Apex REST PUT endpoint",
+        "description": "Invokes the @HttpPut annotated method on the Apex class mapped to this URL.",
+        "tags": ["Custom Endpoints"],
+        "parameters": [
+          {
+            "name": "urlMapping",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Response from the Apex REST service",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Response varies based on the Apex REST service implementation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "apexRestDelete",
+        "summary": "Call a custom Apex REST DELETE endpoint",
+        "description": "Invokes the @HttpDelete annotated method on the Apex class mapped to this URL.",
+        "tags": ["Custom Endpoints"],
+        "parameters": [
+          {
+            "name": "urlMapping",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response from the Apex REST service"
+          },
+          "204": {
+            "description": "Resource deleted successfully"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "description": "Salesforce OAuth 2.0. The connected app must have API access enabled.",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+            "tokenUrl": "https://login.salesforce.com/services/oauth2/token",
+            "scopes": {
+              "api": "Access and manage your Salesforce data"
+            }
+          }
+        }
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Custom Endpoints",
+      "description": "Custom Apex REST web service endpoints defined with @RestResource annotation"
+    }
+  ]
+}

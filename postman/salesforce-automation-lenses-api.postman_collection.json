@@ -1,0 +1,167 @@
+{
+  "info": {
+    "_postman_id": "d4d6ffc2-2625-4f81-abeb-585c9c45be8e",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Lenses API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:28.000Z",
+    "updatedAt": "2026-07-28T02:50:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d4d6ffc2-2625-4f81-abeb-585c9c45be8e"
+  },
+  "item": [
+    {
+      "name": "lenses",
+      "item": [
+        {
+          "name": "List lenses (explorations)",
+          "id": "f4928e05-d95d-4bde-b61e-fb3f4bcf3913",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/lenses?q=<string>&folderId=<string>&page=<string>&pageSize=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "lenses"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "folderId",
+                  "value": "<string>"
+                },
+                {
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of CRM Analytics lenses (saved explorations)."
+          },
+          "response": [
+            {
+              "id": "bbc30496-3fba-4893-9a0a-04b0ed01a713",
+              "name": "List of lenses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lenses?q=<string>&folderId=<string>&page=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lenses"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"lenses\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"folder\": {\n        \"id\": \"<string>\",\n        \"label\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"folder\": {\n        \"id\": \"<string>\",\n        \"label\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"url\": \"<string>\"\n    }\n  ],\n  \"nextPageUrl\": \"<string,null>\",\n  \"totalSize\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:50:29.000Z",
+              "updatedAt": "2026-07-28T02:50:29.000Z",
+              "uid": "35240-bbc30496-3fba-4893-9a0a-04b0ed01a713"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:29.000Z",
+          "updatedAt": "2026-07-28T02:50:29.000Z",
+          "uid": "35240-f4928e05-d95d-4bde-b61e-fb3f4bcf3913"
+        }
+      ],
+      "id": "17abfe6a-5313-44f7-80e5-7059bf92e621",
+      "createdAt": "2026-07-28T02:50:29.000Z",
+      "updatedAt": "2026-07-28T02:50:29.000Z",
+      "uid": "35240-17abfe6a-5313-44f7-80e5-7059bf92e621"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

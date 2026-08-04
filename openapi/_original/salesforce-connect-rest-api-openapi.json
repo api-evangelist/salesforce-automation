@@ -1,0 +1,744 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Salesforce Connect REST API (Chatter)",
+    "description": "REST API for integrating mobile apps, intranet sites, and third-party web applications with Salesforce social features. Provides access to Chatter feeds, groups, users, topics, and recommendations. Also provides access to Communities (Experience Cloud), CMS content, and collaboration features.",
+    "version": "63.0",
+    "contact": {
+      "name": "Salesforce Developer Support",
+      "url": "https://developer.salesforce.com/support",
+      "email": "developer@salesforce.com"
+    },
+    "license": {
+      "name": "Salesforce API Terms of Use",
+      "url": "https://www.salesforce.com/company/legal/agreements/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.salesforce.com/services/data/v63.0/connect",
+      "description": "Salesforce production or developer instance",
+      "variables": {
+        "instance": {
+          "default": "yourInstance",
+          "description": "Your Salesforce instance identifier"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/chatter/feeds/news/me/feed-elements": {
+      "get": {
+        "operationId": "getNewsFeed",
+        "summary": "Get the current user's news feed",
+        "description": "Returns the current user's Chatter news feed, including posts from people and groups they follow, and records they own or follow.",
+        "tags": ["Feeds"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page token for pagination",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 25
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["CreatedDateDesc", "LastModifiedDateDesc"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "News feed elements",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedElementPage"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "postToFeed",
+        "summary": "Post to the current user's feed",
+        "description": "Creates a new Chatter feed post. Supports text posts, link posts, and posts with mentions. Rich text with inline images is supported.",
+        "tags": ["Feeds"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedElementInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Feed element created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedElement"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chatter/feed-elements/{feedElementId}": {
+      "get": {
+        "operationId": "getFeedElement",
+        "summary": "Get a feed element",
+        "description": "Returns a specific Chatter feed element (post) by ID.",
+        "tags": ["Feeds"],
+        "parameters": [
+          {
+            "name": "feedElementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Feed element",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedElement"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteFeedElement",
+        "summary": "Delete a feed element",
+        "description": "Deletes a Chatter feed element. Only the author or an admin can delete a post.",
+        "tags": ["Feeds"],
+        "parameters": [
+          {
+            "name": "feedElementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Feed element deleted"
+          }
+        }
+      }
+    },
+    "/chatter/feed-elements/{feedElementId}/capabilities/comments/items": {
+      "get": {
+        "operationId": "getComments",
+        "summary": "Get comments on a feed element",
+        "description": "Returns comments on a Chatter feed element.",
+        "tags": ["Comments"],
+        "parameters": [
+          {
+            "name": "feedElementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comments on the feed element",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentPage"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "postComment",
+        "summary": "Post a comment on a feed element",
+        "description": "Adds a comment to a Chatter feed element.",
+        "tags": ["Comments"],
+        "parameters": [
+          {
+            "name": "feedElementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Comment created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Comment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chatter/groups": {
+      "get": {
+        "operationId": "getGroups",
+        "summary": "List Chatter groups",
+        "description": "Returns a list of Chatter groups the current user has access to.",
+        "tags": ["Groups"],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search term to filter groups",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of groups",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chatter/users/me": {
+      "get": {
+        "operationId": "getCurrentUser",
+        "summary": "Get the current user's Chatter profile",
+        "description": "Returns the Chatter profile of the currently authenticated user, including their name, photo, title, and follower/following counts.",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "Current user profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatterUser"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chatter/users/{userId}": {
+      "get": {
+        "operationId": "getUser",
+        "summary": "Get a user's Chatter profile",
+        "description": "Returns the Chatter profile of the specified user.",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatterUser"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/topics": {
+      "get": {
+        "operationId": "getTopics",
+        "summary": "List topics",
+        "description": "Returns a list of Chatter topics used to categorize and discover feed posts.",
+        "tags": ["Topics"],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search term to filter topics",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of topics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "topics": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": ["string", "null"]
+                          },
+                          "talkingAbout": {
+                            "type": "integer"
+                          },
+                          "createdDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+            "tokenUrl": "https://login.salesforce.com/services/oauth2/token",
+            "scopes": {
+              "api": "Access and manage your Salesforce data",
+              "chatter_api": "Access Chatter REST API resources"
+            }
+          }
+        }
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "FeedElementPage": {
+        "type": "object",
+        "properties": {
+          "currentPageUrl": {
+            "type": "string"
+          },
+          "elements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeedElement"
+            }
+          },
+          "nextPageUrl": {
+            "type": ["string", "null"]
+          },
+          "updatesUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "FeedElement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "body": {
+            "$ref": "#/components/schemas/MessageBody"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/ActorRef"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "capabilities": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "header": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              }
+            }
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "FeedElementInput": {
+        "type": "object",
+        "required": ["body", "feedElementType", "subjectId"],
+        "properties": {
+          "body": {
+            "type": "object",
+            "properties": {
+              "messageSegments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["Text", "Mention", "Hashtag", "Link", "MarkupBegin", "MarkupEnd"]
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string",
+                      "description": "For Mention segments, the user or group ID"
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "For Link segments, the URL"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "feedElementType": {
+            "type": "string",
+            "enum": ["FeedItem"],
+            "description": "The type of feed element to create"
+          },
+          "subjectId": {
+            "type": "string",
+            "description": "The ID of the parent record, user, or group to post to"
+          }
+        }
+      },
+      "MessageBody": {
+        "type": "object",
+        "properties": {
+          "messageSegments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "ActorRef": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "photo": {
+            "type": "object",
+            "properties": {
+              "smallPhotoUrl": {
+                "type": "string"
+              },
+              "largePhotoUrl": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "CommentPage": {
+        "type": "object",
+        "properties": {
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            }
+          },
+          "currentPageUrl": {
+            "type": "string"
+          },
+          "nextPageUrl": {
+            "type": ["string", "null"]
+          },
+          "total": {
+            "type": "integer"
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "body": {
+            "$ref": "#/components/schemas/MessageBody"
+          },
+          "user": {
+            "$ref": "#/components/schemas/ActorRef"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "CommentInput": {
+        "type": "object",
+        "required": ["body"],
+        "properties": {
+          "body": {
+            "type": "object",
+            "properties": {
+              "messageSegments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "GroupPage": {
+        "type": "object",
+        "properties": {
+          "currentPageUrl": {
+            "type": "string"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": ["string", "null"]
+                },
+                "memberCount": {
+                  "type": "integer"
+                },
+                "visibility": {
+                  "type": "string",
+                  "enum": ["PublicAccess", "PrivateAccess"]
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "nextPageUrl": {
+            "type": ["string", "null"]
+          }
+        }
+      },
+      "ChatterUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "title": {
+            "type": ["string", "null"]
+          },
+          "companyName": {
+            "type": ["string", "null"]
+          },
+          "photo": {
+            "type": "object",
+            "properties": {
+              "smallPhotoUrl": {
+                "type": "string"
+              },
+              "largePhotoUrl": {
+                "type": "string"
+              }
+            }
+          },
+          "followersCount": {
+            "type": "integer"
+          },
+          "followingCounts": {
+            "type": "object",
+            "properties": {
+              "people": {
+                "type": "integer"
+              },
+              "records": {
+                "type": "integer"
+              },
+              "total": {
+                "type": "integer"
+              }
+            }
+          },
+          "groupCount": {
+            "type": "integer"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Feeds",
+      "description": "Chatter feed elements (posts)"
+    },
+    {
+      "name": "Comments",
+      "description": "Comments on feed elements"
+    },
+    {
+      "name": "Groups",
+      "description": "Chatter groups"
+    },
+    {
+      "name": "Users",
+      "description": "Chatter user profiles"
+    },
+    {
+      "name": "Topics",
+      "description": "Chatter topics"
+    }
+  ]
+}

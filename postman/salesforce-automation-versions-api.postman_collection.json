@@ -1,0 +1,131 @@
+{
+  "info": {
+    "_postman_id": "49c7ebd1-5de7-4617-95c2-91b06c078dc3",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Versions API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:52.000Z",
+    "updatedAt": "2026-07-28T02:50:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-49c7ebd1-5de7-4617-95c2-91b06c078dc3"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "List available REST API versions",
+          "id": "ce7b11c2-aa7b-4eb4-803b-f385aaf814aa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "Lists summary information about each Salesforce version currently available, including the version number, label, and a link to the version root."
+          },
+          "response": [
+            {
+              "id": "7eb7c5c0-1cc7-410c-bc33-366944896fc5",
+              "name": "List of available API versions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"version\": \"<string>\",\n    \"label\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  {\n    \"version\": \"<string>\",\n    \"label\": \"<string>\",\n    \"url\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:50:52.000Z",
+              "updatedAt": "2026-07-28T02:50:52.000Z",
+              "uid": "35240-7eb7c5c0-1cc7-410c-bc33-366944896fc5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:52.000Z",
+          "updatedAt": "2026-07-28T02:50:52.000Z",
+          "uid": "35240-ce7b11c2-aa7b-4eb4-803b-f385aaf814aa"
+        }
+      ],
+      "id": "b38c52f7-fcba-47a7-a7dd-4f999007f55f",
+      "createdAt": "2026-07-28T02:50:52.000Z",
+      "updatedAt": "2026-07-28T02:50:52.000Z",
+      "uid": "35240-b38c52f7-fcba-47a7-a7dd-4f999007f55f"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

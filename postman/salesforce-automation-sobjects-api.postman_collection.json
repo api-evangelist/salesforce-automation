@@ -1,0 +1,417 @@
+{
+  "info": {
+    "_postman_id": "70eda2eb-7dbb-48df-80bc-1566e86933b2",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SObjects API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:45.000Z",
+    "updatedAt": "2026-07-28T02:50:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-70eda2eb-7dbb-48df-80bc-1566e86933b2"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "{sObjectName}",
+          "item": [
+            {
+              "name": "describe",
+              "item": [
+                {
+                  "name": "Get full SObject describe",
+                  "id": "788f7e75-3ce2-4d6f-b97b-b1714e2f72af",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:sObjectName/describe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":sObjectName",
+                        "describe"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a6c8e376-346d-4f08-be54-f8192a3b53cb",
+                          "key": "sObjectName",
+                          "value": "<string>",
+                          "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the complete metadata for an SObject type including all fields, field-level properties (type, length, picklist values), relationships, record types, child relationships, and available layouts."
+                  },
+                  "response": [
+                    {
+                      "id": "6763d354-deb7-4b1c-adee-46441abb39f6",
+                      "name": "Full SObject describe result",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:sObjectName/describe",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":sObjectName",
+                            "describe"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelPlural\": \"<string>\",\n  \"keyPrefix\": \"<string,null>\",\n  \"custom\": \"<boolean>\",\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nillable\": \"<boolean>\",\n      \"createable\": \"<boolean>\",\n      \"updateable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"picklistValues\": [\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"defaultValue\": \"<boolean>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"defaultValue\": \"<boolean>\"\n        }\n      ],\n      \"referenceTo\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"relationshipName\": \"<string,null>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nillable\": \"<boolean>\",\n      \"createable\": \"<boolean>\",\n      \"updateable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"picklistValues\": [\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"defaultValue\": \"<boolean>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"defaultValue\": \"<boolean>\"\n        }\n      ],\n      \"referenceTo\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"relationshipName\": \"<string,null>\"\n    }\n  ],\n  \"childRelationships\": [\n    {\n      \"childSObject\": \"<string>\",\n      \"field\": \"<string>\",\n      \"relationshipName\": \"<string,null>\"\n    },\n    {\n      \"childSObject\": \"<string>\",\n      \"field\": \"<string>\",\n      \"relationshipName\": \"<string,null>\"\n    }\n  ],\n  \"recordTypeInfos\": [\n    {\n      \"active\": \"<boolean>\",\n      \"defaultRecordTypeMapping\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"recordTypeId\": \"<string>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"defaultRecordTypeMapping\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"recordTypeId\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:50:45.000Z",
+                      "updatedAt": "2026-07-28T02:50:45.000Z",
+                      "uid": "35240-6763d354-deb7-4b1c-adee-46441abb39f6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:45.000Z",
+                  "updatedAt": "2026-07-28T02:50:45.000Z",
+                  "uid": "35240-788f7e75-3ce2-4d6f-b97b-b1714e2f72af"
+                }
+              ],
+              "id": "f2b7a52c-8632-44a8-bd31-2cb4673dff5f",
+              "createdAt": "2026-07-28T02:50:45.000Z",
+              "updatedAt": "2026-07-28T02:50:45.000Z",
+              "uid": "35240-f2b7a52c-8632-44a8-bd31-2cb4673dff5f"
+            },
+            {
+              "name": "Describe an SObject",
+              "id": "f3e538ec-ec11-4cf5-8ab0-6d29836c6fb6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/:sObjectName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    ":sObjectName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1fa746d8-5dd1-45c2-949b-b22c467c5eae",
+                      "key": "sObjectName",
+                      "value": "<string>",
+                      "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                    }
+                  ]
+                },
+                "description": "Retrieves metadata about a specific SObject including its fields, child relationships, record type details, and URLs for various operations."
+              },
+              "response": [
+                {
+                  "id": "914b5d77-c326-48d1-98cd-6464b910afff",
+                  "name": "SObject describe result",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:sObjectName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":sObjectName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sObjectName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelPlural\": \"<string>\",\n  \"keyPrefix\": \"<string,null>\",\n  \"custom\": \"<boolean>\",\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nillable\": \"<boolean>\",\n      \"createable\": \"<boolean>\",\n      \"updateable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"picklistValues\": [\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"defaultValue\": \"<boolean>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"defaultValue\": \"<boolean>\"\n        }\n      ],\n      \"referenceTo\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"relationshipName\": \"<string,null>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nillable\": \"<boolean>\",\n      \"createable\": \"<boolean>\",\n      \"updateable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"picklistValues\": [\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"defaultValue\": \"<boolean>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"defaultValue\": \"<boolean>\"\n        }\n      ],\n      \"referenceTo\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"relationshipName\": \"<string,null>\"\n    }\n  ],\n  \"childRelationships\": [\n    {\n      \"childSObject\": \"<string>\",\n      \"field\": \"<string>\",\n      \"relationshipName\": \"<string,null>\"\n    },\n    {\n      \"childSObject\": \"<string>\",\n      \"field\": \"<string>\",\n      \"relationshipName\": \"<string,null>\"\n    }\n  ],\n  \"recordTypeInfos\": [\n    {\n      \"active\": \"<boolean>\",\n      \"defaultRecordTypeMapping\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"recordTypeId\": \"<string>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"defaultRecordTypeMapping\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"recordTypeId\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:50:45.000Z",
+                  "updatedAt": "2026-07-28T02:50:45.000Z",
+                  "uid": "35240-914b5d77-c326-48d1-98cd-6464b910afff"
+                },
+                {
+                  "id": "f19a21ae-34af-4baf-9835-1c67e2bcf528",
+                  "name": "The requested resource was not found. The record may have been deleted or the ID may be invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:sObjectName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":sObjectName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sObjectName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T02:50:45.000Z",
+                  "updatedAt": "2026-07-28T02:50:45.000Z",
+                  "uid": "35240-f19a21ae-34af-4baf-9835-1c67e2bcf528"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:45.000Z",
+              "updatedAt": "2026-07-28T02:50:45.000Z",
+              "uid": "35240-f3e538ec-ec11-4cf5-8ab0-6d29836c6fb6"
+            }
+          ],
+          "id": "a070209e-d3ce-4734-9c31-42ac7c169ea4",
+          "createdAt": "2026-07-28T02:50:45.000Z",
+          "updatedAt": "2026-07-28T02:50:45.000Z",
+          "uid": "35240-a070209e-d3ce-4734-9c31-42ac7c169ea4"
+        },
+        {
+          "name": "Describe all available SObjects",
+          "id": "7cf61d92-7d94-4179-98cc-fad82eac3d27",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/sobjects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sobjects"
+              ]
+            },
+            "description": "Lists all available objects and their metadata for your org, including the object name, label, key prefix, custom status, and URLs for describe and row template. Equivalent to the DescribeGlobal SOAP API call."
+          },
+          "response": [
+            {
+              "id": "3a7c1612-35f5-4f8b-b8c1-3cc774b96c8d",
+              "name": "Global describe result with list of all SObjects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"encoding\": \"<string>\",\n  \"maxBatchSize\": \"<integer>\",\n  \"sobjects\": [\n    {\n      \"activateable\": \"<boolean>\",\n      \"createable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"customSetting\": \"<boolean>\",\n      \"deletable\": \"<boolean>\",\n      \"deprecatedAndHidden\": \"<boolean>\",\n      \"feedEnabled\": \"<boolean>\",\n      \"hasSubtypes\": \"<boolean>\",\n      \"isSubtype\": \"<boolean>\",\n      \"keyPrefix\": \"<string,null>\",\n      \"label\": \"<string>\",\n      \"labelPlural\": \"<string>\",\n      \"layoutable\": \"<boolean>\",\n      \"mergeable\": \"<boolean>\",\n      \"mruEnabled\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"queryable\": \"<boolean>\",\n      \"replicateable\": \"<boolean>\",\n      \"retrieveable\": \"<boolean>\",\n      \"searchable\": \"<boolean>\",\n      \"triggerable\": \"<boolean>\",\n      \"undeletable\": \"<boolean>\",\n      \"updateable\": \"<boolean>\",\n      \"urls\": {\n        \"cupidatat83\": \"<string>\"\n      }\n    },\n    {\n      \"activateable\": \"<boolean>\",\n      \"createable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"customSetting\": \"<boolean>\",\n      \"deletable\": \"<boolean>\",\n      \"deprecatedAndHidden\": \"<boolean>\",\n      \"feedEnabled\": \"<boolean>\",\n      \"hasSubtypes\": \"<boolean>\",\n      \"isSubtype\": \"<boolean>\",\n      \"keyPrefix\": \"<string,null>\",\n      \"label\": \"<string>\",\n      \"labelPlural\": \"<string>\",\n      \"layoutable\": \"<boolean>\",\n      \"mergeable\": \"<boolean>\",\n      \"mruEnabled\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"queryable\": \"<boolean>\",\n      \"replicateable\": \"<boolean>\",\n      \"retrieveable\": \"<boolean>\",\n      \"searchable\": \"<boolean>\",\n      \"triggerable\": \"<boolean>\",\n      \"undeletable\": \"<boolean>\",\n      \"updateable\": \"<boolean>\",\n      \"urls\": {\n        \"reprehenderit2\": \"<string>\",\n        \"velitd54\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:50:45.000Z",
+              "updatedAt": "2026-07-28T02:50:45.000Z",
+              "uid": "35240-3a7c1612-35f5-4f8b-b8c1-3cc774b96c8d"
+            },
+            {
+              "id": "92bdcadd-95d1-451c-845f-3ee701545072",
+              "name": "Authentication failed. The session has expired, the token is invalid, or required scopes are missing.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+              "createdAt": "2026-07-28T02:50:45.000Z",
+              "updatedAt": "2026-07-28T02:50:45.000Z",
+              "uid": "35240-92bdcadd-95d1-451c-845f-3ee701545072"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:45.000Z",
+          "updatedAt": "2026-07-28T02:50:45.000Z",
+          "uid": "35240-7cf61d92-7d94-4179-98cc-fad82eac3d27"
+        }
+      ],
+      "id": "0aff196e-0580-4feb-9dd7-6cf2292586bd",
+      "createdAt": "2026-07-28T02:50:45.000Z",
+      "updatedAt": "2026-07-28T02:50:45.000Z",
+      "uid": "35240-0aff196e-0580-4feb-9dd7-6cf2292586bd"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

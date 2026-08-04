@@ -1,0 +1,662 @@
+{
+  "info": {
+    "_postman_id": "120d76bc-0aea-4c22-897a-17ab27df721a",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Events API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:17.000Z",
+    "updatedAt": "2026-07-28T02:50:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-120d76bc-0aea-4c22-897a-17ab27df721a"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "{eventName}",
+          "item": [
+            {
+              "name": "describe",
+              "item": [
+                {
+                  "name": "Get full Platform Event describe",
+                  "id": "7d9bdc07-f793-4197-a49f-5e93edb41130",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:eventName/describe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":eventName",
+                        "describe"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4c31cd31-e77e-4c66-878e-576f4de724b3",
+                          "key": "eventName",
+                          "value": "HS__e",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns complete metadata for a Platform Event type including all custom fields with their types, labels, and properties."
+                  },
+                  "response": [
+                    {
+                      "id": "c4a2fd61-e0b2-426e-85f0-013a1f2b3682",
+                      "name": "Full Platform Event describe result",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:eventName/describe",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":eventName",
+                            "describe"
+                          ],
+                          "variable": [
+                            {
+                              "key": "eventName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelPlural\": \"<string>\",\n  \"custom\": \"<boolean>\",\n  \"keyPrefix\": \"<string,null>\",\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nillable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"createable\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nillable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"createable\": \"<boolean>\"\n    }\n  ],\n  \"createable\": \"<boolean>\",\n  \"queryable\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:50:18.000Z",
+                      "updatedAt": "2026-07-28T02:50:18.000Z",
+                      "uid": "35240-c4a2fd61-e0b2-426e-85f0-013a1f2b3682"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:18.000Z",
+                  "updatedAt": "2026-07-28T02:50:18.000Z",
+                  "uid": "35240-7d9bdc07-f793-4197-a49f-5e93edb41130"
+                }
+              ],
+              "id": "0ed9673c-f3a8-4ec4-88f1-21f3c87457a4",
+              "createdAt": "2026-07-28T02:50:18.000Z",
+              "updatedAt": "2026-07-28T02:50:18.000Z",
+              "uid": "35240-0ed9673c-f3a8-4ec4-88f1-21f3c87457a4"
+            },
+            {
+              "name": "eventSchema",
+              "item": [
+                {
+                  "name": "Get the Apache Avro schema for a Platform Event",
+                  "id": "9a528584-8b57-443a-b062-8380eb9114af",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:eventName/eventSchema?payloadFormat=EXPANDED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":eventName",
+                        "eventSchema"
+                      ],
+                      "query": [
+                        {
+                          "description": "The format for the schema",
+                          "key": "payloadFormat",
+                          "value": "EXPANDED"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "b3ae58b3-6fa2-444c-8f56-f9bd06826641",
+                          "key": "eventName",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns the Apache Avro schema for a Platform Event channel, used by the Pub/Sub API for event serialization and deserialization."
+                  },
+                  "response": [
+                    {
+                      "id": "69b3356c-107c-4d34-8386-4d417aa5fa6c",
+                      "name": "Event Avro schema",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:eventName/eventSchema?payloadFormat=EXPANDED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":eventName",
+                            "eventSchema"
+                          ],
+                          "query": [
+                            {
+                              "description": "The format for the schema",
+                              "key": "payloadFormat",
+                              "value": "EXPANDED"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "eventName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"incididunt_1\": \"amet\",\n  \"consectetur_2\": -21748412.135085,\n  \"adipisicinge96\": -38597908\n}",
+                      "createdAt": "2026-07-28T02:50:18.000Z",
+                      "updatedAt": "2026-07-28T02:50:18.000Z",
+                      "uid": "35240-69b3356c-107c-4d34-8386-4d417aa5fa6c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:18.000Z",
+                  "updatedAt": "2026-07-28T02:50:18.000Z",
+                  "uid": "35240-9a528584-8b57-443a-b062-8380eb9114af"
+                }
+              ],
+              "id": "87ed1881-ef5a-415b-8f34-02061b1bff42",
+              "createdAt": "2026-07-28T02:50:18.000Z",
+              "updatedAt": "2026-07-28T02:50:18.000Z",
+              "uid": "35240-87ed1881-ef5a-415b-8f34-02061b1bff42"
+            },
+            {
+              "name": "Describe a Platform Event",
+              "id": "9e8bd453-a606-4745-b13a-71e3ae7fd652",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/:eventName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    ":eventName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "33913aee-8e53-4cda-ba0f-050ab1d6b52d",
+                      "key": "eventName",
+                      "value": "HS__e",
+                      "description": "(Required) The API name of the Platform Event (e.g., Order_Event__e)"
+                    }
+                  ]
+                },
+                "description": "Returns metadata about a Platform Event type including its fields, label, and API name. Platform Event types have an __e suffix (e.g., Order_Event__e)."
+              },
+              "response": [
+                {
+                  "id": "df6c706b-f1c4-4e3f-bb94-9774f6067fef",
+                  "name": "Platform Event metadata",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:eventName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":eventName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "eventName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelPlural\": \"<string>\",\n  \"custom\": \"<boolean>\",\n  \"keyPrefix\": \"<string,null>\",\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nillable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"createable\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nillable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"createable\": \"<boolean>\"\n    }\n  ],\n  \"createable\": \"<boolean>\",\n  \"queryable\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:50:18.000Z",
+                  "updatedAt": "2026-07-28T02:50:18.000Z",
+                  "uid": "35240-df6c706b-f1c4-4e3f-bb94-9774f6067fef"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:18.000Z",
+              "updatedAt": "2026-07-28T02:50:18.000Z",
+              "uid": "35240-9e8bd453-a606-4745-b13a-71e3ae7fd652"
+            },
+            {
+              "name": "Publish a Platform Event",
+              "id": "0d2d0d84-b97d-4e6a-a169-6e1a5be2fcf6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipsum_694\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/:eventName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    ":eventName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5e170ef1-5969-427d-ae25-b9c98110836e",
+                      "key": "eventName",
+                      "value": "HS__e",
+                      "description": "(Required) The API name of the Platform Event (e.g., Order_Event__e)"
+                    }
+                  ]
+                },
+                "description": "Publishes a single Platform Event message. The event is immediately available to all subscribers. Event publication is not transactional with DML operations when called via REST API. Returns the event ID upon success."
+              },
+              "response": [
+                {
+                  "id": "f29129eb-401c-4805-bd06-d2637e4a518b",
+                  "name": "Event published successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ipsum_694\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:eventName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":eventName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "eventName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"success\": \"<boolean>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"message\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:50:18.000Z",
+                  "updatedAt": "2026-07-28T02:50:18.000Z",
+                  "uid": "35240-f29129eb-401c-4805-bd06-d2637e4a518b"
+                },
+                {
+                  "id": "8ffc6cca-cf8c-4704-8e6c-7719b9b5a533",
+                  "name": "Invalid event data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ipsum_694\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:eventName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":eventName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "eventName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T02:50:18.000Z",
+                  "updatedAt": "2026-07-28T02:50:18.000Z",
+                  "uid": "35240-8ffc6cca-cf8c-4704-8e6c-7719b9b5a533"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:18.000Z",
+              "updatedAt": "2026-07-28T02:50:18.000Z",
+              "uid": "35240-0d2d0d84-b97d-4e6a-a169-6e1a5be2fcf6"
+            }
+          ],
+          "id": "2455a825-100a-43b3-bfb6-8ed33164fac0",
+          "createdAt": "2026-07-28T02:50:18.000Z",
+          "updatedAt": "2026-07-28T02:50:18.000Z",
+          "uid": "35240-2455a825-100a-43b3-bfb6-8ed33164fac0"
+        }
+      ],
+      "id": "6d4cd5ac-71ac-4f3c-9144-c163f0b2bb99",
+      "createdAt": "2026-07-28T02:50:18.000Z",
+      "updatedAt": "2026-07-28T02:50:18.000Z",
+      "uid": "35240-6d4cd5ac-71ac-4f3c-9144-c163f0b2bb99"
+    },
+    {
+      "name": "event",
+      "item": [
+        {
+          "name": "eventSchema",
+          "item": [
+            {
+              "name": "{schemaId}",
+              "item": [
+                {
+                  "name": "Get event schema by schema ID",
+                  "id": "b2936912-7606-4217-b4e4-8441bf72cf07",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event/eventSchema/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event",
+                        "eventSchema",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e11ad07c-b263-458e-8e6d-436e6cfa1a37",
+                          "key": "schemaId",
+                          "value": "<string>",
+                          "description": "(Required) The unique schema identifier"
+                        }
+                      ]
+                    },
+                    "description": "Returns the Apache Avro schema for a specific schema ID. Schema IDs are returned in event messages and can be used to retrieve the schema for deserialization."
+                  },
+                  "response": [
+                    {
+                      "id": "10418de2-e879-407c-bfc0-312e57089ff2",
+                      "name": "Event schema",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event/eventSchema/:schemaId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event",
+                            "eventSchema",
+                            ":schemaId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "schemaId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"incididunt_1\": \"amet\",\n  \"consectetur_2\": -21748412.135085,\n  \"adipisicinge96\": -38597908\n}",
+                      "createdAt": "2026-07-28T02:50:18.000Z",
+                      "updatedAt": "2026-07-28T02:50:18.000Z",
+                      "uid": "35240-10418de2-e879-407c-bfc0-312e57089ff2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:18.000Z",
+                  "updatedAt": "2026-07-28T02:50:18.000Z",
+                  "uid": "35240-b2936912-7606-4217-b4e4-8441bf72cf07"
+                }
+              ],
+              "id": "f641839f-b3d1-4912-b7c3-b4591cbd6732",
+              "createdAt": "2026-07-28T02:50:18.000Z",
+              "updatedAt": "2026-07-28T02:50:18.000Z",
+              "uid": "35240-f641839f-b3d1-4912-b7c3-b4591cbd6732"
+            }
+          ],
+          "id": "37a1be9e-8b33-43aa-8713-406514db992c",
+          "createdAt": "2026-07-28T02:50:18.000Z",
+          "updatedAt": "2026-07-28T02:50:18.000Z",
+          "uid": "35240-37a1be9e-8b33-43aa-8713-406514db992c"
+        }
+      ],
+      "id": "74de21c9-22d6-4b3a-9616-fd9f973d9a7e",
+      "createdAt": "2026-07-28T02:50:18.000Z",
+      "updatedAt": "2026-07-28T02:50:18.000Z",
+      "uid": "35240-74de21c9-22d6-4b3a-9616-fd9f973d9a7e"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

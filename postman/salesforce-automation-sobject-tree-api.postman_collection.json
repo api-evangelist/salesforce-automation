@@ -1,0 +1,194 @@
+{
+  "info": {
+    "_postman_id": "6dad1662-1e8b-42ba-844c-22530089b690",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SObject Tree API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:43.000Z",
+    "updatedAt": "2026-07-28T02:50:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6dad1662-1e8b-42ba-844c-22530089b690"
+  },
+  "item": [
+    {
+      "name": "composite",
+      "item": [
+        {
+          "name": "tree",
+          "item": [
+            {
+              "name": "{sObjectName}",
+              "item": [
+                {
+                  "name": "Create nested records in a single request",
+                  "id": "878519fc-07a3-4253-9be1-b223d4c6ebc8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/composite/tree/:sObjectName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "composite",
+                        "tree",
+                        ":sObjectName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9ee941d9-4c98-4175-b018-f2cd04375146",
+                          "key": "sObjectName",
+                          "value": "<string>",
+                          "description": "(Required) The parent SObject type"
+                        }
+                      ]
+                    },
+                    "description": "Creates a parent record and its related child records in a single request. Supports up to 200 records total with up to 5 levels of nesting. Useful for creating an Account with its Contacts and Opportunities in one call."
+                  },
+                  "response": [
+                    {
+                      "id": "d8582b6b-3e27-4845-83a5-8bfa8c5407a6",
+                      "name": "Records created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/composite/tree/:sObjectName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "composite",
+                            "tree",
+                            ":sObjectName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasErrors\": \"<boolean>\",\n  \"results\": [\n    {\n      \"referenceId\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"referenceId\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:50:44.000Z",
+                      "updatedAt": "2026-07-28T02:50:44.000Z",
+                      "uid": "35240-d8582b6b-3e27-4845-83a5-8bfa8c5407a6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:44.000Z",
+                  "updatedAt": "2026-07-28T02:50:44.000Z",
+                  "uid": "35240-878519fc-07a3-4253-9be1-b223d4c6ebc8"
+                }
+              ],
+              "id": "8a5ef33a-2613-4383-9a8b-aabbe9dce42a",
+              "createdAt": "2026-07-28T02:50:44.000Z",
+              "updatedAt": "2026-07-28T02:50:44.000Z",
+              "uid": "35240-8a5ef33a-2613-4383-9a8b-aabbe9dce42a"
+            }
+          ],
+          "id": "428b3dec-03bc-428b-91dc-4c4027369cc9",
+          "createdAt": "2026-07-28T02:50:44.000Z",
+          "updatedAt": "2026-07-28T02:50:44.000Z",
+          "uid": "35240-428b3dec-03bc-428b-91dc-4c4027369cc9"
+        }
+      ],
+      "id": "25167e00-dfdb-432b-bf39-ce7dc255ada5",
+      "createdAt": "2026-07-28T02:50:44.000Z",
+      "updatedAt": "2026-07-28T02:50:44.000Z",
+      "uid": "35240-25167e00-dfdb-432b-bf39-ce7dc255ada5"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

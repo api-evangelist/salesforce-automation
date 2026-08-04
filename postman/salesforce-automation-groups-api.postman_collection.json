@@ -1,0 +1,172 @@
+{
+  "info": {
+    "_postman_id": "e60e6cbd-7d14-4fcc-a4b7-10444e9fd52b",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Groups API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:26.000Z",
+    "updatedAt": "2026-07-28T02:50:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e60e6cbd-7d14-4fcc-a4b7-10444e9fd52b"
+  },
+  "item": [
+    {
+      "name": "chatter",
+      "item": [
+        {
+          "name": "groups",
+          "item": [
+            {
+              "name": "List Chatter groups",
+              "id": "e6da126a-fcef-4731-aa55-f5a5d9f2af3d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/chatter/groups?q=<string>&page=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chatter",
+                    "groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search term to filter groups",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of Chatter groups the current user has access to."
+              },
+              "response": [
+                {
+                  "id": "74d7a22c-d6af-4220-8059-38c605984698",
+                  "name": "List of groups",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/chatter/groups?q=<string>&page=<string>&pageSize=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chatter",
+                        "groups"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search term to filter groups",
+                          "key": "q",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "page",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"currentPageUrl\": \"<string>\",\n  \"groups\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"memberCount\": \"<integer>\",\n      \"visibility\": \"PublicAccess\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"memberCount\": \"<integer>\",\n      \"visibility\": \"PublicAccess\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"nextPageUrl\": \"<string,null>\"\n}",
+                  "createdAt": "2026-07-28T02:50:27.000Z",
+                  "updatedAt": "2026-07-28T02:50:27.000Z",
+                  "uid": "35240-74d7a22c-d6af-4220-8059-38c605984698"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:27.000Z",
+              "updatedAt": "2026-07-28T02:50:27.000Z",
+              "uid": "35240-e6da126a-fcef-4731-aa55-f5a5d9f2af3d"
+            }
+          ],
+          "id": "b57dbf3a-ef86-40a7-a8d5-737acc67d255",
+          "createdAt": "2026-07-28T02:50:27.000Z",
+          "updatedAt": "2026-07-28T02:50:27.000Z",
+          "uid": "35240-b57dbf3a-ef86-40a7-a8d5-737acc67d255"
+        }
+      ],
+      "id": "8846afc2-a664-4c4e-97a2-67b055b47717",
+      "createdAt": "2026-07-28T02:50:27.000Z",
+      "updatedAt": "2026-07-28T02:50:27.000Z",
+      "uid": "35240-8846afc2-a664-4c4e-97a2-67b055b47717"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

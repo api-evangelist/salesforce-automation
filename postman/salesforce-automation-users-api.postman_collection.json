@@ -1,0 +1,252 @@
+{
+  "info": {
+    "_postman_id": "745f5d08-ce33-4882-9d4d-62caa1cf81d9",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Users API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:51.000Z",
+    "updatedAt": "2026-07-28T02:50:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-745f5d08-ce33-4882-9d4d-62caa1cf81d9"
+  },
+  "item": [
+    {
+      "name": "chatter",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "me",
+              "item": [
+                {
+                  "name": "Get the current user's Chatter profile",
+                  "id": "78dc2c99-d0e3-40c0-8ac7-d1ca84e42139",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/chatter/users/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chatter",
+                        "users",
+                        "me"
+                      ]
+                    },
+                    "description": "Returns the Chatter profile of the currently authenticated user, including their name, photo, title, and follower/following counts."
+                  },
+                  "response": [
+                    {
+                      "id": "eb8d1f85-72b7-42a5-a671-7204fa162c70",
+                      "name": "Current user profile",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/chatter/users/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "chatter",
+                            "users",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"title\": \"<string,null>\",\n  \"companyName\": \"<string,null>\",\n  \"photo\": {\n    \"smallPhotoUrl\": \"<string>\",\n    \"largePhotoUrl\": \"<string>\"\n  },\n  \"followersCount\": \"<integer>\",\n  \"followingCounts\": {\n    \"people\": \"<integer>\",\n    \"records\": \"<integer>\",\n    \"total\": \"<integer>\"\n  },\n  \"groupCount\": \"<integer>\",\n  \"isActive\": \"<boolean>\",\n  \"url\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:50:51.000Z",
+                      "updatedAt": "2026-07-28T02:50:51.000Z",
+                      "uid": "35240-eb8d1f85-72b7-42a5-a671-7204fa162c70"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:51.000Z",
+                  "updatedAt": "2026-07-28T02:50:51.000Z",
+                  "uid": "35240-78dc2c99-d0e3-40c0-8ac7-d1ca84e42139"
+                }
+              ],
+              "id": "9985e5f4-80cf-4482-830a-7c77669f5195",
+              "createdAt": "2026-07-28T02:50:51.000Z",
+              "updatedAt": "2026-07-28T02:50:51.000Z",
+              "uid": "35240-9985e5f4-80cf-4482-830a-7c77669f5195"
+            },
+            {
+              "name": "{userId}",
+              "item": [
+                {
+                  "name": "Get a user's Chatter profile",
+                  "id": "cc972de3-fd4b-4287-9a89-a747259fbbf4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/chatter/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chatter",
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9670ea8e-b1ea-4f76-ba98-29a00797c885",
+                          "key": "userId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns the Chatter profile of the specified user."
+                  },
+                  "response": [
+                    {
+                      "id": "c4e6b4a6-2df7-4075-ad15-2e9c30d4608f",
+                      "name": "User profile",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/chatter/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "chatter",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"title\": \"<string,null>\",\n  \"companyName\": \"<string,null>\",\n  \"photo\": {\n    \"smallPhotoUrl\": \"<string>\",\n    \"largePhotoUrl\": \"<string>\"\n  },\n  \"followersCount\": \"<integer>\",\n  \"followingCounts\": {\n    \"people\": \"<integer>\",\n    \"records\": \"<integer>\",\n    \"total\": \"<integer>\"\n  },\n  \"groupCount\": \"<integer>\",\n  \"isActive\": \"<boolean>\",\n  \"url\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:50:51.000Z",
+                      "updatedAt": "2026-07-28T02:50:51.000Z",
+                      "uid": "35240-c4e6b4a6-2df7-4075-ad15-2e9c30d4608f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:51.000Z",
+                  "updatedAt": "2026-07-28T02:50:51.000Z",
+                  "uid": "35240-cc972de3-fd4b-4287-9a89-a747259fbbf4"
+                }
+              ],
+              "id": "e35703de-064e-4ae0-976d-814d22d6fa6f",
+              "createdAt": "2026-07-28T02:50:51.000Z",
+              "updatedAt": "2026-07-28T02:50:51.000Z",
+              "uid": "35240-e35703de-064e-4ae0-976d-814d22d6fa6f"
+            }
+          ],
+          "id": "f6dbd7d5-d2e1-4583-9b70-45a1ce2d922b",
+          "createdAt": "2026-07-28T02:50:51.000Z",
+          "updatedAt": "2026-07-28T02:50:51.000Z",
+          "uid": "35240-f6dbd7d5-d2e1-4583-9b70-45a1ce2d922b"
+        }
+      ],
+      "id": "46b22ded-47e3-47d9-b272-4ad802c6dbf8",
+      "createdAt": "2026-07-28T02:50:51.000Z",
+      "updatedAt": "2026-07-28T02:50:51.000Z",
+      "uid": "35240-46b22ded-47e3-47d9-b272-4ad802c6dbf8"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

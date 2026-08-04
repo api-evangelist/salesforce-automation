@@ -1,0 +1,303 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Salesforce Change Data Capture API",
+    "description": "REST API endpoints for managing Change Data Capture (CDC) channel subscriptions and retrieving change event metadata. CDC provides near-real-time notifications of Salesforce record changes (create, update, delete, undelete) as event messages. Subscribers consume events via CometD (Streaming API), Pub/Sub API, or Apex triggers. The REST endpoints manage which objects are enabled for CDC and provide event metadata.",
+    "version": "63.0",
+    "contact": {
+      "name": "Salesforce Developer Support",
+      "url": "https://developer.salesforce.com/support",
+      "email": "developer@salesforce.com"
+    },
+    "license": {
+      "name": "Salesforce API Terms of Use",
+      "url": "https://www.salesforce.com/company/legal/agreements/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.salesforce.com/services/data/v63.0",
+      "description": "Salesforce production or developer instance",
+      "variables": {
+        "instance": {
+          "default": "yourInstance",
+          "description": "Your Salesforce instance identifier"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/sobjects/{changeEventName}": {
+      "get": {
+        "operationId": "describeChangeEvent",
+        "summary": "Describe a Change Data Capture event",
+        "description": "Returns metadata about a Change Data Capture event type. Change event names follow the pattern {SObjectName}ChangeEvent (e.g., AccountChangeEvent, ContactChangeEvent) for standard objects, or {CustomObjectName}__ChangeEvent for custom objects.",
+        "tags": ["Change Events"],
+        "parameters": [
+          {
+            "name": "changeEventName",
+            "in": "path",
+            "required": true,
+            "description": "The API name of the Change Data Capture event (e.g., AccountChangeEvent, ContactChangeEvent, MyObject__ChangeEvent)",
+            "schema": {
+              "type": "string",
+              "pattern": ".*ChangeEvent$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Change event metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeEventDescribe"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sobjects/{changeEventName}/describe": {
+      "get": {
+        "operationId": "describeChangeEventFull",
+        "summary": "Get full Change Data Capture event describe",
+        "description": "Returns complete metadata for a CDC event type including all available change event fields and their properties.",
+        "tags": ["Change Events"],
+        "parameters": [
+          {
+            "name": "changeEventName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": ".*ChangeEvent$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full change event describe",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeEventDescribe"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sobjects/{changeEventName}/eventSchema": {
+      "get": {
+        "operationId": "getChangeEventSchema",
+        "summary": "Get the Avro schema for a Change Data Capture event",
+        "description": "Returns the Apache Avro schema for a Change Data Capture event channel, used by the Pub/Sub API.",
+        "tags": ["Change Events"],
+        "parameters": [
+          {
+            "name": "changeEventName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Change event Avro schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/knowledgeManagement/settings": {
+      "get": {
+        "operationId": "getCDCEnabledEntities",
+        "summary": "Get CDC-enabled entities",
+        "description": "Returns entities that have Change Data Capture enabled via the tooling API or setup UI. Note: This is accessed through the Tooling API ChangeDataCaptureChannelMembers query.",
+        "tags": ["Configuration"],
+        "responses": {
+          "200": {
+            "description": "CDC configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+            "tokenUrl": "https://login.salesforce.com/services/oauth2/token",
+            "scopes": {
+              "api": "Access and manage your Salesforce data"
+            }
+          }
+        }
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "ChangeEventDescribe": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The API name of the change event (e.g., AccountChangeEvent)"
+          },
+          "label": {
+            "type": "string"
+          },
+          "labelPlural": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "nillable": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "associateEntityType": {
+            "type": ["string", "null"],
+            "description": "The associated entity type (ChangeEvent)"
+          },
+          "associateParentEntity": {
+            "type": "string",
+            "description": "The parent SObject type that this change event tracks (e.g., Account, Contact)"
+          }
+        }
+      },
+      "ChangeEventMessage": {
+        "type": "object",
+        "description": "The structure of a Change Data Capture event message as received by subscribers. Contains the event header with change metadata and the changed field values.",
+        "properties": {
+          "ChangeEventHeader": {
+            "type": "object",
+            "description": "Header containing metadata about the change",
+            "properties": {
+              "entityName": {
+                "type": "string",
+                "description": "The SObject type that changed (e.g., Account)"
+              },
+              "recordIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of record IDs that changed (may be batched)"
+              },
+              "changeType": {
+                "type": "string",
+                "enum": ["CREATE", "UPDATE", "DELETE", "UNDELETE", "GAP_CREATE", "GAP_UPDATE", "GAP_DELETE", "GAP_UNDELETE", "GAP_OVERFLOW"],
+                "description": "The type of change. GAP_ prefixed types indicate events replayed after a gap in delivery."
+              },
+              "changeOrigin": {
+                "type": "string",
+                "description": "The origin of the change (e.g., com/salesforce/api/rest/63.0)"
+              },
+              "transactionKey": {
+                "type": "string",
+                "description": "Unique key identifying the transaction that caused the change"
+              },
+              "sequenceNumber": {
+                "type": "integer",
+                "description": "Sequence number for ordering within a transaction"
+              },
+              "commitTimestamp": {
+                "type": "integer",
+                "description": "Unix timestamp in milliseconds when the change was committed"
+              },
+              "commitNumber": {
+                "type": "integer",
+                "description": "System change number for ordering"
+              },
+              "commitUser": {
+                "type": "string",
+                "description": "The 18-character ID of the user who made the change"
+              },
+              "changedFields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of field API names that changed (for UPDATE events)"
+              },
+              "nulledFields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of field API names that were set to null"
+              },
+              "diffFields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of fields included in the change event payload"
+              }
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Change Events",
+      "description": "Change Data Capture event metadata and schema"
+    },
+    {
+      "name": "Configuration",
+      "description": "CDC configuration and enabled entities"
+    }
+  ]
+}

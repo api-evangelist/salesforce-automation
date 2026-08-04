@@ -1,0 +1,241 @@
+{
+  "info": {
+    "_postman_id": "86285a57-bbef-4122-ad53-d87b64741fba",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Workflow API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:53.000Z",
+    "updatedAt": "2026-07-28T02:50:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-86285a57-bbef-4122-ad53-d87b64741fba"
+  },
+  "item": [
+    {
+      "name": "process",
+      "item": [
+        {
+          "name": "rules",
+          "item": [
+            {
+              "name": "{sObjectName}",
+              "item": [
+                {
+                  "name": "Get workflow rules for an SObject",
+                  "id": "3964c4f6-6b34-4eb2-a26a-6b8d278dc3ed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/process/rules/:sObjectName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "process",
+                        "rules",
+                        ":sObjectName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fedba2fa-d4a8-4600-a6da-6d14a1501911",
+                          "key": "sObjectName",
+                          "value": "<string>",
+                          "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                        }
+                      ]
+                    },
+                    "description": "Returns workflow rules defined for the specified SObject type."
+                  },
+                  "response": [
+                    {
+                      "id": "ca47f364-efeb-4373-b192-8a48f612d8d2",
+                      "name": "Workflow rules for the object",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/process/rules/:sObjectName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "process",
+                            "rules",
+                            ":sObjectName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"rules\": [\n    {\n      \"actions\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"description\": \"<string,null>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespacePrefix\": \"<string,null>\",\n      \"object\": \"<string>\"\n    },\n    {\n      \"actions\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"description\": \"<string,null>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespacePrefix\": \"<string,null>\",\n      \"object\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:50:53.000Z",
+                      "updatedAt": "2026-07-28T02:50:53.000Z",
+                      "uid": "35240-ca47f364-efeb-4373-b192-8a48f612d8d2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:53.000Z",
+                  "updatedAt": "2026-07-28T02:50:53.000Z",
+                  "uid": "35240-3964c4f6-6b34-4eb2-a26a-6b8d278dc3ed"
+                }
+              ],
+              "id": "e4c9d9e3-1cc6-4425-8c24-7efcb6b6000c",
+              "createdAt": "2026-07-28T02:50:53.000Z",
+              "updatedAt": "2026-07-28T02:50:53.000Z",
+              "uid": "35240-e4c9d9e3-1cc6-4425-8c24-7efcb6b6000c"
+            },
+            {
+              "name": "List workflow rules",
+              "id": "e14a5c0f-118f-402d-bce1-21b581b7d0f4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/process/rules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "process",
+                    "rules"
+                  ]
+                },
+                "description": "Returns a list of all active workflow rules in the org. Workflow rules evaluate records when they are created or edited and trigger automated actions."
+              },
+              "response": [
+                {
+                  "id": "c5a00b4e-5486-4c1c-b88d-f6fec2366a93",
+                  "name": "List of workflow rules",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/process/rules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "process",
+                        "rules"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"rules\": {\n    \"voluptate_b9\": [\n      {\n        \"actions\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namespacePrefix\": \"<string,null>\",\n        \"object\": \"<string>\"\n      },\n      {\n        \"actions\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namespacePrefix\": \"<string,null>\",\n        \"object\": \"<string>\"\n      }\n    ],\n    \"laboris20\": [\n      {\n        \"actions\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namespacePrefix\": \"<string,null>\",\n        \"object\": \"<string>\"\n      },\n      {\n        \"actions\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namespacePrefix\": \"<string,null>\",\n        \"object\": \"<string>\"\n      }\n    ],\n    \"minimd2\": [\n      {\n        \"actions\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namespacePrefix\": \"<string,null>\",\n        \"object\": \"<string>\"\n      },\n      {\n        \"actions\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namespacePrefix\": \"<string,null>\",\n        \"object\": \"<string>\"\n      }\n    ],\n    \"reprehenderit_09_\": [\n      {\n        \"actions\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namespacePrefix\": \"<string,null>\",\n        \"object\": \"<string>\"\n      },\n      {\n        \"actions\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"namespacePrefix\": \"<string,null>\",\n        \"object\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:50:53.000Z",
+                  "updatedAt": "2026-07-28T02:50:53.000Z",
+                  "uid": "35240-c5a00b4e-5486-4c1c-b88d-f6fec2366a93"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:53.000Z",
+              "updatedAt": "2026-07-28T02:50:53.000Z",
+              "uid": "35240-e14a5c0f-118f-402d-bce1-21b581b7d0f4"
+            }
+          ],
+          "id": "1ba0aafa-351b-40ec-8b9e-fdb265471a9a",
+          "createdAt": "2026-07-28T02:50:53.000Z",
+          "updatedAt": "2026-07-28T02:50:53.000Z",
+          "uid": "35240-1ba0aafa-351b-40ec-8b9e-fdb265471a9a"
+        }
+      ],
+      "id": "ba90b42f-4651-447a-9ef4-16d0ac8d821a",
+      "createdAt": "2026-07-28T02:50:53.000Z",
+      "updatedAt": "2026-07-28T02:50:53.000Z",
+      "uid": "35240-ba90b42f-4651-447a-9ef4-16d0ac8d821a"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

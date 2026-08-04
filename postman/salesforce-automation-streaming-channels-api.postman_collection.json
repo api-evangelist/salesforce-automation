@@ -1,0 +1,654 @@
+{
+  "info": {
+    "_postman_id": "ea4d28db-fbd8-41b0-a14a-33e489fed67c",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Streaming Channels API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:48.000Z",
+    "updatedAt": "2026-07-28T02:50:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ea4d28db-fbd8-41b0-a14a-33e489fed67c"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "StreamingChannel",
+          "item": [
+            {
+              "name": "{channelId}",
+              "item": [
+                {
+                  "name": "push",
+                  "item": [
+                    {
+                      "name": "Push an event to a Streaming Channel",
+                      "id": "f47aef3f-603c-4d41-bcf6-71773519587f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pushEvents\": [\n    {\n      \"payload\": \"<string>\",\n      \"userIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"payload\": \"<string>\",\n      \"userIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/StreamingChannel/:channelId/push",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "StreamingChannel",
+                            ":channelId",
+                            "push"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0b9fb2bb-59f4-40e7-9c74-a25d32233737",
+                              "key": "channelId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Publishes a custom event to all subscribers of the specified Streaming Channel. The event payload is a JSON string up to 8 KB."
+                      },
+                      "response": [
+                        {
+                          "id": "f40958de-c961-410d-9feb-2d884cabea0f",
+                          "name": "Push result",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"pushEvents\": [\n    {\n      \"payload\": \"<string>\",\n      \"userIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"payload\": \"<string>\",\n      \"userIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sobjects/StreamingChannel/:channelId/push",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sobjects",
+                                "StreamingChannel",
+                                ":channelId",
+                                "push"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "channelId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"fanoutCount\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T02:50:49.000Z",
+                          "updatedAt": "2026-07-28T02:50:49.000Z",
+                          "uid": "35240-f40958de-c961-410d-9feb-2d884cabea0f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:50:49.000Z",
+                      "updatedAt": "2026-07-28T02:50:49.000Z",
+                      "uid": "35240-f47aef3f-603c-4d41-bcf6-71773519587f"
+                    }
+                  ],
+                  "id": "acb40e3c-1301-4089-8f4e-d853795c666a",
+                  "createdAt": "2026-07-28T02:50:49.000Z",
+                  "updatedAt": "2026-07-28T02:50:49.000Z",
+                  "uid": "35240-acb40e3c-1301-4089-8f4e-d853795c666a"
+                },
+                {
+                  "name": "Get a Streaming Channel",
+                  "id": "8e9f75e7-4ae6-4ac1-9766-2d991fcfd6d9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/StreamingChannel/:channelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "StreamingChannel",
+                        ":channelId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ba67dd99-6d5e-47aa-8194-cc1b8899f888",
+                          "key": "channelId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a specific Streaming Channel record by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "9761736d-de62-466d-8a8c-d9e0bd6768b6",
+                      "name": "Streaming Channel record",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/StreamingChannel/:channelId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "StreamingChannel",
+                            ":channelId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "channelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Description\": \"<string,null>\",\n  \"IsDynamic\": \"<boolean>\",\n  \"CreatedDate\": \"<dateTime>\",\n  \"LastModifiedDate\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:50:49.000Z",
+                      "updatedAt": "2026-07-28T02:50:49.000Z",
+                      "uid": "35240-9761736d-de62-466d-8a8c-d9e0bd6768b6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:49.000Z",
+                  "updatedAt": "2026-07-28T02:50:49.000Z",
+                  "uid": "35240-8e9f75e7-4ae6-4ac1-9766-2d991fcfd6d9"
+                },
+                {
+                  "name": "Update a Streaming Channel",
+                  "id": "35eb41f1-0e08-4327-8cf4-24c3e69f554b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/StreamingChannel/:channelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "StreamingChannel",
+                        ":channelId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ec8539a9-3af4-4609-8d4b-ecccfeb98641",
+                          "key": "channelId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Updates the properties of an existing Streaming Channel."
+                  },
+                  "response": [
+                    {
+                      "id": "f5747529-3dce-46da-9c37-7d0ccb1fc6d0",
+                      "name": "Streaming Channel updated",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/StreamingChannel/:channelId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "StreamingChannel",
+                            ":channelId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "channelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:49.000Z",
+                      "updatedAt": "2026-07-28T02:50:49.000Z",
+                      "uid": "35240-f5747529-3dce-46da-9c37-7d0ccb1fc6d0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:49.000Z",
+                  "updatedAt": "2026-07-28T02:50:49.000Z",
+                  "uid": "35240-35eb41f1-0e08-4327-8cf4-24c3e69f554b"
+                },
+                {
+                  "name": "Delete a Streaming Channel",
+                  "id": "62ea7f74-3482-419c-bb2d-f5fe2feee3c6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/StreamingChannel/:channelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "StreamingChannel",
+                        ":channelId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "453cf3be-af0b-494c-afb4-837f5bd7297b",
+                          "key": "channelId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a Streaming Channel. Active subscribers will be disconnected."
+                  },
+                  "response": [
+                    {
+                      "id": "498da0fd-d4f5-4a9b-812e-e4545ce7cd89",
+                      "name": "Streaming Channel deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/StreamingChannel/:channelId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "StreamingChannel",
+                            ":channelId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "channelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:49.000Z",
+                      "updatedAt": "2026-07-28T02:50:49.000Z",
+                      "uid": "35240-498da0fd-d4f5-4a9b-812e-e4545ce7cd89"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:49.000Z",
+                  "updatedAt": "2026-07-28T02:50:49.000Z",
+                  "uid": "35240-62ea7f74-3482-419c-bb2d-f5fe2feee3c6"
+                }
+              ],
+              "id": "4b390667-6db7-4604-ab68-cd1d1e7676e9",
+              "createdAt": "2026-07-28T02:50:49.000Z",
+              "updatedAt": "2026-07-28T02:50:49.000Z",
+              "uid": "35240-4b390667-6db7-4604-ab68-cd1d1e7676e9"
+            },
+            {
+              "name": "List Streaming Channels",
+              "id": "a4ddc215-3a54-4488-99f1-e68f7a242885",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/StreamingChannel",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    "StreamingChannel"
+                  ]
+                },
+                "description": "Returns all generic Streaming Channel records in the org. Streaming Channels allow publishing custom JSON events to subscribers."
+              },
+              "response": [
+                {
+                  "id": "4049236a-08ce-4ae2-8086-bd6a00cb08e6",
+                  "name": "List of Streaming Channels",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/StreamingChannel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "StreamingChannel"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"records\": [\n    {\n      \"Id\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string,null>\",\n      \"IsDynamic\": \"<boolean>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"LastModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string,null>\",\n      \"IsDynamic\": \"<boolean>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"LastModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:50:49.000Z",
+                  "updatedAt": "2026-07-28T02:50:49.000Z",
+                  "uid": "35240-4049236a-08ce-4ae2-8086-bd6a00cb08e6"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:49.000Z",
+              "updatedAt": "2026-07-28T02:50:49.000Z",
+              "uid": "35240-a4ddc215-3a54-4488-99f1-e68f7a242885"
+            },
+            {
+              "name": "Create a Streaming Channel",
+              "id": "9e9a08b8-e239-47fa-bd12-9ebc5811e440",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/StreamingChannel",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    "StreamingChannel"
+                  ]
+                },
+                "description": "Creates a new generic Streaming Channel for publishing custom events. Events are delivered to subscribers on the /u/{channelName} CometD channel."
+              },
+              "response": [
+                {
+                  "id": "945cbd24-b81d-456b-b83a-c0a2b5292d31",
+                  "name": "Streaming Channel created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/StreamingChannel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "StreamingChannel"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:50:49.000Z",
+                  "updatedAt": "2026-07-28T02:50:49.000Z",
+                  "uid": "35240-945cbd24-b81d-456b-b83a-c0a2b5292d31"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:49.000Z",
+              "updatedAt": "2026-07-28T02:50:49.000Z",
+              "uid": "35240-9e9a08b8-e239-47fa-bd12-9ebc5811e440"
+            }
+          ],
+          "id": "4ce43d0c-eae5-4c64-a6b8-0c9445247cf4",
+          "createdAt": "2026-07-28T02:50:49.000Z",
+          "updatedAt": "2026-07-28T02:50:49.000Z",
+          "uid": "35240-4ce43d0c-eae5-4c64-a6b8-0c9445247cf4"
+        }
+      ],
+      "id": "552f14a9-1d3e-45bf-b065-f4b5f1922989",
+      "createdAt": "2026-07-28T02:50:49.000Z",
+      "updatedAt": "2026-07-28T02:50:49.000Z",
+      "uid": "35240-552f14a9-1d3e-45bf-b065-f4b5f1922989"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

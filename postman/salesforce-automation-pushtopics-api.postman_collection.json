@@ -1,0 +1,525 @@
+{
+  "info": {
+    "_postman_id": "fe2bd720-6b4d-48b6-9bb9-b03eaaf70893",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions PushTopics API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:32.000Z",
+    "updatedAt": "2026-07-28T02:50:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fe2bd720-6b4d-48b6-9bb9-b03eaaf70893"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "PushTopic",
+          "item": [
+            {
+              "name": "{pushTopicId}",
+              "item": [
+                {
+                  "name": "Get a PushTopic",
+                  "id": "dbc9f4e4-587c-4c57-81b4-73efe9b08c4b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/PushTopic/:pushTopicId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "PushTopic",
+                        ":pushTopicId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d78e1683-4661-4bf7-bf6e-25b608ae3549",
+                          "key": "pushTopicId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a specific PushTopic record by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "80cde338-9929-46f9-8e99-9bdeedc7b48f",
+                      "name": "PushTopic record",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/PushTopic/:pushTopicId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "PushTopic",
+                            ":pushTopicId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "pushTopicId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"Select\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string,null>\",\n  \"CreatedDate\": \"<dateTime>\",\n  \"LastModifiedDate\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:50:33.000Z",
+                      "updatedAt": "2026-07-28T02:50:33.000Z",
+                      "uid": "35240-80cde338-9929-46f9-8e99-9bdeedc7b48f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:33.000Z",
+                  "updatedAt": "2026-07-28T02:50:33.000Z",
+                  "uid": "35240-dbc9f4e4-587c-4c57-81b4-73efe9b08c4b"
+                },
+                {
+                  "name": "Update a PushTopic",
+                  "id": "281f370b-5b9c-411c-8442-489000b4f6f8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"Select\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/PushTopic/:pushTopicId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "PushTopic",
+                        ":pushTopicId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0cf937db-bdd7-4a1c-a8bf-884082b6f217",
+                          "key": "pushTopicId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Updates the SOQL query, notification settings, or other properties of an existing PushTopic."
+                  },
+                  "response": [
+                    {
+                      "id": "869f200c-bc28-4dac-af83-47673f1ffe95",
+                      "name": "PushTopic updated",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"Select\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/PushTopic/:pushTopicId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "PushTopic",
+                            ":pushTopicId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "pushTopicId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:33.000Z",
+                      "updatedAt": "2026-07-28T02:50:33.000Z",
+                      "uid": "35240-869f200c-bc28-4dac-af83-47673f1ffe95"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:33.000Z",
+                  "updatedAt": "2026-07-28T02:50:33.000Z",
+                  "uid": "35240-281f370b-5b9c-411c-8442-489000b4f6f8"
+                },
+                {
+                  "name": "Delete a PushTopic",
+                  "id": "1367f1e4-2239-4244-964a-c4065cf885e4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/PushTopic/:pushTopicId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "PushTopic",
+                        ":pushTopicId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fd974deb-bdee-406d-9f1f-a9ca58b97ef1",
+                          "key": "pushTopicId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a PushTopic. Active subscribers will be disconnected."
+                  },
+                  "response": [
+                    {
+                      "id": "0589b426-3d11-40f8-af63-33a48323dd10",
+                      "name": "PushTopic deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/PushTopic/:pushTopicId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "PushTopic",
+                            ":pushTopicId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "pushTopicId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:33.000Z",
+                      "updatedAt": "2026-07-28T02:50:33.000Z",
+                      "uid": "35240-0589b426-3d11-40f8-af63-33a48323dd10"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:33.000Z",
+                  "updatedAt": "2026-07-28T02:50:33.000Z",
+                  "uid": "35240-1367f1e4-2239-4244-964a-c4065cf885e4"
+                }
+              ],
+              "id": "d3b46ac7-9ebe-4048-80e8-b75a9c96097b",
+              "createdAt": "2026-07-28T02:50:33.000Z",
+              "updatedAt": "2026-07-28T02:50:33.000Z",
+              "uid": "35240-d3b46ac7-9ebe-4048-80e8-b75a9c96097b"
+            },
+            {
+              "name": "List PushTopics",
+              "id": "92696ee4-fbfd-4cb0-b7cb-1110447ce72e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/PushTopic",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    "PushTopic"
+                  ]
+                },
+                "description": "Returns all PushTopic records in the org. PushTopics define SOQL queries that determine which record changes generate streaming events. Note: PushTopics are deprecated in favor of Platform Events and Change Data Capture."
+              },
+              "response": [
+                {
+                  "id": "615c9dcb-b739-4ff5-8798-a297d9ffde1a",
+                  "name": "List of PushTopics",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/PushTopic",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "PushTopic"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"records\": [\n    {\n      \"Id\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Query\": \"<string>\",\n      \"ApiVersion\": \"<number>\",\n      \"IsActive\": \"<boolean>\",\n      \"NotifyForFields\": \"All\",\n      \"NotifyForOperationCreate\": \"<boolean>\",\n      \"NotifyForOperationUpdate\": \"<boolean>\",\n      \"NotifyForOperationDelete\": \"<boolean>\",\n      \"NotifyForOperationUndelete\": \"<boolean>\",\n      \"Description\": \"<string,null>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"LastModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Query\": \"<string>\",\n      \"ApiVersion\": \"<number>\",\n      \"IsActive\": \"<boolean>\",\n      \"NotifyForFields\": \"Where\",\n      \"NotifyForOperationCreate\": \"<boolean>\",\n      \"NotifyForOperationUpdate\": \"<boolean>\",\n      \"NotifyForOperationDelete\": \"<boolean>\",\n      \"NotifyForOperationUndelete\": \"<boolean>\",\n      \"Description\": \"<string,null>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"LastModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:50:33.000Z",
+                  "updatedAt": "2026-07-28T02:50:33.000Z",
+                  "uid": "35240-615c9dcb-b739-4ff5-8798-a297d9ffde1a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:33.000Z",
+              "updatedAt": "2026-07-28T02:50:33.000Z",
+              "uid": "35240-92696ee4-fbfd-4cb0-b7cb-1110447ce72e"
+            },
+            {
+              "name": "Create a PushTopic",
+              "id": "787d5cd9-fe7b-4bcc-8c17-77a34be6ee99",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"Select\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/PushTopic",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    "PushTopic"
+                  ]
+                },
+                "description": "Creates a new PushTopic that defines a SOQL query to monitor for record changes. When records matching the query change, events are delivered to subscribers on the /topic/{pushTopicName} CometD channel."
+              },
+              "response": [
+                {
+                  "id": "b64e72b4-2a02-498c-b3ba-c280c1ff63fc",
+                  "name": "PushTopic created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"Select\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/PushTopic",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "PushTopic"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:50:33.000Z",
+                  "updatedAt": "2026-07-28T02:50:33.000Z",
+                  "uid": "35240-b64e72b4-2a02-498c-b3ba-c280c1ff63fc"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:33.000Z",
+              "updatedAt": "2026-07-28T02:50:33.000Z",
+              "uid": "35240-787d5cd9-fe7b-4bcc-8c17-77a34be6ee99"
+            }
+          ],
+          "id": "f9dba810-6828-4987-9858-eda08a46e05c",
+          "createdAt": "2026-07-28T02:50:33.000Z",
+          "updatedAt": "2026-07-28T02:50:33.000Z",
+          "uid": "35240-f9dba810-6828-4987-9858-eda08a46e05c"
+        }
+      ],
+      "id": "005dfa60-fbd2-4dc7-a4cb-5db156893a20",
+      "createdAt": "2026-07-28T02:50:33.000Z",
+      "updatedAt": "2026-07-28T02:50:33.000Z",
+      "uid": "35240-005dfa60-fbd2-4dc7-a4cb-5db156893a20"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

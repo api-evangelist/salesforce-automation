@@ -1,0 +1,170 @@
+{
+  "info": {
+    "_postman_id": "ba2a125d-a9e4-4992-a078-5577ddb546e6",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Graph API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:26.000Z",
+    "updatedAt": "2026-07-28T02:50:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ba2a125d-a9e4-4992-a078-5577ddb546e6"
+  },
+  "item": [
+    {
+      "name": "composite",
+      "item": [
+        {
+          "name": "graph",
+          "item": [
+            {
+              "name": "Execute composite graph request",
+              "id": "6fe3c8d5-b8ab-4567-b43f-2c66a1af7d35",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"PUT\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"elit_a_\": \"consequat ut non\"\n          },\n          \"httpHeaders\": {\n            \"commodo_a31\": \"<string>\",\n            \"commodo_f56\": \"<string>\"\n          }\n        },\n        {\n          \"method\": \"DELETE\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"deserunt_4\": -78954558\n          },\n          \"httpHeaders\": {\n            \"inf2\": \"<string>\",\n            \"amet__\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"GET\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"enim_eec\": 74945412.7023465,\n            \"culpa6\": -31927531\n          },\n          \"httpHeaders\": {\n            \"nisi72_\": \"<string>\"\n          }\n        },\n        {\n          \"method\": \"DELETE\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"Duis_db\": 56583839.44237527,\n            \"ametfb\": 44394810,\n            \"cillum_b34\": false\n          },\n          \"httpHeaders\": {\n            \"ipsum_e\": \"<string>\",\n            \"do834\": \"<string>\",\n            \"Excepteur9_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/composite/graph",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "composite",
+                    "graph"
+                  ]
+                },
+                "description": "Executes a set of composite graphs, each containing subrequests that can reference each other through a dependency graph. Supports up to 500 subrequests across all graphs. Graphs are independent; subrequests within a graph execute in dependency order."
+              },
+              "response": [
+                {
+                  "id": "cd7adc13-54b8-438e-bc8d-6a85c7651bdf",
+                  "name": "Graph response with results for each graph and subrequest",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"PUT\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"elit_a_\": \"consequat ut non\"\n          },\n          \"httpHeaders\": {\n            \"commodo_a31\": \"<string>\",\n            \"commodo_f56\": \"<string>\"\n          }\n        },\n        {\n          \"method\": \"DELETE\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"deserunt_4\": -78954558\n          },\n          \"httpHeaders\": {\n            \"inf2\": \"<string>\",\n            \"amet__\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"GET\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"enim_eec\": 74945412.7023465,\n            \"culpa6\": -31927531\n          },\n          \"httpHeaders\": {\n            \"nisi72_\": \"<string>\"\n          }\n        },\n        {\n          \"method\": \"DELETE\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"Duis_db\": 56583839.44237527,\n            \"ametfb\": 44394810,\n            \"cillum_b34\": false\n          },\n          \"httpHeaders\": {\n            \"ipsum_e\": \"<string>\",\n            \"do834\": \"<string>\",\n            \"Excepteur9_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/composite/graph",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "composite",
+                        "graph"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"<string>\",\n      \"graphResponse\": {\n        \"compositeResponse\": [\n          {\n            \"body\": {\n              \"description\": \"The response body\"\n            },\n            \"httpHeaders\": {\n              \"laborum_b\": \"<string>\",\n              \"laborume3d\": \"<string>\"\n            },\n            \"httpStatusCode\": \"<integer>\",\n            \"referenceId\": \"<string>\"\n          },\n          {\n            \"body\": {\n              \"description\": \"The response body\"\n            },\n            \"httpHeaders\": {\n              \"do__1_\": \"<string>\",\n              \"eiusmod99_\": \"<string>\",\n              \"incididunt8_\": \"<string>\"\n            },\n            \"httpStatusCode\": \"<integer>\",\n            \"referenceId\": \"<string>\"\n          }\n        ]\n      },\n      \"isSuccessful\": \"<boolean>\"\n    },\n    {\n      \"graphId\": \"<string>\",\n      \"graphResponse\": {\n        \"compositeResponse\": [\n          {\n            \"body\": {\n              \"description\": \"The response body\"\n            },\n            \"httpHeaders\": {\n              \"enimef\": \"<string>\"\n            },\n            \"httpStatusCode\": \"<integer>\",\n            \"referenceId\": \"<string>\"\n          },\n          {\n            \"body\": {\n              \"description\": \"The response body\"\n            },\n            \"httpHeaders\": {\n              \"ut9\": \"<string>\",\n              \"voluptate_f_f\": \"<string>\"\n            },\n            \"httpStatusCode\": \"<integer>\",\n            \"referenceId\": \"<string>\"\n          }\n        ]\n      },\n      \"isSuccessful\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:50:26.000Z",
+                  "updatedAt": "2026-07-28T02:50:26.000Z",
+                  "uid": "35240-cd7adc13-54b8-438e-bc8d-6a85c7651bdf"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:26.000Z",
+              "updatedAt": "2026-07-28T02:50:26.000Z",
+              "uid": "35240-6fe3c8d5-b8ab-4567-b43f-2c66a1af7d35"
+            }
+          ],
+          "id": "77169e15-64ed-4138-bd20-36e54870fb78",
+          "createdAt": "2026-07-28T02:50:26.000Z",
+          "updatedAt": "2026-07-28T02:50:26.000Z",
+          "uid": "35240-77169e15-64ed-4138-bd20-36e54870fb78"
+        }
+      ],
+      "id": "97fed508-1f40-414e-9330-45fa5ebd3220",
+      "createdAt": "2026-07-28T02:50:26.000Z",
+      "updatedAt": "2026-07-28T02:50:26.000Z",
+      "uid": "35240-97fed508-1f40-414e-9330-45fa5ebd3220"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

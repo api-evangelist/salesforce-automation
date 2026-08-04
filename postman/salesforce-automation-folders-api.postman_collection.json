@@ -1,0 +1,131 @@
+{
+  "info": {
+    "_postman_id": "f5c881a6-dade-4473-8ffe-bbaa6ff40eff",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Folders API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:25.000Z",
+    "updatedAt": "2026-07-28T02:50:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f5c881a6-dade-4473-8ffe-bbaa6ff40eff"
+  },
+  "item": [
+    {
+      "name": "folders",
+      "item": [
+        {
+          "name": "List analytics apps (folders)",
+          "id": "5bf7a55d-2a07-42b4-ad80-bcfa6ea9851b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/folders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "folders"
+              ]
+            },
+            "description": "Returns a list of CRM Analytics applications (folders) that organize dashboards, lenses, and datasets."
+          },
+          "response": [
+            {
+              "id": "f6a8aeb5-67f8-4d85-a348-215c86796a58",
+              "name": "List of folders",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/folders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "folders"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"folders\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"url\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:50:25.000Z",
+              "updatedAt": "2026-07-28T02:50:25.000Z",
+              "uid": "35240-f6a8aeb5-67f8-4d85-a348-215c86796a58"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:25.000Z",
+          "updatedAt": "2026-07-28T02:50:25.000Z",
+          "uid": "35240-5bf7a55d-2a07-42b4-ad80-bcfa6ea9851b"
+        }
+      ],
+      "id": "9f0ed3a5-8479-477d-a681-950ce2f0d73b",
+      "createdAt": "2026-07-28T02:50:25.000Z",
+      "updatedAt": "2026-07-28T02:50:25.000Z",
+      "uid": "35240-9f0ed3a5-8479-477d-a681-950ce2f0d73b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

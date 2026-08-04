@@ -1,0 +1,818 @@
+{
+  "info": {
+    "_postman_id": "0e06ed74-5dfd-4065-9280-913eaa9cf463",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Records API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:42.000Z",
+    "updatedAt": "2026-07-28T02:50:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0e06ed74-5dfd-4065-9280-913eaa9cf463"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "{sObjectName}",
+          "item": [
+            {
+              "name": "{recordId}",
+              "item": [
+                {
+                  "name": "Get a record by ID",
+                  "id": "8c313b13-50fc-4187-9fb5-2e6d22e566d1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":sObjectName",
+                        ":recordId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of field API names to return. Reduces payload size when you only need specific fields.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "0684db7a-a855-47ea-bd63-b6fa1592d068",
+                          "key": "sObjectName",
+                          "value": "<string>",
+                          "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                        },
+                        {
+                          "id": "719b9ded-7a14-486f-94cd-7daa68d29470",
+                          "key": "recordId",
+                          "value": "<string>",
+                          "description": "(Required) The 15-character or 18-character Salesforce record ID"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a record by its 15-character or 18-character Salesforce ID. Use the optional fields parameter to specify which fields to return; otherwise all accessible fields are returned."
+                  },
+                  "response": [
+                    {
+                      "id": "eea591de-77d5-4203-9b46-40009cf0422b",
+                      "name": "Record data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":sObjectName",
+                            ":recordId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of field API names to return. Reduces payload size when you only need specific fields.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            },
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"attributes\": {\n    \"type\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  \"Id\": \"<string>\",\n  \"culpace\": \"et aliquip Lorem quis in\"\n}",
+                      "createdAt": "2026-07-28T02:50:42.000Z",
+                      "updatedAt": "2026-07-28T02:50:42.000Z",
+                      "uid": "35240-eea591de-77d5-4203-9b46-40009cf0422b"
+                    },
+                    {
+                      "id": "d8315664-70e1-46e9-a4c0-426a94c1a0b6",
+                      "name": "The requested resource was not found. The record may have been deleted or the ID may be invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":sObjectName",
+                            ":recordId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of field API names to return. Reduces payload size when you only need specific fields.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            },
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T02:50:42.000Z",
+                      "updatedAt": "2026-07-28T02:50:42.000Z",
+                      "uid": "35240-d8315664-70e1-46e9-a4c0-426a94c1a0b6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:42.000Z",
+                  "updatedAt": "2026-07-28T02:50:42.000Z",
+                  "uid": "35240-8c313b13-50fc-4187-9fb5-2e6d22e566d1"
+                },
+                {
+                  "name": "Update a record",
+                  "id": "1ee57e5d-d243-4da6-9d43-9bf3ebd76ddd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"dolore_a84\": \"occaecat cupidatat Lorem\",\n  \"anim_613\": 55593306.65015674\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":sObjectName",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "30341ad1-b7f6-4226-99ce-773b9ad359e6",
+                          "key": "sObjectName",
+                          "value": "<string>",
+                          "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                        },
+                        {
+                          "id": "2ec49320-82ab-46e1-a3bc-202037b817b4",
+                          "key": "recordId",
+                          "value": "<string>",
+                          "description": "(Required) The 15-character or 18-character Salesforce record ID"
+                        }
+                      ]
+                    },
+                    "description": "Updates the specified fields of an existing record. Only include fields you want to change. Fields not included in the request body are not modified."
+                  },
+                  "response": [
+                    {
+                      "id": "72cdfb48-b96e-46e8-b08e-e553de57af3e",
+                      "name": "Record updated successfully",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dolore_a84\": \"occaecat cupidatat Lorem\",\n  \"anim_613\": 55593306.65015674\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":sObjectName",
+                            ":recordId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            },
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:42.000Z",
+                      "updatedAt": "2026-07-28T02:50:42.000Z",
+                      "uid": "35240-72cdfb48-b96e-46e8-b08e-e553de57af3e"
+                    },
+                    {
+                      "id": "cf6f144d-bb8a-44ac-9c5b-78f5f97a1262",
+                      "name": "The request could not be processed due to invalid syntax, missing required fields, or business rule violations",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dolore_a84\": \"occaecat cupidatat Lorem\",\n  \"anim_613\": 55593306.65015674\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":sObjectName",
+                            ":recordId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            },
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T02:50:42.000Z",
+                      "updatedAt": "2026-07-28T02:50:42.000Z",
+                      "uid": "35240-cf6f144d-bb8a-44ac-9c5b-78f5f97a1262"
+                    },
+                    {
+                      "id": "80af7c7d-9eda-40b3-852c-1705ea6a183c",
+                      "name": "The requested resource was not found. The record may have been deleted or the ID may be invalid.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dolore_a84\": \"occaecat cupidatat Lorem\",\n  \"anim_613\": 55593306.65015674\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":sObjectName",
+                            ":recordId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            },
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T02:50:42.000Z",
+                      "updatedAt": "2026-07-28T02:50:42.000Z",
+                      "uid": "35240-80af7c7d-9eda-40b3-852c-1705ea6a183c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:42.000Z",
+                  "updatedAt": "2026-07-28T02:50:42.000Z",
+                  "uid": "35240-1ee57e5d-d243-4da6-9d43-9bf3ebd76ddd"
+                },
+                {
+                  "name": "Delete a record",
+                  "id": "e9b19939-2890-416c-80ec-fa02d9f10626",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":sObjectName",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4349fe2d-a67c-440b-bbae-4612f73c244d",
+                          "key": "sObjectName",
+                          "value": "<string>",
+                          "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                        },
+                        {
+                          "id": "e7b13549-a85e-4afa-88ca-fb635dcb114b",
+                          "key": "recordId",
+                          "value": "<string>",
+                          "description": "(Required) The 15-character or 18-character Salesforce record ID"
+                        }
+                      ]
+                    },
+                    "description": "Soft-deletes the record with the specified ID, moving it to the Recycle Bin. The record can be restored from the Recycle Bin within 15 days."
+                  },
+                  "response": [
+                    {
+                      "id": "ee961123-4e23-40df-afd1-e6060f0d8343",
+                      "name": "Record deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":sObjectName",
+                            ":recordId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            },
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:42.000Z",
+                      "updatedAt": "2026-07-28T02:50:42.000Z",
+                      "uid": "35240-ee961123-4e23-40df-afd1-e6060f0d8343"
+                    },
+                    {
+                      "id": "5f75f446-2d1f-48de-8464-89fa1cf76ce1",
+                      "name": "The requested resource was not found. The record may have been deleted or the ID may be invalid.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:sObjectName/:recordId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":sObjectName",
+                            ":recordId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sObjectName"
+                            },
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T02:50:42.000Z",
+                      "updatedAt": "2026-07-28T02:50:42.000Z",
+                      "uid": "35240-5f75f446-2d1f-48de-8464-89fa1cf76ce1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:42.000Z",
+                  "updatedAt": "2026-07-28T02:50:42.000Z",
+                  "uid": "35240-e9b19939-2890-416c-80ec-fa02d9f10626"
+                }
+              ],
+              "id": "4268b6d4-8d78-4086-9989-e4bb9bf16a7f",
+              "createdAt": "2026-07-28T02:50:42.000Z",
+              "updatedAt": "2026-07-28T02:50:42.000Z",
+              "uid": "35240-4268b6d4-8d78-4086-9989-e4bb9bf16a7f"
+            },
+            {
+              "name": "Create a new record",
+              "id": "eaaa7663-75c9-4c02-b968-fbc314a17dd7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"non_948\": \"magna culpa\",\n  \"irure_4b3\": false,\n  \"in_3\": false,\n  \"eiusmod_a\": \"Ut quis dolore veniam dolor\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/:sObjectName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    ":sObjectName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "eff1159a-3d15-4e9e-bd13-72523a1ac52b",
+                      "key": "sObjectName",
+                      "value": "<string>",
+                      "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                    }
+                  ]
+                },
+                "description": "Creates a new record of the specified SObject type. Returns the ID of the newly created record. Required fields must be included in the request body."
+              },
+              "response": [
+                {
+                  "id": "732d23cc-c121-4216-a217-672481cbe5d3",
+                  "name": "Record created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"non_948\": \"magna culpa\",\n  \"irure_4b3\": false,\n  \"in_3\": false,\n  \"eiusmod_a\": \"Ut quis dolore veniam dolor\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:sObjectName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":sObjectName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sObjectName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"success\": \"<boolean>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"message\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:50:42.000Z",
+                  "updatedAt": "2026-07-28T02:50:42.000Z",
+                  "uid": "35240-732d23cc-c121-4216-a217-672481cbe5d3"
+                },
+                {
+                  "id": "0abdbb55-0954-4202-89ca-cf4f0d9a8093",
+                  "name": "The request could not be processed due to invalid syntax, missing required fields, or business rule violations",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"non_948\": \"magna culpa\",\n  \"irure_4b3\": false,\n  \"in_3\": false,\n  \"eiusmod_a\": \"Ut quis dolore veniam dolor\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:sObjectName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":sObjectName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sObjectName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T02:50:42.000Z",
+                  "updatedAt": "2026-07-28T02:50:42.000Z",
+                  "uid": "35240-0abdbb55-0954-4202-89ca-cf4f0d9a8093"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:42.000Z",
+              "updatedAt": "2026-07-28T02:50:42.000Z",
+              "uid": "35240-eaaa7663-75c9-4c02-b968-fbc314a17dd7"
+            }
+          ],
+          "id": "2e00e0c0-d7a2-4cfe-a5a0-ec379596f22b",
+          "createdAt": "2026-07-28T02:50:42.000Z",
+          "updatedAt": "2026-07-28T02:50:42.000Z",
+          "uid": "35240-2e00e0c0-d7a2-4cfe-a5a0-ec379596f22b"
+        }
+      ],
+      "id": "82064698-74b0-42bd-9758-f37a84cb4caf",
+      "createdAt": "2026-07-28T02:50:42.000Z",
+      "updatedAt": "2026-07-28T02:50:42.000Z",
+      "uid": "35240-82064698-74b0-42bd-9758-f37a84cb4caf"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

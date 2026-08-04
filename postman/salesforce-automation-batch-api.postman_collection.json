@@ -1,0 +1,170 @@
+{
+  "info": {
+    "_postman_id": "55e63fb4-b3aa-4533-8f8b-42367312af4d",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Batch API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:51.000Z",
+    "updatedAt": "2026-07-28T02:49:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-55e63fb4-b3aa-4533-8f8b-42367312af4d"
+  },
+  "item": [
+    {
+      "name": "composite",
+      "item": [
+        {
+          "name": "batch",
+          "item": [
+            {
+              "name": "Execute composite batch request",
+              "id": "e79d0088-4aa6-41c2-b053-0951f93bfe06",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batchRequests\": [\n    {\n      \"method\": \"PATCH\",\n      \"url\": \"<string>\",\n      \"richInput\": {\n        \"description\": \"The request body\"\n      }\n    },\n    {\n      \"method\": \"PUT\",\n      \"url\": \"<string>\",\n      \"richInput\": {\n        \"description\": \"The request body\"\n      }\n    }\n  ],\n  \"haltOnError\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/composite/batch",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "composite",
+                    "batch"
+                  ]
+                },
+                "description": "Executes up to 25 independent subrequests in a single call. Unlike the composite resource, batch subrequests are independent and cannot reference each other. If haltOnError is true, processing stops after the first error. Each subrequest counts as one API call, but the batch itself counts as one call toward the limit."
+              },
+              "response": [
+                {
+                  "id": "83e19541-3f6f-46d6-977d-22b53f0dd994",
+                  "name": "Batch response with results for each subrequest",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"batchRequests\": [\n    {\n      \"method\": \"PATCH\",\n      \"url\": \"<string>\",\n      \"richInput\": {\n        \"description\": \"The request body\"\n      }\n    },\n    {\n      \"method\": \"PUT\",\n      \"url\": \"<string>\",\n      \"richInput\": {\n        \"description\": \"The request body\"\n      }\n    }\n  ],\n  \"haltOnError\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/composite/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "composite",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"hasErrors\": \"<boolean>\",\n  \"results\": [\n    {\n      \"statusCode\": \"<integer>\",\n      \"result\": {\n        \"description\": \"The response body\"\n      }\n    },\n    {\n      \"statusCode\": \"<integer>\",\n      \"result\": {\n        \"description\": \"The response body\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:52.000Z",
+                  "updatedAt": "2026-07-28T02:49:52.000Z",
+                  "uid": "35240-83e19541-3f6f-46d6-977d-22b53f0dd994"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:52.000Z",
+              "updatedAt": "2026-07-28T02:49:52.000Z",
+              "uid": "35240-e79d0088-4aa6-41c2-b053-0951f93bfe06"
+            }
+          ],
+          "id": "43e924c5-23c2-46fe-804b-79140b8ba9d2",
+          "createdAt": "2026-07-28T02:49:52.000Z",
+          "updatedAt": "2026-07-28T02:49:52.000Z",
+          "uid": "35240-43e924c5-23c2-46fe-804b-79140b8ba9d2"
+        }
+      ],
+      "id": "72f05c0b-dbdb-4934-91fc-6a20ef838629",
+      "createdAt": "2026-07-28T02:49:52.000Z",
+      "updatedAt": "2026-07-28T02:49:52.000Z",
+      "uid": "35240-72f05c0b-dbdb-4934-91fc-6a20ef838629"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

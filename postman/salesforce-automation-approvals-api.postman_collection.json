@@ -1,0 +1,245 @@
+{
+  "info": {
+    "_postman_id": "0f46faa7-2ffc-4e65-94bf-39190f54de11",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Approvals API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:50.000Z",
+    "updatedAt": "2026-07-28T02:49:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0f46faa7-2ffc-4e65-94bf-39190f54de11"
+  },
+  "item": [
+    {
+      "name": "process",
+      "item": [
+        {
+          "name": "approvals",
+          "item": [
+            {
+              "name": "List approval processes",
+              "id": "51d09dc8-a898-43ca-98f7-c8257cf1338f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/process/approvals",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "process",
+                    "approvals"
+                  ]
+                },
+                "description": "Returns a list of all approval processes defined in your org, along with their associated metadata."
+              },
+              "response": [
+                {
+                  "id": "98114496-08ee-42b4-b1ff-b756bb2b2ba5",
+                  "name": "List of approval processes",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/process/approvals",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "process",
+                        "approvals"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"approvals\": {\n    \"inb1e\": [\n      {\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"object\": \"<string>\",\n        \"sortOrder\": \"<integer>\"\n      },\n      {\n        \"description\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"object\": \"<string>\",\n        \"sortOrder\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:49:51.000Z",
+                  "updatedAt": "2026-07-28T02:49:51.000Z",
+                  "uid": "35240-98114496-08ee-42b4-b1ff-b756bb2b2ba5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:51.000Z",
+              "updatedAt": "2026-07-28T02:49:51.000Z",
+              "uid": "35240-51d09dc8-a898-43ca-98f7-c8257cf1338f"
+            },
+            {
+              "name": "Submit a record for approval",
+              "id": "93887bf0-4736-47fc-8275-43510a35bb5d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"actionType\": \"Approve\",\n      \"contextActorId\": \"<string>\",\n      \"contextId\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"nextApproverIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"processDefinitionNameOrId\": \"<string>\",\n      \"skipEntryCriteria\": \"<boolean>\"\n    },\n    {\n      \"actionType\": \"Reject\",\n      \"contextActorId\": \"<string>\",\n      \"contextId\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"nextApproverIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"processDefinitionNameOrId\": \"<string>\",\n      \"skipEntryCriteria\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/process/approvals",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "process",
+                    "approvals"
+                  ]
+                },
+                "description": "Submits a record for approval, approves, or rejects an approval request. Supports specifying next approvers, comments, and skipping entry criteria."
+              },
+              "response": [
+                {
+                  "id": "e4b49424-d802-447a-9dfe-d92bac730178",
+                  "name": "Approval action result",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"requests\": [\n    {\n      \"actionType\": \"Approve\",\n      \"contextActorId\": \"<string>\",\n      \"contextId\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"nextApproverIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"processDefinitionNameOrId\": \"<string>\",\n      \"skipEntryCriteria\": \"<boolean>\"\n    },\n    {\n      \"actionType\": \"Reject\",\n      \"contextActorId\": \"<string>\",\n      \"contextId\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"nextApproverIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"processDefinitionNameOrId\": \"<string>\",\n      \"skipEntryCriteria\": \"<boolean>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/process/approvals",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "process",
+                        "approvals"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"actorIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"entityId\": \"<string>\",\n    \"errors\": [\n      {\n        \"message\": \"<string>\",\n        \"errorCode\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"message\": \"<string>\",\n        \"errorCode\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"instanceId\": \"<string>\",\n    \"instanceStatus\": \"<string>\",\n    \"newWorkitemIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"success\": \"<boolean>\"\n  },\n  {\n    \"actorIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"entityId\": \"<string>\",\n    \"errors\": [\n      {\n        \"message\": \"<string>\",\n        \"errorCode\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"message\": \"<string>\",\n        \"errorCode\": \"<string>\",\n        \"fields\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"instanceId\": \"<string>\",\n    \"instanceStatus\": \"<string>\",\n    \"newWorkitemIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"success\": \"<boolean>\"\n  }\n]",
+                  "createdAt": "2026-07-28T02:49:51.000Z",
+                  "updatedAt": "2026-07-28T02:49:51.000Z",
+                  "uid": "35240-e4b49424-d802-447a-9dfe-d92bac730178"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:51.000Z",
+              "updatedAt": "2026-07-28T02:49:51.000Z",
+              "uid": "35240-93887bf0-4736-47fc-8275-43510a35bb5d"
+            }
+          ],
+          "id": "21cfc835-12f4-4ed4-b6f2-ada41ac4887a",
+          "createdAt": "2026-07-28T02:49:51.000Z",
+          "updatedAt": "2026-07-28T02:49:51.000Z",
+          "uid": "35240-21cfc835-12f4-4ed4-b6f2-ada41ac4887a"
+        }
+      ],
+      "id": "8e162292-bb26-4739-a66a-6734bccbc46c",
+      "createdAt": "2026-07-28T02:49:51.000Z",
+      "updatedAt": "2026-07-28T02:49:51.000Z",
+      "uid": "35240-8e162292-bb26-4739-a66a-6734bccbc46c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

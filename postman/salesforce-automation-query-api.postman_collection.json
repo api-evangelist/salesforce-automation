@@ -1,0 +1,246 @@
+{
+  "info": {
+    "_postman_id": "54d1fc87-e0be-4ce3-9d3f-65680c465f4c",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Query API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:33.000Z",
+    "updatedAt": "2026-07-28T02:50:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-54d1fc87-e0be-4ce3-9d3f-65680c465f4c"
+  },
+  "item": [
+    {
+      "name": "query",
+      "item": [
+        {
+          "name": "Execute a SAQL query",
+          "id": "9079d6a8-eee6-4dce-805c-e0212095475f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/query",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "query"
+              ]
+            },
+            "description": "Executes a SAQL (Salesforce Analytics Query Language) query against CRM Analytics datasets. SAQL provides a SQL-like syntax for querying, aggregating, and transforming analytics data."
+          },
+          "response": [
+            {
+              "id": "1100a7e9-663f-4d29-9410-f9828f7991b5",
+              "name": "Query results",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/query",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"action\": \"<string>\",\n  \"responseId\": \"<string>\",\n  \"results\": {\n    \"metadata\": [\n      {\n        \"animc\": \"quis culpa occaecat\",\n        \"consectetur_c\": 34132078\n      },\n      {\n        \"esse0e\": false,\n        \"etb\": -2450860\n      }\n    ],\n    \"records\": [\n      {\n        \"dolor9\": 40948966\n      },\n      {\n        \"in__0\": -13690620.574725494\n      }\n    ]\n  },\n  \"query\": \"<string>\",\n  \"responseTime\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T02:50:34.000Z",
+              "updatedAt": "2026-07-28T02:50:34.000Z",
+              "uid": "35240-1100a7e9-663f-4d29-9410-f9828f7991b5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:34.000Z",
+          "updatedAt": "2026-07-28T02:50:34.000Z",
+          "uid": "35240-9079d6a8-eee6-4dce-805c-e0212095475f"
+        },
+        {
+          "name": "Execute a Tooling API SOQL query",
+          "id": "2f95702f-ad9b-447e-a96d-a760b4c3b5c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/query?q=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "query"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The SOQL query string targeting Tooling API objects (e.g., SELECT Id, FullName, Metadata FROM Flow WHERE Status = 'Active')",
+                  "key": "q",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Executes a SOQL query against Tooling API objects. Supports querying ApexClass, ApexTrigger, Flow, FlowDefinition, CustomField, ValidationRule, WorkflowRule, and other metadata types."
+          },
+          "response": [
+            {
+              "id": "000c8abc-be62-4abb-afea-35820c40cc18",
+              "name": "Query results",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query?q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SOQL query string targeting Tooling API objects (e.g., SELECT Id, FullName, Metadata FROM Flow WHERE Status = 'Active')",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"records\": [\n    {\n      \"minim77b\": \"ad\"\n    },\n    {\n      \"commodo_b6d\": 78901652,\n      \"autef\": false\n    }\n  ],\n  \"nextRecordsUrl\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:50:34.000Z",
+              "updatedAt": "2026-07-28T02:50:34.000Z",
+              "uid": "35240-000c8abc-be62-4abb-afea-35820c40cc18"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:34.000Z",
+          "updatedAt": "2026-07-28T02:50:34.000Z",
+          "uid": "35240-2f95702f-ad9b-447e-a96d-a760b4c3b5c4"
+        }
+      ],
+      "id": "d9398f4f-2aec-477d-b4c0-44b50d7da6df",
+      "createdAt": "2026-07-28T02:50:34.000Z",
+      "updatedAt": "2026-07-28T02:50:34.000Z",
+      "uid": "35240-d9398f4f-2aec-477d-b4c0-44b50d7da6df"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

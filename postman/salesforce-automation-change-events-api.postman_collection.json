@@ -1,0 +1,353 @@
+{
+  "info": {
+    "_postman_id": "9f46fb8e-b7ed-44bb-9e23-849c68d76a96",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Change Events API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:52.000Z",
+    "updatedAt": "2026-07-28T02:49:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9f46fb8e-b7ed-44bb-9e23-849c68d76a96"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "{changeEventName}",
+          "item": [
+            {
+              "name": "describe",
+              "item": [
+                {
+                  "name": "Get full Change Data Capture event describe",
+                  "id": "c21ff908-6623-4ec2-8f48-78336a014ab6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:changeEventName/describe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":changeEventName",
+                        "describe"
+                      ],
+                      "variable": [
+                        {
+                          "id": "056d5bc9-0bfb-43f9-a26b-ea14e7cc7868",
+                          "key": "changeEventName",
+                          "value": "6)1'-&]eChangeEvent",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns complete metadata for a CDC event type including all available change event fields and their properties."
+                  },
+                  "response": [
+                    {
+                      "id": "ebebda17-026a-453d-a785-59d0b26ea70a",
+                      "name": "Full change event describe",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:changeEventName/describe",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":changeEventName",
+                            "describe"
+                          ],
+                          "variable": [
+                            {
+                              "key": "changeEventName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelPlural\": \"<string>\",\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"nillable\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"nillable\": \"<boolean>\"\n    }\n  ],\n  \"associateEntityType\": \"<string,null>\",\n  \"associateParentEntity\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:49:53.000Z",
+                      "updatedAt": "2026-07-28T02:49:53.000Z",
+                      "uid": "35240-ebebda17-026a-453d-a785-59d0b26ea70a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:53.000Z",
+                  "updatedAt": "2026-07-28T02:49:53.000Z",
+                  "uid": "35240-c21ff908-6623-4ec2-8f48-78336a014ab6"
+                }
+              ],
+              "id": "63951d50-47ab-43f6-8479-49a495617c79",
+              "createdAt": "2026-07-28T02:49:53.000Z",
+              "updatedAt": "2026-07-28T02:49:53.000Z",
+              "uid": "35240-63951d50-47ab-43f6-8479-49a495617c79"
+            },
+            {
+              "name": "eventSchema",
+              "item": [
+                {
+                  "name": "Get the Avro schema for a Change Data Capture event",
+                  "id": "9993761c-128a-41e2-b368-81ddbc12aa65",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:changeEventName/eventSchema",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":changeEventName",
+                        "eventSchema"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5180f197-7279-4c2d-bc1b-6330186c3103",
+                          "key": "changeEventName",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns the Apache Avro schema for a Change Data Capture event channel, used by the Pub/Sub API."
+                  },
+                  "response": [
+                    {
+                      "id": "d9baf566-8229-454a-8e7c-bcbae8af65da",
+                      "name": "Change event Avro schema",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/:changeEventName/eventSchema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            ":changeEventName",
+                            "eventSchema"
+                          ],
+                          "variable": [
+                            {
+                              "key": "changeEventName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"dolorf21\": \"Excepteur sunt dolor \"\n}",
+                      "createdAt": "2026-07-28T02:49:53.000Z",
+                      "updatedAt": "2026-07-28T02:49:53.000Z",
+                      "uid": "35240-d9baf566-8229-454a-8e7c-bcbae8af65da"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:53.000Z",
+                  "updatedAt": "2026-07-28T02:49:53.000Z",
+                  "uid": "35240-9993761c-128a-41e2-b368-81ddbc12aa65"
+                }
+              ],
+              "id": "04bf6687-30ec-4f98-8ea7-9c9af3204e56",
+              "createdAt": "2026-07-28T02:49:53.000Z",
+              "updatedAt": "2026-07-28T02:49:53.000Z",
+              "uid": "35240-04bf6687-30ec-4f98-8ea7-9c9af3204e56"
+            },
+            {
+              "name": "Describe a Change Data Capture event",
+              "id": "9d4f3986-f156-44be-8b74-78b49ab4ce51",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/:changeEventName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    ":changeEventName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "99ad923a-3bc6-4aac-8747-4e7d23479fd0",
+                      "key": "changeEventName",
+                      "value": "6)1'-&]eChangeEvent",
+                      "description": "(Required) The API name of the Change Data Capture event (e.g., AccountChangeEvent, ContactChangeEvent, MyObject__ChangeEvent)"
+                    }
+                  ]
+                },
+                "description": "Returns metadata about a Change Data Capture event type. Change event names follow the pattern {SObjectName}ChangeEvent (e.g., AccountChangeEvent, ContactChangeEvent) for standard objects, or {CustomObjectName}__ChangeEvent for custom objects."
+              },
+              "response": [
+                {
+                  "id": "bd2f5381-7635-4a94-9635-8abb2a991213",
+                  "name": "Change event metadata",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/:changeEventName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        ":changeEventName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "changeEventName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelPlural\": \"<string>\",\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"nillable\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\",\n      \"nillable\": \"<boolean>\"\n    }\n  ],\n  \"associateEntityType\": \"<string,null>\",\n  \"associateParentEntity\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:49:53.000Z",
+                  "updatedAt": "2026-07-28T02:49:53.000Z",
+                  "uid": "35240-bd2f5381-7635-4a94-9635-8abb2a991213"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:53.000Z",
+              "updatedAt": "2026-07-28T02:49:53.000Z",
+              "uid": "35240-9d4f3986-f156-44be-8b74-78b49ab4ce51"
+            }
+          ],
+          "id": "8a61a8b7-cef7-4318-876f-61d48c794853",
+          "createdAt": "2026-07-28T02:49:53.000Z",
+          "updatedAt": "2026-07-28T02:49:53.000Z",
+          "uid": "35240-8a61a8b7-cef7-4318-876f-61d48c794853"
+        }
+      ],
+      "id": "3ecb199e-026b-48b5-b6c0-b1353b264d89",
+      "createdAt": "2026-07-28T02:49:53.000Z",
+      "updatedAt": "2026-07-28T02:49:53.000Z",
+      "uid": "35240-3ecb199e-026b-48b5-b6c0-b1353b264d89"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

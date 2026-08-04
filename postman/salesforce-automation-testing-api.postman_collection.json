@@ -1,0 +1,269 @@
+{
+  "info": {
+    "_postman_id": "d06521db-a0bf-4d0d-aed5-abdb57dc656d",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Testing API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:49.000Z",
+    "updatedAt": "2026-07-28T02:50:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d06521db-a0bf-4d0d-aed5-abdb57dc656d"
+  },
+  "item": [
+    {
+      "name": "runTestsAsynchronous",
+      "item": [
+        {
+          "name": "Run Apex tests asynchronously",
+          "id": "39bf9b24-e110-4b74-b09b-0ef85e762111",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"suiteids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tests\": [\n    {\n      \"classId\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"classId\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"testLevel\": \"RunLocalTests\",\n  \"maxFailedTests\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/runTestsAsynchronous",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "runTestsAsynchronous"
+              ]
+            },
+            "description": "Submits a set of Apex test classes or methods for asynchronous execution. Returns a test run ID that can be used to check status."
+          },
+          "response": [
+            {
+              "id": "78723a90-364c-4702-aa54-ea9eb538cd52",
+              "name": "Test run submitted, returns the async test run ID",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"classids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"suiteids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tests\": [\n    {\n      \"classId\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"classId\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"testLevel\": \"RunLocalTests\",\n  \"maxFailedTests\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/runTestsAsynchronous",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "runTestsAsynchronous"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:50:50.000Z",
+              "updatedAt": "2026-07-28T02:50:50.000Z",
+              "uid": "35240-78723a90-364c-4702-aa54-ea9eb538cd52"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:50.000Z",
+          "updatedAt": "2026-07-28T02:50:50.000Z",
+          "uid": "35240-39bf9b24-e110-4b74-b09b-0ef85e762111"
+        }
+      ],
+      "id": "57b28f29-ab4c-458e-9f99-a24c7aaf6fe9",
+      "createdAt": "2026-07-28T02:50:50.000Z",
+      "updatedAt": "2026-07-28T02:50:50.000Z",
+      "uid": "35240-57b28f29-ab4c-458e-9f99-a24c7aaf6fe9"
+    },
+    {
+      "name": "runTestsSynchronous",
+      "item": [
+        {
+          "name": "Run Apex tests synchronously",
+          "id": "666cac4a-e2e4-453e-b92e-462fe0b93f71",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tests\": [\n    {\n      \"className\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"className\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/runTestsSynchronous",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "runTestsSynchronous"
+              ]
+            },
+            "description": "Runs a set of Apex test classes synchronously and returns the results immediately. Best for small test runs; use the asynchronous endpoint for larger test suites."
+          },
+          "response": [
+            {
+              "id": "cb87b18a-d6b0-496a-b01a-eea995d55264",
+              "name": "Test results",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tests\": [\n    {\n      \"className\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"className\": \"<string>\",\n      \"testMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/runTestsSynchronous",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "runTestsSynchronous"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"successes\": [\n    {\n      \"id\": \"<string>\",\n      \"methodName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"time\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"methodName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"time\": \"<number>\"\n    }\n  ],\n  \"failures\": [\n    {\n      \"id\": \"<string>\",\n      \"message\": \"<string>\",\n      \"methodName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"stackTrace\": \"<string>\",\n      \"time\": \"<number>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"message\": \"<string>\",\n      \"methodName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"stackTrace\": \"<string>\",\n      \"time\": \"<number>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"totalTime\": \"<number>\",\n  \"apexLogId\": \"<string>\",\n  \"numTestsRun\": \"<integer>\",\n  \"numFailures\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:50:50.000Z",
+              "updatedAt": "2026-07-28T02:50:50.000Z",
+              "uid": "35240-cb87b18a-d6b0-496a-b01a-eea995d55264"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:50.000Z",
+          "updatedAt": "2026-07-28T02:50:50.000Z",
+          "uid": "35240-666cac4a-e2e4-453e-b92e-462fe0b93f71"
+        }
+      ],
+      "id": "a7e8d59b-5085-42c7-af16-9b55c3c61b26",
+      "createdAt": "2026-07-28T02:50:50.000Z",
+      "updatedAt": "2026-07-28T02:50:50.000Z",
+      "uid": "35240-a7e8d59b-5085-42c7-af16-9b55c3c61b26"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

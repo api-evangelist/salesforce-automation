@@ -1,0 +1,387 @@
+{
+  "info": {
+    "_postman_id": "f8d19a5d-0f3b-494a-aacd-bd8a23a7834c",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SOQL API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:45.000Z",
+    "updatedAt": "2026-07-28T02:50:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f8d19a5d-0f3b-494a-aacd-bd8a23a7834c"
+  },
+  "item": [
+    {
+      "name": "query",
+      "item": [
+        {
+          "name": "{queryLocator}",
+          "item": [
+            {
+              "name": "Retrieve additional query results",
+              "id": "5cc7a4bd-82f2-4240-b8aa-f2234c9d541e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query/:queryLocator",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query",
+                    ":queryLocator"
+                  ],
+                  "variable": [
+                    {
+                      "id": "476e199b-da2a-4d9b-ab5d-60b2163fc474",
+                      "key": "queryLocator",
+                      "value": "<string>",
+                      "description": "(Required) The query locator from the nextRecordsUrl of a previous query response"
+                    }
+                  ]
+                },
+                "description": "Retrieves the next batch of records for a query that has more results than the batch size. Use the nextRecordsUrl value from the previous response."
+              },
+              "response": [
+                {
+                  "id": "8b01d364-44a2-4fc8-a574-235d97993be4",
+                  "name": "Next batch of query results",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/:queryLocator",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        ":queryLocator"
+                      ],
+                      "variable": [
+                        {
+                          "key": "queryLocator"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"nextRecordsUrl\": \"<string>\",\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"Id\": \"<string>\",\n      \"mollit1\": true,\n      \"incididunt_a\": true,\n      \"ipsum2d4\": false\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:50:46.000Z",
+                  "updatedAt": "2026-07-28T02:50:46.000Z",
+                  "uid": "35240-8b01d364-44a2-4fc8-a574-235d97993be4"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:46.000Z",
+              "updatedAt": "2026-07-28T02:50:46.000Z",
+              "uid": "35240-5cc7a4bd-82f2-4240-b8aa-f2234c9d541e"
+            }
+          ],
+          "id": "70b88a9f-7f3a-4844-8249-b64996bf9b15",
+          "createdAt": "2026-07-28T02:50:46.000Z",
+          "updatedAt": "2026-07-28T02:50:46.000Z",
+          "uid": "35240-70b88a9f-7f3a-4844-8249-b64996bf9b15"
+        },
+        {
+          "name": "Execute a SOQL query",
+          "id": "738c8d60-77bb-46e6-86e5-7ba4a9ed2f38",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/query?q=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "query"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The SOQL query string (e.g., SELECT Id, Name FROM Account WHERE Industry = 'Technology')",
+                  "key": "q",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Executes a SOQL query that returns records matching the query criteria. Results are returned in batches; use the nextRecordsUrl to retrieve additional batches if totalSize exceeds the batch size (default 2000 records)."
+          },
+          "response": [
+            {
+              "id": "e7b27246-f432-47e6-8705-5ca6cfe34d2b",
+              "name": "Query results",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query?q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SOQL query string (e.g., SELECT Id, Name FROM Account WHERE Industry = 'Technology')",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"nextRecordsUrl\": \"<string>\",\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"Id\": \"<string>\",\n      \"mollit1\": true,\n      \"incididunt_a\": true,\n      \"ipsum2d4\": false\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:50:46.000Z",
+              "updatedAt": "2026-07-28T02:50:46.000Z",
+              "uid": "35240-e7b27246-f432-47e6-8705-5ca6cfe34d2b"
+            },
+            {
+              "id": "6429b1ab-9290-4955-b350-0335da1d12af",
+              "name": "The request could not be processed due to invalid syntax, missing required fields, or business rule violations",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query?q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SOQL query string (e.g., SELECT Id, Name FROM Account WHERE Industry = 'Technology')",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"message\": \"<string>\",\n    \"errorCode\": \"<string>\",\n    \"fields\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+              "createdAt": "2026-07-28T02:50:46.000Z",
+              "updatedAt": "2026-07-28T02:50:46.000Z",
+              "uid": "35240-6429b1ab-9290-4955-b350-0335da1d12af"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:46.000Z",
+          "updatedAt": "2026-07-28T02:50:46.000Z",
+          "uid": "35240-738c8d60-77bb-46e6-86e5-7ba4a9ed2f38"
+        }
+      ],
+      "id": "97383a93-e50e-4c27-b910-017bed213da7",
+      "createdAt": "2026-07-28T02:50:46.000Z",
+      "updatedAt": "2026-07-28T02:50:46.000Z",
+      "uid": "35240-97383a93-e50e-4c27-b910-017bed213da7"
+    },
+    {
+      "name": "queryAll",
+      "item": [
+        {
+          "name": "Execute a SOQL query including deleted and archived records",
+          "id": "04dfd52f-fe35-419f-9527-c678f9a8285b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/queryAll?q=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "queryAll"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The SOQL query string",
+                  "key": "q",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Executes a SOQL query that includes soft-deleted records (IsDeleted = true) and archived records in the results. Otherwise identical to the /query endpoint."
+          },
+          "response": [
+            {
+              "id": "d276c7eb-c378-44c3-8f55-4130feff9662",
+              "name": "Query results including deleted and archived records",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/queryAll?q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "queryAll"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The SOQL query string",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"nextRecordsUrl\": \"<string>\",\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"Id\": \"<string>\",\n      \"mollit1\": true,\n      \"incididunt_a\": true,\n      \"ipsum2d4\": false\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:50:46.000Z",
+              "updatedAt": "2026-07-28T02:50:46.000Z",
+              "uid": "35240-d276c7eb-c378-44c3-8f55-4130feff9662"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:46.000Z",
+          "updatedAt": "2026-07-28T02:50:46.000Z",
+          "uid": "35240-04dfd52f-fe35-419f-9527-c678f9a8285b"
+        }
+      ],
+      "id": "43c83ffd-4275-4b65-89d2-f841d6e4ba2a",
+      "createdAt": "2026-07-28T02:50:46.000Z",
+      "updatedAt": "2026-07-28T02:50:46.000Z",
+      "uid": "35240-43c83ffd-4275-4b65-89d2-f841d6e4ba2a"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

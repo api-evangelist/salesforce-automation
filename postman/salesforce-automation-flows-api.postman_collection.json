@@ -1,0 +1,379 @@
+{
+  "info": {
+    "_postman_id": "874fab82-88b1-476e-8e8b-b4db274f3191",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Flows API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:24.000Z",
+    "updatedAt": "2026-07-28T02:50:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-874fab82-88b1-476e-8e8b-b4db274f3191"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "Flow",
+          "item": [
+            {
+              "name": "{flowId}",
+              "item": [
+                {
+                  "name": "Get a Flow definition",
+                  "id": "e8cf1bea-c442-4802-a9b7-2790f441e3ee",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/Flow/:flowId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "Flow",
+                        ":flowId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "457f4980-dc46-4f1d-97fe-090991a7d283",
+                          "key": "flowId",
+                          "value": "<string>",
+                          "description": "(Required) The 18-character ID of the Flow version record"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves metadata for a specific Salesforce Flow, including its version, status, process type, and associated metadata. Flows are the primary automation mechanism in Salesforce."
+                  },
+                  "response": [
+                    {
+                      "id": "b8f2552e-5046-49de-9f32-0e02ac816664",
+                      "name": "Flow record data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/Flow/:flowId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "Flow",
+                            ":flowId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "flowId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"DefinitionId\": \"<string>\",\n  \"MasterLabel\": \"<string>\",\n  \"Description\": \"<string,null>\",\n  \"ProcessType\": \"ActionCadenceFlow\",\n  \"Status\": \"InvalidDraft\",\n  \"VersionNumber\": \"<integer>\",\n  \"ApiVersion\": \"<string>\",\n  \"FullName\": \"<string>\",\n  \"Metadata\": {\n    \"mollit_c9e\": 32557665.631310374,\n    \"fugiat212\": -72898675\n  },\n  \"CreatedDate\": \"<dateTime>\",\n  \"LastModifiedDate\": \"<dateTime>\",\n  \"CreatedById\": \"<string>\",\n  \"LastModifiedById\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:50:24.000Z",
+                      "updatedAt": "2026-07-28T02:50:24.000Z",
+                      "uid": "35240-b8f2552e-5046-49de-9f32-0e02ac816664"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:24.000Z",
+                  "updatedAt": "2026-07-28T02:50:24.000Z",
+                  "uid": "35240-e8cf1bea-c442-4802-a9b7-2790f441e3ee"
+                }
+              ],
+              "id": "291ea101-e378-4517-9245-873b6c6f69c9",
+              "createdAt": "2026-07-28T02:50:24.000Z",
+              "updatedAt": "2026-07-28T02:50:24.000Z",
+              "uid": "35240-291ea101-e378-4517-9245-873b6c6f69c9"
+            }
+          ],
+          "id": "295ecab2-a8fe-4b17-90b7-481eb741ca7f",
+          "createdAt": "2026-07-28T02:50:24.000Z",
+          "updatedAt": "2026-07-28T02:50:24.000Z",
+          "uid": "35240-295ecab2-a8fe-4b17-90b7-481eb741ca7f"
+        },
+        {
+          "name": "FlowDefinition",
+          "item": [
+            {
+              "name": "{flowDefinitionId}",
+              "item": [
+                {
+                  "name": "Get a Flow definition metadata",
+                  "id": "dd8ec6ae-caa3-4cf3-a480-dc41aacf1bb9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/FlowDefinition/:flowDefinitionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "FlowDefinition",
+                        ":flowDefinitionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "57c7604f-2e05-4b35-984a-0967c7367700",
+                          "key": "flowDefinitionId",
+                          "value": "<string>",
+                          "description": "(Required) The 18-character ID of the FlowDefinition record"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the FlowDefinition record, which represents the overall Flow independent of version. Contains the active version number and the developer name."
+                  },
+                  "response": [
+                    {
+                      "id": "32b78c6d-190c-4484-b986-4552f23407b9",
+                      "name": "FlowDefinition record data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/FlowDefinition/:flowDefinitionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "FlowDefinition",
+                            ":flowDefinitionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "flowDefinitionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"DeveloperName\": \"<string>\",\n  \"MasterLabel\": \"<string>\",\n  \"Description\": \"<string,null>\",\n  \"ActiveVersionId\": \"<string,null>\",\n  \"LatestVersionId\": \"<string>\",\n  \"Metadata\": {\n    \"activeVersionNumber\": \"<integer,null>\"\n  },\n  \"NamespacePrefix\": \"<string,null>\"\n}",
+                      "createdAt": "2026-07-28T02:50:24.000Z",
+                      "updatedAt": "2026-07-28T02:50:24.000Z",
+                      "uid": "35240-32b78c6d-190c-4484-b986-4552f23407b9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:24.000Z",
+                  "updatedAt": "2026-07-28T02:50:24.000Z",
+                  "uid": "35240-dd8ec6ae-caa3-4cf3-a480-dc41aacf1bb9"
+                },
+                {
+                  "name": "Activate or deactivate a Flow version",
+                  "id": "a93aaf38-2a62-4351-8c07-c772a1661e14",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Metadata\": {\n    \"activeVersionNumber\": \"<integer,null>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/FlowDefinition/:flowDefinitionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "FlowDefinition",
+                        ":flowDefinitionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a4c0fff3-7d30-49bd-a357-9f2dd77f3394",
+                          "key": "flowDefinitionId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Updates the FlowDefinition to activate a specific flow version by setting the ActiveVersionNumber, or deactivates by setting it to null."
+                  },
+                  "response": [
+                    {
+                      "id": "a553dc36-53a6-4bea-8741-c2f72cbf26cf",
+                      "name": "FlowDefinition updated",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Metadata\": {\n    \"activeVersionNumber\": \"<integer,null>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/FlowDefinition/:flowDefinitionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "FlowDefinition",
+                            ":flowDefinitionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "flowDefinitionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:24.000Z",
+                      "updatedAt": "2026-07-28T02:50:24.000Z",
+                      "uid": "35240-a553dc36-53a6-4bea-8741-c2f72cbf26cf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:24.000Z",
+                  "updatedAt": "2026-07-28T02:50:24.000Z",
+                  "uid": "35240-a93aaf38-2a62-4351-8c07-c772a1661e14"
+                }
+              ],
+              "id": "33d8c30e-99a0-477d-a641-91e3bf0b909e",
+              "createdAt": "2026-07-28T02:50:24.000Z",
+              "updatedAt": "2026-07-28T02:50:24.000Z",
+              "uid": "35240-33d8c30e-99a0-477d-a641-91e3bf0b909e"
+            }
+          ],
+          "id": "e8598fa0-efcd-4b0f-8f28-181c5da25b9c",
+          "createdAt": "2026-07-28T02:50:24.000Z",
+          "updatedAt": "2026-07-28T02:50:24.000Z",
+          "uid": "35240-e8598fa0-efcd-4b0f-8f28-181c5da25b9c"
+        }
+      ],
+      "id": "9afa110f-8241-4d61-ba92-1d5f746526c2",
+      "createdAt": "2026-07-28T02:50:24.000Z",
+      "updatedAt": "2026-07-28T02:50:24.000Z",
+      "uid": "35240-9afa110f-8241-4d61-ba92-1d5f746526c2"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

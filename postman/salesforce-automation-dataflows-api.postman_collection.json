@@ -1,0 +1,228 @@
+{
+  "info": {
+    "_postman_id": "90dfd656-1645-4b77-94c8-0f9daae790a6",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Dataflows API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:00.000Z",
+    "updatedAt": "2026-07-28T02:50:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-90dfd656-1645-4b77-94c8-0f9daae790a6"
+  },
+  "item": [
+    {
+      "name": "dataflows",
+      "item": [
+        {
+          "name": "{dataflowId}",
+          "item": [
+            {
+              "name": "Get a dataflow",
+              "id": "5af75bc6-9085-4a58-a306-af119ba058ff",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dataflows/:dataflowId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dataflows",
+                    ":dataflowId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2d0d194a-0d63-46e2-9f2f-518fd3cb964f",
+                      "key": "dataflowId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns the definition and metadata for a specific CRM Analytics dataflow."
+              },
+              "response": [
+                {
+                  "id": "2c0c6b0d-7c03-4a9f-9891-da071d166a88",
+                  "name": "Dataflow metadata",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataflows/:dataflowId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataflows",
+                        ":dataflowId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataflowId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string,null>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"definition\": {\n    \"aliquip_201\": -86639101.96136269\n  },\n  \"url\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:50:00.000Z",
+                  "updatedAt": "2026-07-28T02:50:00.000Z",
+                  "uid": "35240-2c0c6b0d-7c03-4a9f-9891-da071d166a88"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:00.000Z",
+              "updatedAt": "2026-07-28T02:50:00.000Z",
+              "uid": "35240-5af75bc6-9085-4a58-a306-af119ba058ff"
+            }
+          ],
+          "id": "cdc33b2b-f9fc-47a0-9668-02fafafacc8a",
+          "createdAt": "2026-07-28T02:50:00.000Z",
+          "updatedAt": "2026-07-28T02:50:00.000Z",
+          "uid": "35240-cdc33b2b-f9fc-47a0-9668-02fafafacc8a"
+        },
+        {
+          "name": "List dataflows",
+          "id": "a048fd7b-4b90-4d6e-b964-6baac30cdf01",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dataflows",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dataflows"
+              ]
+            },
+            "description": "Returns a list of CRM Analytics dataflows (recipes). Dataflows define the ETL process for loading data into analytics datasets."
+          },
+          "response": [
+            {
+              "id": "457187f2-94f0-4530-92f3-6bee38aed14e",
+              "name": "List of dataflows",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dataflows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dataflows"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"dataflows\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"definition\": {\n        \"id_6ac\": \"sunt\",\n        \"commodoe51\": \"incididunt a\"\n      },\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"definition\": {\n        \"commodo_a7a\": -14994558.559494525\n      },\n      \"url\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:50:00.000Z",
+              "updatedAt": "2026-07-28T02:50:00.000Z",
+              "uid": "35240-457187f2-94f0-4530-92f3-6bee38aed14e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:00.000Z",
+          "updatedAt": "2026-07-28T02:50:00.000Z",
+          "uid": "35240-a048fd7b-4b90-4d6e-b964-6baac30cdf01"
+        }
+      ],
+      "id": "2570922a-b47b-47e1-b40e-1356450b0072",
+      "createdAt": "2026-07-28T02:50:00.000Z",
+      "updatedAt": "2026-07-28T02:50:00.000Z",
+      "uid": "35240-2570922a-b47b-47e1-b40e-1356450b0072"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

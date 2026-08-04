@@ -1,0 +1,159 @@
+{
+  "info": {
+    "_postman_id": "d465069a-7429-4aea-88c3-74744a72093a",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Composite API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:54.000Z",
+    "updatedAt": "2026-07-28T02:49:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d465069a-7429-4aea-88c3-74744a72093a"
+  },
+  "item": [
+    {
+      "name": "composite",
+      "item": [
+        {
+          "name": "Execute composite request",
+          "id": "c2345aff-6771-4213-ae8c-03b154d8caad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compositeRequest\": [\n    {\n      \"method\": \"PUT\",\n      \"url\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"body\": {\n        \"culpa_e07\": \"nisi\",\n        \"id33\": 85264506,\n        \"reprehenderit_1f\": true\n      },\n      \"httpHeaders\": {\n        \"laborum_c\": \"<string>\",\n        \"adipisicing_\": \"<string>\"\n      }\n    },\n    {\n      \"method\": \"GET\",\n      \"url\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"body\": {\n        \"in_7\": \"culpa est\",\n        \"nulla_d\": 1746496\n      },\n      \"httpHeaders\": {\n        \"nisi3\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false,\n  \"collateSubrequests\": false\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/composite",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "composite"
+              ]
+            },
+            "description": "Executes up to 25 subrequests in a single call. Subrequests are executed sequentially and can reference the results of prior subrequests using reference IDs (e.g., @{referenceId.id}). If allOrNone is true, all subrequests are rolled back if any fails. Each subrequest counts against API limits."
+          },
+          "response": [
+            {
+              "id": "880443b8-eee3-49f2-b9c1-ac04e9bdfc42",
+              "name": "Composite response with results for each subrequest",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"compositeRequest\": [\n    {\n      \"method\": \"PUT\",\n      \"url\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"body\": {\n        \"culpa_e07\": \"nisi\",\n        \"id33\": 85264506,\n        \"reprehenderit_1f\": true\n      },\n      \"httpHeaders\": {\n        \"laborum_c\": \"<string>\",\n        \"adipisicing_\": \"<string>\"\n      }\n    },\n    {\n      \"method\": \"GET\",\n      \"url\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"body\": {\n        \"in_7\": \"culpa est\",\n        \"nulla_d\": 1746496\n      },\n      \"httpHeaders\": {\n        \"nisi3\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false,\n  \"collateSubrequests\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/composite",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "composite"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"compositeResponse\": [\n    {\n      \"body\": {\n        \"description\": \"The response body\"\n      },\n      \"httpHeaders\": {\n        \"velit_0\": \"<string>\",\n        \"enim5d4\": \"<string>\",\n        \"mollit_51b\": \"<string>\",\n        \"anim2b\": \"<string>\"\n      },\n      \"httpStatusCode\": \"<integer>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"body\": {\n        \"description\": \"The response body\"\n      },\n      \"httpHeaders\": {\n        \"cillum5\": \"<string>\"\n      },\n      \"httpStatusCode\": \"<integer>\",\n      \"referenceId\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:49:55.000Z",
+              "updatedAt": "2026-07-28T02:49:55.000Z",
+              "uid": "35240-880443b8-eee3-49f2-b9c1-ac04e9bdfc42"
+            }
+          ],
+          "createdAt": "2026-07-28T02:49:55.000Z",
+          "updatedAt": "2026-07-28T02:49:55.000Z",
+          "uid": "35240-c2345aff-6771-4213-ae8c-03b154d8caad"
+        }
+      ],
+      "id": "63a1245e-a052-4cb2-b7bd-767e7dcbb7a9",
+      "createdAt": "2026-07-28T02:49:55.000Z",
+      "updatedAt": "2026-07-28T02:49:55.000Z",
+      "uid": "35240-63a1245e-a052-4cb2-b7bd-767e7dcbb7a9"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

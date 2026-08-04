@@ -1,0 +1,284 @@
+{
+  "info": {
+    "_postman_id": "29892b47-857f-4723-912b-e53d1ea4071b",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Datasets API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:15.000Z",
+    "updatedAt": "2026-07-28T02:50:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-29892b47-857f-4723-912b-e53d1ea4071b"
+  },
+  "item": [
+    {
+      "name": "datasets",
+      "item": [
+        {
+          "name": "{datasetIdOrApiName}",
+          "item": [
+            {
+              "name": "Get a dataset",
+              "id": "58c482c5-b53b-4c9c-a38b-e46df957fc33",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasets/:datasetIdOrApiName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets",
+                    ":datasetIdOrApiName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f650b627-9e47-4ead-90c9-1b269e58b316",
+                      "key": "datasetIdOrApiName",
+                      "value": "<string>",
+                      "description": "(Required) The dataset ID or developer name"
+                    }
+                  ]
+                },
+                "description": "Returns metadata for a specific CRM Analytics dataset."
+              },
+              "response": [
+                {
+                  "id": "aacbfc2a-df7b-4c0b-ba9d-54fd1703dca0",
+                  "name": "Dataset metadata",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetIdOrApiName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetIdOrApiName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "datasetIdOrApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string,null>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"datasetType\": \"<string>\",\n  \"currentVersionId\": \"<string>\",\n  \"folder\": {\n    \"id\": \"<string>\",\n    \"label\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  \"url\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:50:16.000Z",
+                  "updatedAt": "2026-07-28T02:50:16.000Z",
+                  "uid": "35240-aacbfc2a-df7b-4c0b-ba9d-54fd1703dca0"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:16.000Z",
+              "updatedAt": "2026-07-28T02:50:16.000Z",
+              "uid": "35240-58c482c5-b53b-4c9c-a38b-e46df957fc33"
+            }
+          ],
+          "id": "d1ca8aae-1dbd-42f0-aa83-11e468ec1c78",
+          "createdAt": "2026-07-28T02:50:16.000Z",
+          "updatedAt": "2026-07-28T02:50:16.000Z",
+          "uid": "35240-d1ca8aae-1dbd-42f0-aa83-11e468ec1c78"
+        },
+        {
+          "name": "List datasets",
+          "id": "94ff0adf-3271-4860-92ff-c5fd1266c0ca",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/datasets?q=<string>&folderId=<string>&page=<string>&pageSize=25&sort=Name&order=Ascending",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "datasets"
+              ],
+              "query": [
+                {
+                  "description": "Search term to filter datasets by name",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter datasets by analytics app (folder) ID",
+                  "key": "folderId",
+                  "value": "<string>"
+                },
+                {
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "key": "sort",
+                  "value": "Name"
+                },
+                {
+                  "key": "order",
+                  "value": "Ascending"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of CRM Analytics datasets accessible to the current user. Supports filtering by folder, search term, and sort order."
+          },
+          "response": [
+            {
+              "id": "dd0eef93-c2ca-4c8a-b25c-9282da3498ec",
+              "name": "List of datasets",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasets?q=<string>&folderId=<string>&page=<string>&pageSize=25&sort=Name&order=Ascending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search term to filter datasets by name",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter datasets by analytics app (folder) ID",
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "Name"
+                    },
+                    {
+                      "key": "order",
+                      "value": "Ascending"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"datasets\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"datasetType\": \"<string>\",\n      \"currentVersionId\": \"<string>\",\n      \"folder\": {\n        \"id\": \"<string>\",\n        \"label\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"datasetType\": \"<string>\",\n      \"currentVersionId\": \"<string>\",\n      \"folder\": {\n        \"id\": \"<string>\",\n        \"label\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"url\": \"<string>\"\n    }\n  ],\n  \"nextPageUrl\": \"<string,null>\",\n  \"totalSize\": \"<integer>\",\n  \"url\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:50:16.000Z",
+              "updatedAt": "2026-07-28T02:50:16.000Z",
+              "uid": "35240-dd0eef93-c2ca-4c8a-b25c-9282da3498ec"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:16.000Z",
+          "updatedAt": "2026-07-28T02:50:16.000Z",
+          "uid": "35240-94ff0adf-3271-4860-92ff-c5fd1266c0ca"
+        }
+      ],
+      "id": "e57f478e-e8b4-46ae-9f26-91ba0f16f27e",
+      "createdAt": "2026-07-28T02:50:16.000Z",
+      "updatedAt": "2026-07-28T02:50:16.000Z",
+      "uid": "35240-e57f478e-e8b4-46ae-9f26-91ba0f16f27e"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

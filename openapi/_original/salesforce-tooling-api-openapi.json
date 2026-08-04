@@ -1,0 +1,805 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Salesforce Tooling API",
+    "description": "REST API for building custom development tools for Salesforce applications. Provides access to metadata about Apex classes, triggers, Visualforce pages, flows, and other platform components. Supports CRUD operations and SOQL queries against Tooling API objects like ApexClass, ApexTrigger, Flow, FlowDefinition, and CustomField.",
+    "version": "63.0",
+    "contact": {
+      "name": "Salesforce Developer Support",
+      "url": "https://developer.salesforce.com/support",
+      "email": "developer@salesforce.com"
+    },
+    "license": {
+      "name": "Salesforce API Terms of Use",
+      "url": "https://www.salesforce.com/company/legal/agreements/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.salesforce.com/services/data/v63.0/tooling",
+      "description": "Salesforce production or developer instance",
+      "variables": {
+        "instance": {
+          "default": "yourInstance",
+          "description": "Your Salesforce instance identifier"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/sobjects": {
+      "get": {
+        "operationId": "describeToolingGlobal",
+        "summary": "List all Tooling API objects",
+        "description": "Returns a list of all objects available through the Tooling API, including metadata types like ApexClass, ApexTrigger, Flow, FlowDefinition, CustomField, and more.",
+        "tags": ["SObjects"],
+        "responses": {
+          "200": {
+            "description": "List of Tooling API objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "sobjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "queryable": {
+                            "type": "boolean"
+                          },
+                          "createable": {
+                            "type": "boolean"
+                          },
+                          "updateable": {
+                            "type": "boolean"
+                          },
+                          "deletable": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sobjects/{sObjectName}": {
+      "get": {
+        "operationId": "describeToolingObject",
+        "summary": "Describe a Tooling API object",
+        "description": "Returns metadata for a specific Tooling API object type including fields, relationships, and capabilities.",
+        "tags": ["SObjects"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sObjectName"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tooling object metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createToolingRecord",
+        "summary": "Create a Tooling API record",
+        "description": "Creates a new record of the specified Tooling API object type (e.g., ApexClass, ApexTrigger, TraceFlag).",
+        "tags": ["Records"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sObjectName"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Record created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sobjects/{sObjectName}/{recordId}": {
+      "get": {
+        "operationId": "getToolingRecord",
+        "summary": "Get a Tooling API record",
+        "description": "Retrieves a specific Tooling API record by ID.",
+        "tags": ["Records"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sObjectName"
+          },
+          {
+            "$ref": "#/components/parameters/recordId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Record data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateToolingRecord",
+        "summary": "Update a Tooling API record",
+        "description": "Updates fields on a specific Tooling API record.",
+        "tags": ["Records"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sObjectName"
+          },
+          {
+            "$ref": "#/components/parameters/recordId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Record updated"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteToolingRecord",
+        "summary": "Delete a Tooling API record",
+        "description": "Deletes a specific Tooling API record.",
+        "tags": ["Records"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sObjectName"
+          },
+          {
+            "$ref": "#/components/parameters/recordId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Record deleted"
+          }
+        }
+      }
+    },
+    "/sobjects/Flow/{flowId}": {
+      "get": {
+        "operationId": "getFlow",
+        "summary": "Get a Flow definition",
+        "description": "Retrieves metadata for a specific Salesforce Flow, including its version, status, process type, and associated metadata. Flows are the primary automation mechanism in Salesforce.",
+        "tags": ["Flows"],
+        "parameters": [
+          {
+            "name": "flowId",
+            "in": "path",
+            "required": true,
+            "description": "The 18-character ID of the Flow version record",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Flow record data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Flow"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sobjects/FlowDefinition/{flowDefinitionId}": {
+      "get": {
+        "operationId": "getFlowDefinition",
+        "summary": "Get a Flow definition metadata",
+        "description": "Retrieves the FlowDefinition record, which represents the overall Flow independent of version. Contains the active version number and the developer name.",
+        "tags": ["Flows"],
+        "parameters": [
+          {
+            "name": "flowDefinitionId",
+            "in": "path",
+            "required": true,
+            "description": "The 18-character ID of the FlowDefinition record",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FlowDefinition record data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlowDefinition"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateFlowDefinition",
+        "summary": "Activate or deactivate a Flow version",
+        "description": "Updates the FlowDefinition to activate a specific flow version by setting the ActiveVersionNumber, or deactivates by setting it to null.",
+        "tags": ["Flows"],
+        "parameters": [
+          {
+            "name": "flowDefinitionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Metadata": {
+                    "type": "object",
+                    "properties": {
+                      "activeVersionNumber": {
+                        "type": ["integer", "null"],
+                        "description": "Set to a version number to activate that version, or null to deactivate"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "FlowDefinition updated"
+          }
+        }
+      }
+    },
+    "/query": {
+      "get": {
+        "operationId": "toolingQuery",
+        "summary": "Execute a Tooling API SOQL query",
+        "description": "Executes a SOQL query against Tooling API objects. Supports querying ApexClass, ApexTrigger, Flow, FlowDefinition, CustomField, ValidationRule, WorkflowRule, and other metadata types.",
+        "tags": ["Query"],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "description": "The SOQL query string targeting Tooling API objects (e.g., SELECT Id, FullName, Metadata FROM Flow WHERE Status = 'Active')",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Query results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runTestsAsynchronous": {
+      "post": {
+        "operationId": "runTestsAsync",
+        "summary": "Run Apex tests asynchronously",
+        "description": "Submits a set of Apex test classes or methods for asynchronous execution. Returns a test run ID that can be used to check status.",
+        "tags": ["Testing"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "classids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "IDs of the Apex test classes to run"
+                  },
+                  "suiteids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "IDs of test suites to run"
+                  },
+                  "tests": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "classId": {
+                          "type": "string"
+                        },
+                        "testMethods": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "testLevel": {
+                    "type": "string",
+                    "enum": ["RunSpecifiedTests", "RunLocalTests", "RunAllTestsInOrg"],
+                    "description": "The scope of tests to run"
+                  },
+                  "maxFailedTests": {
+                    "type": "integer",
+                    "description": "Maximum number of test failures before aborting the test run"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Test run submitted, returns the async test run ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "description": "The ID of the async test run"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runTestsSynchronous": {
+      "post": {
+        "operationId": "runTestsSync",
+        "summary": "Run Apex tests synchronously",
+        "description": "Runs a set of Apex test classes synchronously and returns the results immediately. Best for small test runs; use the asynchronous endpoint for larger test suites.",
+        "tags": ["Testing"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tests": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "className": {
+                          "type": "string"
+                        },
+                        "testMethods": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Test results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestRunResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/completions": {
+      "get": {
+        "operationId": "getCompletions",
+        "summary": "Get code completions",
+        "description": "Returns code completion suggestions for Apex code in a specific class or trigger at a given position.",
+        "tags": ["Development"],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "description": "The type of completion (apex)",
+            "schema": {
+              "type": "string",
+              "enum": ["apex"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Code completion suggestions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "publicDeclarations": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+            "tokenUrl": "https://login.salesforce.com/services/oauth2/token",
+            "scopes": {
+              "api": "Access and manage your Salesforce data"
+            }
+          }
+        }
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "parameters": {
+      "sObjectName": {
+        "name": "sObjectName",
+        "in": "path",
+        "required": true,
+        "description": "The API name of the Tooling API object (e.g., ApexClass, ApexTrigger, Flow, FlowDefinition)",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "recordId": {
+        "name": "recordId",
+        "in": "path",
+        "required": true,
+        "description": "The 18-character record ID",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "Flow": {
+        "type": "object",
+        "description": "A specific version of a Salesforce Flow automation. The Flow object in the Tooling API represents individual flow versions with their metadata, process type, and status.",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "DefinitionId": {
+            "type": "string",
+            "description": "The ID of the parent FlowDefinition"
+          },
+          "MasterLabel": {
+            "type": "string",
+            "description": "The display label for this flow"
+          },
+          "Description": {
+            "type": ["string", "null"]
+          },
+          "ProcessType": {
+            "type": "string",
+            "enum": ["AutoLaunchedFlow", "Flow", "Workflow", "CustomEvent", "InvocableProcess", "LoginFlow", "ActionPlan", "JourneyBuilderIntegration", "UserProvisioningFlow", "Survey", "SurveyEnrich", "Appointments", "FSCLending", "DigitalForm", "FieldServiceMobile", "OrchestrationFlow", "RoutingFlow", "ServiceProcess", "TransactionSecurityFlow", "ContactRequestFlow", "ActionCadenceFlow", "CheckoutFlow", "CartAsyncFlow", "DecisionTable", "EvaluationFlow", "IndividualObjectLinkingFlow", "PromptFlow", "RecordAlertTemplateFlow", "ScreenFlow", "Orchestrator"],
+            "description": "The type of flow. AutoLaunchedFlow runs without user interaction. Flow (Screen Flow) presents UI screens. Workflow represents Process Builder processes."
+          },
+          "Status": {
+            "type": "string",
+            "enum": ["Active", "Draft", "Obsolete", "InvalidDraft"],
+            "description": "The status of this flow version"
+          },
+          "VersionNumber": {
+            "type": "integer",
+            "description": "The version number within the FlowDefinition"
+          },
+          "ApiVersion": {
+            "type": "string",
+            "description": "The Salesforce API version of this flow"
+          },
+          "FullName": {
+            "type": "string",
+            "description": "The developer name of the flow (unique within the org)"
+          },
+          "Metadata": {
+            "type": "object",
+            "description": "The full flow metadata including elements, connectors, variables, and configuration",
+            "additionalProperties": true
+          },
+          "CreatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "LastModifiedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "CreatedById": {
+            "type": "string"
+          },
+          "LastModifiedById": {
+            "type": "string"
+          }
+        }
+      },
+      "FlowDefinition": {
+        "type": "object",
+        "description": "Represents the overall Flow definition independent of version. Contains the active version number and developer name.",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "DeveloperName": {
+            "type": "string",
+            "description": "The unique developer name for this flow"
+          },
+          "MasterLabel": {
+            "type": "string"
+          },
+          "Description": {
+            "type": ["string", "null"]
+          },
+          "ActiveVersionId": {
+            "type": ["string", "null"],
+            "description": "The ID of the currently active Flow version"
+          },
+          "LatestVersionId": {
+            "type": "string",
+            "description": "The ID of the most recent Flow version"
+          },
+          "Metadata": {
+            "type": "object",
+            "properties": {
+              "activeVersionNumber": {
+                "type": ["integer", "null"]
+              }
+            }
+          },
+          "NamespacePrefix": {
+            "type": ["string", "null"]
+          }
+        }
+      },
+      "SaveResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "errorCode": {
+                  "type": "string"
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "QueryResult": {
+        "type": "object",
+        "properties": {
+          "totalSize": {
+            "type": "integer"
+          },
+          "done": {
+            "type": "boolean"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "nextRecordsUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "TestRunResult": {
+        "type": "object",
+        "properties": {
+          "successes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "methodName": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "failures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "methodName": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "stackTrace": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "number"
+                },
+                "type": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "totalTime": {
+            "type": "number"
+          },
+          "apexLogId": {
+            "type": "string"
+          },
+          "numTestsRun": {
+            "type": "integer"
+          },
+          "numFailures": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "SObjects",
+      "description": "Tooling API object metadata"
+    },
+    {
+      "name": "Records",
+      "description": "CRUD operations on Tooling API records"
+    },
+    {
+      "name": "Flows",
+      "description": "Flow and FlowDefinition management"
+    },
+    {
+      "name": "Query",
+      "description": "SOQL queries against Tooling API objects"
+    },
+    {
+      "name": "Testing",
+      "description": "Apex test execution"
+    },
+    {
+      "name": "Development",
+      "description": "Code completion and development tools"
+    }
+  ]
+}

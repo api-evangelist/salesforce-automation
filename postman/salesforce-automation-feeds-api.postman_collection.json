@@ -1,0 +1,498 @@
+{
+  "info": {
+    "_postman_id": "f696af44-57ec-45d2-9352-c0ce8b5bcc29",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Feeds API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:50:20.000Z",
+    "updatedAt": "2026-07-28T02:50:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f696af44-57ec-45d2-9352-c0ce8b5bcc29"
+  },
+  "item": [
+    {
+      "name": "chatter",
+      "item": [
+        {
+          "name": "feeds",
+          "item": [
+            {
+              "name": "news",
+              "item": [
+                {
+                  "name": "me",
+                  "item": [
+                    {
+                      "name": "feed-elements",
+                      "item": [
+                        {
+                          "name": "Get the current user's news feed",
+                          "id": "95245913-cb93-45eb-92f7-2893b857c6a6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/chatter/feeds/news/me/feed-elements?page=<string>&pageSize=25&sort=LastModifiedDateDesc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "chatter",
+                                "feeds",
+                                "news",
+                                "me",
+                                "feed-elements"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Page token for pagination",
+                                  "key": "page",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "key": "sort",
+                                  "value": "LastModifiedDateDesc"
+                                }
+                              ]
+                            },
+                            "description": "Returns the current user's Chatter news feed, including posts from people and groups they follow, and records they own or follow."
+                          },
+                          "response": [
+                            {
+                              "id": "b4c0715f-f290-4361-bbfc-0b6dd0bbac2a",
+                              "name": "News feed elements",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/chatter/feeds/news/me/feed-elements?page=<string>&pageSize=25&sort=LastModifiedDateDesc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "chatter",
+                                    "feeds",
+                                    "news",
+                                    "me",
+                                    "feed-elements"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Page token for pagination",
+                                      "key": "page",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "pageSize",
+                                      "value": "25"
+                                    },
+                                    {
+                                      "key": "sort",
+                                      "value": "LastModifiedDateDesc"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"currentPageUrl\": \"<string>\",\n  \"elements\": [\n    {\n      \"id\": \"<string>\",\n      \"body\": {\n        \"messageSegments\": [\n          {\n            \"type\": \"<string>\",\n            \"text\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"text\": \"<string>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"actor\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\",\n        \"photo\": {\n          \"smallPhotoUrl\": \"<string>\",\n          \"largePhotoUrl\": \"<string>\"\n        }\n      },\n      \"createdDate\": \"<dateTime>\",\n      \"modifiedDate\": \"<dateTime>\",\n      \"capabilities\": {\n        \"esse_73\": true\n      },\n      \"header\": {\n        \"text\": \"<string>\"\n      },\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"body\": {\n        \"messageSegments\": [\n          {\n            \"type\": \"<string>\",\n            \"text\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"text\": \"<string>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"actor\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\",\n        \"photo\": {\n          \"smallPhotoUrl\": \"<string>\",\n          \"largePhotoUrl\": \"<string>\"\n        }\n      },\n      \"createdDate\": \"<dateTime>\",\n      \"modifiedDate\": \"<dateTime>\",\n      \"capabilities\": {\n        \"laborec44\": true\n      },\n      \"header\": {\n        \"text\": \"<string>\"\n      },\n      \"url\": \"<string>\"\n    }\n  ],\n  \"nextPageUrl\": \"<string,null>\",\n  \"updatesUrl\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:50:21.000Z",
+                              "updatedAt": "2026-07-28T02:50:21.000Z",
+                              "uid": "35240-b4c0715f-f290-4361-bbfc-0b6dd0bbac2a"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:50:21.000Z",
+                          "updatedAt": "2026-07-28T02:50:21.000Z",
+                          "uid": "35240-95245913-cb93-45eb-92f7-2893b857c6a6"
+                        },
+                        {
+                          "name": "Post to the current user's feed",
+                          "id": "7b4e32ef-3ae0-40e8-80f3-347166cec7bb",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"Text\",\n        \"text\": \"<string>\",\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"type\": \"Hashtag\",\n        \"text\": \"<string>\",\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    ]\n  },\n  \"feedElementType\": \"FeedItem\",\n  \"subjectId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/chatter/feeds/news/me/feed-elements",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "chatter",
+                                "feeds",
+                                "news",
+                                "me",
+                                "feed-elements"
+                              ]
+                            },
+                            "description": "Creates a new Chatter feed post. Supports text posts, link posts, and posts with mentions. Rich text with inline images is supported."
+                          },
+                          "response": [
+                            {
+                              "id": "6206d877-6807-4d93-8b00-93ae9161e6ff",
+                              "name": "Feed element created",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"Text\",\n        \"text\": \"<string>\",\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"type\": \"Hashtag\",\n        \"text\": \"<string>\",\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    ]\n  },\n  \"feedElementType\": \"FeedItem\",\n  \"subjectId\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/chatter/feeds/news/me/feed-elements",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "chatter",
+                                    "feeds",
+                                    "news",
+                                    "me",
+                                    "feed-elements"
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      }\n    ],\n    \"text\": \"<string>\"\n  },\n  \"actor\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"url\": \"<string>\",\n    \"photo\": {\n      \"smallPhotoUrl\": \"<string>\",\n      \"largePhotoUrl\": \"<string>\"\n    }\n  },\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"capabilities\": {\n    \"ea_5\": -50906623.2569658,\n    \"voluptate_50\": true\n  },\n  \"header\": {\n    \"text\": \"<string>\"\n  },\n  \"url\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:50:21.000Z",
+                              "updatedAt": "2026-07-28T02:50:21.000Z",
+                              "uid": "35240-6206d877-6807-4d93-8b00-93ae9161e6ff"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:50:21.000Z",
+                          "updatedAt": "2026-07-28T02:50:21.000Z",
+                          "uid": "35240-7b4e32ef-3ae0-40e8-80f3-347166cec7bb"
+                        }
+                      ],
+                      "id": "b559534b-def6-46b2-b8c1-1bdd16c4fbb9",
+                      "createdAt": "2026-07-28T02:50:21.000Z",
+                      "updatedAt": "2026-07-28T02:50:21.000Z",
+                      "uid": "35240-b559534b-def6-46b2-b8c1-1bdd16c4fbb9"
+                    }
+                  ],
+                  "id": "37c865bc-9647-4364-9d25-8fac9e6d5fd2",
+                  "createdAt": "2026-07-28T02:50:21.000Z",
+                  "updatedAt": "2026-07-28T02:50:21.000Z",
+                  "uid": "35240-37c865bc-9647-4364-9d25-8fac9e6d5fd2"
+                }
+              ],
+              "id": "59220571-5a77-4f1a-aba4-29bdf88b9db8",
+              "createdAt": "2026-07-28T02:50:21.000Z",
+              "updatedAt": "2026-07-28T02:50:21.000Z",
+              "uid": "35240-59220571-5a77-4f1a-aba4-29bdf88b9db8"
+            }
+          ],
+          "id": "9e9955c5-f2ae-4148-8f94-ee5ec5700513",
+          "createdAt": "2026-07-28T02:50:21.000Z",
+          "updatedAt": "2026-07-28T02:50:21.000Z",
+          "uid": "35240-9e9955c5-f2ae-4148-8f94-ee5ec5700513"
+        },
+        {
+          "name": "feed-elements",
+          "item": [
+            {
+              "name": "{feedElementId}",
+              "item": [
+                {
+                  "name": "Get a feed element",
+                  "id": "d3cf5b14-d37d-4086-9144-c1bcc4b23422",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/chatter/feed-elements/:feedElementId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chatter",
+                        "feed-elements",
+                        ":feedElementId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2f930912-d923-4881-a117-92df506a2561",
+                          "key": "feedElementId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns a specific Chatter feed element (post) by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "ab93a2b0-f869-481e-bb4c-d5e2dbc1db11",
+                      "name": "Feed element",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/chatter/feed-elements/:feedElementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "chatter",
+                            "feed-elements",
+                            ":feedElementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "feedElementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      }\n    ],\n    \"text\": \"<string>\"\n  },\n  \"actor\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"url\": \"<string>\",\n    \"photo\": {\n      \"smallPhotoUrl\": \"<string>\",\n      \"largePhotoUrl\": \"<string>\"\n    }\n  },\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"capabilities\": {\n    \"ea_5\": -50906623.2569658,\n    \"voluptate_50\": true\n  },\n  \"header\": {\n    \"text\": \"<string>\"\n  },\n  \"url\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:50:21.000Z",
+                      "updatedAt": "2026-07-28T02:50:21.000Z",
+                      "uid": "35240-ab93a2b0-f869-481e-bb4c-d5e2dbc1db11"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:21.000Z",
+                  "updatedAt": "2026-07-28T02:50:21.000Z",
+                  "uid": "35240-d3cf5b14-d37d-4086-9144-c1bcc4b23422"
+                },
+                {
+                  "name": "Delete a feed element",
+                  "id": "e0346d49-af11-46b5-bb3f-bf9b7085cb8a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/chatter/feed-elements/:feedElementId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chatter",
+                        "feed-elements",
+                        ":feedElementId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "97931987-14d5-47b4-ac2a-106562d8372b",
+                          "key": "feedElementId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a Chatter feed element. Only the author or an admin can delete a post."
+                  },
+                  "response": [
+                    {
+                      "id": "13d70a42-4e37-457c-8bd1-736961658be6",
+                      "name": "Feed element deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/chatter/feed-elements/:feedElementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "chatter",
+                            "feed-elements",
+                            ":feedElementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "feedElementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:50:21.000Z",
+                      "updatedAt": "2026-07-28T02:50:21.000Z",
+                      "uid": "35240-13d70a42-4e37-457c-8bd1-736961658be6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:50:21.000Z",
+                  "updatedAt": "2026-07-28T02:50:21.000Z",
+                  "uid": "35240-e0346d49-af11-46b5-bb3f-bf9b7085cb8a"
+                }
+              ],
+              "id": "636bd80e-e193-4416-8440-1523eb100570",
+              "createdAt": "2026-07-28T02:50:21.000Z",
+              "updatedAt": "2026-07-28T02:50:21.000Z",
+              "uid": "35240-636bd80e-e193-4416-8440-1523eb100570"
+            }
+          ],
+          "id": "1668033b-5cfd-42cc-9ccc-3b2714928a49",
+          "createdAt": "2026-07-28T02:50:21.000Z",
+          "updatedAt": "2026-07-28T02:50:21.000Z",
+          "uid": "35240-1668033b-5cfd-42cc-9ccc-3b2714928a49"
+        }
+      ],
+      "id": "d27cad64-90b3-41eb-938a-054e703fb546",
+      "createdAt": "2026-07-28T02:50:21.000Z",
+      "updatedAt": "2026-07-28T02:50:21.000Z",
+      "uid": "35240-d27cad64-90b3-41eb-938a-054e703fb546"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

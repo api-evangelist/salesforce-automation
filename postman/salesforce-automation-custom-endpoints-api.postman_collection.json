@@ -1,0 +1,695 @@
+{
+  "info": {
+    "_postman_id": "e3060776-4b68-4e8d-b37f-9597e98c35ed",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Custom Endpoints API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:58.000Z",
+    "updatedAt": "2026-07-28T02:49:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e3060776-4b68-4e8d-b37f-9597e98c35ed"
+  },
+  "item": [
+    {
+      "name": "{urlMapping}",
+      "item": [
+        {
+          "name": "Call a custom Apex REST GET endpoint",
+          "id": "5b260e35-3aea-402a-890c-a43618b2a8e4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:urlMapping",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":urlMapping"
+              ],
+              "variable": [
+                {
+                  "id": "e19d61a4-a813-40f4-b8fe-318d89d63ee2",
+                  "key": "urlMapping",
+                  "value": "<string>",
+                  "description": "(Required) The URL mapping defined in the @RestResource annotation (e.g., '/Accounts/*', '/Cases/*')"
+                }
+              ]
+            },
+            "description": "Invokes the @HttpGet annotated method on the Apex class mapped to this URL. The response format depends on the Apex implementation. URL path parameters beyond the base mapping are available to the Apex code via RestContext.request.requestURI."
+          },
+          "response": [
+            {
+              "id": "92acaa29-1bde-4843-9878-41f10674ff73",
+              "name": "Response from the Apex REST service. Format depends on the implementation.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:urlMapping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":urlMapping"
+                  ],
+                  "variable": [
+                    {
+                      "key": "urlMapping"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"description\": \"Response varies based on the Apex REST service implementation\"\n}",
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-92acaa29-1bde-4843-9878-41f10674ff73"
+            },
+            {
+              "id": "6478d3c8-cbf2-4104-95cc-dcf5154341ee",
+              "name": "No Apex REST service found for the specified URL mapping",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:urlMapping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":urlMapping"
+                  ],
+                  "variable": [
+                    {
+                      "key": "urlMapping"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-6478d3c8-cbf2-4104-95cc-dcf5154341ee"
+            }
+          ],
+          "createdAt": "2026-07-28T02:49:59.000Z",
+          "updatedAt": "2026-07-28T02:49:59.000Z",
+          "uid": "35240-5b260e35-3aea-402a-890c-a43618b2a8e4"
+        },
+        {
+          "name": "Call a custom Apex REST POST endpoint",
+          "id": "29ea8bac-0fca-4697-a16a-62076cc9ffe1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ad_6f\": -79981725.24633932,\n  \"amet477\": -60708258\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/:urlMapping",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":urlMapping"
+              ],
+              "variable": [
+                {
+                  "id": "ef167f9d-1bb3-4ba8-a3aa-9064f2a77ec5",
+                  "key": "urlMapping",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Invokes the @HttpPost annotated method on the Apex class mapped to this URL. The request body is deserialized and passed to the method. Supports JSON and XML request bodies."
+          },
+          "response": [
+            {
+              "id": "9ff779dd-6ee4-4536-aa75-75c1431d1cc0",
+              "name": "Response from the Apex REST service",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ad_6f\": -79981725.24633932,\n  \"amet477\": -60708258\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:urlMapping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":urlMapping"
+                  ],
+                  "variable": [
+                    {
+                      "key": "urlMapping"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"description\": \"Response varies based on the Apex REST service implementation\"\n}",
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-9ff779dd-6ee4-4536-aa75-75c1431d1cc0"
+            },
+            {
+              "id": "677423b2-3649-4665-9289-a1eee7072de7",
+              "name": "Resource created by the Apex REST service",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ad_6f\": -79981725.24633932,\n  \"amet477\": -60708258\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:urlMapping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":urlMapping"
+                  ],
+                  "variable": [
+                    {
+                      "key": "urlMapping"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"description\": \"Response varies based on the Apex REST service implementation\"\n}",
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-677423b2-3649-4665-9289-a1eee7072de7"
+            }
+          ],
+          "createdAt": "2026-07-28T02:49:59.000Z",
+          "updatedAt": "2026-07-28T02:49:59.000Z",
+          "uid": "35240-29ea8bac-0fca-4697-a16a-62076cc9ffe1"
+        },
+        {
+          "name": "Call a custom Apex REST PATCH endpoint",
+          "id": "fc1a182d-c9d3-47ab-9d0c-793f1816fa4f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ad_6f\": -79981725.24633932,\n  \"amet477\": -60708258\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/:urlMapping",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":urlMapping"
+              ],
+              "variable": [
+                {
+                  "id": "6b333410-6054-42c3-8bfd-c70cf8d68aa3",
+                  "key": "urlMapping",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Invokes the @HttpPatch annotated method on the Apex class mapped to this URL."
+          },
+          "response": [
+            {
+              "id": "724fb45d-62cf-4da5-803f-54b21e5ca098",
+              "name": "Response from the Apex REST service",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ad_6f\": -79981725.24633932,\n  \"amet477\": -60708258\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:urlMapping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":urlMapping"
+                  ],
+                  "variable": [
+                    {
+                      "key": "urlMapping"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"description\": \"Response varies based on the Apex REST service implementation\"\n}",
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-724fb45d-62cf-4da5-803f-54b21e5ca098"
+            }
+          ],
+          "createdAt": "2026-07-28T02:49:59.000Z",
+          "updatedAt": "2026-07-28T02:49:59.000Z",
+          "uid": "35240-fc1a182d-c9d3-47ab-9d0c-793f1816fa4f"
+        },
+        {
+          "name": "Call a custom Apex REST PUT endpoint",
+          "id": "19393413-5ba3-4dfe-abb8-66f9211ff585",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ad_6f\": -79981725.24633932,\n  \"amet477\": -60708258\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/:urlMapping",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":urlMapping"
+              ],
+              "variable": [
+                {
+                  "id": "8443e4e8-2c48-46c5-b04c-93844fc80da6",
+                  "key": "urlMapping",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Invokes the @HttpPut annotated method on the Apex class mapped to this URL."
+          },
+          "response": [
+            {
+              "id": "df1110e9-2ef9-4450-97ab-e53d0faa0142",
+              "name": "Response from the Apex REST service",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ad_6f\": -79981725.24633932,\n  \"amet477\": -60708258\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:urlMapping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":urlMapping"
+                  ],
+                  "variable": [
+                    {
+                      "key": "urlMapping"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"description\": \"Response varies based on the Apex REST service implementation\"\n}",
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-df1110e9-2ef9-4450-97ab-e53d0faa0142"
+            }
+          ],
+          "createdAt": "2026-07-28T02:49:59.000Z",
+          "updatedAt": "2026-07-28T02:49:59.000Z",
+          "uid": "35240-19393413-5ba3-4dfe-abb8-66f9211ff585"
+        },
+        {
+          "name": "Call a custom Apex REST DELETE endpoint",
+          "id": "fef68c5a-0095-4e95-8ff0-b1f7dbfcf1c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/:urlMapping",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":urlMapping"
+              ],
+              "variable": [
+                {
+                  "id": "966d410d-0ace-447c-a41c-8b407abaa8bc",
+                  "key": "urlMapping",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Invokes the @HttpDelete annotated method on the Apex class mapped to this URL."
+          },
+          "response": [
+            {
+              "id": "c56f16df-aea0-4183-85ee-a93673435d0c",
+              "name": "Response from the Apex REST service",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:urlMapping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":urlMapping"
+                  ],
+                  "variable": [
+                    {
+                      "key": "urlMapping"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-c56f16df-aea0-4183-85ee-a93673435d0c"
+            },
+            {
+              "id": "1d0ce6dd-c6cf-4991-bf0a-49676eca4974",
+              "name": "Resource deleted successfully",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:urlMapping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":urlMapping"
+                  ],
+                  "variable": [
+                    {
+                      "key": "urlMapping"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-1d0ce6dd-c6cf-4991-bf0a-49676eca4974"
+            }
+          ],
+          "createdAt": "2026-07-28T02:49:59.000Z",
+          "updatedAt": "2026-07-28T02:49:59.000Z",
+          "uid": "35240-fef68c5a-0095-4e95-8ff0-b1f7dbfcf1c4"
+        }
+      ],
+      "id": "d1475180-aa85-42a9-9a71-781c03dc8048",
+      "createdAt": "2026-07-28T02:49:59.000Z",
+      "updatedAt": "2026-07-28T02:49:59.000Z",
+      "uid": "35240-d1475180-aa85-42a9-9a71-781c03dc8048"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}

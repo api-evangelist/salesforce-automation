@@ -1,0 +1,266 @@
+{
+  "info": {
+    "_postman_id": "0b23d3aa-7a67-4dcb-9bda-88a0c90bf58f",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Dashboards API",
+    "description": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:59.000Z",
+    "updatedAt": "2026-07-28T02:49:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0b23d3aa-7a67-4dcb-9bda-88a0c90bf58f"
+  },
+  "item": [
+    {
+      "name": "dashboards",
+      "item": [
+        {
+          "name": "{dashboardId}",
+          "item": [
+            {
+              "name": "Get a dashboard",
+              "id": "78311b36-9fea-43d1-a9e1-bbe7896dc2d8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dashboards/:dashboardId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dashboards",
+                    ":dashboardId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "15dc1b5d-ae17-4780-aa81-67d7e52112fb",
+                      "key": "dashboardId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns metadata and configuration for a specific CRM Analytics dashboard, including its widgets, steps, and layout."
+              },
+              "response": [
+                {
+                  "id": "4745aea9-1794-464b-9e57-cd039a25d4ad",
+                  "name": "Dashboard metadata",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dashboards/:dashboardId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dashboards",
+                        ":dashboardId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dashboardId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string,null>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"folder\": {\n    \"id\": \"<string>\",\n    \"label\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  \"state\": {\n    \"cillum06\": false,\n    \"anime\": -16059622.465621844,\n    \"dolor_6ab\": -54546205,\n    \"quis_6\": \"aliqua sint dolore Duis\"\n  },\n  \"url\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:50:00.000Z",
+                  "updatedAt": "2026-07-28T02:50:00.000Z",
+                  "uid": "35240-4745aea9-1794-464b-9e57-cd039a25d4ad"
+                }
+              ],
+              "createdAt": "2026-07-28T02:50:00.000Z",
+              "updatedAt": "2026-07-28T02:50:00.000Z",
+              "uid": "35240-78311b36-9fea-43d1-a9e1-bbe7896dc2d8"
+            }
+          ],
+          "id": "cd92653c-b044-41e7-b654-e516e014c1db",
+          "createdAt": "2026-07-28T02:50:00.000Z",
+          "updatedAt": "2026-07-28T02:50:00.000Z",
+          "uid": "35240-cd92653c-b044-41e7-b654-e516e014c1db"
+        },
+        {
+          "name": "List dashboards",
+          "id": "f0939910-d750-4f47-aca2-89a430f69c27",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dashboards?q=<string>&folderId=<string>&page=<string>&pageSize=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dashboards"
+              ],
+              "query": [
+                {
+                  "description": "Search term to filter dashboards",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "folderId",
+                  "value": "<string>"
+                },
+                {
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of CRM Analytics dashboards accessible to the current user."
+          },
+          "response": [
+            {
+              "id": "4f094d00-25f8-4c1b-825c-7449655ecf59",
+              "name": "List of dashboards",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dashboards?q=<string>&folderId=<string>&page=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dashboards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search term to filter dashboards",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"dashboards\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"folder\": {\n        \"id\": \"<string>\",\n        \"label\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"state\": {\n        \"laborisc7\": false,\n        \"laborisc\": \"est tempor\",\n        \"ut_5\": -78912623.65098459\n      },\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string,null>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"folder\": {\n        \"id\": \"<string>\",\n        \"label\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"state\": {\n        \"aliquipbf\": \"adipisicing ea enim deserunt\",\n        \"ut__7f\": \"consequat\",\n        \"ut_f8\": true,\n        \"id_f\": -73784595.15836209\n      },\n      \"url\": \"<string>\"\n    }\n  ],\n  \"nextPageUrl\": \"<string,null>\",\n  \"totalSize\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:50:00.000Z",
+              "updatedAt": "2026-07-28T02:50:00.000Z",
+              "uid": "35240-4f094d00-25f8-4c1b-825c-7449655ecf59"
+            }
+          ],
+          "createdAt": "2026-07-28T02:50:00.000Z",
+          "updatedAt": "2026-07-28T02:50:00.000Z",
+          "uid": "35240-f0939910-d750-4f47-aca2-89a430f69c27"
+        }
+      ],
+      "id": "9d49b41f-d144-45a9-b1c4-b2ab330a99e7",
+      "createdAt": "2026-07-28T02:50:00.000Z",
+      "updatedAt": "2026-07-28T02:50:00.000Z",
+      "uid": "35240-9d49b41f-d144-45a9-b1c4-b2ab330a99e7"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave"
+    }
+  ]
+}
