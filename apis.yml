@@ -19,7 +19,7 @@ image: https://www.salesforce.com/content/dam/sfdc-docs/www/logos/logo-salesforc
 url: https://developer.salesforce.com
 created: '2024-01-01'
 modified: '2026-05-19'
-specificationVersion: '0.16'
+specificationVersion: '0.23'
 tags:
 - Automation
 - Cloud
@@ -245,7 +245,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-approvals-api
@@ -367,7 +367,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-batch-api
@@ -489,7 +489,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-change-events-api
@@ -611,7 +611,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-comments-api
@@ -733,7 +733,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-composite-api
@@ -855,7 +855,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-configuration-api
@@ -977,7 +977,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-custom-actions-api
@@ -1099,7 +1099,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-custom-endpoints-api
@@ -1221,7 +1221,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-dashboards-api
@@ -1343,7 +1343,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-dataflows-api
@@ -1465,7 +1465,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-datasets-api
@@ -1587,7 +1587,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-development-api
@@ -1709,7 +1709,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-events-api
@@ -1831,7 +1831,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-feeds-api
@@ -1953,7 +1953,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-flows-api
@@ -2075,7 +2075,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-folders-api
@@ -2197,7 +2197,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-graph-api
@@ -2319,7 +2319,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-groups-api
@@ -2441,7 +2441,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-ingest-jobs-api
@@ -2563,7 +2563,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-lenses-api
@@ -2685,7 +2685,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-limits-api
@@ -2807,7 +2807,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-pushtopics-api
@@ -2929,7 +2929,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-query-api
@@ -3051,7 +3051,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-query-jobs-api
@@ -3173,7 +3173,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-records-api
@@ -3295,7 +3295,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-sobject-collections-api
@@ -3417,7 +3417,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-sobject-tree-api
@@ -3539,7 +3539,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-sobjects-api
@@ -3661,7 +3661,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-soql-api
@@ -3783,7 +3783,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-sosl-api
@@ -3905,7 +3905,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-standard-actions-api
@@ -4027,7 +4027,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-streaming-channels-api
@@ -4149,7 +4149,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-testing-api
@@ -4271,7 +4271,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-topics-api
@@ -4393,7 +4393,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-users-api
@@ -4515,7 +4515,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-versions-api
@@ -4637,7 +4637,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 - aid: salesforce-automation:salesforce-automation-workflow-api
@@ -4759,7 +4759,7 @@ apis:
   - type: APIReference
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_restrequest.htm
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_rest_code_samples.htm
 maintainers:
