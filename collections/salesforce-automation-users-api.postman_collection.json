@@ -1,0 +1,268 @@
+{
+  "item": [
+    {
+      "id": "c5374a43-fc9a-4c0d-b472-3a1222adfcee",
+      "name": "Users",
+      "description": {
+        "content": "Chatter user profiles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09ef5308-949e-4401-9abe-530dccfa90ba",
+          "name": "Get the current user's Chatter profile",
+          "request": {
+            "name": "Get the current user's Chatter profile",
+            "description": {
+              "content": "Returns the Chatter profile of the currently authenticated user, including their name, photo, title, and follower/following counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "users",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "767453db-24bc-4d43-ba09-4137154ce633",
+              "name": "Current user profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "users",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"string\",\n  \"title\": \"string\",\n  \"companyName\": \"string\",\n  \"photo\": {\n    \"smallPhotoUrl\": \"string\",\n    \"largePhotoUrl\": \"string\"\n  },\n  \"followersCount\": 4853,\n  \"followingCounts\": {\n    \"people\": 6806,\n    \"records\": 3384,\n    \"total\": 1243\n  },\n  \"groupCount\": 3601,\n  \"isActive\": false,\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da6ac052-59a1-4eb4-a88c-3ecf7f9098b5",
+          "name": "Get a user's Chatter profile",
+          "request": {
+            "name": "Get a user's Chatter profile",
+            "description": {
+              "content": "Returns the Chatter profile of the specified user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "229e29f0-1047-4216-89b6-e3ef8648408e",
+              "name": "User profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"string\",\n  \"title\": \"string\",\n  \"companyName\": \"string\",\n  \"photo\": {\n    \"smallPhotoUrl\": \"string\",\n    \"largePhotoUrl\": \"string\"\n  },\n  \"followersCount\": 4853,\n  \"followingCounts\": {\n    \"people\": 6806,\n    \"records\": 3384,\n    \"total\": 1243\n  },\n  \"groupCount\": 3601,\n  \"isActive\": false,\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "72a71d85-64a4-45a8-bba8-0e3affb7a94f",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

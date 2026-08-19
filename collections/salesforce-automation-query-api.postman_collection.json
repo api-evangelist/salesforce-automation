@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "40b517ad-41e9-4581-b600-2b80d52184d3",
+      "name": "Query",
+      "description": {
+        "content": "SAQL query execution",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "261b3bc5-b4c6-4780-8551-f6ec5c72d978",
+          "name": "Execute a SAQL query",
+          "request": {
+            "name": "Execute a SAQL query",
+            "description": {
+              "content": "Executes a SAQL (Salesforce Analytics Query Language) query against CRM Analytics datasets. SAQL provides a SQL-like syntax for querying, aggregating, and transforming analytics data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6911dee2-7b87-48fb-b075-34bb455c3e77",
+              "name": "Query results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action\": \"string\",\n  \"responseId\": \"string\",\n  \"results\": {\n    \"metadata\": [\n      {\n        \"key_0\": 5037,\n        \"key_1\": 8185.1611607137675,\n        \"key_2\": 232\n      },\n      {\n        \"key_0\": \"string\"\n      }\n    ],\n    \"records\": [\n      {\n        \"key_0\": 8231.834879364633,\n        \"key_1\": false\n      },\n      {\n        \"key_0\": 1437.5777200108253\n      }\n    ]\n  },\n  \"query\": \"string\",\n  \"responseTime\": 8354.98335037419\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d421153-f6cc-47d4-87aa-a51289bb973d",
+          "name": "Execute a Tooling API SOQL query",
+          "request": {
+            "name": "Execute a Tooling API SOQL query",
+            "description": {
+              "content": "Executes a SOQL query against Tooling API objects. Supports querying ApexClass, ApexTrigger, Flow, FlowDefinition, CustomField, ValidationRule, WorkflowRule, and other metadata types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The SOQL query string targeting Tooling API objects (e.g., SELECT Id, FullName, Metadata FROM Flow WHERE Status = 'Active')"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f891c5bb-43b8-4508-bea6-2c1e17a1f362",
+              "name": "Query results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSize\": 3892,\n  \"done\": true,\n  \"records\": [\n    {\n      \"key_0\": 8348.484389020377,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 7681.884658275505,\n      \"key_1\": true\n    }\n  ],\n  \"nextRecordsUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9d93d230-bd75-4205-9e8d-9226bba0ddc7",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Query API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

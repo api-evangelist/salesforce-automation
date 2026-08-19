@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Query API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a Tooling API SOQL query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/query",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The SOQL query string targeting Tooling API objects (e.g., SELECT Id, FullName, Metadata FROM Flow WHERE Status = 'Active')"
+              }
+            ]
+          },
+          "docs": "Executes a SOQL query against Tooling API objects. Supports querying ApexClass, ApexTrigger, Flow, FlowDefinition, CustomField, ValidationRule, WorkflowRule, and other metadata types."
+        },
+        {
+          "info": {
+            "name": "Execute a SAQL query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a SAQL (Salesforce Analytics Query Language) query against CRM Analytics datasets. SAQL provides a SQL-like syntax for querying, aggregating, and transforming analytics data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

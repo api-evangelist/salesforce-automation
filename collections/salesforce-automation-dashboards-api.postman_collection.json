@@ -1,0 +1,301 @@
+{
+  "item": [
+    {
+      "id": "571c9670-4baa-43d0-a65e-b2eb982f0bbd",
+      "name": "Dashboards",
+      "description": {
+        "content": "CRM Analytics dashboards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44ad8628-a38e-46cc-b549-ddc21721dfcf",
+          "name": "List dashboards",
+          "request": {
+            "name": "List dashboards",
+            "description": {
+              "content": "Returns a paginated list of CRM Analytics dashboards accessible to the current user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search term to filter dashboards"
+                },
+                {
+                  "disabled": false,
+                  "key": "folderId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c593a8e6-2439-4dcd-a34d-347d9caf1d70",
+              "name": "List of dashboards",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dashboards\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"createdDate\": \"2025-01-25T04:41:23.812Z\",\n      \"lastModifiedDate\": \"1963-02-01T02:40:35.211Z\",\n      \"folder\": {\n        \"id\": \"string\",\n        \"label\": \"string\",\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      \"state\": {\n        \"key_0\": \"string\"\n      },\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"createdDate\": \"1958-08-13T06:16:56.744Z\",\n      \"lastModifiedDate\": \"2021-10-17T06:55:26.651Z\",\n      \"folder\": {\n        \"id\": \"string\",\n        \"label\": \"string\",\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      \"state\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6621\n      },\n      \"url\": \"string\"\n    }\n  ],\n  \"nextPageUrl\": \"string\",\n  \"totalSize\": 7247\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1139cac4-b8d8-418c-9693-59d9ed54d8ac",
+          "name": "Get a dashboard",
+          "request": {
+            "name": "Get a dashboard",
+            "description": {
+              "content": "Returns metadata and configuration for a specific CRM Analytics dashboard, including its widgets, steps, and layout.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dashboards",
+                ":dashboardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dashboardId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "162faea7-d5d2-4b78-a5b3-3a3bcc7c681b",
+              "name": "Dashboard metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dashboards",
+                    ":dashboardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dashboardId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"description\": \"string\",\n  \"createdDate\": \"1988-05-17T01:11:48.794Z\",\n  \"lastModifiedDate\": \"2003-12-22T17:41:13.383Z\",\n  \"folder\": {\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"name\": \"string\",\n    \"url\": \"string\"\n  },\n  \"state\": {\n    \"key_0\": 7252.07836015704,\n    \"key_1\": 8887\n  },\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b4a1d85d-3cb1-4930-a8c6-1e388cf6c519",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Dashboards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

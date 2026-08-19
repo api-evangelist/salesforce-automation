@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Records API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:sObjectName",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new record of the specified SObject type. Returns the ID of the newly created record. Required fields must be included in the request body."
+        },
+        {
+          "info": {
+            "name": "Get a record by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:sObjectName/:recordId",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 15-character or 18-character Salesforce record ID"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field API names to return. Reduces payload size when you only need specific fields."
+              }
+            ]
+          },
+          "docs": "Retrieves a record by its 15-character or 18-character Salesforce ID. Use the optional fields parameter to specify which fields to return; otherwise all accessible fields are returned."
+        },
+        {
+          "info": {
+            "name": "Update a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:sObjectName/:recordId",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 15-character or 18-character Salesforce record ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified fields of an existing record. Only include fields you want to change. Fields not included in the request body are not modified."
+        },
+        {
+          "info": {
+            "name": "Delete a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:sObjectName/:recordId",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 15-character or 18-character Salesforce record ID"
+              }
+            ]
+          },
+          "docs": "Soft-deletes the record with the specified ID, moving it to the Recycle Bin. The record can be restored from the Recycle Bin within 15 days."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

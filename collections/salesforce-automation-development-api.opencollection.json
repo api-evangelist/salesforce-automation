@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Development API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Development",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get code completions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/completions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of completion (apex)"
+              }
+            ]
+          },
+          "docs": "Returns code completion suggestions for Apex code in a specific class or trigger at a given position."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

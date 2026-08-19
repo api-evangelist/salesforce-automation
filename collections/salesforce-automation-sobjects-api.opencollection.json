@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SObjects API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SObjects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Describe all available SObjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects"
+          },
+          "docs": "Lists all available objects and their metadata for your org, including the object name, label, key prefix, custom status, and URLs for describe and row template. Equivalent to the DescribeGlobal SOAP API call."
+        },
+        {
+          "info": {
+            "name": "Describe an SObject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:sObjectName",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              }
+            ]
+          },
+          "docs": "Retrieves metadata about a specific SObject including its fields, child relationships, record type details, and URLs for various operations."
+        },
+        {
+          "info": {
+            "name": "Get full SObject describe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:sObjectName/describe",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete metadata for an SObject type including all fields, field-level properties (type, length, picklist values), relationships, record types, child relationships, and available layouts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

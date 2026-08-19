@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Approvals API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Approvals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List approval processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/process/approvals"
+          },
+          "docs": "Returns a list of all approval processes defined in your org, along with their associated metadata."
+        },
+        {
+          "info": {
+            "name": "Submit a record for approval",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/process/approvals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a record for approval, approves, or rejects an approval request. Supports specifying next approvers, comments, and skipping entry criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

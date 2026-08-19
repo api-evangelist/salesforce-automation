@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions PushTopics API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PushTopics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List PushTopics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/PushTopic"
+          },
+          "docs": "Returns all PushTopic records in the org. PushTopics define SOQL queries that determine which record changes generate streaming events. Note: PushTopics are deprecated in favor of Platform Events and Change Data Capture."
+        },
+        {
+          "info": {
+            "name": "Create a PushTopic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/PushTopic",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new PushTopic that defines a SOQL query to monitor for record changes. When records matching the query change, events are delivered to subscribers on the /topic/{pushTopicName} CometD channel."
+        },
+        {
+          "info": {
+            "name": "Get a PushTopic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/PushTopic/:pushTopicId",
+            "params": [
+              {
+                "name": "pushTopicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific PushTopic record by ID."
+        },
+        {
+          "info": {
+            "name": "Update a PushTopic",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/PushTopic/:pushTopicId",
+            "params": [
+              {
+                "name": "pushTopicId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the SOQL query, notification settings, or other properties of an existing PushTopic."
+        },
+        {
+          "info": {
+            "name": "Delete a PushTopic",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/PushTopic/:pushTopicId",
+            "params": [
+              {
+                "name": "pushTopicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a PushTopic. Active subscribers will be disconnected."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

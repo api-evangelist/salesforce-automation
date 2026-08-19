@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SObject Collections API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SObject Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create multiple records of the same type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/composite/sobjects",
+            "params": [
+              {
+                "name": "allOrNone",
+                "value": "",
+                "type": "query",
+                "description": "If true, all records in the request must succeed or all are rolled back"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates up to 200 records of the same SObject type in a single request. More efficient than individual create calls for bulk record creation."
+        },
+        {
+          "info": {
+            "name": "Update multiple records",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/composite/sobjects",
+            "params": [
+              {
+                "name": "allOrNone",
+                "value": "",
+                "type": "query",
+                "description": "If true, all records in the request must succeed or all are rolled back"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates up to 200 records in a single request. Records can be of different SObject types. Each record must include the Id field and the attributes.type field."
+        },
+        {
+          "info": {
+            "name": "Delete multiple records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/composite/sobjects",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of record IDs to delete (up to 200)"
+              },
+              {
+                "name": "allOrNone",
+                "value": "",
+                "type": "query",
+                "description": "If true, all records in the request must succeed or all are rolled back"
+              }
+            ]
+          },
+          "docs": "Deletes up to 200 records in a single request. Provide record IDs as a comma-separated query parameter."
+        },
+        {
+          "info": {
+            "name": "Get multiple records by IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/composite/sobjects/:sObjectName",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of record IDs"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field API names to return"
+              }
+            ]
+          },
+          "docs": "Retrieves multiple records of the same SObject type by their IDs in a single request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

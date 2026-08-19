@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Streaming Channels API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Streaming Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Streaming Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/StreamingChannel"
+          },
+          "docs": "Returns all generic Streaming Channel records in the org. Streaming Channels allow publishing custom JSON events to subscribers."
+        },
+        {
+          "info": {
+            "name": "Create a Streaming Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/StreamingChannel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new generic Streaming Channel for publishing custom events. Events are delivered to subscribers on the /u/{channelName} CometD channel."
+        },
+        {
+          "info": {
+            "name": "Get a Streaming Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/StreamingChannel/:channelId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific Streaming Channel record by ID."
+        },
+        {
+          "info": {
+            "name": "Update a Streaming Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/StreamingChannel/:channelId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the properties of an existing Streaming Channel."
+        },
+        {
+          "info": {
+            "name": "Delete a Streaming Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/StreamingChannel/:channelId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a Streaming Channel. Active subscribers will be disconnected."
+        },
+        {
+          "info": {
+            "name": "Push an event to a Streaming Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/StreamingChannel/:channelId/push",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publishes a custom event to all subscribers of the specified Streaming Channel. The event payload is a JSON string up to 8 KB."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

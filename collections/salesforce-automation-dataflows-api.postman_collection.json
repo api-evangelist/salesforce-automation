@@ -1,0 +1,262 @@
+{
+  "item": [
+    {
+      "id": "1313673e-eb30-4ab6-bc3e-a4c0a61a7523",
+      "name": "Dataflows",
+      "description": {
+        "content": "CRM Analytics dataflows (recipes)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7fda4482-1db2-4c6f-a6db-e8f38fc2e4ca",
+          "name": "List dataflows",
+          "request": {
+            "name": "List dataflows",
+            "description": {
+              "content": "Returns a list of CRM Analytics dataflows (recipes). Dataflows define the ETL process for loading data into analytics datasets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dataflows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca9f2661-fc70-4431-8998-0b270bc878f7",
+              "name": "List of dataflows",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataflows\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"createdDate\": \"2017-09-27T02:01:41.292Z\",\n      \"lastModifiedDate\": \"2025-01-12T12:14:45.502Z\",\n      \"definition\": {\n        \"key_0\": 5472.00401470267\n      },\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"createdDate\": \"2021-03-08T13:13:05.521Z\",\n      \"lastModifiedDate\": \"1949-07-21T14:19:55.934Z\",\n      \"definition\": {\n        \"key_0\": true\n      },\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81ce92db-3ccb-4b90-bb47-bc7a132cee79",
+          "name": "Get a dataflow",
+          "request": {
+            "name": "Get a dataflow",
+            "description": {
+              "content": "Returns the definition and metadata for a specific CRM Analytics dataflow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dataflows",
+                ":dataflowId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a4d49fa-b30d-412d-b070-90a3cc500cb2",
+              "name": "Dataflow metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataflows",
+                    ":dataflowId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"description\": \"string\",\n  \"createdDate\": \"1949-03-22T15:19:47.521Z\",\n  \"lastModifiedDate\": \"2022-05-30T07:38:16.927Z\",\n  \"definition\": {\n    \"key_0\": true,\n    \"key_1\": true,\n    \"key_2\": false\n  },\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4dba5649-495e-447d-a0f4-e8a070c81a0e",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Dataflows API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

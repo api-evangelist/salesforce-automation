@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Testing API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Testing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run Apex tests asynchronously",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/runTestsAsynchronous",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a set of Apex test classes or methods for asynchronous execution. Returns a test run ID that can be used to check status."
+        },
+        {
+          "info": {
+            "name": "Run Apex tests synchronously",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/runTestsSynchronous",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs a set of Apex test classes synchronously and returns the results immediately. Best for small test runs; use the asynchronous endpoint for larger test suites."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

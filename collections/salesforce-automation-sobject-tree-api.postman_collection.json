@@ -1,0 +1,193 @@
+{
+  "item": [
+    {
+      "id": "540adeff-cba8-4348-8424-d2f3d65dda00",
+      "name": "SObject Tree",
+      "description": {
+        "content": "Create nested parent-child records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "469d6005-347a-4be0-843e-7b487b5de587",
+          "name": "Create nested records in a single request",
+          "request": {
+            "name": "Create nested records in a single request",
+            "description": {
+              "content": "Creates a parent record and its related child records in a single request. Supports up to 200 records total with up to 5 levels of nesting. Useful for creating an Account with its Contacts and Opportunities in one call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "tree",
+                ":sObjectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The parent SObject type"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7babca87-351c-4a12-ac08-8ef1e8db3b02",
+              "name": "Records created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "tree",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The parent SObject type"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\",\n        \"referenceId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasErrors\": true,\n  \"results\": [\n    {\n      \"referenceId\": \"string\",\n      \"id\": \"string\"\n    },\n    {\n      \"referenceId\": \"string\",\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6b5fd742-a006-433b-9069-7d5c2ff8f8c3",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SObject Tree API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

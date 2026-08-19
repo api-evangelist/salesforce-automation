@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Standard Actions API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Standard Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List standard invocable actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/actions/standard"
+          },
+          "docs": "Returns a list of all standard (Salesforce-provided) invocable actions. These include actions like emailSimple (send email), chatterPost (post to Chatter), submit (submit for approval), and many more."
+        },
+        {
+          "info": {
+            "name": "Describe a standard action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/actions/standard/:actionName",
+            "params": [
+              {
+                "name": "actionName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the standard action (e.g., emailSimple, chatterPost, submit)"
+              }
+            ]
+          },
+          "docs": "Returns the input and output parameters for a specific standard invocable action."
+        },
+        {
+          "info": {
+            "name": "Invoke a standard action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/actions/standard/:actionName",
+            "params": [
+              {
+                "name": "actionName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invokes a standard Salesforce action with the specified inputs. Multiple invocations can be batched in a single request by providing an array of input objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

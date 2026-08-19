@@ -1,0 +1,1221 @@
+{
+  "item": [
+    {
+      "id": "f1684c90-2485-4188-b439-4c0eadc3d6df",
+      "name": "Ingest Jobs",
+      "description": {
+        "content": "Bulk data loading operations (insert, update, upsert, delete, hardDelete)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75aa39c5-3c5e-47f0-b0b7-04fece55a330",
+          "name": "List all ingest jobs",
+          "request": {
+            "name": "List all ingest jobs",
+            "description": {
+              "content": "Returns a list of all Bulk API 2.0 ingest jobs in the org. Supports filtering by job type and pagination through concurrencyMode, jobType, and queryLocator parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "isPkChunkingEnabled",
+                  "value": "<boolean>",
+                  "description": "Filter by PK chunking status"
+                },
+                {
+                  "disabled": false,
+                  "key": "jobType",
+                  "value": "<string>",
+                  "description": "Filter by job type"
+                },
+                {
+                  "disabled": false,
+                  "key": "queryLocator",
+                  "value": "<string>",
+                  "description": "Locator for the next page of results"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b88c1e50-8055-4982-a650-15df24647d45",
+              "name": "List of ingest jobs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "isPkChunkingEnabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "jobType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "queryLocator",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"done\": false,\n  \"records\": [\n    {\n      \"id\": \"string\",\n      \"operation\": \"update\",\n      \"object\": \"string\",\n      \"createdById\": \"string\",\n      \"createdDate\": \"2010-12-29T17:07:20.540Z\",\n      \"systemModstamp\": \"1993-09-28T20:09:11.894Z\",\n      \"state\": \"Failed\",\n      \"externalIdFieldName\": \"string\",\n      \"concurrencyMode\": \"Parallel\",\n      \"contentType\": \"CSV\",\n      \"apiVersion\": 1959.6189345067717,\n      \"jobType\": \"V2Ingest\",\n      \"lineEnding\": \"CRLF\",\n      \"columnDelimiter\": \"CARET\",\n      \"numberRecordsProcessed\": 9555,\n      \"numberRecordsFailed\": 9386,\n      \"retries\": 8143,\n      \"totalProcessingTime\": 4154,\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"operation\": \"update\",\n      \"object\": \"string\",\n      \"createdById\": \"string\",\n      \"createdDate\": \"1991-08-31T00:34:05.819Z\",\n      \"systemModstamp\": \"1970-09-13T02:47:31.165Z\",\n      \"state\": \"InProgress\",\n      \"externalIdFieldName\": \"string\",\n      \"concurrencyMode\": \"Serial\",\n      \"contentType\": \"CSV\",\n      \"apiVersion\": 2919.9425905876674,\n      \"jobType\": \"V2Ingest\",\n      \"lineEnding\": \"LF\",\n      \"columnDelimiter\": \"BACKQUOTE\",\n      \"numberRecordsProcessed\": 4391,\n      \"numberRecordsFailed\": 9431,\n      \"retries\": 9708,\n      \"totalProcessingTime\": 203,\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"nextRecordsUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "860ad41f-6729-4f38-900f-5500d01cccd5",
+          "name": "Create an ingest job",
+          "request": {
+            "name": "Create an ingest job",
+            "description": {
+              "content": "Creates a new Bulk API 2.0 ingest job. After creation, the job is in the Open state and ready to accept CSV data uploads via the PUT /jobs/ingest/{jobId}/batches endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"object\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"externalIdFieldName\": \"<string>\",\n  \"columnDelimiter\": \"COMMA\",\n  \"contentType\": \"CSV\",\n  \"lineEnding\": \"LF\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "acd0ba86-f65e-40e1-9449-70f5d24c93fc",
+              "name": "Ingest job created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"externalIdFieldName\": \"<string>\",\n  \"columnDelimiter\": \"COMMA\",\n  \"contentType\": \"CSV\",\n  \"lineEnding\": \"LF\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"operation\": \"upsert\",\n  \"object\": \"string\",\n  \"createdById\": \"string\",\n  \"createdDate\": \"1971-12-28T20:48:37.997Z\",\n  \"systemModstamp\": \"1969-12-10T16:50:13.428Z\",\n  \"state\": \"InProgress\",\n  \"externalIdFieldName\": \"string\",\n  \"concurrencyMode\": \"Parallel\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": 9816.758548428757,\n  \"jobType\": \"V2Ingest\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"PIPE\",\n  \"numberRecordsProcessed\": 6790,\n  \"numberRecordsFailed\": 1613,\n  \"retries\": 6845,\n  \"totalProcessingTime\": 8051,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "043a708b-e50f-4153-b83d-5cb18a96715a",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"externalIdFieldName\": \"<string>\",\n  \"columnDelimiter\": \"COMMA\",\n  \"contentType\": \"CSV\",\n  \"lineEnding\": \"LF\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\"\n  },\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f52606c-efb8-42de-8f46-6a8f79cfd391",
+          "name": "Get ingest job status",
+          "request": {
+            "name": "Get ingest job status",
+            "description": {
+              "content": "Returns the current status and details of a specific Bulk API 2.0 ingest job, including the number of records processed and failed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c63b9cf-aad5-48d5-b5c5-bc50870c07d0",
+              "name": "Ingest job details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"operation\": \"upsert\",\n  \"object\": \"string\",\n  \"createdById\": \"string\",\n  \"createdDate\": \"1971-12-28T20:48:37.997Z\",\n  \"systemModstamp\": \"1969-12-10T16:50:13.428Z\",\n  \"state\": \"InProgress\",\n  \"externalIdFieldName\": \"string\",\n  \"concurrencyMode\": \"Parallel\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": 9816.758548428757,\n  \"jobType\": \"V2Ingest\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"PIPE\",\n  \"numberRecordsProcessed\": 6790,\n  \"numberRecordsFailed\": 1613,\n  \"retries\": 6845,\n  \"totalProcessingTime\": 8051,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21a72a60-dfb5-44c9-ac50-e453768d7975",
+          "name": "Close or abort an ingest job",
+          "request": {
+            "name": "Close or abort an ingest job",
+            "description": {
+              "content": "Updates the state of an ingest job. Set state to UploadComplete to indicate all data has been uploaded and processing should begin. Set state to Aborted to cancel the job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bda39a6a-db1e-4356-8cfc-fd0a14d29e3b",
+              "name": "Job updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"operation\": \"upsert\",\n  \"object\": \"string\",\n  \"createdById\": \"string\",\n  \"createdDate\": \"1971-12-28T20:48:37.997Z\",\n  \"systemModstamp\": \"1969-12-10T16:50:13.428Z\",\n  \"state\": \"InProgress\",\n  \"externalIdFieldName\": \"string\",\n  \"concurrencyMode\": \"Parallel\",\n  \"contentType\": \"CSV\",\n  \"apiVersion\": 9816.758548428757,\n  \"jobType\": \"V2Ingest\",\n  \"lineEnding\": \"LF\",\n  \"columnDelimiter\": \"PIPE\",\n  \"numberRecordsProcessed\": 6790,\n  \"numberRecordsFailed\": 1613,\n  \"retries\": 6845,\n  \"totalProcessingTime\": 8051,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfd1537d-0214-40d9-abe7-9243cd174287",
+          "name": "Delete an ingest job",
+          "request": {
+            "name": "Delete an ingest job",
+            "description": {
+              "content": "Deletes an ingest job. The job must be in a terminal state (JobComplete, Failed, or Aborted) before it can be deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "881debd3-dc55-4af8-b73a-7c709044c185",
+              "name": "Job deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38b5d6e6-29db-4527-99ae-b6b870c18cba",
+          "name": "Upload data for an ingest job",
+          "request": {
+            "name": "Upload data for an ingest job",
+            "description": {
+              "content": "Uploads CSV data for a Bulk API 2.0 ingest job. The job must be in the Open state. You can upload data in multiple requests, each up to 150 MB. The first row must be the CSV header with field API names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest",
+                ":jobId",
+                "batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/csv"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "59a7fda6-2d7c-476b-a67c-ffba455fd9a5",
+              "name": "Data uploaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest",
+                    ":jobId",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "26eed595-67f5-4b7a-ada0-d88bf7c0342c",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest",
+                    ":jobId",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\"\n  },\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36e5d8e4-0866-4445-b53d-ee81f22a9511",
+          "name": "Get successful results for an ingest job",
+          "request": {
+            "name": "Get successful results for an ingest job",
+            "description": {
+              "content": "Returns CSV data containing successfully processed records for a completed ingest job. Each row includes the sf__Id (the Salesforce record ID) and sf__Created (whether the record was created or updated) columns, followed by the original record data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest",
+                ":jobId",
+                "successfulResults"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02254030-814f-4b93-a069-04b238422d8b",
+              "name": "CSV of successfully processed records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest",
+                    ":jobId",
+                    "successfulResults"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4280e15a-dae4-4103-a120-6849ab78ed6d",
+          "name": "Get failed results for an ingest job",
+          "request": {
+            "name": "Get failed results for an ingest job",
+            "description": {
+              "content": "Returns CSV data containing records that failed to process. Each row includes sf__Error (the error message) and sf__Id columns, followed by the original record data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest",
+                ":jobId",
+                "failedResults"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e52d904-0f7f-48cc-ab9c-f900a8a07e2e",
+              "name": "CSV of failed records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest",
+                    ":jobId",
+                    "failedResults"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4293dfe-1a69-47e7-8e92-23e60c4f05c7",
+          "name": "Get unprocessed records for an ingest job",
+          "request": {
+            "name": "Get unprocessed records for an ingest job",
+            "description": {
+              "content": "Returns CSV data containing records that were not processed, typically because the job was aborted before all records were processed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "ingest",
+                ":jobId",
+                "unprocessedrecords"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a4f72ff-e329-4326-80b1-8c7c988fcb55",
+              "name": "CSV of unprocessed records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "ingest",
+                    ":jobId",
+                    "unprocessedrecords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The unique identifier of the Bulk API 2.0 job"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6b0aca45-1687-43a8-a527-fd2a98c909cb",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Ingest Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

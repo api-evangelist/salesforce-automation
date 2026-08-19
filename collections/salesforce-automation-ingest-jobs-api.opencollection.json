@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Ingest Jobs API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ingest Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all ingest jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest",
+            "params": [
+              {
+                "name": "isPkChunkingEnabled",
+                "value": "",
+                "type": "query",
+                "description": "Filter by PK chunking status"
+              },
+              {
+                "name": "jobType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job type"
+              },
+              {
+                "name": "queryLocator",
+                "value": "",
+                "type": "query",
+                "description": "Locator for the next page of results"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Bulk API 2.0 ingest jobs in the org. Supports filtering by job type and pagination through concurrencyMode, jobType, and queryLocator parameters."
+        },
+        {
+          "info": {
+            "name": "Create an ingest job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Bulk API 2.0 ingest job. After creation, the job is in the Open state and ready to accept CSV data uploads via the PUT /jobs/ingest/{jobId}/batches endpoint."
+        },
+        {
+          "info": {
+            "name": "Get ingest job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ]
+          },
+          "docs": "Returns the current status and details of a specific Bulk API 2.0 ingest job, including the number of records processed and failed."
+        },
+        {
+          "info": {
+            "name": "Close or abort an ingest job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the state of an ingest job. Set state to UploadComplete to indicate all data has been uploaded and processing should begin. Set state to Aborted to cancel the job."
+        },
+        {
+          "info": {
+            "name": "Delete an ingest job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ]
+          },
+          "docs": "Deletes an ingest job. The job must be in a terminal state (JobComplete, Failed, or Aborted) before it can be deleted."
+        },
+        {
+          "info": {
+            "name": "Upload data for an ingest job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest/:jobId/batches",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ]
+          },
+          "docs": "Uploads CSV data for a Bulk API 2.0 ingest job. The job must be in the Open state. You can upload data in multiple requests, each up to 150 MB. The first row must be the CSV header with field API names."
+        },
+        {
+          "info": {
+            "name": "Get successful results for an ingest job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest/:jobId/successfulResults",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ]
+          },
+          "docs": "Returns CSV data containing successfully processed records for a completed ingest job. Each row includes the sf__Id (the Salesforce record ID) and sf__Created (whether the record was created or updated) columns, followed by the original record data."
+        },
+        {
+          "info": {
+            "name": "Get failed results for an ingest job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest/:jobId/failedResults",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ]
+          },
+          "docs": "Returns CSV data containing records that failed to process. Each row includes sf__Error (the error message) and sf__Id columns, followed by the original record data."
+        },
+        {
+          "info": {
+            "name": "Get unprocessed records for an ingest job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/ingest/:jobId/unprocessedrecords",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ]
+          },
+          "docs": "Returns CSV data containing records that were not processed, typically because the job was aborted before all records were processed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

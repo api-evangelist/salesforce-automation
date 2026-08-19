@@ -1,0 +1,564 @@
+{
+  "item": [
+    {
+      "id": "1cccc6cb-9769-4b9b-a73a-8fa8849edd53",
+      "name": "SObject Collections",
+      "description": {
+        "content": "Bulk CRUD operations on up to 200 records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c1e757d0-1333-45dc-bc4d-3506ad9d78d8",
+          "name": "Create multiple records of the same type",
+          "request": {
+            "name": "Create multiple records of the same type",
+            "description": {
+              "content": "Creates up to 200 records of the same SObject type in a single request. More efficient than individual create calls for bulk record creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "sobjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "allOrNone",
+                  "value": "false",
+                  "description": "If true, all records in the request must succeed or all are rolled back"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af7e457a-eaa9-4707-95d6-9eb980e8dce3",
+              "name": "Array of save results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"success\": true,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"success\": false,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81e4d551-89b2-4f5a-93c7-42df7f4df6bc",
+          "name": "Update multiple records",
+          "request": {
+            "name": "Update multiple records",
+            "description": {
+              "content": "Updates up to 200 records in a single request. Records can be of different SObject types. Each record must include the Id field and the attributes.type field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "sobjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "allOrNone",
+                  "value": "false",
+                  "description": "If true, all records in the request must succeed or all are rolled back"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    }\n  ],\n  \"allOrNone\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c98f36f4-e264-4cc4-8df6-adda66f5743b",
+              "name": "Array of save results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    },\n    {\n      \"attributes\": {\n        \"type\": \"<string>\"\n      },\n      \"Id\": \"<string>\"\n    }\n  ],\n  \"allOrNone\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"success\": true,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"success\": false,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fd264f2-437f-4a48-bb2d-c4c7190dd5dd",
+          "name": "Delete multiple records",
+          "request": {
+            "name": "Delete multiple records",
+            "description": {
+              "content": "Deletes up to 200 records in a single request. Provide record IDs as a comma-separated query parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "sobjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of record IDs to delete (up to 200)"
+                },
+                {
+                  "disabled": false,
+                  "key": "allOrNone",
+                  "value": "false",
+                  "description": "If true, all records in the request must succeed or all are rolled back"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ce25e26-9c50-4eda-ad9f-06758c8b5de0",
+              "name": "Array of delete results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "allOrNone",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"success\": true,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"success\": false,\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5da9142-6d54-4653-b300-c60871e4344a",
+          "name": "Get multiple records by IDs",
+          "request": {
+            "name": "Get multiple records by IDs",
+            "description": {
+              "content": "Retrieves multiple records of the same SObject type by their IDs in a single request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "sobjects",
+                ":sObjectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of field API names to return"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72704bd4-8494-4fe4-9386-7fc5641ccbaf",
+              "name": "Array of records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "sobjects",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key_0\": 5859.668096897055\n  },\n  {\n    \"key_0\": 1603,\n    \"key_1\": 4876\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4fbd69ea-717e-4345-99a9-a6f7b2539438",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SObject Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "item": [
+    {
+      "id": "2ebd0707-f128-4afd-9b07-98b803431e6c",
+      "name": "Batch",
+      "description": {
+        "content": "Independent subrequests in a single call",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f3d1f69e-b11f-4a22-b7ff-9a480a1e49c3",
+          "name": "Execute composite batch request",
+          "request": {
+            "name": "Execute composite batch request",
+            "description": {
+              "content": "Executes up to 25 independent subrequests in a single call. Unlike the composite resource, batch subrequests are independent and cannot reference each other. If haltOnError is true, processing stops after the first error. Each subrequest counts as one API call, but the batch itself counts as one call toward the limit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batchRequests\": [\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"richInput\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"richInput\": {}\n    }\n  ],\n  \"haltOnError\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6619c4c9-e3fd-4b2d-8f5c-931fa3e002bd",
+              "name": "Batch response with results for each subrequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batchRequests\": [\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"richInput\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"richInput\": {}\n    }\n  ],\n  \"haltOnError\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasErrors\": true,\n  \"results\": [\n    {\n      \"statusCode\": 8500,\n      \"result\": {}\n    },\n    {\n      \"statusCode\": 9613,\n      \"result\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6c212f6f-ab5f-4924-954b-c072a9c42ba4",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Batch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Query Jobs API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all query jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/query",
+            "params": [
+              {
+                "name": "jobType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job type"
+              },
+              {
+                "name": "queryLocator",
+                "value": "",
+                "type": "query",
+                "description": "Locator for the next page of results"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Bulk API 2.0 query jobs in the org."
+        },
+        {
+          "info": {
+            "name": "Create a query job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Bulk API 2.0 query job. The SOQL query is provided in the request body and processing begins immediately. Use query for active records only or queryAll to include deleted and archived records."
+        },
+        {
+          "info": {
+            "name": "Get query job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/query/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ]
+          },
+          "docs": "Returns the current status and details of a specific Bulk API 2.0 query job."
+        },
+        {
+          "info": {
+            "name": "Abort a query job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/query/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Aborts a query job that is in progress. Sets the job state to Aborted."
+        },
+        {
+          "info": {
+            "name": "Delete a query job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/query/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              }
+            ]
+          },
+          "docs": "Deletes a query job. The job must be in a terminal state before deletion."
+        },
+        {
+          "info": {
+            "name": "Get query job results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/jobs/query/:jobId/results",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Bulk API 2.0 job"
+              },
+              {
+                "name": "locator",
+                "value": "",
+                "type": "query",
+                "description": "Locator for retrieving the next set of results from a previous response's Sforce-Locator header"
+              },
+              {
+                "name": "maxRecords",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per request"
+              }
+            ]
+          },
+          "docs": "Returns the results of a completed Bulk API 2.0 query job as CSV data. Use the locator and maxRecords parameters for pagination when results exceed a single response."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,390 @@
+{
+  "item": [
+    {
+      "id": "4bc930b2-f4cd-44c7-a5ea-f0c03bdd5d1e",
+      "name": "Change Events",
+      "description": {
+        "content": "Change Data Capture event metadata and schema",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a92c5bd-2370-4071-bf47-0ec48f37b227",
+          "name": "Describe a Change Data Capture event",
+          "request": {
+            "name": "Describe a Change Data Capture event",
+            "description": {
+              "content": "Returns metadata about a Change Data Capture event type. Change event names follow the pattern {SObjectName}ChangeEvent (e.g., AccountChangeEvent, ContactChangeEvent) for standard objects, or {CustomObjectName}__ChangeEvent for custom objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":changeEventName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "changeEventName",
+                  "description": "(Required) The API name of the Change Data Capture event (e.g., AccountChangeEvent, ContactChangeEvent, MyObject__ChangeEvent)"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48b1415f-31a1-43ee-8a0a-ec6b3c6761b5",
+              "name": "Change event metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":changeEventName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "changeEventName",
+                      "description": "(Required) The API name of the Change Data Capture event (e.g., AccountChangeEvent, ContactChangeEvent, MyObject__ChangeEvent)"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"labelPlural\": \"string\",\n  \"fields\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\",\n      \"nillable\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\",\n      \"nillable\": true\n    }\n  ],\n  \"associateEntityType\": \"string\",\n  \"associateParentEntity\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b4e463f-0b89-40a8-838e-2e84621be766",
+          "name": "Get full Change Data Capture event describe",
+          "request": {
+            "name": "Get full Change Data Capture event describe",
+            "description": {
+              "content": "Returns complete metadata for a CDC event type including all available change event fields and their properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":changeEventName",
+                "describe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "changeEventName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81ed9af8-cc18-4738-b8c8-10706ea36714",
+              "name": "Full change event describe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":changeEventName",
+                    "describe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "changeEventName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"labelPlural\": \"string\",\n  \"fields\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\",\n      \"nillable\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\",\n      \"nillable\": true\n    }\n  ],\n  \"associateEntityType\": \"string\",\n  \"associateParentEntity\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "510e24ed-f8f6-4e9a-a151-b5b3a059e82d",
+          "name": "Get the Avro schema for a Change Data Capture event",
+          "request": {
+            "name": "Get the Avro schema for a Change Data Capture event",
+            "description": {
+              "content": "Returns the Apache Avro schema for a Change Data Capture event channel, used by the Pub/Sub API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":changeEventName",
+                "eventSchema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "changeEventName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9636189d-9253-4a74-ba65-93ac9329e12c",
+              "name": "Change event Avro schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":changeEventName",
+                    "eventSchema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "changeEventName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2fae2ac9-0c62-4fc1-9400-791c7e947e24",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Change Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

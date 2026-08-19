@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SOSL API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SOSL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a SOSL search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The SOSL search string (e.g., FIND {Acme} IN ALL FIELDS RETURNING Account(Id, Name), Contact(Id, Name, Email))"
+              }
+            ]
+          },
+          "docs": "Executes a SOSL (Salesforce Object Search Language) search across multiple objects. SOSL uses the Salesforce search index to find records by text, unlike SOQL which uses the database directly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

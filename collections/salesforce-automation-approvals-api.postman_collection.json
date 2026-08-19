@@ -1,0 +1,271 @@
+{
+  "item": [
+    {
+      "id": "fbdc67da-baf5-4d3a-9577-c0f477086770",
+      "name": "Approvals",
+      "description": {
+        "content": "Approval process management and submissions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2d9803a-d3e3-4f63-93a7-c6c9fd53f4aa",
+          "name": "List approval processes",
+          "request": {
+            "name": "List approval processes",
+            "description": {
+              "content": "Returns a list of all approval processes defined in your org, along with their associated metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "process",
+                "approvals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb631116-e943-419d-be48-9b1f100d1d8d",
+              "name": "List of approval processes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "process",
+                    "approvals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"approvals\": {\n    \"key_0\": [\n      {\n        \"description\": null,\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"object\": \"string\",\n        \"sortOrder\": 883\n      },\n      {\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"object\": \"string\",\n        \"sortOrder\": 4779\n      }\n    ],\n    \"key_1\": [\n      {\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"object\": \"string\",\n        \"sortOrder\": 3859\n      },\n      {\n        \"description\": null,\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"object\": \"string\",\n        \"sortOrder\": 2248\n      }\n    ],\n    \"key_2\": [\n      {\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"object\": \"string\",\n        \"sortOrder\": 3257\n      },\n      {\n        \"description\": null,\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"object\": \"string\",\n        \"sortOrder\": 4338\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0b47d56-77e5-433a-9952-b445c4ec8fda",
+          "name": "Submit a record for approval",
+          "request": {
+            "name": "Submit a record for approval",
+            "description": {
+              "content": "Submits a record for approval, approves, or rejects an approval request. Supports specifying next approvers, comments, and skipping entry criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "process",
+                "approvals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"actionType\": \"<string>\",\n      \"contextActorId\": \"<string>\",\n      \"contextId\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"nextApproverIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"processDefinitionNameOrId\": \"<string>\",\n      \"skipEntryCriteria\": \"<boolean>\"\n    },\n    {\n      \"actionType\": \"<string>\",\n      \"contextActorId\": \"<string>\",\n      \"contextId\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"nextApproverIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"processDefinitionNameOrId\": \"<string>\",\n      \"skipEntryCriteria\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4b6fc56-df5c-4db2-9d75-350de6adc255",
+              "name": "Approval action result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "process",
+                    "approvals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"actionType\": \"<string>\",\n      \"contextActorId\": \"<string>\",\n      \"contextId\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"nextApproverIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"processDefinitionNameOrId\": \"<string>\",\n      \"skipEntryCriteria\": \"<boolean>\"\n    },\n    {\n      \"actionType\": \"<string>\",\n      \"contextActorId\": \"<string>\",\n      \"contextId\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"nextApproverIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"processDefinitionNameOrId\": \"<string>\",\n      \"skipEntryCriteria\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actorIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"entityId\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"errorCode\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"message\": \"string\",\n        \"errorCode\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"instanceId\": \"string\",\n    \"instanceStatus\": \"string\",\n    \"newWorkitemIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"success\": false\n  },\n  {\n    \"actorIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"entityId\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"errorCode\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"message\": \"string\",\n        \"errorCode\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"instanceId\": \"string\",\n    \"instanceStatus\": \"string\",\n    \"newWorkitemIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"success\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "372026c7-d59a-4ae0-b2db-fdeb5c2c1950",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Approvals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

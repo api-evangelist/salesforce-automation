@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Workflow API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workflow",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List workflow rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/process/rules"
+          },
+          "docs": "Returns a list of all active workflow rules in the org. Workflow rules evaluate records when they are created or edited and trigger automated actions."
+        },
+        {
+          "info": {
+            "name": "Get workflow rules for an SObject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/process/rules/:sObjectName",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+              }
+            ]
+          },
+          "docs": "Returns workflow rules defined for the specified SObject type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,604 @@
+{
+  "item": [
+    {
+      "id": "fe8e0298-ba44-4941-b167-74e2edfa6e81",
+      "name": "PushTopics",
+      "description": {
+        "content": "SOQL-based streaming event topics (deprecated; use Platform Events or CDC)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b4e40ca6-460b-4fd3-b804-fb24da36898c",
+          "name": "List PushTopics",
+          "request": {
+            "name": "List PushTopics",
+            "description": {
+              "content": "Returns all PushTopic records in the org. PushTopics define SOQL queries that determine which record changes generate streaming events. Note: PushTopics are deprecated in favor of Platform Events and Change Data Capture.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fff90294-513a-45d3-9e3b-c113014c255b",
+              "name": "List of PushTopics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSize\": 3513,\n  \"done\": false,\n  \"records\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Query\": \"string\",\n      \"ApiVersion\": 6212.625520672072,\n      \"IsActive\": true,\n      \"NotifyForFields\": \"Where\",\n      \"NotifyForOperationCreate\": true,\n      \"NotifyForOperationUpdate\": false,\n      \"NotifyForOperationDelete\": false,\n      \"NotifyForOperationUndelete\": false,\n      \"Description\": \"string\",\n      \"CreatedDate\": \"1983-10-29T04:23:58.613Z\",\n      \"LastModifiedDate\": \"1961-08-22T23:25:34.886Z\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Query\": \"string\",\n      \"ApiVersion\": 2341.621757485386,\n      \"IsActive\": false,\n      \"NotifyForFields\": \"Referenced\",\n      \"NotifyForOperationCreate\": false,\n      \"NotifyForOperationUpdate\": false,\n      \"NotifyForOperationDelete\": false,\n      \"NotifyForOperationUndelete\": true,\n      \"Description\": \"string\",\n      \"CreatedDate\": \"1990-06-12T16:36:53.360Z\",\n      \"LastModifiedDate\": \"1980-11-17T02:30:25.213Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4e1cf83-e059-42b9-8e87-546922a7c6ed",
+          "name": "Create a PushTopic",
+          "request": {
+            "name": "Create a PushTopic",
+            "description": {
+              "content": "Creates a new PushTopic that defines a SOQL query to monitor for record changes. When records matching the query change, events are delivered to subscribers on the /topic/{pushTopicName} CometD channel.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"<string>\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6f5632bd-0b0a-4cf3-8141-4a59be42bd02",
+              "name": "PushTopic created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"<string>\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4032adf7-e303-4d9b-86ff-97021f6d42cd",
+          "name": "Get a PushTopic",
+          "request": {
+            "name": "Get a PushTopic",
+            "description": {
+              "content": "Retrieves a specific PushTopic record by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic",
+                ":pushTopicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pushTopicId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec808d29-a5ee-48c1-bb99-1b9ed446e775",
+              "name": "PushTopic record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic",
+                    ":pushTopicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pushTopicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Query\": \"string\",\n  \"ApiVersion\": 924.9476515024346,\n  \"IsActive\": false,\n  \"NotifyForFields\": \"Select\",\n  \"NotifyForOperationCreate\": true,\n  \"NotifyForOperationUpdate\": true,\n  \"NotifyForOperationDelete\": true,\n  \"NotifyForOperationUndelete\": false,\n  \"Description\": \"string\",\n  \"CreatedDate\": \"1976-12-28T03:13:41.445Z\",\n  \"LastModifiedDate\": \"1974-05-12T07:25:29.791Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10c991dd-e0d7-4c1d-8011-21dec6ee7c26",
+          "name": "Update a PushTopic",
+          "request": {
+            "name": "Update a PushTopic",
+            "description": {
+              "content": "Updates the SOQL query, notification settings, or other properties of an existing PushTopic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic",
+                ":pushTopicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pushTopicId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"<string>\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e115414b-827e-4f24-9341-89df91c372fd",
+              "name": "PushTopic updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic",
+                    ":pushTopicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pushTopicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Query\": \"<string>\",\n  \"ApiVersion\": \"<number>\",\n  \"IsActive\": \"<boolean>\",\n  \"NotifyForFields\": \"<string>\",\n  \"NotifyForOperationCreate\": \"<boolean>\",\n  \"NotifyForOperationUpdate\": \"<boolean>\",\n  \"NotifyForOperationDelete\": \"<boolean>\",\n  \"NotifyForOperationUndelete\": \"<boolean>\",\n  \"Description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4315037e-54a4-40e9-8542-fa583b628fbc",
+          "name": "Delete a PushTopic",
+          "request": {
+            "name": "Delete a PushTopic",
+            "description": {
+              "content": "Deletes a PushTopic. Active subscribers will be disconnected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "PushTopic",
+                ":pushTopicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pushTopicId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b506c427-7ed6-4d67-9984-a23dc710a701",
+              "name": "PushTopic deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "PushTopic",
+                    ":pushTopicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pushTopicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d9c6d8ce-4af6-4aa7-8e3b-8708dc7c0010",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions PushTopics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

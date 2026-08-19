@@ -1,0 +1,177 @@
+{
+  "item": [
+    {
+      "id": "4409ff79-2c91-4c29-a82f-8e851050d181",
+      "name": "Graph",
+      "description": {
+        "content": "Subrequests with dependency graphs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b92f2f23-6ac2-47d0-b16d-83ca8a42a67d",
+          "name": "Execute composite graph request",
+          "request": {
+            "name": "Execute composite graph request",
+            "description": {
+              "content": "Executes a set of composite graphs, each containing subrequests that can reference each other through a dependency graph. Supports up to 500 subrequests across all graphs. Graphs are independent; subrequests within a graph execute in dependency order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite",
+                "graph"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"key_0\": \"string\",\n            \"key_1\": false\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"key_0\": \"string\",\n            \"key_1\": 2244\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"key_0\": 2416.927968507044\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"referenceId\": \"<string>\",\n          \"body\": {\n            \"key_0\": false\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed946b73-dc96-478a-8541-22d5ceaafa16",
+              "name": "Graph response with results for each graph and subrequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite",
+                    "graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"PUT\",\n          \"url\": \"string\",\n          \"referenceId\": \"string\",\n          \"body\": {\n            \"key_0\": \"string\",\n            \"key_1\": 1655\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          }\n        },\n        {\n          \"method\": \"DELETE\",\n          \"url\": \"string\",\n          \"referenceId\": \"string\",\n          \"body\": {\n            \"key_0\": 6651.428465028593\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"graphId\": \"<string>\",\n      \"compositeRequest\": [\n        {\n          \"method\": \"GET\",\n          \"url\": \"string\",\n          \"referenceId\": \"string\",\n          \"body\": {\n            \"key_0\": false,\n            \"key_1\": 8217.646660518896\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"string\"\n          }\n        },\n        {\n          \"method\": \"DELETE\",\n          \"url\": \"string\",\n          \"referenceId\": \"string\",\n          \"body\": {\n            \"key_0\": 6902,\n            \"key_1\": true,\n            \"key_2\": false\n          },\n          \"httpHeaders\": {\n            \"key_0\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"graphs\": [\n    {\n      \"graphId\": \"string\",\n      \"graphResponse\": {\n        \"compositeResponse\": [\n          {\n            \"body\": {},\n            \"httpHeaders\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\",\n              \"key_3\": \"string\"\n            },\n            \"httpStatusCode\": 5711,\n            \"referenceId\": \"string\"\n          },\n          {\n            \"body\": {},\n            \"httpHeaders\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\",\n              \"key_3\": \"string\"\n            },\n            \"httpStatusCode\": 9970,\n            \"referenceId\": \"string\"\n          }\n        ]\n      },\n      \"isSuccessful\": false\n    },\n    {\n      \"graphId\": \"string\",\n      \"graphResponse\": {\n        \"compositeResponse\": [\n          {\n            \"body\": {},\n            \"httpHeaders\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            },\n            \"httpStatusCode\": 9521,\n            \"referenceId\": \"string\"\n          },\n          {\n            \"body\": {},\n            \"httpHeaders\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            },\n            \"httpStatusCode\": 2003,\n            \"referenceId\": \"string\"\n          }\n        ]\n      },\n      \"isSuccessful\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c24876ba-4620-4824-a29d-8ccba2e4b34b",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Graph API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

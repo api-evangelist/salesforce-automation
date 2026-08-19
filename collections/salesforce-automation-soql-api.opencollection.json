@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SOQL API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SOQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a SOQL query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/query",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The SOQL query string (e.g., SELECT Id, Name FROM Account WHERE Industry = 'Technology')"
+              }
+            ]
+          },
+          "docs": "Executes a SOQL query that returns records matching the query criteria. Results are returned in batches; use the nextRecordsUrl to retrieve additional batches if totalSize exceeds the batch size (default 2000 records)."
+        },
+        {
+          "info": {
+            "name": "Execute a SOQL query including deleted and archived records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/queryAll",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The SOQL query string"
+              }
+            ]
+          },
+          "docs": "Executes a SOQL query that includes soft-deleted records (IsDeleted = true) and archived records in the results. Otherwise identical to the /query endpoint."
+        },
+        {
+          "info": {
+            "name": "Retrieve additional query results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/query/:queryLocator",
+            "params": [
+              {
+                "name": "queryLocator",
+                "value": "",
+                "type": "path",
+                "description": "The query locator from the nextRecordsUrl of a previous query response"
+              }
+            ]
+          },
+          "docs": "Retrieves the next batch of records for a query that has more results than the batch size. Use the nextRecordsUrl value from the previous response."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

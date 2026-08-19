@@ -1,0 +1,266 @@
+{
+  "item": [
+    {
+      "id": "61075df9-4d82-4b35-b214-cbf96206219f",
+      "name": "Workflow",
+      "description": {
+        "content": "Workflow rules and process automation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21a189e4-2c4c-4b33-972a-da3dc0ee0ab4",
+          "name": "List workflow rules",
+          "request": {
+            "name": "List workflow rules",
+            "description": {
+              "content": "Returns a list of all active workflow rules in the org. Workflow rules evaluate records when they are created or edited and trigger automated actions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "process",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c9a679c-f985-461b-80e9-669794b3d245",
+              "name": "List of workflow rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "process",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": {\n    \"key_0\": [\n      {\n        \"actions\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ],\n        \"description\": null,\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"namespacePrefix\": null,\n        \"object\": \"string\"\n      },\n      {\n        \"actions\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ],\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"namespacePrefix\": \"string\",\n        \"object\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"actions\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ],\n        \"description\": null,\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"namespacePrefix\": null,\n        \"object\": \"string\"\n      },\n      {\n        \"actions\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ],\n        \"description\": null,\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"namespacePrefix\": null,\n        \"object\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"actions\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ],\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"namespacePrefix\": null,\n        \"object\": \"string\"\n      },\n      {\n        \"actions\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ],\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"namespacePrefix\": null,\n        \"object\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1150599f-c6a0-4a2b-9911-503efb90286c",
+          "name": "Get workflow rules for an SObject",
+          "request": {
+            "name": "Get workflow rules for an SObject",
+            "description": {
+              "content": "Returns workflow rules defined for the specified SObject type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "process",
+                "rules",
+                ":sObjectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2aac0f8-64e6-4d47-a2ac-684fe905ab1c",
+              "name": "Workflow rules for the object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "process",
+                    "rules",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"actions\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"namespacePrefix\": \"string\",\n      \"object\": \"string\"\n    },\n    {\n      \"actions\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"namespacePrefix\": \"string\",\n      \"object\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7d9fcdd4-afe1-4e27-a464-6ce735dc60b7",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Workflow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

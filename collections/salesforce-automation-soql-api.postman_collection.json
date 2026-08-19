@@ -1,0 +1,433 @@
+{
+  "item": [
+    {
+      "id": "1393e2bd-866c-4eac-9910-eb3314ed850c",
+      "name": "SOQL",
+      "description": {
+        "content": "Salesforce Object Query Language queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f96223c6-b2d3-449f-a0ad-e4fb03703646",
+          "name": "Execute a SOQL query",
+          "request": {
+            "name": "Execute a SOQL query",
+            "description": {
+              "content": "Executes a SOQL query that returns records matching the query criteria. Results are returned in batches; use the nextRecordsUrl to retrieve additional batches if totalSize exceeds the batch size (default 2000 records).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The SOQL query string (e.g., SELECT Id, Name FROM Account WHERE Industry = 'Technology')"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c753fabd-2745-4988-8ace-60703d9fba9c",
+              "name": "Query results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSize\": 9963,\n  \"done\": true,\n  \"nextRecordsUrl\": \"string\",\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"string\",\n        \"url\": \"string\"\n      },\n      \"Id\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 839\n    },\n    {\n      \"attributes\": {\n        \"type\": \"string\",\n        \"url\": \"string\"\n      },\n      \"Id\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 3650,\n      \"key_2\": 5871.090705787584,\n      \"key_3\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f8ed87a-7c9a-4827-a26c-eccecd457e44",
+              "name": "The request could not be processed due to invalid syntax, missing required fields, or business rule violations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\",\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\",\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6a29dbd-f997-4921-9416-e57ec3463810",
+          "name": "Execute a SOQL query including deleted and archived records",
+          "request": {
+            "name": "Execute a SOQL query including deleted and archived records",
+            "description": {
+              "content": "Executes a SOQL query that includes soft-deleted records (IsDeleted = true) and archived records in the results. Otherwise identical to the /query endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "queryAll"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The SOQL query string"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5491f728-8d3f-4ffb-bab0-b332b516137b",
+              "name": "Query results including deleted and archived records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queryAll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSize\": 9963,\n  \"done\": true,\n  \"nextRecordsUrl\": \"string\",\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"string\",\n        \"url\": \"string\"\n      },\n      \"Id\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 839\n    },\n    {\n      \"attributes\": {\n        \"type\": \"string\",\n        \"url\": \"string\"\n      },\n      \"Id\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 3650,\n      \"key_2\": 5871.090705787584,\n      \"key_3\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "257f0ae1-2698-426e-b9ba-a31ae400ac30",
+          "name": "Retrieve additional query results",
+          "request": {
+            "name": "Retrieve additional query results",
+            "description": {
+              "content": "Retrieves the next batch of records for a query that has more results than the batch size. Use the nextRecordsUrl value from the previous response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                ":queryLocator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queryLocator",
+                  "description": "(Required) The query locator from the nextRecordsUrl of a previous query response"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa63ab83-3a65-4549-9e1e-7b101b9be7b5",
+              "name": "Next batch of query results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    ":queryLocator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queryLocator",
+                      "description": "(Required) The query locator from the nextRecordsUrl of a previous query response"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSize\": 9963,\n  \"done\": true,\n  \"nextRecordsUrl\": \"string\",\n  \"records\": [\n    {\n      \"attributes\": {\n        \"type\": \"string\",\n        \"url\": \"string\"\n      },\n      \"Id\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 839\n    },\n    {\n      \"attributes\": {\n        \"type\": \"string\",\n        \"url\": \"string\"\n      },\n      \"Id\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 3650,\n      \"key_2\": 5871.090705787584,\n      \"key_3\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fd662e84-42ca-4f23-b404-926b7f95b988",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SOQL API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

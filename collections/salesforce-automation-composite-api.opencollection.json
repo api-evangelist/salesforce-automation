@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Composite API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Composite",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute composite request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/composite",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes up to 25 subrequests in a single call. Subrequests are executed sequentially and can reference the results of prior subrequests using reference IDs (e.g., @{referenceId.id}). If allOrNone is true, all subrequests are rolled back if any fails. Each subrequest counts against API limits."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Flows API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Flow definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/Flow/:flowId",
+            "params": [
+              {
+                "name": "flowId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character ID of the Flow version record"
+              }
+            ]
+          },
+          "docs": "Retrieves metadata for a specific Salesforce Flow, including its version, status, process type, and associated metadata. Flows are the primary automation mechanism in Salesforce."
+        },
+        {
+          "info": {
+            "name": "Get a Flow definition metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/FlowDefinition/:flowDefinitionId",
+            "params": [
+              {
+                "name": "flowDefinitionId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character ID of the FlowDefinition record"
+              }
+            ]
+          },
+          "docs": "Retrieves the FlowDefinition record, which represents the overall Flow independent of version. Contains the active version number and the developer name."
+        },
+        {
+          "info": {
+            "name": "Activate or deactivate a Flow version",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/FlowDefinition/:flowDefinitionId",
+            "params": [
+              {
+                "name": "flowDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the FlowDefinition to activate a specific flow version by setting the ActiveVersionNumber, or deactivates by setting it to null."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "b18b1909-1c79-457e-b7cb-618a5822657e",
+      "name": "Composite",
+      "description": {
+        "content": "Sequential subrequests with reference ID support",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2cd60e78-f55b-40b0-a39a-02f62765219c",
+          "name": "Execute composite request",
+          "request": {
+            "name": "Execute composite request",
+            "description": {
+              "content": "Executes up to 25 subrequests in a single call. Subrequests are executed sequentially and can reference the results of prior subrequests using reference IDs (e.g., @{referenceId.id}). If allOrNone is true, all subrequests are rolled back if any fails. Each subrequest counts against API limits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compositeRequest\": [\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"body\": {\n        \"key_0\": \"string\",\n        \"key_1\": 5442.40880564269\n      },\n      \"httpHeaders\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"body\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 3268,\n        \"key_3\": 1752\n      },\n      \"httpHeaders\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ],\n  \"allOrNone\": false,\n  \"collateSubrequests\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d326ca9-93e6-4957-812b-9775c170b6e1",
+              "name": "Composite response with results for each subrequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"compositeRequest\": [\n    {\n      \"method\": \"GET\",\n      \"url\": \"string\",\n      \"referenceId\": \"string\",\n      \"body\": {\n        \"key_0\": 9296\n      },\n      \"httpHeaders\": {\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"method\": \"DELETE\",\n      \"url\": \"string\",\n      \"referenceId\": \"string\",\n      \"body\": {\n        \"key_0\": false\n      },\n      \"httpHeaders\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"allOrNone\": false,\n  \"collateSubrequests\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"compositeResponse\": [\n    {\n      \"body\": {},\n      \"httpHeaders\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"httpStatusCode\": 8784,\n      \"referenceId\": \"string\"\n    },\n    {\n      \"body\": {},\n      \"httpHeaders\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"httpStatusCode\": 6250,\n      \"referenceId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0faeddba-775b-419b-8512-050281f495af",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Composite API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

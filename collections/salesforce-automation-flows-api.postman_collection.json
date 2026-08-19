@@ -1,0 +1,405 @@
+{
+  "item": [
+    {
+      "id": "59221e1f-8786-4981-a34d-340b5e9e6c92",
+      "name": "Flows",
+      "description": {
+        "content": "Flow and FlowDefinition management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d74acd5-357f-4864-8619-064bc155d481",
+          "name": "Get a Flow definition",
+          "request": {
+            "name": "Get a Flow definition",
+            "description": {
+              "content": "Retrieves metadata for a specific Salesforce Flow, including its version, status, process type, and associated metadata. Flows are the primary automation mechanism in Salesforce.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "Flow",
+                ":flowId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowId",
+                  "description": "(Required) The 18-character ID of the Flow version record"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28a874a4-9625-4933-99b3-027df46363bd",
+              "name": "Flow record data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "Flow",
+                    ":flowId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowId",
+                      "description": "(Required) The 18-character ID of the Flow version record"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"DefinitionId\": \"string\",\n  \"MasterLabel\": \"string\",\n  \"Description\": \"string\",\n  \"ProcessType\": \"ServiceProcess\",\n  \"Status\": \"Draft\",\n  \"VersionNumber\": 462,\n  \"ApiVersion\": \"string\",\n  \"FullName\": \"string\",\n  \"Metadata\": {\n    \"key_0\": false,\n    \"key_1\": 5911\n  },\n  \"CreatedDate\": \"2012-10-27T02:41:49.914Z\",\n  \"LastModifiedDate\": \"1967-04-19T16:31:56.965Z\",\n  \"CreatedById\": \"string\",\n  \"LastModifiedById\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a1ae4cc-20e2-410f-9b50-6b61c59b8476",
+          "name": "Get a Flow definition metadata",
+          "request": {
+            "name": "Get a Flow definition metadata",
+            "description": {
+              "content": "Retrieves the FlowDefinition record, which represents the overall Flow independent of version. Contains the active version number and the developer name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "FlowDefinition",
+                ":flowDefinitionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowDefinitionId",
+                  "description": "(Required) The 18-character ID of the FlowDefinition record"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d05f0960-d2b2-4585-8875-84c1471b2378",
+              "name": "FlowDefinition record data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "FlowDefinition",
+                    ":flowDefinitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowDefinitionId",
+                      "description": "(Required) The 18-character ID of the FlowDefinition record"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"DeveloperName\": \"string\",\n  \"MasterLabel\": \"string\",\n  \"Description\": \"string\",\n  \"ActiveVersionId\": \"string\",\n  \"LatestVersionId\": \"string\",\n  \"Metadata\": {\n    \"activeVersionNumber\": 3399\n  },\n  \"NamespacePrefix\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dcd5af0-71ec-48b0-8fdb-0f6f7b85886c",
+          "name": "Activate or deactivate a Flow version",
+          "request": {
+            "name": "Activate or deactivate a Flow version",
+            "description": {
+              "content": "Updates the FlowDefinition to activate a specific flow version by setting the ActiveVersionNumber, or deactivates by setting it to null.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                "FlowDefinition",
+                ":flowDefinitionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowDefinitionId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Metadata\": {\n    \"activeVersionNumber\": \"<integer,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80e0ea4d-3806-42ab-a1bd-d0a8f13fa02a",
+              "name": "FlowDefinition updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    "FlowDefinition",
+                    ":flowDefinitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowDefinitionId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Metadata\": {\n    \"activeVersionNumber\": \"<integer,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9d933076-27df-4e61-a60b-3095e8de540c",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Flows API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

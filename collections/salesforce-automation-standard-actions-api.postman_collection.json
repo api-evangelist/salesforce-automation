@@ -1,0 +1,397 @@
+{
+  "item": [
+    {
+      "id": "cb8d0fa1-c882-4dd2-99e4-d5d4a5da5116",
+      "name": "Standard Actions",
+      "description": {
+        "content": "Salesforce-provided standard invocable actions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d2056ee4-801e-4c47-b6d7-3c27069e4932",
+          "name": "List standard invocable actions",
+          "request": {
+            "name": "List standard invocable actions",
+            "description": {
+              "content": "Returns a list of all standard (Salesforce-provided) invocable actions. These include actions like emailSimple (send email), chatterPost (post to Chatter), submit (submit for approval), and many more.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "actions",
+                "standard"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c3e8eea-b346-4011-90c4-1beff1260a6b",
+              "name": "List of standard actions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "actions",
+                    "standard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"label\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"label\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fbcea26-0f0c-43f0-84bc-23f8234d351b",
+          "name": "Describe a standard action",
+          "request": {
+            "name": "Describe a standard action",
+            "description": {
+              "content": "Returns the input and output parameters for a specific standard invocable action.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "actions",
+                "standard",
+                ":actionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "actionName",
+                  "description": "(Required) The API name of the standard action (e.g., emailSimple, chatterPost, submit)"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d00c6a98-9ebe-4c56-8125-6b53c3a9d369",
+              "name": "Action description with inputs and outputs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "actions",
+                    "standard",
+                    ":actionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionName",
+                      "description": "(Required) The API name of the standard action (e.g., emailSimple, chatterPost, submit)"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"label\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"inputs\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"required\": false,\n      \"sobjectType\": \"string\",\n      \"byteLength\": 2923,\n      \"maxOccurs\": 577\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"required\": true,\n      \"sobjectType\": \"string\",\n      \"byteLength\": 7963,\n      \"maxOccurs\": 232\n    }\n  ],\n  \"outputs\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"required\": false,\n      \"sobjectType\": \"string\",\n      \"byteLength\": 8922,\n      \"maxOccurs\": 1706\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"required\": true,\n      \"sobjectType\": \"string\",\n      \"byteLength\": 437,\n      \"maxOccurs\": 644\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c453b73-6b56-4af3-b05d-420f86891141",
+          "name": "Invoke a standard action",
+          "request": {
+            "name": "Invoke a standard action",
+            "description": {
+              "content": "Invokes a standard Salesforce action with the specified inputs. Multiple invocations can be batched in a single request by providing an array of input objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "actions",
+                "standard",
+                ":actionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "actionName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 3533.579378395255\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4cdb9360-8ea4-41c7-9946-46ea792cfeed",
+              "name": "Action invocation results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "actions",
+                    "standard",
+                    ":actionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"key_0\": false,\n      \"key_1\": false,\n      \"key_2\": \"string\",\n      \"key_3\": true,\n      \"key_4\": \"string\"\n    },\n    {\n      \"key_0\": 6343.056372453616,\n      \"key_1\": \"string\",\n      \"key_2\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actionName\": \"string\",\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"isSuccess\": true,\n    \"outputValues\": {\n      \"key_0\": \"string\",\n      \"key_1\": false\n    }\n  },\n  {\n    \"actionName\": \"string\",\n    \"errors\": [\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"statusCode\": \"string\",\n        \"message\": \"string\",\n        \"fields\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"isSuccess\": false,\n    \"outputValues\": {\n      \"key_0\": 5160,\n      \"key_1\": 1462.9771158128747,\n      \"key_2\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b9fbe86e-e8ee-4b93-b920-d51d647e04c9",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Standard Actions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

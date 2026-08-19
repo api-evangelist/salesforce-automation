@@ -1,0 +1,480 @@
+{
+  "item": [
+    {
+      "id": "a983da2b-3d92-44a7-95c5-5453b9f2ee97",
+      "name": "SObjects",
+      "description": {
+        "content": "SObject metadata and describe operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a75c454-4979-4854-8f11-2e0807926192",
+          "name": "Describe all available SObjects",
+          "request": {
+            "name": "Describe all available SObjects",
+            "description": {
+              "content": "Lists all available objects and their metadata for your org, including the object name, label, key prefix, custom status, and URLs for describe and row template. Equivalent to the DescribeGlobal SOAP API call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "668ee931-c6b1-4b03-9248-04948e285142",
+              "name": "Global describe result with list of all SObjects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"encoding\": \"string\",\n  \"maxBatchSize\": 1544,\n  \"sobjects\": [\n    {\n      \"activateable\": true,\n      \"createable\": false,\n      \"custom\": true,\n      \"customSetting\": false,\n      \"deletable\": false,\n      \"deprecatedAndHidden\": true,\n      \"feedEnabled\": false,\n      \"hasSubtypes\": false,\n      \"isSubtype\": true,\n      \"keyPrefix\": \"string\",\n      \"label\": \"string\",\n      \"labelPlural\": \"string\",\n      \"layoutable\": false,\n      \"mergeable\": false,\n      \"mruEnabled\": false,\n      \"name\": \"string\",\n      \"queryable\": true,\n      \"replicateable\": false,\n      \"retrieveable\": false,\n      \"searchable\": false,\n      \"triggerable\": true,\n      \"undeletable\": true,\n      \"updateable\": true,\n      \"urls\": {\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"activateable\": true,\n      \"createable\": false,\n      \"custom\": false,\n      \"customSetting\": false,\n      \"deletable\": false,\n      \"deprecatedAndHidden\": false,\n      \"feedEnabled\": true,\n      \"hasSubtypes\": true,\n      \"isSubtype\": true,\n      \"keyPrefix\": \"string\",\n      \"label\": \"string\",\n      \"labelPlural\": \"string\",\n      \"layoutable\": false,\n      \"mergeable\": false,\n      \"mruEnabled\": false,\n      \"name\": \"string\",\n      \"queryable\": false,\n      \"replicateable\": false,\n      \"retrieveable\": false,\n      \"searchable\": true,\n      \"triggerable\": false,\n      \"undeletable\": true,\n      \"updateable\": true,\n      \"urls\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d392b847-c2fc-4c25-8508-bccc32bc3dbc",
+              "name": "Authentication failed. The session has expired, the token is invalid, or required scopes are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\",\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\",\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e2cfca3-a8e5-4e9f-9ca1-169dd8367ab0",
+          "name": "Describe an SObject",
+          "request": {
+            "name": "Describe an SObject",
+            "description": {
+              "content": "Retrieves metadata about a specific SObject including its fields, child relationships, record type details, and URLs for various operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":sObjectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50905302-ac9f-471c-87f7-fb3771189e27",
+              "name": "SObject describe result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"labelPlural\": \"string\",\n  \"keyPrefix\": \"string\",\n  \"custom\": true,\n  \"fields\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\",\n      \"length\": 5048,\n      \"nillable\": false,\n      \"createable\": true,\n      \"updateable\": false,\n      \"custom\": false,\n      \"picklistValues\": [\n        {\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"active\": true,\n          \"defaultValue\": true\n        },\n        {\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"active\": false,\n          \"defaultValue\": true\n        }\n      ],\n      \"referenceTo\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relationshipName\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\",\n      \"length\": 4604,\n      \"nillable\": true,\n      \"createable\": false,\n      \"updateable\": false,\n      \"custom\": true,\n      \"picklistValues\": [\n        {\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"active\": false,\n          \"defaultValue\": false\n        },\n        {\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"active\": false,\n          \"defaultValue\": true\n        }\n      ],\n      \"referenceTo\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relationshipName\": \"string\"\n    }\n  ],\n  \"childRelationships\": [\n    {\n      \"childSObject\": \"string\",\n      \"field\": \"string\",\n      \"relationshipName\": \"string\"\n    },\n    {\n      \"childSObject\": \"string\",\n      \"field\": \"string\",\n      \"relationshipName\": \"string\"\n    }\n  ],\n  \"recordTypeInfos\": [\n    {\n      \"active\": false,\n      \"defaultRecordTypeMapping\": true,\n      \"name\": \"string\",\n      \"recordTypeId\": \"string\"\n    },\n    {\n      \"active\": false,\n      \"defaultRecordTypeMapping\": true,\n      \"name\": \"string\",\n      \"recordTypeId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aba00c68-ddb5-4481-be23-3cb59e6e95a3",
+              "name": "The requested resource was not found. The record may have been deleted or the ID may be invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":sObjectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\",\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"message\": \"string\",\n    \"errorCode\": \"string\",\n    \"fields\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23a71b9c-479c-44a7-b98b-e1e73e86fa61",
+          "name": "Get full SObject describe",
+          "request": {
+            "name": "Get full SObject describe",
+            "description": {
+              "content": "Retrieves the complete metadata for an SObject type including all fields, field-level properties (type, length, picklist values), relationships, record types, child relationships, and available layouts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sobjects",
+                ":sObjectName",
+                "describe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sObjectName",
+                  "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf01fb1e-f25c-4b72-b530-b137491d336f",
+              "name": "Full SObject describe result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sobjects",
+                    ":sObjectName",
+                    "describe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sObjectName",
+                      "description": "(Required) The API name of the SObject type (e.g., Account, Contact, Opportunity, MyCustomObject__c)"
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"labelPlural\": \"string\",\n  \"keyPrefix\": \"string\",\n  \"custom\": true,\n  \"fields\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\",\n      \"length\": 5048,\n      \"nillable\": false,\n      \"createable\": true,\n      \"updateable\": false,\n      \"custom\": false,\n      \"picklistValues\": [\n        {\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"active\": true,\n          \"defaultValue\": true\n        },\n        {\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"active\": false,\n          \"defaultValue\": true\n        }\n      ],\n      \"referenceTo\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relationshipName\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\",\n      \"length\": 4604,\n      \"nillable\": true,\n      \"createable\": false,\n      \"updateable\": false,\n      \"custom\": true,\n      \"picklistValues\": [\n        {\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"active\": false,\n          \"defaultValue\": false\n        },\n        {\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"active\": false,\n          \"defaultValue\": true\n        }\n      ],\n      \"referenceTo\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relationshipName\": \"string\"\n    }\n  ],\n  \"childRelationships\": [\n    {\n      \"childSObject\": \"string\",\n      \"field\": \"string\",\n      \"relationshipName\": \"string\"\n    },\n    {\n      \"childSObject\": \"string\",\n      \"field\": \"string\",\n      \"relationshipName\": \"string\"\n    }\n  ],\n  \"recordTypeInfos\": [\n    {\n      \"active\": false,\n      \"defaultRecordTypeMapping\": true,\n      \"name\": \"string\",\n      \"recordTypeId\": \"string\"\n    },\n    {\n      \"active\": false,\n      \"defaultRecordTypeMapping\": true,\n      \"name\": \"string\",\n      \"recordTypeId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "546e9493-a276-4109-9d43-740b8ff9b21d",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions SObjects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}

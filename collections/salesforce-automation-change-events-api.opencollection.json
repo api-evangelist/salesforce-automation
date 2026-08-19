@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Change Events API",
+    "version": "63.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Change Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Describe a Change Data Capture event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:changeEventName",
+            "params": [
+              {
+                "name": "changeEventName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Change Data Capture event (e.g., AccountChangeEvent, ContactChangeEvent, MyObject__ChangeEvent)"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a Change Data Capture event type. Change event names follow the pattern {SObjectName}ChangeEvent (e.g., AccountChangeEvent, ContactChangeEvent) for standard objects, or {CustomObjectName}__ChangeEvent for custom objects."
+        },
+        {
+          "info": {
+            "name": "Get full Change Data Capture event describe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:changeEventName/describe",
+            "params": [
+              {
+                "name": "changeEventName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns complete metadata for a CDC event type including all available change event fields and their properties."
+        },
+        {
+          "info": {
+            "name": "Get the Avro schema for a Change Data Capture event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v63.0/wave/sobjects/:changeEventName/eventSchema",
+            "params": [
+              {
+                "name": "changeEventName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the Apache Avro schema for a Change Data Capture event channel, used by the Pub/Sub API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

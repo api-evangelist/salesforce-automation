@@ -1,0 +1,315 @@
+{
+  "item": [
+    {
+      "id": "ba69a8bd-ba40-4ceb-8a07-5871c3550255",
+      "name": "Comments",
+      "description": {
+        "content": "Comments on feed elements",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a76d3ac-f7a1-4e19-8f70-d8db9879ea2e",
+          "name": "Get comments on a feed element",
+          "request": {
+            "name": "Get comments on a feed element",
+            "description": {
+              "content": "Returns comments on a Chatter feed element.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "feed-elements",
+                ":feedElementId",
+                "capabilities",
+                "comments",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "986b71f8-d0d6-4745-9aba-416034b6e928",
+              "name": "Comments on the feed element",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comments\": [\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"messageSegments\": [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"photo\": {\n          \"smallPhotoUrl\": \"string\",\n          \"largePhotoUrl\": \"string\"\n        }\n      },\n      \"createdDate\": \"1986-03-25T14:15:05.368Z\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"messageSegments\": [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"photo\": {\n          \"smallPhotoUrl\": \"string\",\n          \"largePhotoUrl\": \"string\"\n        }\n      },\n      \"createdDate\": \"1970-10-26T15:01:15.677Z\",\n      \"url\": \"string\"\n    }\n  ],\n  \"currentPageUrl\": \"string\",\n  \"nextPageUrl\": \"string\",\n  \"total\": 7217\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c98eabbd-92bd-4848-889b-58d83a7aec36",
+          "name": "Post a comment on a feed element",
+          "request": {
+            "name": "Post a comment on a feed element",
+            "description": {
+              "content": "Adds a comment to a Chatter feed element.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chatter",
+                "feed-elements",
+                ":feedElementId",
+                "capabilities",
+                "comments",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f10066ed-27ba-4315-99de-102d20d0af9d",
+              "name": "Comment created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"text\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"type\": \"string\",\n        \"text\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"text\": \"string\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\",\n    \"photo\": {\n      \"smallPhotoUrl\": \"string\",\n      \"largePhotoUrl\": \"string\"\n    }\n  },\n  \"createdDate\": \"1975-12-15T18:21:31.658Z\",\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v63.0/wave",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api wave_api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a6890d51-7f83-4aed-bf4b-fe7144422693",
+    "name": "Salesforce Analytics (CRM Analytics) REST Actions Comments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.\n\nContact Support:\n Name: Salesforce Developer Support\n Email: developer@salesforce.com",
+      "type": "text/plain"
+    }
+  }
+}
