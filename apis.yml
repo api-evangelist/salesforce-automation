@@ -74,6 +74,12 @@ apis:
   humanURL: https://developer.salesforce.com/docs/platform/pub-sub-api/overview
   baseURL: https://api.pubsub.salesforce.com:7443
   tags:
+  - Event
+  - gRPC
+  - Pub-Sub
+  - Real-Time
+  - Streaming
+  tags_raw:
   - Events
   - gRPC
   - Pub/Sub
@@ -1718,6 +1724,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   baseURL: https://yourInstance.salesforce.com/services/data
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -2328,6 +2336,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   baseURL: https://yourInstance.salesforce.com/services/data
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -4402,6 +4412,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   baseURL: https://yourInstance.salesforce.com/services/data
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -4646,6 +4658,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   baseURL: https://yourInstance.salesforce.com/services/data
   tags:
+  - Workflows
+  tags_raw:
   - Workflow
   properties:
   - type: OpenAPI
