@@ -1,6 +1,18 @@
 name: Salesforce Automation
 description: A collection of Salesforce APIs for automating business processes, sales operations, and customer relationship
   management.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -3637,6 +3649,9 @@ maintainers:
   email: kin@apievangelist.com
   url: https://apievangelist.com
 common:
+- type: CapabilityMap
+  url: capabilities/salesforce-automation-capability-edges.yml
+  name: Salesforce Automation Business Capability Map
 - type: ParentCompany
   url: https://apis.io/providers/salesforce/
   name: Salesforce
