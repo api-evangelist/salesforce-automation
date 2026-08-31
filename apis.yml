@@ -85,7 +85,7 @@ apis:
   tags:
   - Event
   - gRPC
-  - Pub-Sub
+  - Pub/Sub
   - Real-Time
   - Streaming
   tags_raw:
