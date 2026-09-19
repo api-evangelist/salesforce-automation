@@ -1859,6 +1859,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   baseURL: https://yourInstance.salesforce.com/services/data
   tags:
+  - Feed
+  tags_raw:
   - Feeds
   properties:
   - type: OpenAPI
@@ -1981,6 +1983,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   baseURL: https://yourInstance.salesforce.com/services/data
   tags:
+  - Flow
+  tags_raw:
   - Flows
   properties:
   - type: OpenAPI
@@ -4179,6 +4183,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   baseURL: https://yourInstance.salesforce.com/services/data
   tags:
+  - Topic
+  tags_raw:
   - Topics
   properties:
   - type: OpenAPI
