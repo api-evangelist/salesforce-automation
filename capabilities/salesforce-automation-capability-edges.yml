@@ -1,0 +1,34 @@
+slug: salesforce-automation
+provider: Salesforce Automation
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Dashboards
+  spec_file: salesforce-automation-dashboards-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.8
+  evidence: 'GET /dashboards  getDashboards  List dashboards; schemas: Dashboard, FolderRef, DashboardList
+    — ''REST API for accessing and managing CRM Analytics ... dashboards'''
+  reason: Operations retrieve analytics dashboards from CRM Analytics, which realises Analytics & BI delivery.
+- tag: Testing
+  spec_file: salesforce-automation-testing-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.72
+  evidence: POST /runTestsAsynchronous  runTestsAsync  Run Apex tests asynchronously
+  reason: The two operations execute automated code tests and return a TestRunResult, which is test execution
+    / quality engineering for software built on the platform. Sub-capability is Software Quality Engineering;
+    moderate confidence because it is a narrow test-runner endpoint.
