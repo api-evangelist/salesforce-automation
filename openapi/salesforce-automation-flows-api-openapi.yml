@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Analytics (CRM Analytics) REST Actions Flows API
-  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  title: Salesforce Tooling Flows API
+  description: REST API for building custom development tools for Salesforce applications. Provides access to metadata about Apex classes, triggers, Visualforce pages, flows, and other platform components. Supports CRUD operations and SOQL queries against Tooling API objects like ApexClass, ApexTrigger, Flow, FlowDefinition, and CustomField.
   version: '63.0'
   contact:
     name: Salesforce Developer Support
@@ -11,7 +11,7 @@ info:
     name: Salesforce API Terms of Use
     url: https://www.salesforce.com/company/legal/agreements/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+- url: https://{instance}.salesforce.com/services/data/v63.0/tooling
   description: Salesforce production or developer instance
   variables:
     instance:
@@ -98,40 +98,6 @@ paths:
           description: FlowDefinition updated
 components:
   schemas:
-    FlowDefinition:
-      type: object
-      description: Represents the overall Flow definition independent of version. Contains the active version number and developer name.
-      properties:
-        Id:
-          type: string
-        DeveloperName:
-          type: string
-          description: The unique developer name for this flow
-        MasterLabel:
-          type: string
-        Description:
-          type:
-          - string
-          - 'null'
-        ActiveVersionId:
-          type:
-          - string
-          - 'null'
-          description: The ID of the currently active Flow version
-        LatestVersionId:
-          type: string
-          description: The ID of the most recent Flow version
-        Metadata:
-          type: object
-          properties:
-            activeVersionNumber:
-              type:
-              - integer
-              - 'null'
-        NamespacePrefix:
-          type:
-          - string
-          - 'null'
     Flow:
       type: object
       description: A specific version of a Salesforce Flow automation. The Flow object in the Tooling API represents individual flow versions with their metadata, process type, and status.
@@ -213,6 +179,40 @@ components:
           type: string
         LastModifiedById:
           type: string
+    FlowDefinition:
+      type: object
+      description: Represents the overall Flow definition independent of version. Contains the active version number and developer name.
+      properties:
+        Id:
+          type: string
+        DeveloperName:
+          type: string
+          description: The unique developer name for this flow
+        MasterLabel:
+          type: string
+        Description:
+          type:
+          - string
+          - 'null'
+        ActiveVersionId:
+          type:
+          - string
+          - 'null'
+          description: The ID of the currently active Flow version
+        LatestVersionId:
+          type: string
+          description: The ID of the most recent Flow version
+        Metadata:
+          type: object
+          properties:
+            activeVersionNumber:
+              type:
+              - integer
+              - 'null'
+        NamespacePrefix:
+          type:
+          - string
+          - 'null'
   securitySchemes:
     oauth2:
       type: oauth2
@@ -222,7 +222,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your Salesforce data
-            wave_api: Access CRM Analytics REST API resources
     bearerAuth:
       type: http
       scheme: bearer

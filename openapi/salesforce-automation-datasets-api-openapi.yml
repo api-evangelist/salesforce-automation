@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Analytics (CRM Analytics) REST Actions Datasets API
+  title: Salesforce Analytics (CRM Analytics) REST Datasets API
   description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
   version: '63.0'
   contact:
@@ -98,21 +98,6 @@ paths:
                 $ref: '#/components/schemas/Dataset'
 components:
   schemas:
-    DatasetList:
-      type: object
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dataset'
-        nextPageUrl:
-          type:
-          - string
-          - 'null'
-        totalSize:
-          type: integer
-        url:
-          type: string
     Dataset:
       type: object
       properties:
@@ -152,6 +137,21 @@ components:
           type: string
         name:
           type: string
+        url:
+          type: string
+    DatasetList:
+      type: object
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+        nextPageUrl:
+          type:
+          - string
+          - 'null'
+        totalSize:
+          type: integer
         url:
           type: string
   securitySchemes:

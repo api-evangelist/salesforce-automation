@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Analytics (CRM Analytics) REST Actions Dashboards API
+  title: Salesforce Analytics (CRM Analytics) REST Dashboards API
   description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
   version: '63.0'
   contact:
@@ -78,6 +78,19 @@ paths:
                 $ref: '#/components/schemas/Dashboard'
 components:
   schemas:
+    DashboardList:
+      type: object
+      properties:
+        dashboards:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+        nextPageUrl:
+          type:
+          - string
+          - 'null'
+        totalSize:
+          type: integer
     Dashboard:
       type: object
       properties:
@@ -105,19 +118,6 @@ components:
           description: The dashboard JSON state definition
         url:
           type: string
-    DashboardList:
-      type: object
-      properties:
-        dashboards:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dashboard'
-        nextPageUrl:
-          type:
-          - string
-          - 'null'
-        totalSize:
-          type: integer
     FolderRef:
       type: object
       properties:

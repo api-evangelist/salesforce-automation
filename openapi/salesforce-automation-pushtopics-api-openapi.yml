@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Analytics (CRM Analytics) REST Actions PushTopics API
-  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  title: Salesforce Streaming Push Topics API
+  description: REST endpoints for managing PushTopic and Streaming Channel resources used with the Salesforce Streaming API. The Streaming API uses the Bayeux protocol (CometD) over long polling or WebSocket connections to deliver real-time notifications. PushTopics define SOQL queries that trigger events when matching records change. Streaming Channels provide generic event delivery. Subscriptions are established via CometD handshake at /cometd/{apiVersion}.
   version: '63.0'
   contact:
     name: Salesforce Developer Support
@@ -11,7 +11,7 @@ info:
     name: Salesforce API Terms of Use
     url: https://www.salesforce.com/company/legal/agreements/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+- url: https://{instance}.salesforce.com/services/data/v63.0
   description: Salesforce production or developer instance
   variables:
     instance:
@@ -218,7 +218,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your Salesforce data
-            wave_api: Access CRM Analytics REST API resources
     bearerAuth:
       type: http
       scheme: bearer

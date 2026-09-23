@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Analytics (CRM Analytics) REST Actions SOSL API
-  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  title: Salesforce REST SOSL API
+  description: Core REST API for accessing and manipulating Salesforce data and metadata programmatically. Supports CRUD operations on standard and custom objects, SOQL queries, SOSL searches, and access to org-level resources. Uses OAuth 2.0 for authentication and returns JSON or XML responses.
   version: '63.0'
   contact:
     name: Salesforce Developer Support
@@ -11,12 +11,18 @@ info:
     name: Salesforce API Terms of Use
     url: https://www.salesforce.com/company/legal/agreements/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+- url: https://{instance}.salesforce.com/services/data/v63.0
   description: Salesforce production or developer instance
   variables:
     instance:
       default: yourInstance
-      description: Your Salesforce instance identifier
+      description: Your Salesforce instance identifier (e.g., na1, eu5, or your My Domain subdomain)
+- url: https://{instance}.sandbox.salesforce.com/services/data/v63.0
+  description: Salesforce sandbox instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce sandbox instance identifier
 security:
 - oauth2: []
 - bearerAuth: []
@@ -77,13 +83,16 @@ components:
   securitySchemes:
     oauth2:
       type: oauth2
+      description: Salesforce OAuth 2.0 authentication. Supports Web Server Flow (authorization_code), User-Agent Flow (implicit), JWT Bearer Token Flow, and Device Flow.
       flows:
         authorizationCode:
           authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your Salesforce data
-            wave_api: Access CRM Analytics REST API resources
+            full: Full access to your Salesforce data
+            refresh_token: Perform requests at any time on your behalf
     bearerAuth:
       type: http
       scheme: bearer
+      description: OAuth 2.0 access token obtained through any supported authentication flow

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Analytics (CRM Analytics) REST Actions Query Jobs API
-  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  title: Salesforce Bulk API 2.0 Query Jobs API
+  description: Asynchronous REST API optimized for loading, deleting, and querying large data sets in Salesforce. Supports CSV-based data operations on standard and custom objects. Jobs progress through lifecycle states (Open, UploadComplete, InProgress, JobComplete, Failed, Aborted) and can process millions of records efficiently.
   version: '63.0'
   contact:
     name: Salesforce Developer Support
@@ -11,7 +11,7 @@ info:
     name: Salesforce API Terms of Use
     url: https://www.salesforce.com/company/legal/agreements/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+- url: https://{instance}.salesforce.com/services/data/v63.0
   description: Salesforce production or developer instance
   variables:
     instance:
@@ -162,15 +162,54 @@ paths:
               schema:
                 type: string
 components:
-  parameters:
-    jobId:
-      name: jobId
-      in: path
-      required: true
-      description: The unique identifier of the Bulk API 2.0 job
-      schema:
-        type: string
   schemas:
+    CreateQueryJobRequest:
+      type: object
+      required:
+      - operation
+      - query
+      properties:
+        operation:
+          type: string
+          enum:
+          - query
+          - queryAll
+          description: Use query for active records or queryAll to include deleted/archived records
+        query:
+          type: string
+          description: The SOQL query to execute
+        columnDelimiter:
+          type: string
+          enum:
+          - COMMA
+          - TAB
+          - PIPE
+          - SEMICOLON
+          - CARET
+          - BACKQUOTE
+          default: COMMA
+        contentType:
+          type: string
+          enum:
+          - CSV
+          default: CSV
+        lineEnding:
+          type: string
+          enum:
+          - LF
+          - CRLF
+          default: LF
+    QueryJobList:
+      type: object
+      properties:
+        done:
+          type: boolean
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryJob'
+        nextRecordsUrl:
+          type: string
     QueryJob:
       type: object
       properties:
@@ -236,53 +275,14 @@ components:
         totalProcessingTime:
           type: integer
           minimum: 0
-    QueryJobList:
-      type: object
-      properties:
-        done:
-          type: boolean
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueryJob'
-        nextRecordsUrl:
-          type: string
-    CreateQueryJobRequest:
-      type: object
-      required:
-      - operation
-      - query
-      properties:
-        operation:
-          type: string
-          enum:
-          - query
-          - queryAll
-          description: Use query for active records or queryAll to include deleted/archived records
-        query:
-          type: string
-          description: The SOQL query to execute
-        columnDelimiter:
-          type: string
-          enum:
-          - COMMA
-          - TAB
-          - PIPE
-          - SEMICOLON
-          - CARET
-          - BACKQUOTE
-          default: COMMA
-        contentType:
-          type: string
-          enum:
-          - CSV
-          default: CSV
-        lineEnding:
-          type: string
-          enum:
-          - LF
-          - CRLF
-          default: LF
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: The unique identifier of the Bulk API 2.0 job
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
@@ -292,7 +292,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your Salesforce data
-            wave_api: Access CRM Analytics REST API resources
     bearerAuth:
       type: http
       scheme: bearer

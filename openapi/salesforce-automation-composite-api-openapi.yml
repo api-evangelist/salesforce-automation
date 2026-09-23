@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Analytics (CRM Analytics) REST Actions Composite API
-  description: REST API for accessing and managing CRM Analytics (formerly Tableau CRM / Einstein Analytics) resources including datasets, lenses, dashboards, and dataflows. Enables programmatic access to analytics metadata, query execution, and dashboard management. Uses the Wave API resource at /services/data/vXX.0/wave.
+  title: Salesforce Composite API
+  description: 'REST API for executing multiple API requests in a single call, reducing the number of round trips to the server. Supports three composite resources: Composite (sequential subrequests with reference IDs), Composite Batch (independent subrequests), and Composite Graph (subrequests with dependency graphs). Subrequests can reference the output of prior subrequests using reference IDs.'
   version: '63.0'
   contact:
     name: Salesforce Developer Support
@@ -11,7 +11,7 @@ info:
     name: Salesforce API Terms of Use
     url: https://www.salesforce.com/company/legal/agreements/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v63.0/wave
+- url: https://{instance}.salesforce.com/services/data/v63.0
   description: Salesforce production or developer instance
   variables:
     instance:
@@ -46,24 +46,24 @@ paths:
                 $ref: '#/components/schemas/CompositeResponse'
 components:
   schemas:
-    CompositeResponse:
+    CompositeRequest:
       type: object
+      required:
+      - compositeRequest
       properties:
-        compositeResponse:
+        allOrNone:
+          type: boolean
+          default: false
+          description: If true, all subrequests are rolled back on any failure
+        collateSubrequests:
+          type: boolean
+          default: false
+          description: If true, independent subrequests are executed in parallel
+        compositeRequest:
           type: array
+          maxItems: 25
           items:
-            type: object
-            properties:
-              body:
-                description: The response body
-              httpHeaders:
-                type: object
-                additionalProperties:
-                  type: string
-              httpStatusCode:
-                type: integer
-              referenceId:
-                type: string
+            $ref: '#/components/schemas/CompositeSubrequest'
     CompositeSubrequest:
       type: object
       required:
@@ -92,24 +92,24 @@ components:
         url:
           type: string
           description: The relative URL of the API endpoint for this subrequest
-    CompositeRequest:
+    CompositeResponse:
       type: object
-      required:
-      - compositeRequest
       properties:
-        allOrNone:
-          type: boolean
-          default: false
-          description: If true, all subrequests are rolled back on any failure
-        collateSubrequests:
-          type: boolean
-          default: false
-          description: If true, independent subrequests are executed in parallel
-        compositeRequest:
+        compositeResponse:
           type: array
-          maxItems: 25
           items:
-            $ref: '#/components/schemas/CompositeSubrequest'
+            type: object
+            properties:
+              body:
+                description: The response body
+              httpHeaders:
+                type: object
+                additionalProperties:
+                  type: string
+              httpStatusCode:
+                type: integer
+              referenceId:
+                type: string
   securitySchemes:
     oauth2:
       type: oauth2
@@ -119,7 +119,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your Salesforce data
-            wave_api: Access CRM Analytics REST API resources
     bearerAuth:
       type: http
       scheme: bearer
